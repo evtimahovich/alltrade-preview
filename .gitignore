@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+._*
+
+# редакторы
+.vscode/
+.idea/
+*.swp
+
+# логи / временное
+*.log
+node_modules/
+tmp/
