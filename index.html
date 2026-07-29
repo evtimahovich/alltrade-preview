@@ -631,6 +631,16 @@
     border-radius:999px;padding:9px 18px;
   }
   .g-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .prod-note{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--r-m);
+    padding:clamp(18px,2vw,26px);
+    display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
+  }
+  .prod-note b{
+    font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
+    letter-spacing:.03em;text-transform:uppercase;font-size:14px;
+  }
+  .prod-note .mono{color:var(--ink-soft)}
   .p-card{
     background:var(--panel);border-radius:var(--r-m);
     padding:20px;position:relative;
@@ -708,8 +718,8 @@
     position:relative;overflow:hidden;
   }
   #vending::before{
-    content:"";position:absolute;left:-15%;top:-30%;width:60%;height:90%;
-    background:radial-gradient(circle,rgba(78,158,120,.14),transparent 62%);
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse 90% 70% at 12% 8%,rgba(78,158,120,.13),transparent 58%);
     pointer-events:none;
   }
   #vending .display{color:#fff}
@@ -1195,9 +1205,6 @@
         <p class="mono">Автоматы 540 / 640 · выдача СИЗ 24/7 по бейджу</p>
         <figure class="media-card m-orange-media">
           <img src="assets/vending/kazpro-duo.webp" alt="Автоматы выдачи и приёмки СИЗ KazProService 540 и 640 в цехе" loading="lazy">
-          <button class="play play--sm" type="button" data-video="assets/at-film.mp4" aria-label="Смотреть фильм о выдаче СИЗ">
-            <svg aria-hidden="true"><use href="#i-play"/></svg>
-          </button>
         </figure>
         <a class="cbtn cbtn--sm cbtn--ghostw card-arr" href="#vending" aria-label="Подробнее о вендинге">
           <svg aria-hidden="true"><use href="#i-arr"/></svg>
@@ -1318,34 +1325,9 @@
       <figcaption class="media-cap mono">Производство · Цех раскроя</figcaption>
     </figure>
 
-    <div class="g-row">
-      <article class="p-card">
-        <img src="assets/catalog/cine/gloves.webp" alt="Защитные перчатки Base Safety" loading="lazy">
-        <div class="p-meta">
-          <div><b>Base Safety</b><span class="mono">Перчатки · EN 388</span></div>
-          <a class="cbtn cbtn--sm" href="#products" aria-label="Перчатки — подробнее">
-            <svg aria-hidden="true"><use href="#i-arr"/></svg>
-          </a>
-        </div>
-      </article>
-      <article class="p-card">
-        <img src="assets/catalog/cine/boots.webp" alt="Защитная обувь Safety Nomads" loading="lazy">
-        <div class="p-meta">
-          <div><b>Safety Nomads</b><span class="mono">Обувь · 24 модели</span></div>
-          <a class="cbtn cbtn--sm" href="#products" aria-label="Обувь — подробнее">
-            <svg aria-hidden="true"><use href="#i-arr"/></svg>
-          </a>
-        </div>
-      </article>
-      <article class="p-card">
-        <img src="assets/catalog/cine/wear.webp" alt="Спецодежда Textiline" loading="lazy">
-        <div class="p-meta">
-          <div><b>Textiline</b><span class="mono">Спецодежда · 50 668 компл./год</span></div>
-          <a class="cbtn cbtn--sm" href="#products" aria-label="Спецодежда — подробнее">
-            <svg aria-hidden="true"><use href="#i-arr"/></svg>
-          </a>
-        </div>
-      </article>
+    <div class="prod-note">
+      <p><b>Шьём под ваше предприятие</b> — размеры, сезон, логотип заказчика.</p>
+      <p class="mono">Собственные бренды: обувь Safety Nomads · перчатки Base Safety · спецодежда Textiline</p>
     </div>
   </section>
 
@@ -1363,14 +1345,12 @@
 
     <div class="vend-grid">
       <figure class="vend-img">
-        <img id="vend-photo" src="assets/vending/kazpro-duo.webp" alt="Автоматы выдачи и приёмки СИЗ KazProService 540 и 640 в производственном цехе" loading="lazy">
+        <img id="vend-photo" src="assets/vending/kazpro-duo-crew.webp" alt="Автоматы KazProService и сотрудники на производстве" loading="lazy">
         <div class="vend-thumbs" role="group" aria-label="Фотографии автоматов KazProService">
-          <button type="button" aria-pressed="true" data-src="assets/vending/kazpro-duo.webp" data-alt="Автоматы выдачи и приёмки СИЗ KazProService 540 и 640 в производственном цехе" aria-label="Фото: автоматы 540 и 640 в цехе"><img src="assets/vending/kazpro-duo.webp" alt=""></button>
-          <button type="button" aria-pressed="false" data-src="assets/vending/kazpro-540-wall.webp" data-alt="Автомат выдачи СИЗ KazProService 540 на производственной площадке" aria-label="Фото: автомат 540 на площадке"><img src="assets/vending/kazpro-540-wall.webp" alt=""></button>
+          <button type="button" aria-pressed="true" data-src="assets/vending/kazpro-duo-crew.webp" data-alt="Автоматы KazProService и сотрудники на производстве" aria-label="Фото: автоматы и сотрудники"><img src="assets/vending/kazpro-duo-crew.webp" alt=""></button>
+          <button type="button" aria-pressed="false" data-src="assets/vending/kazpro-540-wall.webp" data-alt="Автомат выдачи СИЗ KazProService 540 на производственной площадке" aria-label="Фото: автомат 540 крупно"><img src="assets/vending/kazpro-540-wall.webp" alt=""></button>
           <button type="button" aria-pressed="false" data-src="assets/vending/kazpro-640-hall.webp" data-alt="Пункт приёмки спецодежды KazProService 640 в цехе" aria-label="Фото: пункт приёмки 640"><img src="assets/vending/kazpro-640-hall.webp" alt=""></button>
-          <button type="button" aria-pressed="false" data-src="assets/vending/kazpro-duo-crew.webp" data-alt="Автоматы KazProService и сотрудники на производстве" aria-label="Фото: автоматы и сотрудники"><img src="assets/vending/kazpro-duo-crew.webp" alt=""></button>
-          <button type="button" aria-pressed="false" data-src="assets/vending/kazpro-540-dark.webp" data-alt="Автомат выдачи KazProService 540 в ночном цехе" aria-label="Фото: автомат 540, ночная смена"><img src="assets/vending/kazpro-540-dark.webp" alt=""></button>
-          <button type="button" aria-pressed="false" data-src="assets/vending/kazpro-640-dark.webp" data-alt="Автомат приёмки KazProService 640 в ночном цехе" aria-label="Фото: автомат 640, ночная смена"><img src="assets/vending/kazpro-640-dark.webp" alt=""></button>
+          <button type="button" aria-pressed="false" data-src="assets/vending/kazpro-540-dark.webp" data-alt="Автомат выдачи KazProService 540 в ночном цехе" aria-label="Фото: ночная смена"><img src="assets/vending/kazpro-540-dark.webp" alt=""></button>
         </div>
         <figcaption>
           <b>KazProService</b>
