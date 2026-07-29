@@ -673,6 +673,21 @@
     padding:clamp(28px,4vw,64px) calc(var(--pad) - var(--inset)) clamp(22px,3vw,40px);
     position:relative;overflow:hidden;
   }
+  .foot-grid{
+    display:grid;grid-template-columns:1.25fr .75fr;
+    gap:clamp(28px,4vw,64px);align-items:end;
+    margin-bottom:clamp(32px,5vw,72px);
+  }
+  .foot-left .pill{margin-top:clamp(22px,3vw,40px)}
+  .foot-info{display:grid;grid-template-columns:repeat(3,auto);gap:clamp(18px,2.4vw,40px)}
+  .foot-col{display:flex;flex-direction:column;gap:9px}
+  .foot-col .mono{color:rgba(255,255,255,.45);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px}
+  .foot-col a,.foot-col p{color:rgba(255,255,255,.85);font-size:14px;line-height:1.45}
+  .foot-col a:hover{color:#fff;text-decoration:underline}
+  @media (max-width:900px){
+    .foot-grid{grid-template-columns:1fr;align-items:start}
+    .foot-info{grid-template-columns:1fr 1fr;gap:22px}
+  }
   .foot-pills{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:clamp(36px,6vw,90px)}
   .fpill{
     border:1px solid rgba(255,255,255,.35);border-radius:999px;
@@ -683,10 +698,10 @@
   }
   a.fpill:hover{background:#fff;color:var(--ink)}
   .foot-title{
-    position:relative;margin-left:-.04em;
-    font-size:clamp(2.6rem,10.5vw,9.6rem);
+    position:relative;
+    font-size:clamp(2.4rem,7.5vw,7rem);
     color:#fff;
-    margin-bottom:clamp(40px,6vw,90px);
+    margin-bottom:0;
   }
   .foot-title span{display:block}
   .foot-product{
@@ -1618,23 +1633,34 @@
 
 <!-- ============ BLOCK 14 · FOOTER ============ -->
 <footer class="foot" aria-label="Контакты">
-  <div class="foot-pills">
-    <a class="fpill" href="https://wa.me/77051131551">WhatsApp</a>
-    <a class="fpill" href="https://instagram.com/alltrade_ltd_kz" rel="noopener">Instagram</a>
+  <div class="foot-grid">
+    <div class="foot-left">
+      <p class="foot-title display">
+        <span>Закроем вопрос</span>
+        <span>СИЗ&nbsp;— под&nbsp;ключ</span>
+      </p>
+      <a class="pill pill--brand" href="https://wa.me/77051131551" rel="noopener">Написать в WhatsApp</a>
+    </div>
+    <div class="foot-info">
+      <div class="foot-col">
+        <span class="mono">Связь</span>
+        <a href="tel:+77051131551">+7&nbsp;705&nbsp;113&nbsp;15&nbsp;51</a>
+        <a href="mailto:info@alltrade-ltd.kz">info@alltrade-ltd.kz</a>
+      </div>
+      <div class="foot-col">
+        <span class="mono">Адрес</span>
+        <p>Усть-Каменогорск,<br>ул.&nbsp;Бажова&nbsp;79А</p>
+      </div>
+      <div class="foot-col">
+        <span class="mono">Соцсети</span>
+        <a href="https://instagram.com/alltrade_ltd_kz" rel="noopener">Instagram</a>
+        <a href="https://wa.me/77051131551" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
   </div>
-
-  <p class="foot-title display">
-    <span>Закроем вопрос</span>
-    <span>СИЗ&nbsp;— под&nbsp;ключ</span>
-  </p>
-
-  <div class="foot-cta">
-    <a class="pill pill--brand" href="https://wa.me/77051131551" rel="noopener">Написать в WhatsApp</a>
-  </div>
-
   <div class="foot-bottom mono">
-    <span><a href="tel:+77051131551">+7&nbsp;705&nbsp;113&nbsp;15&nbsp;51</a> · <a href="mailto:info@alltrade-ltd.kz">info@alltrade-ltd.kz</a></span>
-    <span>Усть-Каменогорск · ул.&nbsp;Бажова&nbsp;79А · KZ</span>
+    <span>ТОО «ALLTRADE-LTD» · БИН&nbsp;160&nbsp;340&nbsp;027&nbsp;310</span>
+    <span>Работаем по&nbsp;всему Казахстану</span>
   </div>
 </footer>
 
