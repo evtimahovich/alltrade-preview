@@ -152,18 +152,37 @@
     transition:background .2s ease,color .2s ease,transform .2s ease;
   }
   .nav-cta:hover{background:#fff;color:var(--ink);border-color:#fff;transform:translateY(-1px)}
-  .nav-menu{color:var(--ink);display:inline-flex;padding:6px;border-radius:8px}
+  .nav-menu{
+    display:none;align-items:center;justify-content:center;
+    width:42px;height:42px;color:#fff;border:1px solid rgba(255,255,255,.35);
+    border-radius:50%;transition:background .2s ease,color .2s ease;
+  }
+  .nav-menu:hover,.nav-menu[aria-expanded="true"]{background:#fff;color:var(--ink)}
   .nav-menu svg{width:20px;height:20px}
+  .nav-drawer{
+    display:none;position:absolute;top:calc(100% + 10px);right:0;width:min(320px,calc(100vw - 32px));
+    padding:10px;background:rgba(11,14,13,.98);border:1px solid rgba(255,255,255,.12);
+    border-radius:16px;box-shadow:0 18px 40px rgba(8,10,9,.32);
+  }
+  .nav-drawer.is-open{display:block}
+  .nav-drawer a{
+    display:flex;align-items:center;justify-content:space-between;padding:14px 12px;border-radius:8px;
+    color:rgba(255,255,255,.88);font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
+    font-size:13px;letter-spacing:.06em;text-transform:uppercase;
+  }
+  .nav-drawer a::after{content:'↗';color:var(--brand-lift);font-family:'IBM Plex Mono',monospace}
+  .nav-drawer a:hover{background:rgba(255,255,255,.09);color:#fff}
   .nav-links a,.nav-cta{white-space:nowrap}
   @media (max-width:1100px){
     .nav-links{display:none}
+    .nav-menu{display:inline-flex}
   }
   @media (max-width:760px){
     .nav{padding-block:16px}
     .nav-logo img{height:29px}
     .nav-cta{padding:9px 12px;font-size:10px}
   }
-  @media (max-width:380px){.nav-cta span{display:none}}
+  @media (max-width:640px){.nav{gap:10px}.nav-cta{padding:11px 13px}.nav-cta span{display:none}}
 
   /* ---------- hero ---------- */
   .hero{
@@ -1113,7 +1132,7 @@
   <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
 </svg>
 
-<div class="wrap">
+<div class="wrap" id="top">
   <!-- ============ NAV ============ -->
   <header class="nav">
     <a class="nav-logo" href="#top" aria-label="ALLTRADE-LTD&nbsp;— на главную">
@@ -1134,6 +1153,18 @@
       <span>Запросить расчёт</span>
       <svg aria-hidden="true" width="15" height="15"><use href="#i-arr"/></svg>
     </a>
+    <button class="nav-menu" type="button" aria-expanded="false" aria-controls="nav-drawer" aria-label="Открыть меню">
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav class="nav-drawer" id="nav-drawer" aria-label="Навигация по разделам">
+      <a href="#about">О компании</a>
+      <a href="#solution">Решение</a>
+      <a href="#vending">Вендинг</a>
+      <a href="#products">Продукция</a>
+      <a href="#services">Производство</a>
+      <a href="#clients">Клиенты</a>
+      <a href="#contact">Контакты</a>
+    </nav>
   </header>
 
   <!-- ============ BLOCK 1 · HERO ============ -->
@@ -1676,6 +1707,39 @@
       else navEl.classList.remove('is-hidden');
       lastY = y;
     }, { passive: true });
+  }
+
+  /* ---- Навигация на компактных экранах ---- */
+  var menuButton = document.querySelector('.nav-menu');
+  var menuDrawer = document.getElementById('nav-drawer');
+  if (menuButton && menuDrawer) {
+    var closeMenu = function () {
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.setAttribute('aria-label', 'Открыть меню');
+      menuDrawer.classList.remove('is-open');
+    };
+    menuButton.addEventListener('click', function () {
+      var isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+      if (isOpen) {
+        closeMenu();
+      } else {
+        menuButton.setAttribute('aria-expanded', 'true');
+        menuButton.setAttribute('aria-label', 'Закрыть меню');
+        menuDrawer.classList.add('is-open');
+      }
+    });
+    menuDrawer.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') {
+        closeMenu();
+        menuButton.focus();
+      }
+    });
+    document.addEventListener('click', function (event) {
+      if (menuButton.getAttribute('aria-expanded') === 'true' && !navEl.contains(event.target)) closeMenu();
+    });
   }
 
   /* ---- Каунт-ап цифр статистики ---- */
