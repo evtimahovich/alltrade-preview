@@ -34,7 +34,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,500;125,700;125,800;125,900&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,500;125,500;125,700;125,800;125,900&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
     --paper:#F3F4F5;
@@ -285,7 +285,7 @@
     padding:clamp(18px,3vw,48px) calc(var(--pad) - var(--inset));
     display:flex;flex-direction:column;justify-content:center;
   }
-  .hero2-bgtex{position:absolute;inset:0;opacity:.16;pointer-events:none}
+  .hero2-bgtex{position:absolute;inset:0;opacity:.08;pointer-events:none}
   .hero2-bgtex img{width:100%;height:100%;object-fit:cover}
   .hero2::before{
     content:"";position:absolute;right:-10vw;bottom:-24%;
@@ -304,7 +304,7 @@
   .hero2-copy{position:relative;max-width:900px}
   .hero2-kicker{
     display:flex;gap:10px;align-items:center;
-    color:rgba(255,255,255,.66);margin-bottom:clamp(18px,2.4vw,32px);
+    color:rgba(255,255,255,.66);margin-bottom:clamp(14px,1.8vw,24px);
   }
   .hero2-kicker::before{
     content:"";width:9px;height:9px;border-radius:999px;flex:none;
@@ -321,10 +321,21 @@
   .hero2-title .l3{color:var(--brand-lift);margin-left:clamp(.35em,4.5vw,.75em);position:relative;z-index:4}
   .hero2-desc{
     position:relative;z-index:3;max-width:36ch;margin-top:clamp(16px,2.2vw,28px);
-    font-family:'Archivo',sans-serif;font-stretch:100%;font-weight:500;
-    font-size:clamp(15px,1.25vw,17.5px);line-height:1.55;color:rgba(255,255,255,.8);
+    font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:500;
+    font-size:clamp(14.5px,1.2vw,17px);line-height:1.6;letter-spacing:.015em;color:rgba(255,255,255,.82);
   }
   .hero2-cta{position:relative;z-index:3;margin-top:clamp(18px,2.6vw,34px)}
+  .hero2-stats{
+    position:relative;z-index:3;
+    display:flex;flex-wrap:wrap;gap:clamp(14px,2.2vw,34px);
+    margin-top:clamp(26px,3.6vw,52px);
+    color:rgba(255,255,255,.55);letter-spacing:.12em;
+  }
+  .hero2-stats span{display:inline-flex;align-items:center;gap:9px}
+  .hero2-stats span::before{
+    content:"";width:7px;height:7px;border-radius:50%;flex:none;
+    background:var(--brand-lift);opacity:.8;
+  }
   .hero2-card{
     position:absolute;z-index:4;
     right:clamp(16px,3.2vw,48px);bottom:clamp(16px,3.2vw,48px);
@@ -339,7 +350,7 @@
     font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
     font-size:14px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;
   }
-  .hero2-card p{font-size:13px;line-height:1.6;color:rgba(255,255,255,.72)}
+  .hero2-card p{font-family:'Archivo',sans-serif;font-stretch:100%;font-weight:500;font-size:13px;line-height:1.6;color:rgba(255,255,255,.72)}
   @media (max-width:1180px){
     .hero2-char{right:-5vw;height:min(80%,660px)}
   }
@@ -1169,7 +1180,7 @@
     <img class="hero2-char" src="assets/stills/hero-worker.webp"
          alt="Рабочий в каске ФОРВАРД, полумаске МК и спецодежде Textiline" fetchpriority="high">
     <div class="hero2-copy">
-      <p class="hero2-kicker mono"><span style="white-space:nowrap">Усть-Каменогорск</span> · <span style="white-space:nowrap">с 1997 года</span></p>
+      <p class="hero2-kicker mono"><span style="white-space:nowrap">Весь Казахстан</span> · <span style="white-space:nowrap">с 1997 года</span></p>
       <h1 class="hero2-title display">
         <span>СИЗ</span>
         <span class="l2">Под</span>
@@ -1177,6 +1188,11 @@
       </h1>
       <p class="hero2-desc">Закрываем поставку, пошив, вендинг-выдачу 24/7 и&nbsp;обслуживание средств индивидуальной защиты (СИЗ)&nbsp;— одним договором с&nbsp;одним подрядчиком.</p>
       <a class="pill pill--brand hero2-cta" href="#contact">Запросить расчёт под предприятие</a>
+      <p class="hero2-stats mono">
+        <span>29&nbsp;лет на&nbsp;рынке</span>
+        <span>2,1&nbsp;млн СИЗ в&nbsp;год</span>
+        <span>6&nbsp;площадок производства</span>
+      </p>
     </div>
     <aside class="hero2-card">
       <b>Нам доверяет Казцинк</b>
