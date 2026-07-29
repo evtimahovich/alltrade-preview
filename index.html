@@ -1017,6 +1017,11 @@
     html{scroll-behavior:auto}
     *,*::before,*::after{transition:none !important;animation:none !important}
   }
+  @media (max-width:760px){
+    .hero2,#vending{margin-inline:calc(var(--pad) * -1);padding-inline:var(--pad);border-radius:0}
+    .foot{margin-inline:0;padding-inline:var(--pad);border-radius:0}
+    .nav{margin-inline:0}
+  }
 </style>
 </head>
 <body id="top">
@@ -1152,14 +1157,16 @@
       <p class="pain-line pl3">Смена не&nbsp;вышла&nbsp;— нет размеров.</p>
       <p class="pain-line pl4">Тендер, который не&nbsp;пройти.</p>
       <p class="pain-answer">Закрываем всё это <em>одним договором</em>.</p>
-      <a class="pill pill--brand" href="#solution">Как устроено решение</a>
     </div>
   </section>
 
   <!-- ============ BLOCK 4 · НАШЕ РЕШЕНИЕ ============ -->
   <section id="solution" aria-label="Наше решение">
     <div class="sec-head">
-      <h2 class="display">Четыре сервиса —<br>один договор</h2>
+      <div>
+        <p class="svc-kicker">Решение</p>
+        <h2 class="display">Четыре сервиса&nbsp;—<br>один договор</h2>
+      </div>
       <div class="sec-side">
         <p class="mono">Замкнутый цикл: производим, поставляем, выдаём и обслуживаем&nbsp;— по одному договору.</p>
       </div>
@@ -1313,7 +1320,7 @@
         <figure class="portrait">
           <img id="cat-img" src="assets/catalog/cine/resp.webp"
                alt="Полумаска МК для защиты дыхания" loading="lazy"
-               style="filter:none;transition:opacity .22s ease">
+               style="filter:none;object-fit:contain;transition:opacity .22s ease">
           <figcaption class="media-cap mono" aria-live="polite">
             <b id="cat-brand" style="letter-spacing:.08em">Респираторы МК и FAROS</b><br>
             <span id="cat-spec">10 моделей · FFP1–FFP3 · официальный дистрибьютор&nbsp;МК</span>
