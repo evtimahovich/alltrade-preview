@@ -50,6 +50,7 @@
     --r-l:12px;
     --pad:clamp(16px,3.4vw,48px);
     --inset:clamp(10px,1.4vw,20px);
+    --card-pad:clamp(20px,2.2vw,28px);
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -419,7 +420,7 @@
   .card{
     background:var(--panel);
     border-radius:var(--r-m);
-    padding:clamp(18px,2vw,28px);
+    padding:var(--card-pad);
     position:relative;
     overflow:hidden;
   }
@@ -593,7 +594,7 @@
   /* ---------- gallery ---------- */
   .g-head{
     display:flex;justify-content:space-between;align-items:flex-end;gap:28px;
-    margin-bottom:clamp(22px,3vw,40px);
+    margin-bottom:clamp(24px,3.4vw,48px);
   }
   .g-head h2{font-size:clamp(2rem,5.2vw,4.6rem);margin-bottom:12px}
   .g-head p{color:var(--ink-soft);max-width:440px;font-size:14px}
@@ -754,7 +755,7 @@
 
   /* ---------- stats (block 2) ---------- */
   .stats-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
-  .stat{background:var(--panel);border-radius:var(--r-m);padding:clamp(20px,2.2vw,32px);
+  .stat{background:var(--panel);border-radius:var(--r-m);padding:var(--card-pad);
     display:flex;flex-direction:column;justify-content:space-between;gap:18px;min-height:170px}
   .stat .n{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;text-wrap:balance;
     font-size:clamp(2.2rem,4.6vw,4.2rem);line-height:.9;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
@@ -776,7 +777,7 @@
 
   /* ---------- pain (block 3) ---------- */
   .pain-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-  .pain{background:var(--panel);border-radius:var(--r-m);padding:clamp(20px,2.2vw,30px);
+  .pain{background:var(--panel);border-radius:var(--r-m);padding:var(--card-pad);
     display:flex;flex-direction:column;gap:14px}
   .pain svg{width:30px;height:30px;color:var(--brand);flex:none}
   .pain b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
@@ -793,7 +794,7 @@
 
   /* ---------- solution loop (block 4) ---------- */
   .loop{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;position:relative}
-  .svc{background:var(--panel);border-radius:var(--r-m);padding:clamp(20px,2.2vw,30px);
+  .svc{background:var(--panel);border-radius:var(--r-m);padding:var(--card-pad);
     display:flex;flex-direction:column;gap:12px;position:relative}
   .svc .num{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--mute)}
   .svc svg.ic{width:34px;height:34px;color:var(--ink);margin-top:4px}
@@ -831,11 +832,11 @@
   .vend-img figcaption .mono{opacity:.82;display:block;margin-top:6px}
   .vend-right{display:flex;flex-direction:column;gap:14px}
   .vend-feats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .vfeat{background:var(--panel);border-radius:var(--r-m);padding:clamp(18px,1.9vw,24px);display:flex;flex-direction:column;gap:9px}
+  .vfeat{background:var(--panel);border-radius:var(--r-m);padding:var(--card-pad);display:flex;flex-direction:column;gap:9px}
   .vfeat b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
     font-size:13px;letter-spacing:.08em;text-transform:uppercase}
   .vfeat p{color:var(--ink-soft);font-size:13.5px}
-  .calc{background:var(--ink);color:#fff;border-radius:var(--r-m);padding:clamp(22px,2.4vw,32px);
+  .calc{background:var(--ink);color:#fff;border-radius:var(--r-m);padding:clamp(24px,2.6vw,36px);
     display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,2.4vw,34px);align-items:center}
   .calc h3{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
     font-size:clamp(15px,1.5vw,20px);text-transform:uppercase;letter-spacing:.05em;margin-bottom:16px}
@@ -880,7 +881,7 @@
     display:flex;align-items:stretch;justify-content:center;min-height:280px}
   .wash-img img{width:100%;height:100%;object-fit:cover}
   .wash-list{display:flex;flex-direction:column;gap:12px}
-  .wrow{background:var(--panel);border-radius:var(--r-m);padding:clamp(17px,1.8vw,24px);
+  .wrow{background:var(--panel);border-radius:var(--r-m);padding:var(--card-pad);
     display:flex;gap:16px;align-items:flex-start}
   .wrow .k{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:var(--brand);flex:none;padding-top:3px}
   .wrow b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
@@ -890,7 +891,7 @@
 
   /* ---------- certificates (block 9) ---------- */
   .certs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-  .cert{background:var(--panel);border-radius:var(--r-m);padding:clamp(22px,2.4vw,32px);
+  .cert{background:var(--panel);border-radius:var(--r-m);padding:var(--card-pad);
     display:flex;flex-direction:column;gap:12px}
   .cert .code{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
     font-size:clamp(1.2rem,2.4vw,1.9rem);letter-spacing:.02em;text-transform:uppercase;line-height:1}
@@ -911,7 +912,7 @@
   .ind{
     position:relative;overflow:hidden;
     background:#0B0E0D;color:#fff;border-radius:var(--r-m);
-    padding:clamp(20px,2.2vw,28px);
+    padding:var(--card-pad);
     display:flex;flex-direction:column;gap:14px;justify-content:space-between;min-height:170px;
   }
   .ind::after{
@@ -940,7 +941,7 @@
 
   /* ---------- process (block 11) ---------- */
   .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
-  .step{background:var(--panel);border-radius:var(--r-m);padding:clamp(20px,2.2vw,28px);
+  .step{background:var(--panel);border-radius:var(--r-m);padding:var(--card-pad);
     display:flex;flex-direction:column;gap:12px}
   .step .no{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
     font-size:clamp(1.6rem,2.6vw,2.4rem);color:var(--brand);line-height:1}
@@ -952,13 +953,13 @@
 
   /* ---------- contact form (block 12) ---------- */
   .ct-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:14px;align-items:start}
-  .ct-info{background:var(--panel);border-radius:var(--r-m);padding:clamp(20px,2.4vw,32px);
+  .ct-info{background:var(--panel);border-radius:var(--r-m);padding:clamp(24px,2.6vw,36px);
     display:flex;flex-direction:column;gap:16px}
   .ct-row b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
     font-size:clamp(1rem,1.3vw,1.15rem);letter-spacing:.01em;display:block}
   .ct-row .mono{color:var(--ink-soft);display:block;margin-bottom:4px;font-size:10.5px}
   .ct-row p{font-size:13px;color:var(--ink-soft)}
-  .ct-form{background:var(--panel);border-radius:var(--r-m);padding:clamp(20px,2.4vw,32px)}
+  .ct-form{background:var(--panel);border-radius:var(--r-m);padding:clamp(24px,2.6vw,36px)}
   .f-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
   .field{display:flex;flex-direction:column;gap:7px}
   .field label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;
@@ -1204,7 +1205,7 @@
         <p class="card-tag">KazProService</p>
         <p class="mono">Автоматы 540 / 640 · выдача СИЗ 24/7 по бейджу</p>
         <figure class="media-card m-orange-media">
-          <img src="assets/vending/kazpro-duo.webp" alt="Автоматы выдачи и приёмки СИЗ KazProService 540 и 640 в цехе" loading="lazy">
+          <img src="assets/vending/kazpro-badge.webp" alt="Сотрудник получает СИЗ по бейджу в автомате KazProService" loading="lazy">
         </figure>
         <a class="cbtn cbtn--sm cbtn--ghostw card-arr" href="#vending" aria-label="Подробнее о вендинге">
           <svg aria-hidden="true"><use href="#i-arr"/></svg>
@@ -1297,7 +1298,7 @@
         <figure class="portrait">
           <img id="cat-img" src="assets/catalog/cine/resp.webp"
                alt="Полумаска МК для защиты дыхания" loading="lazy"
-               style="filter:none;object-fit:contain;transition:opacity .22s ease">
+               style="filter:none;transition:opacity .22s ease">
           <figcaption class="media-cap mono" aria-live="polite">
             <b id="cat-brand" style="letter-spacing:.08em">Респираторы МК и FAROS</b><br>
             <span id="cat-spec">10 моделей · FFP1–FFP3 · официальный дистрибьютор МК</span>
@@ -1757,7 +1758,8 @@
         }, 180);
         catBrand.textContent = btn.dataset.brand;
         catSpec.textContent = btn.dataset.spec;
-        btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        var nextPill = btn.nextElementSibling || btn;
+        nextPill.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
       });
     });
   }
