@@ -127,9 +127,8 @@
     border-radius:999px;
     -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
     box-shadow:0 12px 34px rgba(8,10,9,.35);
-    transition:transform .3s ease,opacity .3s ease;
+    transition:box-shadow .2s ease;
   }
-  .nav.is-hidden{transform:translateY(-130%);opacity:0}
   .nav-logo{display:inline-flex;align-items:center;gap:10px;flex:none}
   .nav-logo img{height:30px;width:auto;display:block;filter:brightness(0) invert(1)}
   .nav-logo b{
@@ -1695,19 +1694,8 @@
   'use strict';
   var nf = new Intl.NumberFormat('ru-RU');
 
-  /* ---- Шапка: прячется при прокрутке вниз, появляется при движении вверх ---- */
+  /* ---- Шапка остаётся доступной на всём пути по странице ---- */
   var navEl = document.querySelector('.nav');
-  if (navEl) {
-    var lastY = window.scrollY;
-    window.addEventListener('scroll', function () {
-      var y = window.scrollY;
-      var delta = y - lastY;
-      if (Math.abs(delta) < 12) return;
-      if (delta > 0 && y > 160) navEl.classList.add('is-hidden');
-      else navEl.classList.remove('is-hidden');
-      lastY = y;
-    }, { passive: true });
-  }
 
   /* ---- Навигация на компактных экранах ---- */
   var menuButton = document.querySelector('.nav-menu');
