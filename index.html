@@ -42,7 +42,7 @@
     --line:#DDE1E5;
     --ink:#111315;
     --ink-soft:#5B6067;
-    --mute:#9AA0A6;
+    --mute:#6A7076;
     --brand:#326450;      /* PANTONE 554 C — фирменный */
     --brand-lift:#4E9E78; /* осветлённый — только на тёмном фоне */
     --r-s:6px;
@@ -117,6 +117,9 @@
   .nav{
     display:flex;align-items:center;justify-content:space-between;gap:16px;
     padding-block:20px;
+    position:sticky;top:0;z-index:60;
+    background:rgba(243,244,245,.82);
+    -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
   }
   .nav-logo{display:inline-flex;align-items:center;gap:10px}
   .nav-logo img{height:34px;width:auto;display:block}
@@ -400,6 +403,10 @@
   .sec-side .mono{color:var(--ink-soft)}
   @media (max-width:760px){
     .sec-head{flex-direction:column;align-items:flex-start;gap:18px}
+    .sec-head h2{overflow-wrap:anywhere}
+  }
+  @media (max-width:560px){
+    .sec-head h2{font-size:clamp(1.7rem,8.6vw,2.4rem)}
   }
 
   /* ---------- mosaic ---------- */
@@ -509,6 +516,7 @@
     display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,72px);
     align-items:start;
   }
+  .series-grid > *{min-width:0}
   .series-left h2{font-size:clamp(2rem,5vw,4.4rem);margin-bottom:10px}
   .series-left > .mono{color:var(--ink-soft);display:block;margin-bottom:clamp(20px,2.6vw,36px)}
   .pills{display:flex;flex-direction:column;gap:12px}
@@ -519,7 +527,7 @@
     padding:clamp(16px,1.8vw,22px) clamp(20px,2.2vw,30px);
     font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:800;
     font-size:clamp(13px,1.3vw,17px);letter-spacing:.1em;text-transform:uppercase;
-    color:var(--mute);background:transparent;
+    color:var(--ink-soft);background:transparent;
     transition:color .2s ease,background .2s ease,border-color .2s ease;
   }
   .spill .mono{color:inherit;letter-spacing:.06em}
@@ -652,6 +660,40 @@
     display:inline-flex;align-items:center;gap:10px;margin-bottom:14px;
   }
   .svc-kicker::before{content:"";width:26px;height:2px;background:var(--brand)}
+
+  .wa-fab{
+    display:none;position:fixed;right:16px;bottom:16px;z-index:70;
+    width:56px;height:56px;border-radius:50%;
+    background:var(--brand);color:#fff;
+    align-items:center;justify-content:center;
+    box-shadow:0 12px 30px rgba(17,19,21,.3);
+  }
+  .wa-fab svg{width:28px;height:28px}
+  @media (max-width:760px){.wa-fab{display:flex}}
+
+  /* ---------- вендинг: тёмный остров ---------- */
+  #vending{
+    background:#0B0E0D;color:#fff;
+    border-radius:var(--r-l);
+    margin-inline:calc(var(--pad) * -0.5);
+    padding-inline:calc(var(--pad) * 0.5);
+    position:relative;overflow:hidden;
+  }
+  #vending::before{
+    content:"";position:absolute;left:-15%;top:-30%;width:60%;height:90%;
+    background:radial-gradient(circle,rgba(78,158,120,.14),transparent 62%);
+    pointer-events:none;
+  }
+  #vending .display{color:#fff}
+  #vending .sec-side .mono{color:rgba(255,255,255,.6)}
+  #vending .svc-kicker{color:var(--brand-lift)}
+  #vending .svc-kicker::before{background:var(--brand-lift)}
+  #vending .vfeat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09)}
+  #vending .vfeat p{color:rgba(255,255,255,.66)}
+  #vending .calc{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09)}
+  @media (max-width:760px){
+    #vending{margin-inline:calc(var(--pad) * -0.6);padding-inline:calc(var(--pad) * 0.6)}
+  }
 
   /* ---------- scroll reveal ---------- */
   @media (prefers-reduced-motion:no-preference){
@@ -786,7 +828,7 @@
   @media (max-width:560px){
     .vend-feats{grid-template-columns:1fr}
     .vend-thumbs{gap:6px}
-    .vend-thumbs button{width:42px;height:32px}
+    .vend-thumbs button{width:48px;height:36px}
   }
 
   /* ---------- wash (block 6) ---------- */
@@ -883,8 +925,9 @@
     padding:18px 22px;margin-top:16px;gap:12px;align-items:center}
   .f-ok.is-on{display:flex}
   .f-ok svg{width:22px;height:22px;color:var(--brand-lift);flex:none}
-  .field.is-bad input,.field.is-bad textarea{border-color:var(--brand)}
-  .f-err{color:var(--brand);font-size:12px;display:none}
+  .field.is-bad input,.field.is-bad textarea{border:2px solid var(--ink)}
+  .f-err{color:var(--ink);font-weight:700;font-size:12px;display:none}
+  .f-err::before{content:"⚠ "}
   .field.is-bad .f-err{display:block}
   @media (max-width:860px){.ct-grid{grid-template-columns:1fr}.f-row{grid-template-columns:1fr}}
 
@@ -952,7 +995,7 @@
     <img class="hero2-char" src="assets/stills/hero-worker.webp"
          alt="Рабочий в каске ФОРВАРД, полумаске МК и спецодежде Textiline" fetchpriority="high">
     <div class="hero2-copy">
-      <p class="hero2-kicker mono">Усть-Каменогорск · БИН 160 340 027 310</p>
+      <p class="hero2-kicker mono">Усть-Каменогорск · <span style="white-space:nowrap">БИН 160 340 027 310</span></p>
       <h1 class="hero2-title display">
         <span>СИЗ</span>
         <span class="l2">Под</span>
@@ -1102,9 +1145,6 @@
       <h2 class="display">Что входит<br>в поставку</h2>
       <div class="sec-side">
         <p class="mono">Товарные бренды, собственная техника выдачи и сертификация — всё, что закрывает потребность площадки по одному договору.</p>
-        <a class="cbtn" href="#products" aria-label="К продукции">
-          <svg aria-hidden="true"><use href="#i-arr"/></svg>
-        </a>
       </div>
     </div>
 
@@ -1205,7 +1245,7 @@
         <figure class="portrait">
           <img id="cat-img" src="assets/catalog/cine/resp.webp"
                alt="Полумаска МК для защиты дыхания" loading="lazy"
-               style="filter:none;object-fit:contain">
+               style="filter:none;object-fit:contain;transition:opacity .22s ease">
           <figcaption class="media-cap mono" aria-live="polite">
             <b id="cat-brand" style="letter-spacing:.08em">Респираторы МК · FAROS</b><br>
             <span id="cat-spec">10 моделей · FFP1–FFP3 · официальный дистрибьютор МК</span>
@@ -1225,9 +1265,6 @@
       </div>
       <div class="g-cta">
         <a class="pill" href="#contact">Обсудить пошив</a>
-        <a class="cbtn cbtn--fill" href="#contact" aria-label="Обсудить пошив">
-          <svg aria-hidden="true"><use href="#i-arr"/></svg>
-        </a>
       </div>
     </div>
 
@@ -1335,7 +1372,7 @@
     </div>
 
     <figure class="media-card film-card">
-      <img src="assets/video-posters/at-film.webp" alt="Кадр из фильма: смена идёт к пункту выдачи СИЗ ALLTRADE" loading="lazy">
+      <img src="assets/video-posters/at-film.webp" alt="Кадр из фильма: шахтёры в спецодежде идут по тоннелю рудника" loading="lazy">
       <button class="play" type="button" data-video="assets/at-film.mp4" aria-label="Смотреть фильм о системе выдачи">
         <svg aria-hidden="true"><use href="#i-play"/></svg>
       </button>
@@ -1522,7 +1559,7 @@
         </div>
         <div class="f-submit">
         <button class="pill pill--brand" type="submit">Отправить в WhatsApp</button>
-          <p class="f-note">Отправляя форму, вы соглашаетесь на обработку контактных данных.</p>
+          <p class="f-note">Или на почту: <a href="mailto:info@alltrade-ltd.kz" style="color:var(--ink);font-weight:700">info@alltrade-ltd.kz</a><br>Отправляя форму, вы соглашаетесь на обработку контактных данных.</p>
         </div>
         <div class="f-ok" id="form-ok" role="status">
           <svg aria-hidden="true"><use href="#i-check"/></svg>
@@ -1556,10 +1593,48 @@
   </div>
 </footer>
 
+<a class="wa-fab" href="https://wa.me/77051131551" rel="noopener" aria-label="Написать в WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.4-3c-.3-.4 0-.5.1-.7l.4-.5c.1-.2.2-.3.3-.5v-.5c0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.6-.3z"/></svg>
+</a>
+
 <script>
 (function () {
   'use strict';
   var nf = new Intl.NumberFormat('ru-RU');
+
+  /* ---- Каунт-ап цифр статистики ---- */
+  if ('IntersectionObserver' in window && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+    var statNums = document.querySelectorAll('.stat .n');
+    var cuIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        cuIo.unobserve(entry.target);
+        var node = entry.target.childNodes[0];
+        if (!node || node.nodeType !== 3) return;
+        var raw = node.textContent.replace(/\u00a0/g, ' ').trim();
+        var m = raw.match(/^(\d[\d ]*)(?:,(\d+))?$/);
+        if (!m) return;
+        var target = parseFloat(m[1].replace(/ /g, '') + (m[2] ? '.' + m[2] : ''));
+        var decimals = m[2] ? m[2].length : 0;
+        var start = null, dur = 900;
+        function fmt(v) {
+          var str = v.toFixed(decimals).replace('.', ',');
+          var parts = str.split(',');
+          parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0');
+          return parts.join(',');
+        }
+        function tick(ts) {
+          if (!start) start = ts;
+          var k = Math.min(1, (ts - start) / dur);
+          k = 1 - Math.pow(1 - k, 3);
+          node.textContent = fmt(target * k);
+          if (k < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: 0.4 });
+    statNums.forEach(function (el) { cuIo.observe(el); });
+  }
 
   /* ---- Появление блоков при скролле ---- */
   if ('IntersectionObserver' in window && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
@@ -1647,8 +1722,12 @@
       btn.addEventListener('click', function () {
         pills.forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
         btn.setAttribute('aria-pressed', 'true');
-        catImg.src = btn.dataset.img;
-        catImg.alt = btn.dataset.alt;
+        catImg.style.opacity = '0';
+        setTimeout(function () {
+          catImg.src = btn.dataset.img;
+          catImg.alt = btn.dataset.alt;
+          catImg.style.opacity = '1';
+        }, 180);
         catBrand.textContent = btn.dataset.brand;
         catSpec.textContent = btn.dataset.spec;
         btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
