@@ -762,12 +762,15 @@
 
   .wa-fab{
     display:none;position:fixed;right:16px;bottom:16px;z-index:70;
+    opacity:0;pointer-events:none;transform:translateY(8px);
+    transition:opacity .3s ease,transform .3s ease;
     width:56px;height:56px;border-radius:50%;
     background:var(--brand);color:#fff;
     align-items:center;justify-content:center;
     box-shadow:0 12px 30px rgba(17,19,21,.3);
   }
   .wa-fab svg{width:28px;height:28px}
+  .wa-fab.is-on{opacity:1;pointer-events:auto;transform:none}
   @media (max-width:760px){.wa-fab{display:flex}
     .foot-bottom{padding-bottom:76px}}
 
@@ -1085,12 +1088,12 @@
   @media (max-width:560px){
     /* Мобильный хиро: рабочий справа за текстом, поднят выше */
     .hero2-card{display:none}
-    .hero2{min-height:clamp(560px,155vw,760px);padding-top:26px;padding-bottom:104px}
+    .hero2{min-height:clamp(560px,155vw,760px);padding-top:26px;padding-bottom:92px}
     .hero2-copy{display:flex;flex-direction:column;flex:1}
     .hero2-stats{gap:8px 16px;margin-bottom:0}
     .hero2-title{margin-top:auto}
     .hero2-desc{
-      margin-top:22px;max-width:none;
+      margin-top:auto;max-width:none;
       background:rgba(14,17,16,.55);border:1px solid rgba(255,255,255,.14);
       border-radius:16px;padding:16px 18px;
       -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
@@ -1747,6 +1750,17 @@
     document.addEventListener('click', function (event) {
       if (menuButton.getAttribute('aria-expanded') === 'true' && !navEl.contains(event.target)) closeMenu();
     });
+  }
+
+  /* ---- WhatsApp-кружок появляется после первого экрана ---- */
+  var waFab = document.querySelector('.wa-fab');
+  if (waFab) {
+    var fabTick = function () {
+      var on = window.scrollY > window.innerHeight * 0.6;
+      waFab.classList.toggle('is-on', on);
+    };
+    window.addEventListener('scroll', fabTick, { passive: true });
+    fabTick();
   }
 
   /* ---- Каунт-ап цифр статистики ---- */
