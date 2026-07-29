@@ -295,8 +295,8 @@
     pointer-events:none;
   }
   .hero2-char{
-    position:absolute;z-index:3;bottom:0;right:clamp(2vw,6vw,9vw);
-    height:min(90%,780px);aspect-ratio:3/4;object-fit:cover;object-position:top;
+    position:absolute;z-index:3;bottom:0;right:clamp(5vw,9vw,13vw);
+    height:min(96%,840px);aspect-ratio:3/4;object-fit:cover;object-position:top;
     -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 8%,#000 82%,transparent 100%),linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
     mask-image:linear-gradient(180deg,transparent 0,#000 8%,#000 82%,transparent 100%),linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
     -webkit-mask-composite:source-in;
@@ -484,8 +484,6 @@
   .m-orange .m-orange-media img{
     position:absolute;inset:0;width:100%;height:100%;object-fit:cover;margin:0;flex:none;
   }
-  .m-orange-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .play--sm{width:56px;height:56px}
   .m-orange .card-tag{
     font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
     font-size:clamp(15px,1.3vw,19px);letter-spacing:.06em;text-transform:uppercase;
@@ -1135,7 +1133,7 @@
   <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
 </svg>
 
-<div class="wrap" id="top">
+<div class="wrap">
   <!-- ============ NAV ============ -->
   <header class="nav">
     <a class="nav-logo" href="#top" aria-label="ALLTRADE-LTD&nbsp;— на главную">
@@ -1385,9 +1383,12 @@
       <figcaption class="media-cap mono">Производство · Цех раскроя</figcaption>
     </figure>
 
-    <div class="prod-note">
-      <p><b>Шьём под ваше предприятие</b>&nbsp;— размеры, сезон, логотип заказчика.</p>
-      <p class="mono">Собственные бренды: обувь Safety&nbsp;Nomads · перчатки Base&nbsp;Safety · спецодежда Textiline</p>
+    <div class="pain-say">
+      <p class="pain-line">Размеры под ваш персонал.</p>
+      <p class="pain-line pl2">Ткани под сезон и&nbsp;отрасль.</p>
+      <p class="pain-line pl3">Логотип заказчика.</p>
+      <p class="pain-answer">Шьём под ваше предприятие&nbsp;— <em>своими брендами</em>.</p>
+      <p class="mono" style="margin-top:14px;color:var(--ink-soft)">Safety&nbsp;Nomads · Base&nbsp;Safety · Textiline</p>
     </div>
   </section>
 
