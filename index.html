@@ -702,9 +702,8 @@
   .svc-kicker{
     font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;
     text-transform:uppercase;color:var(--brand);
-    display:inline-flex;align-items:center;gap:10px;margin-bottom:14px;
+    display:block;margin-bottom:14px;
   }
-  .svc-kicker::before{content:"";width:26px;height:2px;background:var(--brand)}
 
   .wa-fab{
     display:none;position:fixed;right:16px;bottom:16px;z-index:70;
@@ -1654,7 +1653,9 @@
     var lastY = window.scrollY;
     window.addEventListener('scroll', function () {
       var y = window.scrollY;
-      if (y > lastY && y > 140) navEl.classList.add('is-hidden');
+      var delta = y - lastY;
+      if (Math.abs(delta) < 12) return;
+      if (delta > 0 && y > 160) navEl.classList.add('is-hidden');
       else navEl.classList.remove('is-hidden');
       lastY = y;
     }, { passive: true });
