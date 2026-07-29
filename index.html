@@ -295,7 +295,7 @@
   .hero2-title .l3{color:var(--brand-lift);margin-left:clamp(.35em,4.5vw,.75em);position:relative;z-index:4}
   .hero2-desc{
     position:relative;z-index:3;max-width:34ch;margin-top:clamp(16px,2.2vw,28px);
-    font-size:clamp(14px,1.15vw,16.5px);line-height:1.5;color:rgba(255,255,255,.78);
+    font-size:clamp(15px,1.25vw,17.5px);line-height:1.55;color:rgba(255,255,255,.8);
   }
   .hero2-cta{position:relative;z-index:3;margin-top:clamp(18px,2.6vw,34px)}
   .hero2-card{
@@ -311,9 +311,9 @@
   .hero2-card img{height:34px;filter:brightness(0) invert(1);opacity:.92;margin-bottom:12px}
   .hero2-card b{
     font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
-    font-size:13.5px;letter-spacing:.07em;text-transform:uppercase;display:block;margin-bottom:6px;
+    font-size:14px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;
   }
-  .hero2-card p{font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.66)}
+  .hero2-card p{font-size:13px;line-height:1.6;color:rgba(255,255,255,.72)}
   .hero2-tag{
     position:absolute;z-index:4;
     left:clamp(20px,4vw,64px);bottom:clamp(18px,3.4vw,52px);
@@ -933,8 +933,15 @@
   .ind svg{width:24px;height:24px;color:var(--brand-lift)}
   .ind b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
     font-size:13px;letter-spacing:.08em;text-transform:uppercase}
-  @media (max-width:900px){.ind-grid{grid-template-columns:repeat(2,1fr)}}
-  @media (max-width:520px){.ind-grid{grid-template-columns:1fr}}
+  @media (max-width:900px){
+    .ind-grid{grid-template-columns:repeat(2,1fr)}
+    .ind{flex-direction:row;align-items:center;justify-content:flex-start;gap:14px;min-height:0;padding:16px 18px}
+    .ind:last-child{grid-column:span 2}
+  }
+  @media (max-width:520px){
+    .ind-grid{grid-template-columns:1fr}
+    .ind:last-child{grid-column:auto}
+  }
 
   /* ---------- process (block 11) ---------- */
   .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
@@ -1602,7 +1609,6 @@
   <div class="foot-pills">
     <a class="fpill" href="https://wa.me/77051131551">WhatsApp</a>
     <a class="fpill" href="https://instagram.com/alltrade_ltd_kz" rel="noopener">Instagram</a>
-    <span class="fpill">2026</span>
   </div>
 
   <p class="foot-title display">
