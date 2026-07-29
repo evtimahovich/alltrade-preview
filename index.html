@@ -897,6 +897,11 @@
   .calc-out .note{color:rgba(255,255,255,.58);font-size:11.5px;margin-top:14px;
     font-family:'IBM Plex Mono',monospace;letter-spacing:.04em;line-height:1.6}
   .vend-img > img{transition:opacity .22s ease}
+  .vend-img > .vend-blur{
+    filter:blur(26px) saturate(1.05);transform:scale(1.15);opacity:.55;
+    transition:none;
+  }
+  #vend-photo{object-fit:contain;z-index:1}
   .vend-thumbs{position:absolute;right:14px;top:14px;z-index:3;display:flex;gap:8px}
   .vend-thumbs button{
     width:56px;height:44px;border-radius:9px;overflow:hidden;flex:none;
@@ -1053,6 +1058,14 @@
     .portrait{flex:1;min-height:440px}
     .portrait img{position:absolute;inset:0;width:100%;height:100%}
     .price-cta{align-self:flex-start}
+  }
+  /* вендинг: кадр всегда в родной пропорции, без обрезки */
+  .vend-grid{display:block}
+  .vend-img{aspect-ratio:16/9;min-height:0;margin-bottom:14px}
+  #vend-photo{object-fit:cover}
+  .vend-blur{display:none}
+  @media (min-width:901px){
+    .vend-feats{grid-template-columns:repeat(4,1fr)}
   }
 </style>
 </head>
@@ -1397,6 +1410,7 @@
 
     <div class="vend-grid">
       <figure class="vend-img">
+        <img class="vend-blur" id="vend-blur" src="assets/vending/kazpro-duo-crew.webp" alt="" aria-hidden="true" loading="lazy">
         <img id="vend-photo" src="assets/vending/kazpro-duo-crew.webp" alt="Автоматы KazProService и сотрудники на производстве" loading="lazy">
         <div class="vend-thumbs" role="group" aria-label="Фотографии автоматов KazProService">
           <button type="button" aria-pressed="true" data-src="assets/vending/kazpro-duo-crew.webp" data-alt="Автоматы KazProService и сотрудники на производстве" aria-label="Фото: автоматы и сотрудники"><img src="assets/vending/kazpro-duo-crew.webp" alt=""></button>
@@ -1772,6 +1786,8 @@
         setTimeout(function () {
           vendPhoto.src = btn.getAttribute('data-src');
           vendPhoto.alt = btn.getAttribute('data-alt') || '';
+          var blur = document.getElementById('vend-blur');
+          if (blur) blur.src = btn.getAttribute('data-src');
           vendPhoto.style.opacity = '1';
         }, 180);
       });
