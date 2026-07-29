@@ -1116,7 +1116,13 @@
   @media (max-width:760px){
     .hero2,#vending{margin-inline:calc(var(--pad) * -1);padding-inline:var(--pad);border-radius:0}
     .foot{margin-inline:0;padding-inline:var(--pad);border-radius:0}
-    .nav{margin-inline:0}
+    .nav{
+      margin:0 calc(var(--pad) * -1);
+      top:0;border-radius:0;border:0;
+      border-bottom:1px solid rgba(255,255,255,.09);
+      background:#0B0E0D;box-shadow:none;
+      padding-inline:var(--pad);
+    }
   }
   @media (min-width:861px){
     .series-grid{align-items:stretch}
