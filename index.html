@@ -696,8 +696,13 @@
   .foot-info{display:grid;grid-template-columns:repeat(3,auto);gap:clamp(18px,2.4vw,40px)}
   .foot-col{display:flex;flex-direction:column;gap:9px}
   .foot-col .mono{color:rgba(255,255,255,.45);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px}
-  .foot-col a,.foot-col p{color:rgba(255,255,255,.85);font-size:14px;line-height:1.45}
+  .foot-col a,.foot-col p{color:rgba(255,255,255,.85);font-size:15px;line-height:1.45}
   .foot-col a:hover{color:#fff;text-decoration:underline}
+  .foot-col--contact .foot-phone{
+    color:#fff;font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
+    font-size:clamp(1.15rem,1.75vw,1.65rem);letter-spacing:.02em;line-height:1.1;
+  }
+  .foot-col--contact .foot-email{font-size:clamp(14px,1.15vw,16px)}
   @media (max-width:900px){
     .foot-grid{flex-direction:column;align-items:flex-start}
     .foot-info{grid-template-columns:1fr 1fr;gap:22px}
@@ -1018,13 +1023,6 @@
   #contact .sec-head{margin-bottom:clamp(18px,2.4vw,32px)}
   #contact .sec-head h2{font-size:clamp(1.8rem,3.8vw,3.4rem)}
   .ct-grid{display:grid;grid-template-columns:1fr;gap:14px;align-items:start}
-  .ct-info{flex-direction:row;flex-wrap:wrap;gap:clamp(20px,3vw,56px);align-items:flex-start}
-  .ct-info{background:var(--panel);border-radius:var(--r-m);padding:clamp(24px,2.6vw,36px);
-    display:flex;flex-direction:column;gap:16px}
-  .ct-row b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
-    font-size:clamp(1rem,1.3vw,1.15rem);letter-spacing:.01em;display:block}
-  .ct-row .mono{color:var(--ink-soft);display:block;margin-bottom:4px;font-size:10.5px}
-  .ct-row p{font-size:13px;color:var(--ink-soft)}
   .ct-form{background:var(--panel);border-radius:var(--r-m);padding:clamp(24px,2.6vw,36px)}
   .f-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
   .field{display:flex;flex-direction:column;gap:7px}
@@ -1068,9 +1066,6 @@
     .foot{margin-inline:0;padding-inline:var(--pad);border-radius:0}
     .nav{margin-inline:0}
   }
-  .ct-info{flex-direction:row;flex-wrap:wrap;gap:clamp(20px,4vw,72px);align-items:flex-start;padding:clamp(18px,2vw,26px) clamp(24px,2.6vw,36px)}
-  .ct-row b{font-size:clamp(.95rem,1.15vw,1.05rem)}
-  @media (max-width:640px){.ct-info{flex-direction:column;gap:14px}}
   @media (min-width:861px){
     .series-grid{align-items:stretch}
     .series-left{display:flex;flex-direction:column}
@@ -1593,8 +1588,8 @@
     </div>
   </section>
 
-  <!-- ============ BLOCK 13 · КОНТАКТЫ И ФОРМА ============ -->
-  <section id="contact" aria-label="Контакты и заявка">
+  <!-- ============ BLOCK 13 · ЗАЯВКА ============ -->
+  <section id="contact" aria-label="Заявка на расчёт">
     <div class="sec-head">
       <h2 class="display">Обсудим<br>вашу площадку</h2>
       <div class="sec-side">
@@ -1603,21 +1598,6 @@
     </div>
 
     <div class="ct-grid">
-      <div class="ct-info">
-        <div class="ct-row">
-          <span class="mono">Телефон</span>
-          <b><a href="tel:+77051131551">+7&nbsp;705&nbsp;113&nbsp;15&nbsp;51</a></b>
-        </div>
-        <div class="ct-row">
-          <span class="mono">Почта</span>
-          <b><a href="mailto:info@alltrade-ltd.kz">info@alltrade-ltd.kz</a></b>
-        </div>
-        <div class="ct-row">
-          <span class="mono">Адрес</span>
-          <b>Усть-Каменогорск,<br>ул.&nbsp;Бажова&nbsp;79А</b>
-        </div>
-      </div>
-
       <form class="ct-form" id="lead-form" novalidate>
         <div class="f-row">
           <div class="field">
@@ -1663,10 +1643,10 @@
   <div class="foot-grid">
     <a class="pill pill--brand" href="https://wa.me/77051131551" rel="noopener">Написать в WhatsApp</a>
     <div class="foot-info">
-      <div class="foot-col">
+      <div class="foot-col foot-col--contact">
         <span class="mono">Связь</span>
-        <a href="tel:+77051131551">+7&nbsp;705&nbsp;113&nbsp;15&nbsp;51</a>
-        <a href="mailto:info@alltrade-ltd.kz">info@alltrade-ltd.kz</a>
+        <a class="foot-phone" href="tel:+77051131551">+7&nbsp;705&nbsp;113&nbsp;15&nbsp;51</a>
+        <a class="foot-email" href="mailto:info@alltrade-ltd.kz">info@alltrade-ltd.kz</a>
       </div>
       <div class="foot-col">
         <span class="mono">Адрес</span>
