@@ -243,7 +243,7 @@
   @media (max-width:980px){
     .hero{align-items:flex-start;min-height:0;padding-top:18px}
     .hero-stage{grid-template-columns:1fr;gap:18px}
-    .hero-title{font-size:clamp(3.5rem,18vw,6.8rem);max-width:7.7ch;line-height:.86}
+    .hero-title{font-size:clamp(3.5rem,17vw,6.8rem);max-width:8.6ch;line-height:.9}
     .hero-sub{font-size:17px;max-width:38ch}
     .hero-proof{grid-template-columns:repeat(2,minmax(0,1fr))}
     .hero-visual{min-height:340px;justify-content:flex-end;margin-top:8px}
@@ -252,8 +252,9 @@
   @media (max-width:560px){
     .hero::after{font-size:23vw;bottom:.08em;text-align:left}
     .hero-kicker{font-size:10px;margin-bottom:16px}
-    .hero-title{font-size:clamp(3.1rem,17vw,4.9rem)}
+    .hero-title{font-size:clamp(3.1rem,16vw,4.9rem)}
     .hero-actions .pill{width:100%;justify-content:center}
+    .hero-actions .cbtn{display:none}
     .hero-proof{grid-template-columns:1fr 1fr;margin-top:22px}
     .proof{min-height:88px;padding:12px}
     .hero-visual{min-height:260px;margin-top:8px}
@@ -303,8 +304,8 @@
   .card-kicker{color:var(--mute);display:block;margin-bottom:8px;letter-spacing:.14em}
   .m-orange .card-kicker{color:rgba(255,255,255,.72)}
 
-  .m-brands{grid-column:span 5;display:flex;flex-direction:column;justify-content:space-between;gap:14px}
-  .brand-rows{display:flex;flex-direction:column;gap:10px}
+  .m-brands{grid-column:span 5;display:flex;flex-direction:column;gap:14px}
+  .brand-rows{display:flex;flex-direction:column;justify-content:space-evenly;flex:1;gap:10px}
   .brand-row{
     display:flex;justify-content:space-between;align-items:baseline;gap:14px;
     border-bottom:1px solid var(--line);padding-bottom:8px;
@@ -320,12 +321,12 @@
   .m-avatars{grid-column:span 3;display:flex;flex-direction:column;justify-content:space-between;gap:16px}
   .avatars{display:flex}
   .avatars span{
-    width:54px;height:54px;border-radius:50%;
+    width:62px;height:62px;border-radius:50%;
     background:#fff;border:1px solid var(--line);
     display:inline-flex;align-items:center;justify-content:center;
     overflow:hidden;flex:none;
   }
-  .avatars span + span{margin-left:-16px}
+  .avatars span + span{margin-left:-18px}
   .avatars img{width:70%;height:70%;object-fit:contain}
   .m-avatars .mono{color:var(--ink-soft)}
 
@@ -337,8 +338,12 @@
   }
   .m-number em{font-style:normal;color:var(--brand)}
 
-  .m-cta{grid-column:span 3;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:14px}
-  .m-cta .pill{padding:14px 22px}
+  .m-cta{grid-column:span 3;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:14px;background:var(--brand);color:#fff}
+  .m-cta .pill{padding:14px 22px;background:#fff;color:var(--ink)}
+  .m-cta-title{
+    font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:800;
+    font-size:clamp(15px,1.4vw,19px);line-height:1.25;letter-spacing:.04em;text-transform:uppercase;
+  }
 
   .m-certs{grid-column:span 12;grid-row:auto;min-height:0;
     display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
@@ -360,6 +365,7 @@
     .m-orange{grid-column:span 12;min-height:380px}
     .m-brands,.m-avatars,.m-number,.m-cta,.m-certs{grid-column:span 12}
     .m-avatars{min-height:150px}
+    .brand-row .mono{white-space:normal;text-align:right}
   }
 
   /* ---------- series ---------- */
@@ -440,8 +446,8 @@
     display:flex;flex-direction:column;gap:14px;
   }
   .p-card img{
-    height:clamp(140px,15vw,210px);width:100%;object-fit:contain;
-    filter:drop-shadow(0 14px 22px rgba(17,19,21,.16));
+    height:clamp(160px,17vw,240px);width:100%;object-fit:cover;
+    border-radius:calc(var(--r-m) - 2px);
   }
   .p-meta{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
   .p-meta b{
@@ -484,6 +490,15 @@
     filter:drop-shadow(0 24px 44px rgba(0,0,0,.5));
     pointer-events:none;
   }
+  /* ---------- scroll reveal ---------- */
+  @media (prefers-reduced-motion:no-preference){
+    .rv{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.2,.6,.2,1),transform .6s cubic-bezier(.2,.6,.2,1)}
+    .rv.is-in{opacity:1;transform:none}
+  }
+
+  .foot-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:clamp(32px,5vw,70px)}
+  .pill--ghostw{background:transparent;border:1px solid rgba(255,255,255,.45);color:#fff}
+  .pill--ghostw:hover{background:#fff;color:var(--ink)}
   .foot-bottom{
     display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     border-top:1px solid rgba(255,255,255,.18);
@@ -557,7 +572,7 @@
     position:relative;border-radius:var(--r-m);overflow:hidden;background:var(--ink);
     min-height:clamp(320px,38vw,520px);margin:0;
   }
-  .vend-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+  .vend-img > img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
   .vend-img figcaption{
     position:absolute;left:0;right:0;bottom:0;z-index:2;
     padding:clamp(18px,2.2vw,30px);color:#fff;
@@ -590,14 +605,32 @@
   .calc-out .cap{color:rgba(255,255,255,.62);font-size:13px;margin-top:10px}
   .calc-out .note{color:rgba(255,255,255,.45);font-size:11.5px;margin-top:14px;
     font-family:'IBM Plex Mono',monospace;letter-spacing:.04em;line-height:1.6}
+  .vend-img > img{transition:opacity .22s ease}
+  .vend-thumbs{position:absolute;right:14px;top:14px;z-index:3;display:flex;gap:8px}
+  .vend-thumbs button{
+    width:52px;height:38px;border-radius:9px;overflow:hidden;flex:none;
+    border:2px solid rgba(255,255,255,.5);opacity:.72;padding:0;background:none;cursor:pointer;
+    transition:opacity .2s ease,border-color .2s ease;
+  }
+  .vend-thumbs button img{width:100%;height:100%;object-fit:cover;display:block}
+  .vend-thumbs button:hover{opacity:1}
+  .vend-thumbs button[aria-pressed="true"]{border-color:#fff;opacity:1}
+  .film-card{margin-top:14px;margin-bottom:0}
+  .film-card video{
+    width:100%;height:auto;aspect-ratio:16/9;display:block;background:#000;
+  }
   @media (max-width:900px){.vend-grid{grid-template-columns:1fr}.calc{grid-template-columns:1fr}}
-  @media (max-width:560px){.vend-feats{grid-template-columns:1fr}}
+  @media (max-width:560px){
+    .vend-feats{grid-template-columns:1fr}
+    .vend-thumbs{gap:6px}
+    .vend-thumbs button{width:42px;height:32px}
+  }
 
   /* ---------- wash (block 6) ---------- */
   .wash{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:stretch}
-  .wash-img{background:var(--panel);border-radius:var(--r-m);padding:clamp(24px,3vw,44px);
-    display:flex;align-items:center;justify-content:center;min-height:280px}
-  .wash-img img{max-height:300px;width:auto;object-fit:contain;filter:drop-shadow(0 20px 32px rgba(17,19,21,.18))}
+  .wash-img{background:var(--panel);border-radius:var(--r-m);overflow:hidden;
+    display:flex;align-items:stretch;justify-content:center;min-height:280px}
+  .wash-img img{width:100%;height:100%;object-fit:cover}
   .wash-list{display:flex;flex-direction:column;gap:12px}
   .wrow{background:var(--panel);border-radius:var(--r-m);padding:clamp(17px,1.8vw,24px);
     display:flex;gap:16px;align-items:flex-start}
@@ -629,7 +662,12 @@
   .ind-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
   .ind{background:var(--panel);border-radius:var(--r-m);padding:clamp(20px,2.2vw,28px);
     display:flex;flex-direction:column;gap:14px;justify-content:space-between;min-height:150px}
-  .ind svg{width:28px;height:28px;color:var(--ink)}
+  .ind .ico{
+    width:48px;height:48px;border-radius:14px;flex:none;
+    background:rgba(50,100,80,.1);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .ind svg{width:24px;height:24px;color:var(--brand)}
   .ind b{font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:800;
     font-size:13px;letter-spacing:.08em;text-transform:uppercase}
   @media (max-width:900px){.ind-grid{grid-template-columns:repeat(2,1fr)}}
@@ -928,6 +966,8 @@
         <div class="avatars" aria-hidden="true">
           <span><img src="assets/catalog/cutout/head.png" alt=""></span>
           <span><img src="assets/catalog/cutout/gloves.png" alt=""></span>
+          <span><img src="assets/catalog/cutout/resp.png" alt=""></span>
+          <span><img src="assets/catalog/cutout/boots.png" alt=""></span>
           <span><img src="assets/catalog/cutout/eye.png" alt=""></span>
         </div>
         <p class="card-kicker mono">Категории защиты</p>
@@ -939,10 +979,8 @@
       </article>
 
       <article class="card m-cta">
+        <p class="m-cta-title">Соберём комплект под вашу площадку</p>
         <a class="pill" href="#contact">Запросить расчёт</a>
-        <a class="cbtn cbtn--sm" href="mailto:info@alltrade-ltd.kz" aria-label="Написать на почту">
-          <svg aria-hidden="true"><use href="#i-arr"/></svg>
-        </a>
       </article>
 
       <article class="card m-certs">
@@ -963,7 +1001,15 @@
 
     <div class="vend-grid">
       <figure class="vend-img">
-        <img src="assets/vending/kazpro-duo.webp" alt="Автоматы выдачи и приёмки СИЗ KazProService 540 и 640 в производственном цехе" loading="lazy">
+        <img id="vend-photo" src="assets/vending/kazpro-duo.webp" alt="Автоматы выдачи и приёмки СИЗ KazProService 540 и 640 в производственном цехе" loading="lazy">
+        <div class="vend-thumbs" role="group" aria-label="Фотографии автоматов KazProService">
+          <button type="button" aria-pressed="true" data-src="assets/vending/kazpro-duo.webp" data-alt="Автоматы выдачи и приёмки СИЗ KazProService 540 и 640 в производственном цехе" aria-label="Фото: автоматы 540 и 640 в цехе"><img src="assets/vending/kazpro-duo.webp" alt=""></button>
+          <button type="button" aria-pressed="false" data-src="assets/vending/kazpro-540-wall.webp" data-alt="Автомат выдачи СИЗ KazProService 540 на производственной площадке" aria-label="Фото: автомат 540 на площадке"><img src="assets/vending/kazpro-540-wall.webp" alt=""></button>
+          <button type="button" aria-pressed="false" data-src="assets/vending/kazpro-640-hall.webp" data-alt="Пункт приёмки спецодежды KazProService 640 в цехе" aria-label="Фото: пункт приёмки 640"><img src="assets/vending/kazpro-640-hall.webp" alt=""></button>
+          <button type="button" aria-pressed="false" data-src="assets/vending/kazpro-duo-crew.webp" data-alt="Автоматы KazProService и сотрудники на производстве" aria-label="Фото: автоматы и сотрудники"><img src="assets/vending/kazpro-duo-crew.webp" alt=""></button>
+          <button type="button" aria-pressed="false" data-src="assets/vending/kazpro-540-dark.webp" data-alt="Автомат выдачи KazProService 540 в ночном цехе" aria-label="Фото: автомат 540, ночная смена"><img src="assets/vending/kazpro-540-dark.webp" alt=""></button>
+          <button type="button" aria-pressed="false" data-src="assets/vending/kazpro-640-dark.webp" data-alt="Автомат приёмки KazProService 640 в ночном цехе" aria-label="Фото: автомат 640, ночная смена"><img src="assets/vending/kazpro-640-dark.webp" alt=""></button>
+        </div>
         <figcaption>
           <b>KazProService</b>
           <span class="mono">Модели 540 / 640 · интерфейс каз · рус · англ</span>
@@ -1007,6 +1053,14 @@
         </div>
       </div>
     </div>
+
+    <figure class="media-card film-card">
+      <img src="assets/video-posters/at-film.webp" alt="Кадр из фильма: смена идёт к пункту выдачи СИЗ ALLTRADE" loading="lazy">
+      <button class="play" type="button" data-video="assets/at-film.mp4" aria-label="Смотреть фильм о системе выдачи">
+        <svg aria-hidden="true"><use href="#i-play"/></svg>
+      </button>
+      <figcaption class="media-cap mono">Фильм · Как работает автоматическая выдача</figcaption>
+    </figure>
   </section>
 
   <!-- ============ BLOCK 7 · МОЙКА МАСОК ============ -->
@@ -1020,7 +1074,7 @@
 
     <div class="wash">
       <div class="wash-img">
-        <img src="assets/catalog/cutout/resp.png" alt="Полумаска МК после мойки и дезинфекции" loading="lazy">
+        <img src="assets/catalog/mk-mask-real.webp" alt="Полумаска МК с фильтрами после мойки и дезинфекции" loading="lazy">
       </div>
       <div class="wash-list">
         <article class="wrow">
@@ -1051,41 +1105,41 @@
         <span class="mono">Официальный дистрибьютор респираторов МК в Казахстане</span>
         <div class="pills" role="group" aria-label="Категории продукции">
           <button class="spill" type="button" aria-pressed="true"
-                  data-img="assets/catalog/cutout/resp.png" data-brand="Респираторы МК · FAROS"
+                  data-img="assets/catalog/studio/resp.webp" data-brand="Респираторы МК · FAROS"
                   data-spec="10 моделей · FFP1–FFP3 · официальный дистрибьютор МК"
                   data-alt="Полумаска МК для защиты дыхания"><span>Защита дыхания</span><span class="mono">01</span></button>
           <button class="spill" type="button" aria-pressed="false"
-                  data-img="assets/catalog/cutout/head.png" data-brand="Каски ФОРВАРД"
+                  data-img="assets/catalog/studio/head.webp" data-brand="Каски ФОРВАРД"
                   data-spec="1 модель · защита головы"
                   data-alt="Защитная каска ФОРВАРД"><span>Защита головы</span><span class="mono">02</span></button>
           <button class="spill" type="button" aria-pressed="false"
-                  data-img="assets/catalog/cutout/gloves.png" data-brand="BASE SAFETY"
+                  data-img="assets/catalog/studio/gloves.webp" data-brand="BASE SAFETY"
                   data-spec="13 моделей · EN 388 / 407 / 511"
                   data-alt="Защитные перчатки BASE SAFETY"><span>Защита рук</span><span class="mono">03</span></button>
           <button class="spill" type="button" aria-pressed="false"
-                  data-img="assets/catalog/cutout/boots.png" data-brand="Safety Nomads"
+                  data-img="assets/catalog/studio/boots.webp" data-brand="Safety Nomads"
                   data-spec="24 модели · зима / лето · 18 kV · Metal Free"
                   data-alt="Защитная обувь Safety Nomads"><span>Защита ног</span><span class="mono">04</span></button>
           <button class="spill" type="button" aria-pressed="false"
-                  data-img="assets/catalog/cutout/eye.png" data-brand="РУСОКО"
+                  data-img="assets/catalog/studio/eye.webp" data-brand="РУСОКО"
                   data-spec="6 моделей · защита глаз"
                   data-alt="Защитные очки РУСОКО"><span>Защита глаз</span><span class="mono">05</span></button>
           <button class="spill" type="button" aria-pressed="false"
-                  data-img="assets/catalog/cutout/weld.png" data-brand="FITSIZ"
+                  data-img="assets/catalog/studio/weld.webp" data-brand="FITSIZ"
                   data-spec="7 моделей · автозатемнение и фиксированный DIN"
                   data-alt="Сварочная маска FITSIZ"><span>Сварочные маски</span><span class="mono">06</span></button>
           <button class="spill" type="button" aria-pressed="false"
-                  data-img="assets/catalog/cutout/ear.png" data-brand="Защита слуха"
+                  data-img="assets/catalog/studio/ear.webp" data-brand="Защита слуха"
                   data-spec="5 моделей · вкладыши и наушники"
                   data-alt="Средства защиты слуха"><span>Защита слуха</span><span class="mono">07</span></button>
         </div>
       </div>
       <div class="series-right">
         <h3 class="display">Всё в одном<br>окне</h3>
-        <figure class="portrait" style="display:flex;align-items:center;justify-content:center;padding:clamp(24px,3vw,44px)">
-          <img id="cat-img" src="assets/catalog/cutout/resp.png"
+        <figure class="portrait">
+          <img id="cat-img" src="assets/catalog/studio/resp.webp"
                alt="Полумаска МК для защиты дыхания" loading="lazy"
-               style="height:clamp(260px,32vw,420px);width:auto;object-fit:contain;filter:drop-shadow(0 22px 36px rgba(17,19,21,.2))">
+               style="filter:none">
           <figcaption class="media-cap mono" aria-live="polite">
             <b id="cat-brand" style="letter-spacing:.08em">Респираторы МК · FAROS</b><br>
             <span id="cat-spec">10 моделей · FFP1–FFP3 · официальный дистрибьютор МК</span>
@@ -1112,15 +1166,12 @@
 
     <figure class="media-card">
       <img src="assets/cases/kz-013.webp" alt="Цех раскроя: сотрудник за раскроечной машиной Lectra" loading="lazy">
-      <button class="play" type="button" aria-label="Смотреть видео о производстве">
-        <svg aria-hidden="true"><use href="#i-play"/></svg>
-      </button>
       <figcaption class="media-cap mono">Производство · Цех раскроя</figcaption>
     </figure>
 
     <div class="g-row">
       <article class="p-card">
-        <img src="assets/catalog/cutout/gloves.png" alt="Защитные перчатки Base Safety" loading="lazy">
+        <img src="assets/catalog/studio/gloves.webp" alt="Защитные перчатки Base Safety" loading="lazy">
         <div class="p-meta">
           <div><b>Base Safety</b><span class="mono">Перчатки · EN 388</span></div>
           <a class="cbtn cbtn--sm" href="#products" aria-label="Перчатки — подробнее">
@@ -1129,7 +1180,7 @@
         </div>
       </article>
       <article class="p-card">
-        <img src="assets/catalog/cutout/boots.png" alt="Защитная обувь Safety Nomads" loading="lazy">
+        <img src="assets/catalog/studio/boots.webp" alt="Защитная обувь Safety Nomads" loading="lazy">
         <div class="p-meta">
           <div><b>Safety Nomads</b><span class="mono">Обувь · 24 модели</span></div>
           <a class="cbtn cbtn--sm" href="#products" aria-label="Обувь — подробнее">
@@ -1138,7 +1189,7 @@
         </div>
       </article>
       <article class="p-card">
-        <img src="assets/catalog/cutout/weld.png" alt="Сварочная маска" loading="lazy">
+        <img src="assets/catalog/studio/weld.webp" alt="Сварочная маска" loading="lazy">
         <div class="p-meta">
           <div><b>Сварочные маски</b><span class="mono">EN 407 · Термозащита</span></div>
           <a class="cbtn cbtn--sm" href="#products" aria-label="Сварочные маски — подробнее">
@@ -1192,11 +1243,11 @@
     </div>
 
     <div class="ind-grid">
-      <article class="ind"><svg aria-hidden="true"><use href="#i-mine"/></svg><b>Горная добыча</b></article>
-      <article class="ind"><svg aria-hidden="true"><use href="#i-metal"/></svg><b>Металлургия</b></article>
-      <article class="ind"><svg aria-hidden="true"><use href="#i-oil"/></svg><b>Нефтегаз</b></article>
-      <article class="ind"><svg aria-hidden="true"><use href="#i-air"/></svg><b>Аэропорты</b></article>
-      <article class="ind"><svg aria-hidden="true"><use href="#i-bolt"/></svg><b>Энергетика</b></article>
+      <article class="ind"><span class="ico"><svg aria-hidden="true"><use href="#i-mine"/></svg></span><b>Горная добыча</b></article>
+      <article class="ind"><span class="ico"><svg aria-hidden="true"><use href="#i-metal"/></svg></span><b>Металлургия</b></article>
+      <article class="ind"><span class="ico"><svg aria-hidden="true"><use href="#i-oil"/></svg></span><b>Нефтегаз</b></article>
+      <article class="ind"><span class="ico"><svg aria-hidden="true"><use href="#i-air"/></svg></span><b>Аэропорты</b></article>
+      <article class="ind"><span class="ico"><svg aria-hidden="true"><use href="#i-bolt"/></svg></span><b>Энергетика</b></article>
     </div>
   </section>
 
@@ -1319,10 +1370,15 @@
   </div>
 
   <p class="foot-title display">
-    <span>Спасибо</span>
-    <span>За внимание</span>
+    <span>Закроем СИЗ</span>
+    <span>Под ключ</span>
     <img class="foot-product" src="assets/catalog/cutout/head.png" alt="" aria-hidden="true">
   </p>
+
+  <div class="foot-cta">
+    <a class="pill pill--brand" href="#contact">Запросить расчёт под предприятие</a>
+    <a class="pill pill--ghostw" href="https://wa.me/77051131551" rel="noopener">Написать в WhatsApp</a>
+  </div>
 
   <div class="foot-bottom mono">
     <span><a href="tel:+77051131551">+7 705 113 15 51</a> · <a href="mailto:info@alltrade-ltd.kz">info@alltrade-ltd.kz</a></span>
@@ -1334,6 +1390,67 @@
 (function () {
   'use strict';
   var nf = new Intl.NumberFormat('ru-RU');
+
+  /* ---- Появление блоков при скролле ---- */
+  if ('IntersectionObserver' in window && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+    var revealTargets = document.querySelectorAll(
+      '.sec-head, .card, .stat, .pain, .pain-resolve, .loop-item, .vfeat, .vend-img, .calc, ' +
+      '.media-card, .wash-img, .wrow, .series-left, .series-stage, .cert, .cl-anchor, .ind, ' +
+      '.step, .p-card, .g-head, .ct-info, .ct-form'
+    );
+    var groupIndex = new Map();
+    revealTargets.forEach(function (el) {
+      var parent = el.parentElement;
+      var i = groupIndex.get(parent) || 0;
+      groupIndex.set(parent, i + 1);
+      el.classList.add('rv');
+      el.style.transitionDelay = Math.min(i * 70, 350) + 'ms';
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    revealTargets.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---- Галерея автоматов в блоке вендинга ---- */
+  var vendPhoto = document.getElementById('vend-photo');
+  var vendThumbs = document.querySelectorAll('.vend-thumbs button');
+  if (vendPhoto && vendThumbs.length) {
+    vendThumbs.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        if (btn.getAttribute('aria-pressed') === 'true') return;
+        vendThumbs.forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+        btn.setAttribute('aria-pressed', 'true');
+        vendPhoto.style.opacity = '0';
+        setTimeout(function () {
+          vendPhoto.src = btn.getAttribute('data-src');
+          vendPhoto.alt = btn.getAttribute('data-alt') || '';
+          vendPhoto.style.opacity = '1';
+        }, 180);
+      });
+    });
+  }
+
+  /* ---- Видео по клику на «плей» ---- */
+  document.querySelectorAll('.play[data-video]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var card = btn.closest('.media-card');
+      if (!card) return;
+      var video = document.createElement('video');
+      video.src = btn.getAttribute('data-video');
+      video.controls = true;
+      video.autoplay = true;
+      video.playsInline = true;
+      card.innerHTML = '';
+      card.appendChild(video);
+      video.play().catch(function () {});
+    });
+  });
 
   /* ---- Калькулятор экономии ---- */
   var range = document.getElementById('calc-people');
