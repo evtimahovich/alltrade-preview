@@ -543,7 +543,7 @@
   .series-right h3{font-size:clamp(1.7rem,3.6vw,3.2rem);margin-bottom:clamp(16px,2vw,26px)}
   .portrait{
     border-radius:var(--r-m);overflow:hidden;position:relative;
-    background:var(--panel);
+    background:#0B0E0D;
   }
   .portrait img{
     width:100%;height:clamp(360px,42vw,560px);object-fit:cover;
@@ -838,14 +838,24 @@
     font-size:clamp(1.8rem,4.4vw,3.6rem);text-transform:uppercase;letter-spacing:.01em;line-height:1}
   .cl-anchor .mono{color:rgba(255,255,255,.66);max-width:340px}
   .ind-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
-  .ind{background:var(--panel);border-radius:var(--r-m);padding:clamp(20px,2.2vw,28px);
-    display:flex;flex-direction:column;gap:14px;justify-content:space-between;min-height:150px}
+  .ind{
+    position:relative;overflow:hidden;
+    background:#0B0E0D;color:#fff;border-radius:var(--r-m);
+    padding:clamp(20px,2.2vw,28px);
+    display:flex;flex-direction:column;gap:14px;justify-content:space-between;min-height:170px;
+  }
+  .ind::after{
+    content:"";position:absolute;right:-40%;bottom:-55%;width:120%;height:120%;
+    background:radial-gradient(circle,rgba(78,158,120,.22),transparent 62%);
+    pointer-events:none;transition:opacity .25s ease;opacity:.7;
+  }
+  .ind:hover::after{opacity:1}
   .ind .ico{
     width:48px;height:48px;border-radius:14px;flex:none;
-    background:rgba(50,100,80,.1);
+    background:rgba(78,158,120,.14);border:1px solid rgba(78,158,120,.3);
     display:flex;align-items:center;justify-content:center;
   }
-  .ind svg{width:24px;height:24px;color:var(--brand)}
+  .ind svg{width:24px;height:24px;color:var(--brand-lift)}
   .ind b{font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:800;
     font-size:13px;letter-spacing:.08em;text-transform:uppercase}
   @media (max-width:900px){.ind-grid{grid-template-columns:repeat(2,1fr)}}
@@ -1177,31 +1187,31 @@
         <span class="mono">Официальный дистрибьютор респираторов МК в Казахстане</span>
         <div class="pills" role="group" aria-label="Категории продукции">
           <button class="spill" type="button" aria-pressed="true"
-                  data-img="assets/catalog/studio/resp.webp" data-brand="Респираторы МК · FAROS"
+                  data-img="assets/catalog/cine/resp.webp" data-brand="Респираторы МК · FAROS"
                   data-spec="10 моделей · FFP1–FFP3 · официальный дистрибьютор МК"
                   data-alt="Полумаска МК для защиты дыхания"><span>Защита дыхания</span><span class="mono">01</span></button>
           <button class="spill" type="button" aria-pressed="false"
-                  data-img="assets/catalog/studio/head.webp" data-brand="Каски ФОРВАРД"
+                  data-img="assets/catalog/cine/head.webp" data-brand="Каски ФОРВАРД"
                   data-spec="1 модель · защита головы"
                   data-alt="Защитная каска ФОРВАРД"><span>Защита головы</span><span class="mono">02</span></button>
           <button class="spill" type="button" aria-pressed="false"
-                  data-img="assets/catalog/studio/gloves.webp" data-brand="BASE SAFETY"
+                  data-img="assets/catalog/cine/gloves.webp" data-brand="BASE SAFETY"
                   data-spec="13 моделей · EN 388 / 407 / 511"
                   data-alt="Защитные перчатки BASE SAFETY"><span>Защита рук</span><span class="mono">03</span></button>
           <button class="spill" type="button" aria-pressed="false"
-                  data-img="assets/catalog/studio/boots.webp" data-brand="Safety Nomads"
+                  data-img="assets/catalog/cine/boots.webp" data-brand="Safety Nomads"
                   data-spec="24 модели · зима / лето · 18 kV · Metal Free"
                   data-alt="Защитная обувь Safety Nomads"><span>Защита ног</span><span class="mono">04</span></button>
           <button class="spill" type="button" aria-pressed="false"
-                  data-img="assets/catalog/studio/eye.webp" data-brand="РУСОКО"
+                  data-img="assets/catalog/cine/eye.webp" data-brand="РУСОКО"
                   data-spec="6 моделей · защита глаз"
                   data-alt="Защитные очки РУСОКО"><span>Защита глаз</span><span class="mono">05</span></button>
           <button class="spill" type="button" aria-pressed="false"
-                  data-img="assets/catalog/studio/weld.webp" data-brand="FITSIZ"
+                  data-img="assets/catalog/cine/weld.webp" data-brand="FITSIZ"
                   data-spec="7 моделей · автозатемнение и фиксированный DIN"
                   data-alt="Сварочная маска FITSIZ"><span>Сварочные маски</span><span class="mono">06</span></button>
           <button class="spill" type="button" aria-pressed="false"
-                  data-img="assets/catalog/studio/ear.webp" data-brand="Защита слуха"
+                  data-img="assets/catalog/cine/ear.webp" data-brand="Защита слуха"
                   data-spec="5 моделей · вкладыши и наушники"
                   data-alt="Средства защиты слуха"><span>Защита слуха</span><span class="mono">07</span></button>
         </div>
@@ -1209,9 +1219,9 @@
       <div class="series-right">
         <h3 class="display">Всё в одном<br>окне</h3>
         <figure class="portrait">
-          <img id="cat-img" src="assets/catalog/studio/resp.webp"
+          <img id="cat-img" src="assets/catalog/cine/resp.webp"
                alt="Полумаска МК для защиты дыхания" loading="lazy"
-               style="filter:none">
+               style="filter:none;object-fit:contain">
           <figcaption class="media-cap mono" aria-live="polite">
             <b id="cat-brand" style="letter-spacing:.08em">Респираторы МК · FAROS</b><br>
             <span id="cat-spec">10 моделей · FFP1–FFP3 · официальный дистрибьютор МК</span>
@@ -1238,13 +1248,13 @@
     </div>
 
     <figure class="media-card">
-      <img src="assets/cases/kz-013.webp" alt="Цех раскроя: сотрудник за раскроечной машиной Lectra" loading="lazy">
+      <img src="assets/cases/raskroy-cine.webp" alt="Цех раскроя: оператор за раскроечной машиной Lectra" loading="lazy">
       <figcaption class="media-cap mono">Производство · Цех раскроя</figcaption>
     </figure>
 
     <div class="g-row">
       <article class="p-card">
-        <img src="assets/catalog/studio/gloves.webp" alt="Защитные перчатки Base Safety" loading="lazy">
+        <img src="assets/catalog/cine/gloves.webp" alt="Защитные перчатки Base Safety" loading="lazy">
         <div class="p-meta">
           <div><b>Base Safety</b><span class="mono">Перчатки · EN 388</span></div>
           <a class="cbtn cbtn--sm" href="#products" aria-label="Перчатки — подробнее">
@@ -1253,7 +1263,7 @@
         </div>
       </article>
       <article class="p-card">
-        <img src="assets/catalog/studio/boots.webp" alt="Защитная обувь Safety Nomads" loading="lazy">
+        <img src="assets/catalog/cine/boots.webp" alt="Защитная обувь Safety Nomads" loading="lazy">
         <div class="p-meta">
           <div><b>Safety Nomads</b><span class="mono">Обувь · 24 модели</span></div>
           <a class="cbtn cbtn--sm" href="#products" aria-label="Обувь — подробнее">
@@ -1262,10 +1272,10 @@
         </div>
       </article>
       <article class="p-card">
-        <img src="assets/catalog/studio/weld.webp" alt="Сварочная маска" loading="lazy">
+        <img src="assets/catalog/cine/wear.webp" alt="Спецодежда Textiline" loading="lazy">
         <div class="p-meta">
-          <div><b>Сварочные маски</b><span class="mono">EN 407 · Термозащита</span></div>
-          <a class="cbtn cbtn--sm" href="#products" aria-label="Сварочные маски — подробнее">
+          <div><b>Textiline</b><span class="mono">Спецодежда · 50 668 компл./год</span></div>
+          <a class="cbtn cbtn--sm" href="#products" aria-label="Спецодежда — подробнее">
             <svg aria-hidden="true"><use href="#i-arr"/></svg>
           </a>
         </div>
@@ -1363,7 +1373,7 @@
 
     <div class="wash">
       <div class="wash-img">
-        <img src="assets/catalog/mk-mask-real.webp" alt="Полумаска МК с фильтрами после мойки и дезинфекции" loading="lazy">
+        <img src="assets/catalog/mk-mask-cine.webp" alt="Полумаска МК с фильтрами после мойки и дезинфекции" loading="lazy">
       </div>
       <div class="wash-list">
         <article class="wrow">
@@ -1502,7 +1512,6 @@
           <span class="mono">Реквизиты</span>
           <p>ТОО «ALLTRADE-LTD» · БИН 160 340 027 310</p>
         </div>
-        <a class="pill" href="https://wa.me/77051131551" rel="noopener">Написать в WhatsApp</a>
       </div>
 
       <form class="ct-form" id="lead-form" novalidate>
@@ -1551,12 +1560,10 @@
   <p class="foot-title display">
     <span>Закроем СИЗ</span>
     <span>Под ключ</span>
-    <img class="foot-product" src="assets/catalog/cutout/head.png" alt="" aria-hidden="true">
   </p>
 
   <div class="foot-cta">
-    <a class="pill pill--brand" href="#contact">Запросить расчёт под предприятие</a>
-    <a class="pill pill--ghostw" href="https://wa.me/77051131551" rel="noopener">Написать в WhatsApp</a>
+    <a class="pill pill--brand" href="https://wa.me/77051131551" rel="noopener">Написать в WhatsApp</a>
   </div>
 
   <div class="foot-bottom mono">
