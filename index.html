@@ -713,7 +713,15 @@
   .foot-email{color:rgba(255,255,255,.8);font-size:15px}
   .foot-email:hover{color:#fff;text-decoration:underline}
   .foot-contact .pill{margin-top:12px}
-  .foot-social{display:inline-flex;gap:18px}
+  .foot-social{display:inline-flex;gap:14px}
+  .foot-social a{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:38px;height:38px;border-radius:50%;
+    border:1px solid rgba(255,255,255,.28);color:rgba(255,255,255,.75);
+    transition:background .2s ease,color .2s ease,border-color .2s ease;
+  }
+  .foot-social a:hover{background:#fff;color:var(--ink);border-color:#fff}
+  .foot-social svg{width:18px;height:18px}
   .foot-bottom a{color:rgba(255,255,255,.65)}
   .foot-bottom a:hover{color:#fff}
   @media (max-width:900px){
@@ -1112,6 +1120,7 @@
 
 <!-- icons -->
 <svg style="display:none" aria-hidden="true">
+  <symbol id="i-inst" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></symbol>
   <symbol id="i-arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></symbol>
   <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
   <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4.5 20 12 6 19.5Z"/></symbol>
@@ -1655,7 +1664,9 @@
     <span>ТОО «ALLTRADE-LTD» · БИН&nbsp;160&nbsp;340&nbsp;027&nbsp;310</span>
     <span>Усть-Каменогорск, ул.&nbsp;Бажова&nbsp;79А</span>
     <span class="foot-social">
-      <a href="https://instagram.com/alltrade_ltd_kz" rel="noopener">Instagram</a>
+      <a href="https://instagram.com/alltrade_ltd_kz" rel="noopener" aria-label="Instagram ALLTRADE-LTD">
+        <svg aria-hidden="true"><use href="#i-inst"/></svg>
+      </a>
     </span>
   </div>
 </footer>
