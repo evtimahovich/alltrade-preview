@@ -1083,39 +1083,24 @@
     padding-inline:calc(max(var(--pad), 50vw - 720px + var(--pad)) - var(--inset));
   }
   @media (max-width:560px){
-    /* Мобильный хиро: постер — рабочий фоном всего экрана,
-       текст поверх затемнения (низ темнее). */
+    /* Мобильный хиро: рабочий справа за текстом, поднят выше */
     .hero2-card{display:none}
     .hero2-stats{display:none}
-    .hero2{
-      min-height:calc(100svh - 74px);
-      padding-top:clamp(20px,4svh,34px);padding-bottom:88px;
-      display:flex;flex-direction:column;
-    }
-    .hero2::before{display:none}
+    .hero2{min-height:min(90svh,760px);padding-top:30px;padding-bottom:24px}
+    .hero2-desc{margin-top:20px}
+    .hero2-cta{margin-top:24px}
     .hero2-char{
-      position:absolute;inset:0;z-index:1;
-      width:100%;height:100%;max-width:none;aspect-ratio:auto;
-      right:auto;bottom:auto;margin:0;
-      object-fit:cover;object-position:64% 10%;
-      -webkit-mask-image:none;mask-image:none;
+      height:min(82%,640px);right:-9vw;
+      -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 30%,#000 100%),linear-gradient(180deg,transparent 0,#000 10%,#000 88%,transparent 100%);
+      mask-image:linear-gradient(90deg,transparent 0,#000 30%,#000 100%),linear-gradient(180deg,transparent 0,#000 10%,#000 88%,transparent 100%);
+      -webkit-mask-composite:source-in;
+      mask-composite:intersect;
     }
     .hero2::after{
-      content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
-      background:linear-gradient(180deg,
-        rgba(8,10,9,.66) 0%,
-        rgba(8,10,9,.22) 34%,
-        rgba(8,10,9,.30) 56%,
-        rgba(8,10,9,.90) 100%);
+      content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
+      background:linear-gradient(90deg,rgba(8,10,9,.62) 0%,rgba(8,10,9,.28) 50%,rgba(8,10,9,0) 76%);
     }
-    .hero2-copy{position:relative;z-index:3;display:flex;flex-direction:column;flex:1;max-width:none}
-    .hero2-title{font-size:clamp(3.3rem,16vw,4.6rem)}
-    .hero2-desc{margin-top:auto;padding-top:34svh;max-width:34ch;font-size:14.5px;color:rgba(255,255,255,.9)}
-    .hero2-cta{
-      margin-top:20px;display:flex;width:100%;
-      justify-content:center;text-align:center;
-      padding:15px 18px;font-size:11px;letter-spacing:.09em;
-    }
+    .hero2-copy{position:relative;z-index:4}
   }
   @media (max-width:760px){
     .hero2,#vending{margin-inline:calc(var(--pad) * -1);padding-inline:var(--pad);border-radius:0}
