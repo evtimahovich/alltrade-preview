@@ -1083,17 +1083,55 @@
     padding-inline:calc(max(var(--pad), 50vw - 720px + var(--pad)) - var(--inset));
   }
   @media (max-width:560px){
-    .hero2-stats{display:none}
+    /* Мобильный хиро: редакционный стек — текст сверху, рабочий полноширинным
+       кадром снизу, вплавлен в низ блока кино-виньеткой. */
     .hero2-card{display:none}
-    .hero2{min-height:min(88svh,720px);padding-top:30px}
-    .hero2-desc{margin-top:20px}
-    .hero2-cta{margin-top:24px}
-    .hero2-char{height:min(64%,500px);right:-10vw}
-    .hero2::after{
-      content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
-      background:linear-gradient(90deg,rgba(8,10,9,.62) 0%,rgba(8,10,9,.28) 50%,rgba(8,10,9,0) 76%);
+    .hero2{
+      min-height:calc(100svh - 74px);
+      padding-top:clamp(22px,4.5svh,38px);padding-bottom:0;
+      justify-content:flex-start;
     }
-    .hero2-char{height:min(56%,440px);right:-18vw}
+    /* зелёная дымка — сверху-слева, как свет на фото */
+    .hero2::before{
+      right:auto;left:-26vw;bottom:auto;top:8%;
+      width:82vw;height:82vw;
+      background:radial-gradient(circle,rgba(78,158,120,.28),transparent 62%);
+    }
+    /* static, чтобы .hero2-stats позиционировались от самого хиро;
+       z-index у flex-элемента работает и без position */
+    .hero2-copy{order:1;position:static;z-index:4}
+    .hero2-title{font-size:clamp(3.3rem,16vw,4.6rem)}
+    .hero2-desc{margin-top:18px;max-width:34ch;font-size:14.5px}
+    .hero2-cta{
+      margin-top:22px;display:flex;width:100%;
+      justify-content:center;text-align:center;
+      padding:15px 18px;font-size:11px;letter-spacing:.09em;
+    }
+    /* рабочий: в потоке, во всю ширину, занимает остаток экрана,
+       кроп по груди у нижней кромки блока */
+    .hero2-char{
+      order:2;position:relative;right:auto;bottom:auto;z-index:2;
+      flex:1 1 auto;min-height:clamp(270px,44svh,430px);
+      width:calc(100% + var(--pad) * 2);max-width:none;height:auto;aspect-ratio:auto;
+      margin:clamp(12px,2.5svh,22px) calc(var(--pad) * -1) 0;
+      object-fit:cover;object-position:50% 0;
+      -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 22px);
+      mask-image:linear-gradient(180deg,transparent 0,#000 22px);
+      -webkit-mask-composite:source-over;mask-composite:add;
+    }
+    /* нижняя кино-виньетка поверх кадра */
+    .hero2::after{
+      content:"";position:absolute;left:0;right:0;bottom:0;height:200px;
+      z-index:3;pointer-events:none;
+      background:linear-gradient(180deg,rgba(8,10,9,0) 0%,rgba(8,10,9,.42) 52%,rgba(8,10,9,.9) 100%);
+    }
+    /* факты — «титрами» в левом нижнем углу, поверх виньетки */
+    .hero2-stats{
+      position:absolute;left:var(--pad);right:96px;bottom:18px;
+      z-index:4;margin:0;
+      flex-direction:column;align-items:flex-start;gap:9px;
+      font-size:10px;letter-spacing:.13em;color:rgba(255,255,255,.85);
+    }
   }
   @media (max-width:760px){
     .hero2,#vending{margin-inline:calc(var(--pad) * -1);padding-inline:var(--pad);border-radius:0}
