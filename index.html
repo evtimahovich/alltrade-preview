@@ -689,24 +689,24 @@
     padding:clamp(28px,4vw,64px) calc(var(--pad) - var(--inset)) clamp(22px,3vw,40px);
     position:relative;overflow:hidden;
   }
-  .foot-grid{
-    display:flex;justify-content:space-between;align-items:center;
-    gap:clamp(24px,4vw,64px);flex-wrap:wrap;
+  .foot-top{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    gap:clamp(28px,4vw,72px);flex-wrap:wrap;
     margin-bottom:clamp(30px,4.6vw,64px);
   }
-  .foot-info{display:grid;grid-template-columns:repeat(3,auto);gap:clamp(18px,2.4vw,40px)}
-  .foot-col{display:flex;flex-direction:column;gap:9px}
-  .foot-col .mono{color:rgba(255,255,255,.45);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px}
-  .foot-col a,.foot-col p{color:rgba(255,255,255,.85);font-size:15px;line-height:1.45}
-  .foot-col a:hover{color:#fff;text-decoration:underline}
-  .foot-col--contact .foot-phone{
+  .foot-contact{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+  .foot-phone{
     color:#fff;font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
-    font-size:clamp(1.15rem,1.75vw,1.65rem);letter-spacing:.02em;line-height:1.1;
+    font-size:clamp(1.4rem,2.4vw,2.2rem);letter-spacing:.02em;line-height:1.1;
   }
-  .foot-col--contact .foot-email{font-size:clamp(14px,1.15vw,16px)}
+  .foot-phone:hover{color:var(--brand-lift)}
+  .foot-email{color:rgba(255,255,255,.8);font-size:15px}
+  .foot-email:hover{color:#fff;text-decoration:underline}
+  .foot-contact .pill{margin-top:12px}
+  .foot-bottom a{color:rgba(255,255,255,.65)}
+  .foot-bottom a:hover{color:#fff}
   @media (max-width:900px){
-    .foot-grid{flex-direction:column;align-items:flex-start}
-    .foot-info{grid-template-columns:1fr 1fr;gap:22px}
+    .foot-top{flex-direction:column;align-items:flex-start}
   }
   .foot-pills{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:clamp(36px,6vw,90px)}
   .fpill{
@@ -1636,32 +1636,21 @@
 
 <!-- ============ BLOCK 14 · FOOTER ============ -->
 <footer class="foot" aria-label="Контакты">
-  <p class="foot-title display">
-    <span>Закроем вопрос</span>
-    <span>СИЗ&nbsp;— под&nbsp;ключ</span>
-  </p>
-  <div class="foot-grid">
-    <a class="pill pill--brand" href="https://wa.me/77051131551" rel="noopener">Написать в WhatsApp</a>
-    <div class="foot-info">
-      <div class="foot-col foot-col--contact">
-        <span class="mono">Связь</span>
-        <a class="foot-phone" href="tel:+77051131551">+7&nbsp;705&nbsp;113&nbsp;15&nbsp;51</a>
-        <a class="foot-email" href="mailto:info@alltrade-ltd.kz">info@alltrade-ltd.kz</a>
-      </div>
-      <div class="foot-col">
-        <span class="mono">Адрес</span>
-        <p>Усть-Каменогорск,<br>ул.&nbsp;Бажова&nbsp;79А</p>
-      </div>
-      <div class="foot-col">
-        <span class="mono">Соцсети</span>
-        <a href="https://instagram.com/alltrade_ltd_kz" rel="noopener">Instagram</a>
-        <a href="https://wa.me/77051131551" rel="noopener">WhatsApp</a>
-      </div>
+  <div class="foot-top">
+    <p class="foot-title display">
+      <span>Закроем вопрос</span>
+      <span>СИЗ&nbsp;— под&nbsp;ключ</span>
+    </p>
+    <div class="foot-contact">
+      <a class="foot-phone" href="tel:+77051131551">+7&nbsp;705&nbsp;113&nbsp;15&nbsp;51</a>
+      <a class="foot-email" href="mailto:info@alltrade-ltd.kz">info@alltrade-ltd.kz</a>
+      <a class="pill pill--brand" href="https://wa.me/77051131551" rel="noopener">Написать в WhatsApp</a>
     </div>
   </div>
   <div class="foot-bottom mono">
     <span>ТОО «ALLTRADE-LTD» · БИН&nbsp;160&nbsp;340&nbsp;027&nbsp;310</span>
-    <span>Работаем по&nbsp;всему Казахстану</span>
+    <span>Усть-Каменогорск, ул.&nbsp;Бажова&nbsp;79А</span>
+    <a href="https://instagram.com/alltrade_ltd_kz" rel="noopener">Instagram</a>
   </div>
 </footer>
 
