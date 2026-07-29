@@ -369,10 +369,6 @@
       -webkit-mask-composite:source-in;
       mask-composite:intersect;
     }
-    .hero2::after{
-      content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
-      background:linear-gradient(90deg,rgba(8,10,9,.68) 0%,rgba(8,10,9,.34) 52%,rgba(8,10,9,0) 82%);
-    }
     .hero2-copy{position:relative;z-index:4}
     .hero2-desc{max-width:30ch}
     .hero2-cta{display:inline-flex;padding:13px 22px;font-size:11px;letter-spacing:.1em}
@@ -719,6 +715,7 @@
   .foot-email{color:rgba(255,255,255,.8);font-size:15px}
   .foot-email:hover{color:#fff;text-decoration:underline}
   .foot-contact .pill{margin-top:12px}
+  .foot-social{display:inline-flex;gap:18px}
   .foot-bottom a{color:rgba(255,255,255,.65)}
   .foot-bottom a:hover{color:#fff}
   @media (max-width:900px){
@@ -1001,16 +998,11 @@
   .ind-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
   .ind{
     position:relative;overflow:hidden;
-    background:#0B0E0D;color:#fff;border-radius:var(--r-m);
+    background:#101413;color:#fff;border-radius:var(--r-m);
+    border:1px solid rgba(78,158,120,.16);
     padding:var(--card-pad);
     display:flex;flex-direction:column;gap:14px;justify-content:space-between;min-height:170px;
   }
-  .ind::after{
-    content:"";position:absolute;right:-40%;bottom:-55%;width:120%;height:120%;
-    background:radial-gradient(circle,rgba(78,158,120,.22),transparent 62%);
-    pointer-events:none;transition:opacity .25s ease;opacity:.7;
-  }
-  .ind:hover::after{opacity:1}
   .ind .ico{
     width:48px;height:48px;border-radius:14px;flex:none;
     background:rgba(78,158,120,.14);border:1px solid rgba(78,158,120,.3);
@@ -1083,6 +1075,12 @@
   }
   .foot{
     padding-inline:calc(max(var(--pad), 50vw - 720px + var(--pad)) - var(--inset));
+  }
+  @media (max-width:560px){
+    .hero2::after{
+      content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
+      background:linear-gradient(90deg,rgba(8,10,9,.55) 0%,rgba(8,10,9,.22) 48%,rgba(8,10,9,0) 72%);
+    }
   }
   @media (max-width:760px){
     .hero2,#vending{margin-inline:calc(var(--pad) * -1);padding-inline:var(--pad);border-radius:0}
@@ -1368,10 +1366,6 @@
         </figure>
       </div>
     </div>
-      <div class="bs-item"><b>Base Safety</b><span class="mono">Защитные перчатки&nbsp;· 13&nbsp;моделей</span></div>
-      <div class="bs-item"><b>MK</b><span class="mono">Полумаски и&nbsp;фильтры&nbsp;· 10&nbsp;моделей</span></div>
-      <div class="bs-item"><b>LINEPRO</b><span class="mono">Диэлектрические перчатки&nbsp;· для&nbsp;энергетики</span></div>
-    </div>
   </section>
 
   <!-- ============ BLOCK 4 · ГАЛЕРЕЯ ============ -->
@@ -1632,7 +1626,6 @@
         </div>
         <div class="f-submit">
         <button class="pill pill--brand" type="submit">Отправить в WhatsApp</button>
-        <button class="pill pill--ghost" type="button" id="send-mail">Отправить на почту</button>
           <p class="f-note">Отправляя форму, вы соглашаетесь на&nbsp;обработку контактных данных.</p>
         </div>
         <div class="f-ok" id="form-ok" role="status">
@@ -1660,7 +1653,9 @@
   <div class="foot-bottom mono">
     <span>ТОО «ALLTRADE-LTD» · БИН&nbsp;160&nbsp;340&nbsp;027&nbsp;310</span>
     <span>Усть-Каменогорск, ул.&nbsp;Бажова&nbsp;79А</span>
-    <a href="https://instagram.com/alltrade_ltd_kz" rel="noopener">Instagram</a>
+    <span class="foot-social">
+      <a href="https://instagram.com/alltrade_ltd_kz" rel="noopener">Instagram</a>
+    </span>
   </div>
 </footer>
 
@@ -1897,15 +1892,6 @@
       window.open('https://wa.me/77051131551?text=' + encodeURIComponent(leadText()), '_blank', 'noopener');
       ok.classList.add('is-on');
     });
-    var mailBtn = document.getElementById('send-mail');
-    if (mailBtn) {
-      mailBtn.addEventListener('click', function () {
-        if (!validateLead()) return;
-        window.location.href = 'mailto:info@alltrade-ltd.kz?subject=' +
-          encodeURIComponent('Заявка на расчёт СИЗ с сайта') +
-          '&body=' + encodeURIComponent(leadText());
-      });
-    }
     /* автоподстановка из калькулятора и каталога */
     var taskField = document.getElementById('f-task');
     var addTask = function (line) {
