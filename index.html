@@ -127,7 +127,9 @@
     border-radius:999px;
     -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
     box-shadow:0 12px 34px rgba(8,10,9,.35);
+    transition:transform .3s ease,opacity .3s ease;
   }
+  .nav.is-hidden{transform:translateY(-130%);opacity:0}
   .nav-logo{display:inline-flex;align-items:center;gap:10px;flex:none}
   .nav-logo img{height:30px;width:auto;display:block;filter:brightness(0) invert(1)}
   .nav-logo b{
@@ -782,6 +784,25 @@
   @media (max-width:600px){.stat--wide,.stat--sm,.st4,.st5{grid-column:span 12}}
 
   /* ---------- pain (block 3) ---------- */
+  .pain-say{padding-block:clamp(10px,2vw,30px)}
+  .pain-line{
+    font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
+    font-size:clamp(1.5rem,4vw,3.4rem);line-height:1.08;
+    letter-spacing:.01em;text-transform:uppercase;
+    color:#8F969C;
+  }
+  .pl2{margin-left:clamp(0.8em,6vw,2.4em)}
+  .pl3{margin-left:clamp(0.3em,2.5vw,1em)}
+  .pl4{margin-left:clamp(1.2em,9vw,3.6em)}
+  .pain-answer{
+    margin-top:clamp(18px,2.6vw,36px);
+    font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
+    font-size:clamp(1.9rem,5vw,4.4rem);line-height:1.02;
+    letter-spacing:.01em;text-transform:uppercase;
+    color:var(--ink);max-width:16ch;
+  }
+  .pain-answer em{font-style:normal;color:var(--brand)}
+  .pain-say .pill{margin-top:clamp(20px,2.6vw,34px)}
   .pain-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
   .pain{background:var(--panel);border-radius:var(--r-m);padding:var(--card-pad);
     display:flex;flex-direction:column;gap:14px}
@@ -1124,32 +1145,13 @@
       </div>
     </div>
 
-    <div class="pain-grid">
-      <article class="pain">
-        <svg aria-hidden="true"><use href="#i-cost"/></svg>
-        <b>Перерасход СИЗ</b>
-        <p>Выдача без поимённого учёта: расход растёт, причину найти невозможно.</p>
-      </article>
-      <article class="pain">
-        <svg aria-hidden="true"><use href="#i-many"/></svg>
-        <b>Десять поставщиков</b>
-        <p>Десять договоров, счетов и сроков. Каждая позиция&nbsp;— отдельная закупка.</p>
-      </article>
-      <article class="pain">
-        <svg aria-hidden="true"><use href="#i-clock"/></svg>
-        <b>Срыв сроков</b>
-        <p>Нет спецодежды нужного размера&nbsp;— смена не выходит на участок.</p>
-      </article>
-      <article class="pain">
-        <svg aria-hidden="true"><use href="#i-doc"/></svg>
-        <b>Требования тендеров</b>
-        <p>Сертификаты, казахстанское содержание, аудит&nbsp;— не каждый поставщик проходит.</p>
-      </article>
-    </div>
-
-    <div class="pain-resolve">
-      <b>Один подрядчик<br>закрывает всё это</b>
-      <a class="pill" href="#solution">Как устроено решение</a>
+    <div class="pain-say">
+      <p class="pain-line">Десять поставщиков и&nbsp;счетов.</p>
+      <p class="pain-line pl2">Перерасход без&nbsp;учёта.</p>
+      <p class="pain-line pl3">Смена не&nbsp;вышла&nbsp;— нет размеров.</p>
+      <p class="pain-line pl4">Тендер, который не&nbsp;пройти.</p>
+      <p class="pain-answer">Закрываем всё это <em>одним договором</em>.</p>
+      <a class="pill pill--brand" href="#solution">Как устроено решение</a>
     </div>
   </section>
 
@@ -1637,6 +1639,18 @@
 (function () {
   'use strict';
   var nf = new Intl.NumberFormat('ru-RU');
+
+  /* ---- Шапка: прячется при прокрутке вниз, появляется при движении вверх ---- */
+  var navEl = document.querySelector('.nav');
+  if (navEl) {
+    var lastY = window.scrollY;
+    window.addEventListener('scroll', function () {
+      var y = window.scrollY;
+      if (y > lastY && y > 140) navEl.classList.add('is-hidden');
+      else navEl.classList.remove('is-hidden');
+      lastY = y;
+    }, { passive: true });
+  }
 
   /* ---- Каунт-ап цифр статистики ---- */
   if ('IntersectionObserver' in window && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
