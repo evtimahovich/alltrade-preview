@@ -34,7 +34,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700;125,800;125,900&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,500;125,700;125,800;125,900&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
     --paper:#F3F4F5;
@@ -49,6 +49,7 @@
     --r-m:8px;
     --r-l:12px;
     --pad:clamp(16px,3.4vw,48px);
+    --inset:clamp(10px,1.4vw,20px);
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -255,9 +256,9 @@
     position:relative;overflow:hidden;
     background:#0A0C0B;color:#fff;
     border-radius:var(--r-l);
-    margin:0 clamp(10px,1.4vw,20px);
+    margin:0 calc((var(--pad) - var(--inset)) * -1);
     min-height:min(92svh,960px);
-    padding:clamp(18px,3vw,48px) clamp(20px,4vw,64px);
+    padding:clamp(18px,3vw,48px) calc(var(--pad) - var(--inset));
     display:flex;flex-direction:column;justify-content:center;
   }
   .hero2-bgtex{position:absolute;inset:0;opacity:.16;pointer-events:none}
@@ -294,7 +295,8 @@
   .hero2-title .l2{margin-left:clamp(1.1em,13vw,1.9em)}
   .hero2-title .l3{color:var(--brand-lift);margin-left:clamp(.35em,4.5vw,.75em);position:relative;z-index:4}
   .hero2-desc{
-    position:relative;z-index:3;max-width:34ch;margin-top:clamp(16px,2.2vw,28px);
+    position:relative;z-index:3;max-width:36ch;margin-top:clamp(16px,2.2vw,28px);
+    font-family:'Archivo',sans-serif;font-stretch:100%;font-weight:500;
     font-size:clamp(15px,1.25vw,17.5px);line-height:1.55;color:rgba(255,255,255,.8);
   }
   .hero2-cta{position:relative;z-index:3;margin-top:clamp(18px,2.6vw,34px)}
@@ -306,23 +308,13 @@
     border:1px solid rgba(255,255,255,.14);
     border-radius:18px;
     -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
-    padding:18px 20px;
+    padding:24px 26px;
   }
-  .hero2-card img{height:34px;filter:brightness(0) invert(1);opacity:.92;margin-bottom:12px}
   .hero2-card b{
     font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
     font-size:14px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;
   }
   .hero2-card p{font-size:13px;line-height:1.6;color:rgba(255,255,255,.72)}
-  .hero2-tag{
-    position:absolute;z-index:4;
-    left:clamp(20px,4vw,64px);bottom:clamp(18px,3.4vw,52px);
-    display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.68);
-  }
-  .hero2-tag::before{
-    content:"";width:9px;height:9px;border-radius:999px;flex:none;
-    background:var(--brand-lift);box-shadow:0 0 0 6px rgba(78,158,120,.16);
-  }
   @media (max-width:1180px){
     .hero2-char{right:-5vw;height:min(80%,660px)}
   }
@@ -333,18 +325,17 @@
     .hero2-title .l3{margin-left:.3em}
     /* персонаж — фоновым слоем справа, как на десктопе */
     .hero2-char{
-      position:absolute;right:-22vw;bottom:0;top:auto;
-      height:min(66%,560px);width:auto;aspect-ratio:3/4;margin:0;
-      -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 44%,#000 100%),linear-gradient(180deg,transparent 0,#000 10%,#000 84%,transparent 100%);
-      mask-image:linear-gradient(90deg,transparent 0,#000 44%,#000 100%),linear-gradient(180deg,transparent 0,#000 10%,#000 84%,transparent 100%);
+      position:absolute;right:-9vw;bottom:0;top:auto;
+      height:min(76%,640px);width:auto;aspect-ratio:3/4;margin:0;
+      -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 30%,#000 100%),linear-gradient(180deg,transparent 0,#000 10%,#000 86%,transparent 100%);
+      mask-image:linear-gradient(90deg,transparent 0,#000 30%,#000 100%),linear-gradient(180deg,transparent 0,#000 10%,#000 86%,transparent 100%);
       -webkit-mask-composite:source-in;
       mask-composite:intersect;
     }
     .hero2-copy{position:relative;z-index:3}
     .hero2-desc{max-width:30ch}
-    .hero2-cta{display:inline-flex}
+    .hero2-cta{display:inline-flex;padding:13px 22px;font-size:11px;letter-spacing:.1em}
     .hero2-card{position:relative;right:auto;bottom:auto;z-index:3;width:min(320px,100%);margin:18px 0 0}
-    .hero2-tag{position:relative;left:auto;bottom:auto;z-index:3;margin-top:16px}
   }
 
   /* ---------- тёмный кино-герой (по брендбуку: зелёный + белый) ---------- */
@@ -571,7 +562,14 @@
   }
   .portrait .card-arr{top:auto;bottom:14px;right:14px}
   @media (max-width:860px){
-    .series-grid{grid-template-columns:1fr;gap:16px}
+    .series-grid{display:flex;flex-direction:column;gap:16px}
+    .series-left{display:contents}
+    .series-left > .svc-kicker{order:1}
+    .series-left > h2{order:2}
+    .series-left > .mono{order:3}
+    .series-left > .pills{order:4}
+    .series-right{order:5}
+    .price-cta{order:6;margin-top:2px;align-self:flex-start}
     /* категории — горизонтальная лента, картинка сразу под ней */
     .pills{
       flex-direction:row;overflow-x:auto;gap:8px;
@@ -662,8 +660,8 @@
   .foot{
     background:var(--ink);color:#fff;
     border-radius:var(--r-l);
-    margin:0 clamp(10px,1.4vw,20px) clamp(10px,1.4vw,20px);
-    padding:clamp(28px,4vw,64px) var(--pad) clamp(22px,3vw,40px);
+    margin:0 var(--inset) var(--inset);
+    padding:clamp(28px,4vw,64px) calc(var(--pad) - var(--inset)) clamp(22px,3vw,40px);
     position:relative;overflow:hidden;
   }
   .foot-pills{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:clamp(36px,6vw,90px)}
@@ -713,8 +711,8 @@
   #vending{
     background:#0B0E0D;color:#fff;
     border-radius:var(--r-l);
-    margin-inline:calc(var(--pad) * -0.5);
-    padding-inline:calc(var(--pad) * 0.5);
+    margin-inline:calc((var(--pad) - var(--inset)) * -1);
+    padding-inline:calc(var(--pad) - var(--inset));
     position:relative;overflow:hidden;
   }
   #vending::before{
@@ -729,9 +727,6 @@
   #vending .vfeat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09)}
   #vending .vfeat p{color:rgba(255,255,255,.66)}
   #vending .calc{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09)}
-  @media (max-width:760px){
-    #vending{margin-inline:calc(var(--pad) * -0.6);padding-inline:calc(var(--pad) * 0.6)}
-  }
 
   /* ---------- общее свечение тёмных плашек ---------- */
   .pain-resolve,.cl-anchor,.calc,.m-orange{position:relative;overflow:hidden}
@@ -1063,11 +1058,9 @@
       <a class="pill pill--brand hero2-cta" href="#contact">Запросить расчёт под предприятие</a>
     </div>
     <aside class="hero2-card">
-      <img src="assets/brand/logo-v.png" alt="" aria-hidden="true">
       <b>Нам доверяет Казцинк</b>
       <p>Снабжаем крупнейшего производителя цинка в стране с 1997 года — 29 лет непрерывного контракта.</p>
     </aside>
-    <p class="hero2-tag mono">Снабжаем промышленность по всему Казахстану</p>
   </section>
 
   <!-- ============ BLOCK 2 · О КОМПАНИИ ЦИФРАМИ ============ -->
@@ -1281,21 +1274,21 @@
                   data-spec="24 модели · зима / лето · до 18 кВ · без металла"
                   data-alt="Защитная обувь Safety Nomads"><span>Защита ног</span><span class="mono">04</span></button>
           <button class="spill" type="button" aria-pressed="false"
+                  data-img="assets/catalog/cine/wear.webp" data-brand="Textiline"
+                  data-spec="собственный пошив · 50 668 комплектов в год"
+                  data-alt="Спецодежда Textiline"><span>Защита тела · спецодежда</span><span class="mono">05</span></button>
+          <button class="spill" type="button" aria-pressed="false"
                   data-img="assets/catalog/cine/eye.webp" data-brand="РУСОКО"
                   data-spec="6 моделей · защита глаз"
-                  data-alt="Защитные очки РУСОКО"><span>Защита глаз</span><span class="mono">05</span></button>
+                  data-alt="Защитные очки РУСОКО"><span>Защита глаз</span><span class="mono">06</span></button>
           <button class="spill" type="button" aria-pressed="false"
                   data-img="assets/catalog/cine/weld.webp" data-brand="FITSIZ"
                   data-spec="7 моделей · автозатемнение и фиксированный DIN"
-                  data-alt="Сварочная маска FITSIZ"><span>Сварочные маски</span><span class="mono">06</span></button>
+                  data-alt="Сварочная маска FITSIZ"><span>Сварочные маски</span><span class="mono">07</span></button>
           <button class="spill" type="button" aria-pressed="false"
                   data-img="assets/catalog/cine/ear.webp" data-brand="Защита слуха"
                   data-spec="5 моделей · вкладыши и наушники"
-                  data-alt="Средства защиты слуха"><span>Защита слуха</span><span class="mono">07</span></button>
-          <button class="spill" type="button" aria-pressed="false"
-                  data-img="assets/catalog/cine/wear.webp" data-brand="Textiline"
-                  data-spec="собственный пошив · 50 668 комплектов в год"
-                  data-alt="Спецодежда Textiline"><span>Спецодежда</span><span class="mono">08</span></button>
+                  data-alt="Средства защиты слуха"><span>Защита слуха</span><span class="mono">08</span></button>
         </div>
         <a class="pill pill--brand price-cta" href="#contact" id="price-cta">Запросить прайс по категории</a>
       </div>
