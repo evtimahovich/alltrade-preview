@@ -56,7 +56,7 @@
   body{
     background:var(--paper);
     color:var(--ink);
-    font-family:'Proxima Nova','Manrope',system-ui,sans-serif;
+    font-family:'Manrope',system-ui,sans-serif;
     font-size:16px;
     line-height:1.5;
     -webkit-font-smoothing:antialiased;
@@ -67,7 +67,7 @@
   :focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:4px}
 
   .display{
-    font-family:'Proxima Nova','Archivo',sans-serif;
+    font-family:'Archivo',sans-serif;
     font-stretch:125%;
     font-weight:900;
     text-transform:uppercase;
@@ -90,7 +90,7 @@
     background:var(--ink);color:#fff;
     border-radius:999px;
     padding:16px 28px;
-    font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;
+    font-family:'Archivo',sans-serif;font-stretch:125%;
     font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;
     transition:transform .2s ease,background .2s ease;
   }
@@ -121,10 +121,10 @@
     background:rgba(243,244,245,.82);
     -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
   }
-  .nav-logo{display:inline-flex;align-items:center;gap:10px}
+  .nav-logo{display:inline-flex;align-items:center;gap:10px;flex:none}
   .nav-logo img{height:34px;width:auto;display:block}
   .nav-logo b{
-    font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:800;
+    font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
     font-size:13px;letter-spacing:.14em;text-transform:uppercase;
   }
   .nav-links{display:flex;gap:clamp(16px,3vw,44px);list-style:none}
@@ -144,9 +144,11 @@
   .nav-cta:hover{background:var(--ink);color:#fff;transform:translateY(-1px)}
   .nav-menu{color:var(--ink);display:inline-flex;padding:6px;border-radius:8px}
   .nav-menu svg{width:20px;height:20px}
+  @media (max-width:1000px){
+    .nav-links{display:none}
+  }
   @media (max-width:760px){
     .nav{padding-block:16px}
-    .nav-links{display:none}
     .nav-logo img{height:29px}
     .nav-cta{padding:9px 12px;font-size:10px}
   }
@@ -170,7 +172,7 @@
   .hero::after{
     content:"ALLTRADE";
     position:absolute;left:0;right:0;bottom:-.2em;
-    font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:900;
+    font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
     font-size:clamp(5.4rem,17vw,17rem);line-height:.72;letter-spacing:-.01em;
     color:rgba(17,19,21,.035);text-align:center;z-index:0;pointer-events:none;
   }
@@ -212,7 +214,7 @@
     display:flex;flex-direction:column;justify-content:space-between;gap:12px;
   }
   .proof b{
-    font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:900;
+    font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
     font-size:clamp(1.35rem,2.6vw,2.7rem);line-height:.9;font-variant-numeric:tabular-nums;
   }
   .proof span{color:var(--ink-soft)}
@@ -253,17 +255,17 @@
     padding:clamp(18px,3vw,48px) clamp(20px,4vw,64px);
     display:flex;flex-direction:column;justify-content:center;
   }
-  .hero2-bgtex{position:absolute;inset:0;opacity:.38;pointer-events:none}
+  .hero2-bgtex{position:absolute;inset:0;opacity:.16;pointer-events:none}
   .hero2-bgtex img{width:100%;height:100%;object-fit:cover}
   .hero2::before{
-    content:"";position:absolute;right:-12vw;bottom:-28%;
-    width:58vw;height:58vw;
-    background:radial-gradient(circle,rgba(78,158,120,.26),transparent 62%);
+    content:"";position:absolute;right:-10vw;bottom:-24%;
+    width:60vw;height:60vw;
+    background:radial-gradient(circle,rgba(78,158,120,.34),transparent 62%);
     pointer-events:none;
   }
   .hero2-char{
-    position:absolute;z-index:2;bottom:0;right:clamp(3vw,8vw,11vw);
-    height:min(86%,740px);aspect-ratio:3/4;object-fit:cover;object-position:top;
+    position:absolute;z-index:3;bottom:0;right:clamp(2vw,6vw,9vw);
+    height:min(90%,780px);aspect-ratio:3/4;object-fit:cover;object-position:top;
     -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 8%,#000 82%,transparent 100%),linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
     mask-image:linear-gradient(180deg,transparent 0,#000 8%,#000 82%,transparent 100%),linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
     -webkit-mask-composite:source-in;
@@ -279,12 +281,13 @@
     background:var(--brand-lift);box-shadow:0 0 0 6px rgba(78,158,120,.16);
   }
   .hero2-title{
+    position:relative;z-index:2;
     font-size:clamp(3.8rem,10.6vw,10.6rem);
     line-height:.85;color:#fff;
   }
   .hero2-title span{display:block}
   .hero2-title .l2{margin-left:clamp(1.1em,13vw,1.9em)}
-  .hero2-title .l3{color:var(--brand-lift);margin-left:clamp(.35em,4.5vw,.75em);position:relative;z-index:3}
+  .hero2-title .l3{color:var(--brand-lift);margin-left:clamp(.35em,4.5vw,.75em);position:relative;z-index:4}
   .hero2-desc{
     position:relative;z-index:3;max-width:34ch;margin-top:clamp(16px,2.2vw,28px);
     font-size:clamp(14px,1.15vw,16.5px);line-height:1.5;color:rgba(255,255,255,.78);
@@ -302,7 +305,7 @@
   }
   .hero2-card img{height:34px;filter:brightness(0) invert(1);opacity:.92;margin-bottom:12px}
   .hero2-card b{
-    font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:800;
+    font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
     font-size:13.5px;letter-spacing:.07em;text-transform:uppercase;display:block;margin-bottom:6px;
   }
   .hero2-card p{font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.66)}
@@ -394,6 +397,7 @@
 
   /* ---------- section head pattern ---------- */
   section{padding-block:clamp(40px,6vw,96px)}
+  section[id]{scroll-margin-top:84px}
   .sec-head{
     display:flex;justify-content:space-between;align-items:flex-end;gap:32px;
     margin-bottom:clamp(24px,3.4vw,48px);
@@ -403,7 +407,7 @@
   .sec-side .mono{color:var(--ink-soft)}
   @media (max-width:760px){
     .sec-head{flex-direction:column;align-items:flex-start;gap:18px}
-    .sec-head h2{overflow-wrap:anywhere}
+    .sec-head h2{hyphens:auto;overflow-wrap:break-word}
   }
   @media (max-width:560px){
     .sec-head h2{font-size:clamp(1.7rem,8.6vw,2.4rem)}
@@ -423,6 +427,18 @@
     position:relative;
     overflow:hidden;
   }
+  .card,.stat,.pain,.step,.cert,.p-card,.vfeat,.wrow{
+    border:1px solid var(--line);
+    box-shadow:0 1px 2px rgba(17,19,21,.04),0 16px 40px rgba(17,19,21,.05);
+    transition:transform .25s ease,box-shadow .25s ease;
+  }
+  @media (hover:hover){
+    .card:hover,.stat:hover,.pain:hover,.step:hover,.cert:hover,.p-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 2px 4px rgba(17,19,21,.05),0 24px 56px rgba(17,19,21,.09);
+    }
+  }
+  .m-orange,.m-cta,#vending .vfeat{border:0;box-shadow:none}
   .m-orange{grid-column:span 4;grid-row:span 2;background:var(--ink);color:#fff;display:flex;flex-direction:column}
   .m-orange img{
     flex:1;min-height:0;width:100%;object-fit:cover;border-radius:calc(var(--r-m) - 8px);
@@ -438,7 +454,7 @@
   .m-orange-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .play--sm{width:56px;height:56px}
   .m-orange .card-tag{
-    font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:800;
+    font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
     font-size:clamp(15px,1.3vw,19px);letter-spacing:.06em;text-transform:uppercase;
     line-height:1.25;max-width:80%;
   }
@@ -455,7 +471,7 @@
   }
   .brand-row:last-child{border-bottom:0;padding-bottom:0}
   .brand-row b{
-    font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:900;
+    font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
     font-size:clamp(15px,1.4vw,21px);letter-spacing:.05em;text-transform:uppercase;
   }
   .brand-row .mono{color:var(--mute);white-space:nowrap}
@@ -470,12 +486,12 @@
     overflow:hidden;flex:none;
   }
   .avatars span + span{margin-left:-18px}
-  .avatars img{width:70%;height:70%;object-fit:contain}
+  .avatars img{width:70%;height:70%;object-fit:contain;filter:grayscale(1) contrast(.92)}
   .m-avatars .mono{color:var(--ink-soft)}
 
   .m-number{grid-column:span 5;display:flex;align-items:flex-end}
   .m-number p{
-    font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:800;
+    font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
     font-size:clamp(18px,1.9vw,27px);line-height:1.18;
     letter-spacing:.01em;text-transform:uppercase;
   }
@@ -484,14 +500,14 @@
   .m-cta{grid-column:span 3;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:14px;background:var(--brand);color:#fff}
   .m-cta .pill{padding:14px 22px;background:#fff;color:var(--ink)}
   .m-cta-title{
-    font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:800;
+    font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
     font-size:clamp(15px,1.4vw,19px);line-height:1.25;letter-spacing:.04em;text-transform:uppercase;
   }
 
   .m-certs{grid-column:span 12;grid-row:auto;min-height:0;
     display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
   .m-certs b{
-    font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:900;
+    font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
     font-size:clamp(1.6rem,3.6vw,3rem);letter-spacing:.01em;text-transform:uppercase;line-height:1;
   }
   .m-certs .mono{color:var(--ink-soft)}
@@ -525,7 +541,7 @@
     width:100%;text-align:left;
     border:1px solid var(--line);border-radius:999px;
     padding:clamp(16px,1.8vw,22px) clamp(20px,2.2vw,30px);
-    font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:800;
+    font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
     font-size:clamp(13px,1.3vw,17px);letter-spacing:.1em;text-transform:uppercase;
     color:var(--ink-soft);background:transparent;
     transition:color .2s ease,background .2s ease,border-color .2s ease;
@@ -533,7 +549,8 @@
   .spill .mono{color:inherit;letter-spacing:.06em}
   .spill:hover{color:var(--ink);border-color:var(--ink)}
   .spill[aria-pressed="true"]{background:var(--panel);border-color:var(--panel);color:var(--ink)}
-  .series-right h3{font-size:clamp(1.7rem,3.6vw,3.2rem);margin-bottom:clamp(16px,2vw,26px)}
+  .price-cta{margin-top:18px}
+  .series-right h3{font-size:clamp(1.3rem,2.2vw,2rem);color:var(--ink-soft);margin-bottom:clamp(16px,2vw,26px)}
   .portrait{
     border-radius:var(--r-m);overflow:hidden;position:relative;
     background:#0B0E0D;
@@ -565,7 +582,8 @@
     .spill[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
     .spill .mono{display:none}
     .series-left > .mono{margin-bottom:14px}
-    .series-right h3{display:none}
+    .price-cta{margin-top:18px}
+  .series-right h3{display:none}
     .portrait img{height:clamp(300px,88vw,420px)}
   }
 
@@ -582,6 +600,11 @@
   .media-card{
     position:relative;border-radius:var(--r-l);overflow:hidden;background:var(--panel);
     margin-bottom:14px;
+  }
+  .media-card--grade::before{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,transparent 55%,rgba(8,10,9,.55) 100%);
+    pointer-events:none;
   }
   .media-card img{
     width:100%;height:clamp(300px,42vw,560px);object-fit:cover;
@@ -614,7 +637,7 @@
   }
   .p-meta{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
   .p-meta b{
-    font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:800;
+    font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
     font-size:13px;letter-spacing:.08em;text-transform:uppercase;display:block;
   }
   .p-meta .mono{color:var(--mute)}
@@ -695,6 +718,14 @@
     #vending{margin-inline:calc(var(--pad) * -0.6);padding-inline:calc(var(--pad) * 0.6)}
   }
 
+  /* ---------- общее свечение тёмных плашек ---------- */
+  .pain-resolve,.cl-anchor,.calc,.m-orange{position:relative;overflow:hidden}
+  .pain-resolve::after,.cl-anchor::after{
+    content:"";position:absolute;right:-25%;top:-60%;width:70%;height:180%;
+    background:radial-gradient(circle,rgba(78,158,120,.16),transparent 62%);
+    pointer-events:none;
+  }
+
   /* ---------- scroll reveal ---------- */
   @media (prefers-reduced-motion:no-preference){
     .rv{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.2,.6,.2,1),transform .6s cubic-bezier(.2,.6,.2,1)}
@@ -715,12 +746,12 @@
   .stats-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
   .stat{background:var(--panel);border-radius:var(--r-m);padding:clamp(20px,2.2vw,32px);
     display:flex;flex-direction:column;justify-content:space-between;gap:18px;min-height:170px}
-  .stat .n{font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:900;text-wrap:balance;
+  .stat .n{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;text-wrap:balance;
     font-size:clamp(2.2rem,4.6vw,4.2rem);line-height:.9;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
   .stat .n i{font-style:normal;font-size:.42em;letter-spacing:.02em;margin-left:.12em;white-space:nowrap}
   .stat .l{color:var(--ink-soft)}
   .stat--wide{grid-column:span 5}
-  .stat--sm{grid-column:span 3.5}
+  .stat--sm{grid-column:span 4}
   .st4{grid-column:span 3}
   .st5{grid-column:span 4}
   .stat--orange{background:var(--brand);color:#fff}
@@ -738,12 +769,12 @@
   .pain{background:var(--panel);border-radius:var(--r-m);padding:clamp(20px,2.2vw,30px);
     display:flex;flex-direction:column;gap:14px}
   .pain svg{width:30px;height:30px;color:var(--brand);flex:none}
-  .pain b{font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:800;
+  .pain b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
     font-size:clamp(14px,1.3vw,17px);letter-spacing:.06em;text-transform:uppercase;line-height:1.25}
   .pain p{color:var(--ink-soft);font-size:14px}
   .pain-resolve{margin-top:14px;background:var(--ink);color:#fff;border-radius:var(--r-m);
     padding:clamp(22px,2.6vw,38px);display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
-  .pain-resolve b{font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:900;
+  .pain-resolve b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
     font-size:clamp(1.3rem,3vw,2.4rem);text-transform:uppercase;line-height:1.05;letter-spacing:.01em}
   .pain-resolve .pill{background:#fff;color:var(--ink)}
   .pain-resolve .pill:hover{background:var(--brand-lift);color:#fff}
@@ -756,7 +787,7 @@
     display:flex;flex-direction:column;gap:12px;position:relative}
   .svc .num{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--mute)}
   .svc svg.ic{width:34px;height:34px;color:var(--ink);margin-top:4px}
-  .svc b{font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:900;
+  .svc b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
     font-size:clamp(15px,1.5vw,20px);letter-spacing:.06em;text-transform:uppercase}
   .svc p{color:var(--ink-soft);font-size:14px}
   .svc--accent{background:var(--brand);color:#fff}
@@ -765,7 +796,7 @@
   .loop-core{margin-top:14px;background:var(--panel);border-radius:var(--r-m);
     padding:clamp(20px,2.4vw,34px);display:flex;align-items:center;gap:20px;justify-content:center;flex-wrap:wrap;text-align:center}
   .loop-core img{height:56px;width:auto;flex:none} /* фирменный зелёный — допустимый вариант знака */
-  .loop-core b{font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:900;
+  .loop-core b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
     font-size:clamp(1.1rem,2.4vw,1.9rem);text-transform:uppercase;letter-spacing:.02em}
   .loop-core span{color:var(--ink-soft);font-size:14px}
   @media (max-width:900px){.loop{grid-template-columns:repeat(2,1fr)}}
@@ -784,36 +815,38 @@
     background:linear-gradient(180deg,transparent,rgba(10,12,14,.86));
   }
   .vend-img figcaption b{
-    font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:900;
+    font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
     font-size:clamp(17px,1.7vw,24px);letter-spacing:.05em;text-transform:uppercase;display:block;
   }
   .vend-img figcaption .mono{opacity:.82;display:block;margin-top:6px}
   .vend-right{display:flex;flex-direction:column;gap:14px}
   .vend-feats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   .vfeat{background:var(--panel);border-radius:var(--r-m);padding:clamp(18px,1.9vw,24px);display:flex;flex-direction:column;gap:9px}
-  .vfeat b{font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:800;
+  .vfeat b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
     font-size:13px;letter-spacing:.08em;text-transform:uppercase}
   .vfeat p{color:var(--ink-soft);font-size:13.5px}
   .calc{background:var(--ink);color:#fff;border-radius:var(--r-m);padding:clamp(22px,2.4vw,32px);
     display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,2.4vw,34px);align-items:center}
-  .calc h4{font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:900;
+  .calc h3{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
     font-size:clamp(15px,1.5vw,20px);text-transform:uppercase;letter-spacing:.05em;margin-bottom:16px}
   .calc label{display:block;color:rgba(255,255,255,.7);margin-bottom:10px;
     font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
-  .calc .val{font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:900;
+  .calc .val{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
     font-size:clamp(2rem,3.6vw,3rem);line-height:1;font-variant-numeric:tabular-nums;margin-bottom:12px}
-  .calc input[type=range]{width:100%;accent-color:var(--brand);height:22px}
+  .calc input[type=range]{width:100%;accent-color:var(--brand);height:44px}
   .calc-out{background:rgba(255,255,255,.07);border-radius:var(--r-s);padding:clamp(18px,2vw,26px)}
   /* на тёмном — осветлённый зелёный */
-  .calc-out .sum{white-space:nowrap;font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:900;
+  .calc-out .sum{white-space:nowrap;font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
     font-size:clamp(1.7rem,3.4vw,2.8rem);line-height:1;color:var(--brand-lift);font-variant-numeric:tabular-nums}
+  .calc-cta{margin-top:16px;background:#fff;color:var(--ink)}
+  .calc-cta:hover{background:var(--brand-lift);color:#fff}
   .calc-out .cap{color:rgba(255,255,255,.62);font-size:13px;margin-top:10px}
-  .calc-out .note{color:rgba(255,255,255,.45);font-size:11.5px;margin-top:14px;
+  .calc-out .note{color:rgba(255,255,255,.58);font-size:11.5px;margin-top:14px;
     font-family:'IBM Plex Mono',monospace;letter-spacing:.04em;line-height:1.6}
   .vend-img > img{transition:opacity .22s ease}
   .vend-thumbs{position:absolute;right:14px;top:14px;z-index:3;display:flex;gap:8px}
   .vend-thumbs button{
-    width:52px;height:38px;border-radius:9px;overflow:hidden;flex:none;
+    width:56px;height:44px;border-radius:9px;overflow:hidden;flex:none;
     border:2px solid rgba(255,255,255,.5);opacity:.72;padding:0;background:none;cursor:pointer;
     transition:opacity .2s ease,border-color .2s ease;
   }
@@ -828,7 +861,7 @@
   @media (max-width:560px){
     .vend-feats{grid-template-columns:1fr}
     .vend-thumbs{gap:6px}
-    .vend-thumbs button{width:48px;height:36px}
+    .vend-thumbs button{width:46px;height:44px}
   }
 
   /* ---------- wash (block 6) ---------- */
@@ -840,7 +873,7 @@
   .wrow{background:var(--panel);border-radius:var(--r-m);padding:clamp(17px,1.8vw,24px);
     display:flex;gap:16px;align-items:flex-start}
   .wrow .k{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:var(--brand);flex:none;padding-top:3px}
-  .wrow b{font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:800;
+  .wrow b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
     font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:5px}
   .wrow p{color:var(--ink-soft);font-size:14px}
   @media (max-width:860px){.wash{grid-template-columns:1fr}}
@@ -849,7 +882,7 @@
   .certs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
   .cert{background:var(--panel);border-radius:var(--r-m);padding:clamp(22px,2.4vw,32px);
     display:flex;flex-direction:column;gap:12px}
-  .cert .code{font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:900;
+  .cert .code{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
     font-size:clamp(1.2rem,2.4vw,1.9rem);letter-spacing:.02em;text-transform:uppercase;line-height:1}
   .cert p{color:var(--ink-soft);font-size:14px}
   .cert .stamp{width:44px;height:44px;border-radius:50%;border:2px solid var(--brand);color:var(--brand);
@@ -861,7 +894,7 @@
   .cl-anchor{background:var(--ink);color:#fff;border-radius:var(--r-m);
     padding:clamp(24px,3vw,44px);display:flex;justify-content:space-between;align-items:center;
     gap:24px;flex-wrap:wrap;margin-bottom:14px}
-  .cl-anchor b{font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:900;
+  .cl-anchor b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
     font-size:clamp(1.8rem,4.4vw,3.6rem);text-transform:uppercase;letter-spacing:.01em;line-height:1}
   .cl-anchor .mono{color:rgba(255,255,255,.66);max-width:340px}
   .ind-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
@@ -883,7 +916,7 @@
     display:flex;align-items:center;justify-content:center;
   }
   .ind svg{width:24px;height:24px;color:var(--brand-lift)}
-  .ind b{font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:800;
+  .ind b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
     font-size:13px;letter-spacing:.08em;text-transform:uppercase}
   @media (max-width:900px){.ind-grid{grid-template-columns:repeat(2,1fr)}}
   @media (max-width:520px){.ind-grid{grid-template-columns:1fr}}
@@ -892,9 +925,9 @@
   .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
   .step{background:var(--panel);border-radius:var(--r-m);padding:clamp(20px,2.2vw,28px);
     display:flex;flex-direction:column;gap:12px}
-  .step .no{font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:900;
+  .step .no{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
     font-size:clamp(1.6rem,2.6vw,2.4rem);color:var(--brand);line-height:1}
-  .step b{font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:800;
+  .step b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
     font-size:13px;letter-spacing:.07em;text-transform:uppercase;line-height:1.3}
   .step p{color:var(--ink-soft);font-size:13.5px}
   @media (max-width:1000px){.steps{grid-template-columns:repeat(3,1fr)}}
@@ -904,7 +937,7 @@
   .ct-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:14px;align-items:start}
   .ct-info{background:var(--panel);border-radius:var(--r-m);padding:clamp(20px,2.4vw,32px);
     display:flex;flex-direction:column;gap:16px}
-  .ct-row b{font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:800;
+  .ct-row b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
     font-size:clamp(1rem,1.3vw,1.15rem);letter-spacing:.01em;display:block}
   .ct-row .mono{color:var(--ink-soft);display:block;margin-bottom:4px;font-size:10.5px}
   .ct-row p{font-size:13px;color:var(--ink-soft)}
@@ -913,12 +946,15 @@
   .field{display:flex;flex-direction:column;gap:7px}
   .field label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;
     text-transform:uppercase;color:var(--ink-soft)}
+  .hero2 :focus-visible,#vending :focus-visible,.foot :focus-visible,.calc :focus-visible{outline-color:var(--brand-lift)}
   .field input,.field textarea{
-    font-family:'Proxima Nova','Manrope',sans-serif;font-size:15px;color:var(--ink);
+    font-family:'Manrope',sans-serif;font-size:16px;color:var(--ink);
     background:#fff;border:1px solid var(--line);border-radius:var(--r-s);
     padding:14px 16px;width:100%;transition:border-color .2s ease}
-  .field input:focus,.field textarea:focus{outline:none;border-color:var(--brand)}
+  .field input:focus,.field textarea:focus{outline:2px solid var(--brand);outline-offset:1px;border-color:var(--brand)}
   .field textarea{resize:vertical;min-height:104px}
+  .pill--ghost{background:transparent;border:1px solid var(--ink);color:var(--ink)}
+  .pill--ghost:hover{background:var(--ink);color:#fff}
   .f-submit{display:flex;align-items:center;gap:14px;margin-top:18px;flex-wrap:wrap}
   .f-note{color:var(--mute);font-size:12px;max-width:280px}
   .f-ok{display:none;background:var(--ink);color:#fff;border-radius:var(--r-s);
@@ -995,19 +1031,19 @@
     <img class="hero2-char" src="assets/stills/hero-worker.webp"
          alt="Рабочий в каске ФОРВАРД, полумаске МК и спецодежде Textiline" fetchpriority="high">
     <div class="hero2-copy">
-      <p class="hero2-kicker mono">Усть-Каменогорск · <span style="white-space:nowrap">БИН 160 340 027 310</span></p>
+      <p class="hero2-kicker mono"><span style="white-space:nowrap">Усть-Каменогорск</span> · <span style="white-space:nowrap">с 1997 года</span></p>
       <h1 class="hero2-title display">
         <span>СИЗ</span>
         <span class="l2">Под</span>
         <span class="l3">Ключ</span>
       </h1>
-      <p class="hero2-desc">Один подрядчик закрывает поставку, пошив, вендинг-выдачу 24/7 и обслуживание средств защиты для промышленных площадок.</p>
+      <p class="hero2-desc">Один подрядчик закрывает поставку, пошив, вендинг-выдачу 24/7 и обслуживание средств индивидуальной защиты (СИЗ) для промышленных площадок.</p>
       <a class="pill pill--brand hero2-cta" href="#contact">Запросить расчёт под предприятие</a>
     </div>
     <aside class="hero2-card">
       <img src="assets/brand/logo-v.png" alt="" aria-hidden="true">
       <b>Нам доверяет Казцинк</b>
-      <p>Снабжаем гиганта промышленности средствами защиты с 1997 года — 29 лет непрерывного контракта.</p>
+      <p>Снабжаем крупнейшего производителя цинка в стране с 1997 года — 29 лет непрерывного контракта.</p>
     </aside>
     <p class="hero2-tag mono">Снабжаем промышленность по всему Казахстану</p>
   </section>
@@ -1053,8 +1089,7 @@
         <span class="gpill">Весь Казахстан</span>
         <span class="gpill">Головной офис — Усть-Каменогорск</span>
         <span class="gpill">6 площадок группы по РК</span>
-        <span class="gpill">В планах — Россия</span>
-      </div>
+              </div>
     </div>
   </section>
 
@@ -1099,7 +1134,7 @@
   <!-- ============ BLOCK 4 · НАШЕ РЕШЕНИЕ ============ -->
   <section id="solution" aria-label="Наше решение">
     <div class="sec-head">
-      <h2 class="display">Единая услуга<br>из четырёх</h2>
+      <h2 class="display">Четыре сервиса —<br>один договор</h2>
       <div class="sec-side">
         <p class="mono">Замкнутый цикл: производим, поставляем, выдаём и обслуживаем — по одному договору.</p>
       </div>
@@ -1134,7 +1169,7 @@
 
     <div class="loop-core">
       <img src="assets/brand/logo-v.png" alt="" width="420" height="400" aria-hidden="true">
-      <b>Единая комплексная услуга</b>
+      <b>Одна услуга — один договор</b>
       <span>Один поставщик · один договор · одна ответственность за всю площадку</span>
     </div>
   </section>
@@ -1144,7 +1179,7 @@
     <div class="sec-head">
       <h2 class="display">Что входит<br>в поставку</h2>
       <div class="sec-side">
-        <p class="mono">Товарные бренды, собственная техника выдачи и сертификация — всё, что закрывает потребность площадки по одному договору.</p>
+        <p class="mono">Товарные бренды, собственная техника выдачи и сертификация — всё, что нужно площадке, — по одному договору.</p>
       </div>
     </div>
 
@@ -1183,11 +1218,11 @@
           <span><img src="assets/catalog/cutout/eye.png" alt=""></span>
         </div>
         <p class="card-kicker mono">Категории защиты</p>
-        <p class="mono">Голова · руки · глаза · дыхание · слух · ноги — закрываем весь перечень</p>
+        <p class="mono">Все категории защиты — с одного склада</p>
       </article>
 
       <article class="card m-number">
-        <p>С 1997 года обеспечиваем <em>2,1 млн</em> единиц СИЗ в год</p>
+        <p>Сегодня через нас проходит <em>2,1 млн</em> единиц СИЗ в год</p>
       </article>
 
       <article class="card m-cta">
@@ -1211,7 +1246,7 @@
         <span class="mono">Официальный дистрибьютор респираторов МК в Казахстане</span>
         <div class="pills" role="group" aria-label="Категории продукции">
           <button class="spill" type="button" aria-pressed="true"
-                  data-img="assets/catalog/cine/resp.webp" data-brand="Респираторы МК · FAROS"
+                  data-img="assets/catalog/cine/resp.webp" data-brand="Респираторы МК и FAROS"
                   data-spec="10 моделей · FFP1–FFP3 · официальный дистрибьютор МК"
                   data-alt="Полумаска МК для защиты дыхания"><span>Защита дыхания</span><span class="mono">01</span></button>
           <button class="spill" type="button" aria-pressed="false"
@@ -1224,7 +1259,7 @@
                   data-alt="Защитные перчатки BASE SAFETY"><span>Защита рук</span><span class="mono">03</span></button>
           <button class="spill" type="button" aria-pressed="false"
                   data-img="assets/catalog/cine/boots.webp" data-brand="Safety Nomads"
-                  data-spec="24 модели · зима / лето · 18 kV · Metal Free"
+                  data-spec="24 модели · зима / лето · до 18 кВ · без металла"
                   data-alt="Защитная обувь Safety Nomads"><span>Защита ног</span><span class="mono">04</span></button>
           <button class="spill" type="button" aria-pressed="false"
                   data-img="assets/catalog/cine/eye.webp" data-brand="РУСОКО"
@@ -1239,15 +1274,16 @@
                   data-spec="5 моделей · вкладыши и наушники"
                   data-alt="Средства защиты слуха"><span>Защита слуха</span><span class="mono">07</span></button>
         </div>
+        <a class="pill pill--brand price-cta" href="#contact" id="price-cta">Запросить прайс по категории</a>
       </div>
       <div class="series-right">
-        <h3 class="display">Всё в одном<br>окне</h3>
+        <h3 class="display">Семь категорий —<br>один склад</h3>
         <figure class="portrait">
           <img id="cat-img" src="assets/catalog/cine/resp.webp"
                alt="Полумаска МК для защиты дыхания" loading="lazy"
                style="filter:none;object-fit:contain;transition:opacity .22s ease">
           <figcaption class="media-cap mono" aria-live="polite">
-            <b id="cat-brand" style="letter-spacing:.08em">Респираторы МК · FAROS</b><br>
+            <b id="cat-brand" style="letter-spacing:.08em">Респираторы МК и FAROS</b><br>
             <span id="cat-spec">10 моделей · FFP1–FFP3 · официальный дистрибьютор МК</span>
           </figcaption>
         </figure>
@@ -1268,7 +1304,7 @@
       </div>
     </div>
 
-    <figure class="media-card">
+    <figure class="media-card media-card--grade">
       <img src="assets/cases/raskroy-cine.webp" alt="Цех раскроя: оператор за раскроечной машиной Lectra" loading="lazy">
       <figcaption class="media-cap mono">Производство · Цех раскроя</figcaption>
     </figure>
@@ -1344,18 +1380,18 @@
             <p>Видно, кто и сколько получил. Перерасход становится управляемым.</p>
           </article>
           <article class="vfeat">
-            <b>Интеграция WMS / SAP</b>
-            <p>Данные о выдаче уходят в вашу учётную систему автоматически.</p>
+            <b>Связь с вашей учётной системой</b>
+            <p>Данные о выдаче уходят в SAP, 1С или вашу WMS автоматически — ничего не переносится вручную.</p>
           </article>
           <article class="vfeat">
             <b>Приёмка по RFID</b>
-            <p>Модель 640 принимает спецодежду в стирку и ремонт с отметкой в системе.</p>
+            <p>Модель 640 принимает спецодежду в стирку и ремонт по RFID-метке — чипу, вшитому в одежду.</p>
           </article>
         </div>
 
         <div class="calc">
           <div>
-            <h4>Оценка экономии</h4>
+            <h3>Оценка экономии</h3>
             <label for="calc-people">Численность персонала</label>
             <p class="val"><span id="calc-people-val">500</span> чел.</p>
             <input type="range" id="calc-people" min="50" max="5000" step="50" value="500"
@@ -1366,6 +1402,7 @@
             <p class="sum" id="calc-sum">6 000 000 ₸</p>
             <p class="cap">За счёт поимённого учёта и сокращения перерасхода СИЗ примерно на 20%.</p>
             <p class="note" id="calc-note">Предварительная оценка: 12 000 ₸ на сотрудника в год. Точный расчёт — после аудита площадки.</p>
+            <a class="pill calc-cta" href="#contact" id="calc-cta">Получить точный расчёт</a>
           </div>
         </div>
       </div>
@@ -1407,7 +1444,7 @@
         </article>
         <article class="wrow">
           <span class="k">03</span>
-          <div><b>Гигиенические нормы</b><p>Регулярная обработка закрывает требования по гигиене на производстве.</p></div>
+          <div><b>Гигиенические нормы</b><p>Регулярная обработка снимает вопросы гигиены на производстве.</p></div>
         </article>
         <article class="wrow">
           <span class="k">04</span>
@@ -1511,7 +1548,7 @@
     <div class="sec-head">
       <h2 class="display">Обсудим<br>вашу площадку</h2>
       <div class="sec-side">
-        <p class="mono">Оставьте задачу — вернёмся с расчётом под ваше предприятие. Без обязательств.</p>
+        <p class="mono">Опишите задачу — вернёмся с расчётом под ваше предприятие. Без обязательств.</p>
       </div>
     </div>
 
@@ -1555,15 +1592,16 @@
         </div>
         <div class="field">
           <label for="f-task">Задача</label>
-          <textarea id="f-task" name="task" placeholder="Численность, отрасль, что нужно закрыть"></textarea>
+          <textarea id="f-task" name="task" placeholder="Численность, отрасль, что нужно поставить"></textarea>
         </div>
         <div class="f-submit">
         <button class="pill pill--brand" type="submit">Отправить в WhatsApp</button>
-          <p class="f-note">Или на почту: <a href="mailto:info@alltrade-ltd.kz" style="color:var(--ink);font-weight:700">info@alltrade-ltd.kz</a><br>Отправляя форму, вы соглашаетесь на обработку контактных данных.</p>
+        <button class="pill pill--ghost" type="button" id="send-mail">Отправить на почту</button>
+          <p class="f-note">Отправляя форму, вы соглашаетесь на обработку контактных данных.</p>
         </div>
         <div class="f-ok" id="form-ok" role="status">
           <svg aria-hidden="true"><use href="#i-check"/></svg>
-          <span>Заявка подготовлена. Если WhatsApp не открылся автоматически, нажмите кнопку отправки ещё раз.</span>
+          <span>Открылся WhatsApp с текстом заявки — нажмите в нём «Отправить». Если WhatsApp недоступен, напишите на info@alltrade-ltd.kz.</span>
         </div>
       </form>
     </div>
@@ -1579,8 +1617,8 @@
   </div>
 
   <p class="foot-title display">
-    <span>Закроем СИЗ</span>
-    <span>Под ключ</span>
+    <span>Закроем вопрос</span>
+    <span>СИЗ — под ключ</span>
   </p>
 
   <div class="foot-cta">
@@ -1693,6 +1731,7 @@
       video.playsInline = true;
       card.innerHTML = '';
       card.appendChild(video);
+      video.focus();
       video.play().catch(function () {});
     });
   });
@@ -1739,38 +1778,79 @@
   var form = document.getElementById('lead-form');
   var ok = document.getElementById('form-ok');
   if (form && ok) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
+    var validateLead = function () {
       var valid = true;
-      var required = ['f-name', 'f-company', 'f-phone'];
-      required.forEach(function (id) {
+      ['f-name', 'f-company', 'f-phone'].forEach(function (id) {
         var input = document.getElementById(id);
         var field = input.closest('.field');
-        if (!input.value.trim()) { field.classList.add('is-bad'); valid = false; }
-        else { field.classList.remove('is-bad'); }
+        var err = field.querySelector('.f-err');
+        if (err && !err.id) { err.id = id + '-err'; }
+        if (!input.value.trim()) {
+          field.classList.add('is-bad'); valid = false;
+          input.setAttribute('aria-invalid', 'true');
+          if (err) { input.setAttribute('aria-describedby', err.id); }
+        } else {
+          field.classList.remove('is-bad');
+          input.removeAttribute('aria-invalid');
+          input.removeAttribute('aria-describedby');
+        }
       });
       if (!valid) {
         ok.classList.remove('is-on');
         var firstBad = form.querySelector('.field.is-bad input');
         if (firstBad) { firstBad.focus(); }
-        return;
       }
-      var name = document.getElementById('f-name').value.trim();
-      var company = document.getElementById('f-company').value.trim();
-      var phone = document.getElementById('f-phone').value.trim();
+      return valid;
+    };
+    var leadText = function () {
       var task = document.getElementById('f-task').value.trim();
-      var text = [
+      return [
         'Здравствуйте! Пишу с сайта ALLTRADE-LTD.',
         'Нужен расчёт СИЗ под предприятие.',
         '',
-        'Имя: ' + name,
-        'Компания: ' + company,
-        'Телефон: ' + phone,
+        'Имя: ' + document.getElementById('f-name').value.trim(),
+        'Компания: ' + document.getElementById('f-company').value.trim(),
+        'Телефон: ' + document.getElementById('f-phone').value.trim(),
         task ? 'Задача: ' + task : ''
       ].filter(Boolean).join('\n');
-      window.open('https://wa.me/77051131551?text=' + encodeURIComponent(text), '_blank', 'noopener');
+    };
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!validateLead()) return;
+      window.open('https://wa.me/77051131551?text=' + encodeURIComponent(leadText()), '_blank', 'noopener');
       ok.classList.add('is-on');
     });
+    var mailBtn = document.getElementById('send-mail');
+    if (mailBtn) {
+      mailBtn.addEventListener('click', function () {
+        if (!validateLead()) return;
+        window.location.href = 'mailto:info@alltrade-ltd.kz?subject=' +
+          encodeURIComponent('Заявка на расчёт СИЗ с сайта') +
+          '&body=' + encodeURIComponent(leadText());
+      });
+    }
+    /* автоподстановка из калькулятора и каталога */
+    var taskField = document.getElementById('f-task');
+    var addTask = function (line) {
+      if (!taskField) return;
+      var cur = taskField.value.trim();
+      if (cur.indexOf(line) !== -1) return;
+      taskField.value = cur ? cur + '\n' + line : line;
+    };
+    var calcCta = document.getElementById('calc-cta');
+    if (calcCta) {
+      calcCta.addEventListener('click', function () {
+        var people = document.getElementById('calc-people-val');
+        if (people) addTask('Численность: ' + people.textContent + ' чел.');
+      });
+    }
+    var priceCta = document.getElementById('price-cta');
+    if (priceCta) {
+      priceCta.addEventListener('click', function () {
+        var active = document.querySelector('.spill[aria-pressed="true"] span');
+        if (active) addTask('Нужен прайс: ' + active.textContent);
+      });
+    }
     form.addEventListener('input', function (e) {
       var field = e.target.closest('.field');
       if (field && field.classList.contains('is-bad') && e.target.value.trim()) {
