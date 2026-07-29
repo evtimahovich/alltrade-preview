@@ -240,6 +240,148 @@
     position:absolute;z-index:3;left:18px;right:auto;bottom:18px;margin:0;width:max-content;max-width:calc(100% - 36px);
     background:var(--ink);color:#fff;border-radius:999px;padding:10px 16px;text-align:center;
   }
+  /* ---------- HERO v2: композиция по референсу, цвета по брендбуку ---------- */
+  .hero2{
+    position:relative;overflow:hidden;
+    background:#0A0C0B;color:#fff;
+    border-radius:var(--r-l);
+    margin:0 clamp(10px,1.4vw,20px);
+    min-height:min(92svh,960px);
+    padding:clamp(18px,3vw,48px) clamp(20px,4vw,64px);
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  .hero2-bgtex{position:absolute;inset:0;opacity:.38;pointer-events:none}
+  .hero2-bgtex img{width:100%;height:100%;object-fit:cover}
+  .hero2::before{
+    content:"";position:absolute;right:-12vw;bottom:-28%;
+    width:58vw;height:58vw;
+    background:radial-gradient(circle,rgba(78,158,120,.26),transparent 62%);
+    pointer-events:none;
+  }
+  .hero2-char{
+    position:absolute;z-index:2;bottom:0;right:clamp(3vw,8vw,11vw);
+    height:min(86%,740px);aspect-ratio:3/4;object-fit:cover;object-position:top;
+    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 8%,#000 82%,transparent 100%),linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
+    mask-image:linear-gradient(180deg,transparent 0,#000 8%,#000 82%,transparent 100%),linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
+    -webkit-mask-composite:source-in;
+    mask-composite:intersect;
+  }
+  .hero2-kz{
+    position:absolute;z-index:3;
+    top:clamp(20px,4.2vw,56px);right:clamp(20px,4vw,64px);
+    font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:800;
+    font-size:clamp(1.2rem,2.4vw,2.2rem);letter-spacing:.3em;text-transform:uppercase;
+    color:rgba(255,255,255,.92);text-align:right;
+  }
+  .hero2-kz small{
+    display:block;margin-top:8px;
+    font-family:'IBM Plex Mono',monospace;font-weight:400;
+    font-size:10.5px;letter-spacing:.14em;color:rgba(255,255,255,.5);
+  }
+  .hero2-copy{position:relative;max-width:900px}
+  .hero2-kicker{
+    display:flex;gap:10px;align-items:center;
+    color:rgba(255,255,255,.66);margin-bottom:clamp(18px,2.4vw,32px);
+  }
+  .hero2-kicker::before{
+    content:"";width:9px;height:9px;border-radius:999px;flex:none;
+    background:var(--brand-lift);box-shadow:0 0 0 6px rgba(78,158,120,.16);
+  }
+  .hero2-title{
+    font-size:clamp(3.8rem,10.6vw,10.6rem);
+    line-height:.85;color:#fff;
+  }
+  .hero2-title span{display:block}
+  .hero2-title .l2{margin-left:clamp(1.1em,13vw,1.9em)}
+  .hero2-title .l3{color:var(--brand-lift);margin-left:clamp(.35em,4.5vw,.75em);position:relative;z-index:3}
+  .hero2-desc{
+    position:relative;z-index:3;max-width:34ch;margin-top:clamp(16px,2.2vw,28px);
+    font-size:clamp(14px,1.15vw,16.5px);line-height:1.5;color:rgba(255,255,255,.78);
+  }
+  .hero2-cta{position:relative;z-index:3;margin-top:clamp(18px,2.6vw,34px)}
+  .hero2-card{
+    position:absolute;z-index:4;
+    right:clamp(16px,3.2vw,48px);bottom:clamp(16px,3.2vw,48px);
+    width:min(300px,74vw);
+    background:rgba(18,22,20,.55);
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:18px;
+    -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+    padding:18px 20px;
+  }
+  .hero2-card img{height:34px;filter:brightness(0) invert(1);opacity:.92;margin-bottom:12px}
+  .hero2-card b{
+    font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:800;
+    font-size:13.5px;letter-spacing:.07em;text-transform:uppercase;display:block;margin-bottom:6px;
+  }
+  .hero2-card p{font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.66)}
+  .hero2-tag{
+    position:absolute;z-index:4;
+    left:clamp(20px,4vw,64px);bottom:clamp(18px,3.4vw,52px);
+    display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.68);
+  }
+  .hero2-tag::before{
+    content:"";width:9px;height:9px;border-radius:999px;flex:none;
+    background:var(--brand-lift);box-shadow:0 0 0 6px rgba(78,158,120,.16);
+  }
+  @media (max-width:1180px){
+    .hero2-char{right:clamp(0px,6vw,10vw)}
+  }
+  @media (max-width:980px){
+    .hero2{min-height:0;display:flex;flex-direction:column;justify-content:flex-start;padding-bottom:20px}
+    .hero2-kz{order:1}
+    .hero2-copy{order:2}
+    .hero2-char{order:3}
+    .hero2-card{order:4}
+    .hero2-tag{order:5}
+    .hero2-kz{position:static;margin:2px 0 14px;text-align:left;font-size:1rem}
+    .hero2-kz small{text-align:left}
+    .hero2-title{font-size:clamp(3.4rem,15.5vw,6.4rem)}
+    .hero2-title .l2{margin-left:.85em}
+    .hero2-title .l3{margin-left:.3em}
+    .hero2-char{
+      position:relative;display:block;right:auto;bottom:auto;
+      width:86%;height:auto;margin:6px 0 0 auto;
+      -webkit-mask-image:linear-gradient(180deg,#000 78%,transparent 100%);
+      mask-image:linear-gradient(180deg,#000 78%,transparent 100%);
+    }
+    .hero2-desc{max-width:none}
+    .hero2-cta{width:100%;justify-content:center;display:flex}
+    .hero2-card{position:static;width:auto;margin:16px 0 14px}
+    .hero2-tag{position:static;margin-top:4px}
+  }
+
+  /* ---------- тёмный кино-герой (по брендбуку: зелёный + белый) ---------- */
+  .hero--dark{
+    background:#0B0E0D;
+    border-radius:var(--r-l);
+    margin:0 clamp(10px,1.4vw,20px);
+    padding-inline:clamp(20px,4vw,64px);
+  }
+  .hero--dark::after{color:rgba(255,255,255,.045)}
+  .hero--dark::before{background:radial-gradient(circle,rgba(78,158,120,.18),rgba(78,158,120,0) 62%)}
+  .hero-bg{position:absolute;inset:0;z-index:0;margin:0}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:68% center}
+  .hero-bg::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(90deg,rgba(8,10,9,.94) 0%,rgba(8,10,9,.72) 42%,rgba(8,10,9,.18) 78%,rgba(8,10,9,.42) 100%),
+               linear-gradient(180deg,rgba(8,10,9,.30) 0%,rgba(8,10,9,0) 35%,rgba(8,10,9,.55) 100%);
+  }
+  .hero--dark .hero-stage{grid-template-columns:1fr}
+  .hero--dark .hero-visual{display:none}
+  .hero--dark .hero-kicker{color:rgba(255,255,255,.72)}
+  .hero--dark .hero-kicker::before{background:var(--brand-lift);box-shadow:0 0 0 6px rgba(78,158,120,.18)}
+  .hero--dark .hero-title{color:#fff}
+  .hero--dark .hero-title .muted-line{color:var(--brand-lift)}
+  .hero--dark .hero-sub{color:rgba(255,255,255,.8)}
+  .hero--dark .proof{
+    background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.14);
+    backdrop-filter:blur(10px);color:#fff;
+  }
+  .hero--dark .proof span{color:rgba(255,255,255,.62)}
+  .hero--dark .cbtn--fill{background:rgba(255,255,255,.12);color:#fff;border-color:transparent}
+  .hero--dark .cbtn--fill:hover{background:#fff;color:var(--ink)}
+
   @media (max-width:980px){
     .hero{align-items:flex-start;min-height:0;padding-top:18px}
     .hero-stage{grid-template-columns:1fr;gap:18px}
@@ -404,7 +546,26 @@
     border-radius:999px;padding:8px 16px;
   }
   .portrait .card-arr{top:auto;bottom:14px;right:14px}
-  @media (max-width:860px){.series-grid{grid-template-columns:1fr}}
+  @media (max-width:860px){
+    .series-grid{grid-template-columns:1fr;gap:16px}
+    /* категории — горизонтальная лента, картинка сразу под ней */
+    .pills{
+      flex-direction:row;overflow-x:auto;gap:8px;
+      padding-bottom:8px;margin-inline:calc(var(--pad) * -1);
+      padding-inline:var(--pad);
+      scrollbar-width:none;-webkit-overflow-scrolling:touch;
+    }
+    .pills::-webkit-scrollbar{display:none}
+    .spill{
+      flex:none;width:auto;padding:12px 18px;gap:10px;
+      background:var(--panel);border-color:var(--panel);
+    }
+    .spill[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+    .spill .mono{display:none}
+    .series-left > .mono{margin-bottom:14px}
+    .series-right h3{display:none}
+    .portrait img{height:clamp(300px,88vw,420px)}
+  }
 
   /* ---------- gallery ---------- */
   .g-head{
@@ -490,6 +651,14 @@
     filter:drop-shadow(0 24px 44px rgba(0,0,0,.5));
     pointer-events:none;
   }
+  /* ---------- кикеры услуг ---------- */
+  .svc-kicker{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--brand);
+    display:inline-flex;align-items:center;gap:10px;margin-bottom:14px;
+  }
+  .svc-kicker::before{content:"";width:26px;height:2px;background:var(--brand)}
+
   /* ---------- scroll reveal ---------- */
   @media (prefers-reduced-motion:no-preference){
     .rv{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.2,.6,.2,1),transform .6s cubic-bezier(.2,.6,.2,1)}
@@ -686,13 +855,14 @@
   @media (max-width:640px){.steps{grid-template-columns:1fr}}
 
   /* ---------- contact form (block 12) ---------- */
-  .ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
-  .ct-info{background:var(--panel);border-radius:var(--r-m);padding:clamp(24px,2.8vw,40px);
-    display:flex;flex-direction:column;gap:22px}
-  .ct-row b{font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:900;
-    font-size:clamp(1.1rem,2vw,1.6rem);letter-spacing:.01em;display:block}
-  .ct-row .mono{color:var(--ink-soft);display:block;margin-bottom:6px}
-  .ct-form{background:var(--panel);border-radius:var(--r-m);padding:clamp(24px,2.8vw,40px)}
+  .ct-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:14px;align-items:start}
+  .ct-info{background:var(--panel);border-radius:var(--r-m);padding:clamp(20px,2.4vw,32px);
+    display:flex;flex-direction:column;gap:16px}
+  .ct-row b{font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:800;
+    font-size:clamp(1rem,1.3vw,1.15rem);letter-spacing:.01em;display:block}
+  .ct-row .mono{color:var(--ink-soft);display:block;margin-bottom:4px;font-size:10.5px}
+  .ct-row p{font-size:13px;color:var(--ink-soft)}
+  .ct-form{background:var(--panel);border-radius:var(--r-m);padding:clamp(20px,2.4vw,32px)}
   .f-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
   .field{display:flex;flex-direction:column;gap:7px}
   .field label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;
@@ -771,35 +941,29 @@
   </header>
 
   <!-- ============ BLOCK 1 · HERO ============ -->
-  <section class="hero" aria-label="СИЗ под ключ для промышленности Казахстана">
-    <div class="hero-stage">
-      <div class="hero-copy">
-        <p class="hero-kicker mono">Усть-Каменогорск · Казахстан · БИН 160 340 027 310</p>
-        <h1 class="hero-title display">
-          <span>СИЗ</span>
-          <span class="muted-line">под ключ</span>
-        </h1>
-        <p class="hero-sub">Один подрядчик закрывает поставку, пошив, вендинг-выдачу 24/7 и обслуживание средств защиты для промышленных площадок.</p>
-        <div class="hero-actions">
-          <a class="pill pill--brand" href="#contact">Запросить расчёт под предприятие</a>
-          <a class="cbtn cbtn--fill" href="#vending" aria-label="Посмотреть вендинг-выдачу">
-            <svg aria-hidden="true"><use href="#i-arr"/></svg>
-          </a>
-        </div>
-        <div class="hero-proof" aria-label="Ключевые доказательства ALLTRADE-LTD">
-          <div class="proof"><b>1997</b><span class="mono">Работаем с промышленностью</span></div>
-          <div class="proof"><b>1</b><span class="mono">Договор на весь цикл СИЗ</span></div>
-          <div class="proof"><b>24/7</b><span class="mono">Выдача через автоматы</span></div>
-          <div class="proof"><b>6</b><span class="mono">Площадок производства</span></div>
-        </div>
-      </div>
-      <figure class="hero-visual">
-        <img class="hero-product" src="assets/stills/plant-crew.webp"
-             alt="Сотрудники промышленного предприятия в касках, спецодежде и респираторах обсуждают работу на площадке"
-             fetchpriority="high">
-        <figcaption class="hero-caption mono">Реальная площадка · СИЗ в работе</figcaption>
-      </figure>
+  <section class="hero2" aria-label="СИЗ под ключ для промышленности Казахстана">
+    <div class="hero2-bgtex" aria-hidden="true">
+      <img src="assets/stills/hero-logo-dark.webp" alt="">
     </div>
+    <img class="hero2-char" src="assets/stills/hero-worker.webp"
+         alt="Рабочий в каске ФОРВАРД, полумаске МК и спецодежде Textiline" fetchpriority="high">
+    <p class="hero2-kz" aria-hidden="true">Қорғаныс<small>СИЗ под ключ · Қазақстан</small></p>
+    <div class="hero2-copy">
+      <p class="hero2-kicker mono">Усть-Каменогорск · Казахстан · БИН 160 340 027 310</p>
+      <h1 class="hero2-title display">
+        <span>СИЗ</span>
+        <span class="l2">Под</span>
+        <span class="l3">Ключ</span>
+      </h1>
+      <p class="hero2-desc">Один подрядчик закрывает поставку, пошив, вендинг-выдачу 24/7 и обслуживание средств защиты для промышленных площадок.</p>
+      <a class="pill pill--brand hero2-cta" href="#contact">Запросить расчёт под предприятие</a>
+    </div>
+    <aside class="hero2-card">
+      <img src="assets/brand/logo-v.png" alt="" aria-hidden="true">
+      <b>Казцинк — с 1997 года</b>
+      <p>29 лет непрерывного контракта. Один договор — весь цикл средств защиты для промышленного гиганта.</p>
+    </aside>
+    <p class="hero2-tag mono">Комплексное снабжение СИЗ · Казахстан</p>
   </section>
 
   <!-- ============ BLOCK 2 · О КОМПАНИИ ЦИФРАМИ ============ -->
@@ -990,10 +1154,118 @@
     </div>
   </section>
 
+  <!-- ============ BLOCK 8 · ПРОДУКЦИЯ ============ -->
+  <section id="products" aria-label="Продукция">
+    <div class="series-grid">
+      <div class="series-left">
+        <p class="svc-kicker">Услуга 01 · Поставка</p>
+        <h2 class="display">Каталог СИЗ</h2>
+        <span class="mono">Официальный дистрибьютор респираторов МК в Казахстане</span>
+        <div class="pills" role="group" aria-label="Категории продукции">
+          <button class="spill" type="button" aria-pressed="true"
+                  data-img="assets/catalog/studio/resp.webp" data-brand="Респираторы МК · FAROS"
+                  data-spec="10 моделей · FFP1–FFP3 · официальный дистрибьютор МК"
+                  data-alt="Полумаска МК для защиты дыхания"><span>Защита дыхания</span><span class="mono">01</span></button>
+          <button class="spill" type="button" aria-pressed="false"
+                  data-img="assets/catalog/studio/head.webp" data-brand="Каски ФОРВАРД"
+                  data-spec="1 модель · защита головы"
+                  data-alt="Защитная каска ФОРВАРД"><span>Защита головы</span><span class="mono">02</span></button>
+          <button class="spill" type="button" aria-pressed="false"
+                  data-img="assets/catalog/studio/gloves.webp" data-brand="BASE SAFETY"
+                  data-spec="13 моделей · EN 388 / 407 / 511"
+                  data-alt="Защитные перчатки BASE SAFETY"><span>Защита рук</span><span class="mono">03</span></button>
+          <button class="spill" type="button" aria-pressed="false"
+                  data-img="assets/catalog/studio/boots.webp" data-brand="Safety Nomads"
+                  data-spec="24 модели · зима / лето · 18 kV · Metal Free"
+                  data-alt="Защитная обувь Safety Nomads"><span>Защита ног</span><span class="mono">04</span></button>
+          <button class="spill" type="button" aria-pressed="false"
+                  data-img="assets/catalog/studio/eye.webp" data-brand="РУСОКО"
+                  data-spec="6 моделей · защита глаз"
+                  data-alt="Защитные очки РУСОКО"><span>Защита глаз</span><span class="mono">05</span></button>
+          <button class="spill" type="button" aria-pressed="false"
+                  data-img="assets/catalog/studio/weld.webp" data-brand="FITSIZ"
+                  data-spec="7 моделей · автозатемнение и фиксированный DIN"
+                  data-alt="Сварочная маска FITSIZ"><span>Сварочные маски</span><span class="mono">06</span></button>
+          <button class="spill" type="button" aria-pressed="false"
+                  data-img="assets/catalog/studio/ear.webp" data-brand="Защита слуха"
+                  data-spec="5 моделей · вкладыши и наушники"
+                  data-alt="Средства защиты слуха"><span>Защита слуха</span><span class="mono">07</span></button>
+        </div>
+      </div>
+      <div class="series-right">
+        <h3 class="display">Всё в одном<br>окне</h3>
+        <figure class="portrait">
+          <img id="cat-img" src="assets/catalog/studio/resp.webp"
+               alt="Полумаска МК для защиты дыхания" loading="lazy"
+               style="filter:none">
+          <figcaption class="media-cap mono" aria-live="polite">
+            <b id="cat-brand" style="letter-spacing:.08em">Респираторы МК · FAROS</b><br>
+            <span id="cat-spec">10 моделей · FFP1–FFP3 · официальный дистрибьютор МК</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BLOCK 4 · ГАЛЕРЕЯ ============ -->
+  <section id="services" aria-label="Наша галерея">
+    <div class="g-head">
+      <div>
+        <p class="svc-kicker">Услуга 02 · Пошив спецодежды</p>
+        <h2 class="display">Своё производство</h2>
+        <p>Мы производитель, а не перекупщик: собственный пошив Textiline — 50&nbsp;668 комплектов спецодежды в год и 1,26 млн кг промышленной стирки.</p>
+      </div>
+      <div class="g-cta">
+        <a class="pill" href="#contact">Обсудить пошив</a>
+        <a class="cbtn cbtn--fill" href="#contact" aria-label="Обсудить пошив">
+          <svg aria-hidden="true"><use href="#i-arr"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <figure class="media-card">
+      <img src="assets/cases/kz-013.webp" alt="Цех раскроя: сотрудник за раскроечной машиной Lectra" loading="lazy">
+      <figcaption class="media-cap mono">Производство · Цех раскроя</figcaption>
+    </figure>
+
+    <div class="g-row">
+      <article class="p-card">
+        <img src="assets/catalog/studio/gloves.webp" alt="Защитные перчатки Base Safety" loading="lazy">
+        <div class="p-meta">
+          <div><b>Base Safety</b><span class="mono">Перчатки · EN 388</span></div>
+          <a class="cbtn cbtn--sm" href="#products" aria-label="Перчатки — подробнее">
+            <svg aria-hidden="true"><use href="#i-arr"/></svg>
+          </a>
+        </div>
+      </article>
+      <article class="p-card">
+        <img src="assets/catalog/studio/boots.webp" alt="Защитная обувь Safety Nomads" loading="lazy">
+        <div class="p-meta">
+          <div><b>Safety Nomads</b><span class="mono">Обувь · 24 модели</span></div>
+          <a class="cbtn cbtn--sm" href="#products" aria-label="Обувь — подробнее">
+            <svg aria-hidden="true"><use href="#i-arr"/></svg>
+          </a>
+        </div>
+      </article>
+      <article class="p-card">
+        <img src="assets/catalog/studio/weld.webp" alt="Сварочная маска" loading="lazy">
+        <div class="p-meta">
+          <div><b>Сварочные маски</b><span class="mono">EN 407 · Термозащита</span></div>
+          <a class="cbtn cbtn--sm" href="#products" aria-label="Сварочные маски — подробнее">
+            <svg aria-hidden="true"><use href="#i-arr"/></svg>
+          </a>
+        </div>
+      </article>
+    </div>
+  </section>
+
   <!-- ============ BLOCK 6 · ВЕНДИНГ ============ -->
   <section id="vending" aria-label="Вендинг-выдача СИЗ">
     <div class="sec-head">
-      <h2 class="display">Умная выдача<br>24/7</h2>
+      <div>
+        <p class="svc-kicker">Услуга 03 · Вендинг-выдача</p>
+        <h2 class="display">Умная выдача<br>24/7</h2>
+      </div>
       <div class="sec-side">
         <p class="mono">Собственные автоматы KazProService: модель 540 — выдача, модель 640 — приёмка спецодежды по RFID.</p>
       </div>
@@ -1066,7 +1338,10 @@
   <!-- ============ BLOCK 7 · МОЙКА МАСОК ============ -->
   <section id="wash" aria-label="Мойка и обслуживание масок">
     <div class="sec-head">
-      <h2 class="display">Многоразовое<br>вместо одноразового</h2>
+      <div>
+        <p class="svc-kicker">Услуга 04 · Обслуживание СИЗ</p>
+        <h2 class="display">Многоразовое<br>вместо одноразового</h2>
+      </div>
       <div class="sec-side">
         <p class="mono">Мойка, дезинфекция и обслуживание масок и полумасок на площадке.</p>
       </div>
@@ -1094,109 +1369,6 @@
           <div><b>Меньше закупок</b><p>Снижается объём одноразовых СИЗ и нагрузка на бюджет снабжения.</p></div>
         </article>
       </div>
-    </div>
-  </section>
-
-  <!-- ============ BLOCK 8 · ПРОДУКЦИЯ ============ -->
-  <section id="products" aria-label="Продукция">
-    <div class="series-grid">
-      <div class="series-left">
-        <h2 class="display">Каталог СИЗ</h2>
-        <span class="mono">Официальный дистрибьютор респираторов МК в Казахстане</span>
-        <div class="pills" role="group" aria-label="Категории продукции">
-          <button class="spill" type="button" aria-pressed="true"
-                  data-img="assets/catalog/studio/resp.webp" data-brand="Респираторы МК · FAROS"
-                  data-spec="10 моделей · FFP1–FFP3 · официальный дистрибьютор МК"
-                  data-alt="Полумаска МК для защиты дыхания"><span>Защита дыхания</span><span class="mono">01</span></button>
-          <button class="spill" type="button" aria-pressed="false"
-                  data-img="assets/catalog/studio/head.webp" data-brand="Каски ФОРВАРД"
-                  data-spec="1 модель · защита головы"
-                  data-alt="Защитная каска ФОРВАРД"><span>Защита головы</span><span class="mono">02</span></button>
-          <button class="spill" type="button" aria-pressed="false"
-                  data-img="assets/catalog/studio/gloves.webp" data-brand="BASE SAFETY"
-                  data-spec="13 моделей · EN 388 / 407 / 511"
-                  data-alt="Защитные перчатки BASE SAFETY"><span>Защита рук</span><span class="mono">03</span></button>
-          <button class="spill" type="button" aria-pressed="false"
-                  data-img="assets/catalog/studio/boots.webp" data-brand="Safety Nomads"
-                  data-spec="24 модели · зима / лето · 18 kV · Metal Free"
-                  data-alt="Защитная обувь Safety Nomads"><span>Защита ног</span><span class="mono">04</span></button>
-          <button class="spill" type="button" aria-pressed="false"
-                  data-img="assets/catalog/studio/eye.webp" data-brand="РУСОКО"
-                  data-spec="6 моделей · защита глаз"
-                  data-alt="Защитные очки РУСОКО"><span>Защита глаз</span><span class="mono">05</span></button>
-          <button class="spill" type="button" aria-pressed="false"
-                  data-img="assets/catalog/studio/weld.webp" data-brand="FITSIZ"
-                  data-spec="7 моделей · автозатемнение и фиксированный DIN"
-                  data-alt="Сварочная маска FITSIZ"><span>Сварочные маски</span><span class="mono">06</span></button>
-          <button class="spill" type="button" aria-pressed="false"
-                  data-img="assets/catalog/studio/ear.webp" data-brand="Защита слуха"
-                  data-spec="5 моделей · вкладыши и наушники"
-                  data-alt="Средства защиты слуха"><span>Защита слуха</span><span class="mono">07</span></button>
-        </div>
-      </div>
-      <div class="series-right">
-        <h3 class="display">Всё в одном<br>окне</h3>
-        <figure class="portrait">
-          <img id="cat-img" src="assets/catalog/studio/resp.webp"
-               alt="Полумаска МК для защиты дыхания" loading="lazy"
-               style="filter:none">
-          <figcaption class="media-cap mono" aria-live="polite">
-            <b id="cat-brand" style="letter-spacing:.08em">Респираторы МК · FAROS</b><br>
-            <span id="cat-spec">10 моделей · FFP1–FFP3 · официальный дистрибьютор МК</span>
-          </figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ BLOCK 4 · ГАЛЕРЕЯ ============ -->
-  <section id="services" aria-label="Наша галерея">
-    <div class="g-head">
-      <div>
-        <h2 class="display">Своё производство</h2>
-        <p>Мы производитель, а не перекупщик: собственный пошив Textiline — 50&nbsp;668 комплектов спецодежды в год и 1,26 млн кг промышленной стирки.</p>
-      </div>
-      <div class="g-cta">
-        <a class="pill" href="#contact">Обсудить пошив</a>
-        <a class="cbtn cbtn--fill" href="#contact" aria-label="Обсудить пошив">
-          <svg aria-hidden="true"><use href="#i-arr"/></svg>
-        </a>
-      </div>
-    </div>
-
-    <figure class="media-card">
-      <img src="assets/cases/kz-013.webp" alt="Цех раскроя: сотрудник за раскроечной машиной Lectra" loading="lazy">
-      <figcaption class="media-cap mono">Производство · Цех раскроя</figcaption>
-    </figure>
-
-    <div class="g-row">
-      <article class="p-card">
-        <img src="assets/catalog/studio/gloves.webp" alt="Защитные перчатки Base Safety" loading="lazy">
-        <div class="p-meta">
-          <div><b>Base Safety</b><span class="mono">Перчатки · EN 388</span></div>
-          <a class="cbtn cbtn--sm" href="#products" aria-label="Перчатки — подробнее">
-            <svg aria-hidden="true"><use href="#i-arr"/></svg>
-          </a>
-        </div>
-      </article>
-      <article class="p-card">
-        <img src="assets/catalog/studio/boots.webp" alt="Защитная обувь Safety Nomads" loading="lazy">
-        <div class="p-meta">
-          <div><b>Safety Nomads</b><span class="mono">Обувь · 24 модели</span></div>
-          <a class="cbtn cbtn--sm" href="#products" aria-label="Обувь — подробнее">
-            <svg aria-hidden="true"><use href="#i-arr"/></svg>
-          </a>
-        </div>
-      </article>
-      <article class="p-card">
-        <img src="assets/catalog/studio/weld.webp" alt="Сварочная маска" loading="lazy">
-        <div class="p-meta">
-          <div><b>Сварочные маски</b><span class="mono">EN 407 · Термозащита</span></div>
-          <a class="cbtn cbtn--sm" href="#products" aria-label="Сварочные маски — подробнее">
-            <svg aria-hidden="true"><use href="#i-arr"/></svg>
-          </a>
-        </div>
-      </article>
     </div>
   </section>
 
@@ -1327,22 +1499,15 @@
             <span class="f-err">Укажите имя</span>
           </div>
           <div class="field">
-            <label for="f-company">Компания</label>
-            <input type="text" id="f-company" name="company" autocomplete="organization" required>
-            <span class="f-err">Укажите компанию</span>
-          </div>
-        </div>
-        <div class="f-row">
-          <div class="field">
             <label for="f-phone">Телефон</label>
             <input type="tel" id="f-phone" name="phone" autocomplete="tel" required>
             <span class="f-err">Укажите телефон</span>
           </div>
-          <div class="field">
-            <label for="f-email">Почта</label>
-            <input type="email" id="f-email" name="email" autocomplete="email">
-            <span class="f-err">Проверьте адрес почты</span>
-          </div>
+        </div>
+        <div class="field" style="margin-bottom:12px">
+          <label for="f-company">Компания</label>
+          <input type="text" id="f-company" name="company" autocomplete="organization" required>
+          <span class="f-err">Укажите компанию</span>
         </div>
         <div class="field">
           <label for="f-task">Задача</label>
@@ -1481,6 +1646,7 @@
         catImg.alt = btn.dataset.alt;
         catBrand.textContent = btn.dataset.brand;
         catSpec.textContent = btn.dataset.spec;
+        btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
       });
     });
   }
@@ -1499,12 +1665,6 @@
         if (!input.value.trim()) { field.classList.add('is-bad'); valid = false; }
         else { field.classList.remove('is-bad'); }
       });
-      var email = document.getElementById('f-email');
-      var emailField = email.closest('.field');
-      if (email.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
-        emailField.classList.add('is-bad'); valid = false;
-      } else { emailField.classList.remove('is-bad'); }
-
       if (!valid) {
         ok.classList.remove('is-on');
         var firstBad = form.querySelector('.field.is-bad input');
@@ -1514,7 +1674,6 @@
       var name = document.getElementById('f-name').value.trim();
       var company = document.getElementById('f-company').value.trim();
       var phone = document.getElementById('f-phone').value.trim();
-      var emailValue = document.getElementById('f-email').value.trim();
       var task = document.getElementById('f-task').value.trim();
       var text = [
         'Здравствуйте! Пишу с сайта ALLTRADE-LTD.',
@@ -1523,7 +1682,6 @@
         'Имя: ' + name,
         'Компания: ' + company,
         'Телефон: ' + phone,
-        emailValue ? 'Почта: ' + emailValue : '',
         task ? 'Задача: ' + task : ''
       ].filter(Boolean).join('\n');
       window.open('https://wa.me/77051131551?text=' + encodeURIComponent(text), '_blank', 'noopener');
