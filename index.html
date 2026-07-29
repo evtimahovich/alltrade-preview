@@ -573,12 +573,9 @@
     .series-grid{display:flex;flex-direction:column;align-items:stretch;gap:16px}
     .series-right{width:100%}
     .series-left{display:contents}
-    .series-left > .svc-kicker{order:1}
-    .series-left > h2{order:2}
-    .series-left > .mono{order:3}
-    .series-left > .pills{order:4}
-    .series-right{order:5}
-    .price-cta{order:6;margin-top:2px;align-self:flex-start}
+    .series-left > .pills{order:1}
+    .series-right{order:2}
+    .price-cta{order:3;margin-top:2px;align-self:flex-start}
     /* категории — горизонтальная лента, картинка сразу под ней */
     .pills{
       flex-direction:row;overflow-x:auto;gap:8px;
@@ -1040,6 +1037,14 @@
     html{scroll-behavior:auto}
     *,*::before,*::after{transition:none !important;animation:none !important}
   }
+  /* большие мониторы: острова во всю ширину, контент на центральной сетке */
+  .nav,.hero2,#vending{
+    margin-inline:calc(50% - 50vw + var(--inset));
+    padding-inline:calc(max(var(--pad), 50vw - 720px + var(--pad)) - var(--inset));
+  }
+  .foot{
+    padding-inline:calc(max(var(--pad), 50vw - 720px + var(--pad)) - var(--inset));
+  }
   @media (max-width:760px){
     .hero2,#vending{margin-inline:calc(var(--pad) * -1);padding-inline:var(--pad);border-radius:0}
     .foot{margin-inline:0;padding-inline:var(--pad);border-radius:0}
@@ -1067,6 +1072,18 @@
   @media (min-width:901px){
     .vend-feats{grid-template-columns:repeat(4,1fr)}
   }
+  .brand-strip{
+    margin-top:14px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-m);
+    padding:var(--card-pad);
+    display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,32px);
+  }
+  .bs-item b{
+    font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
+    font-size:clamp(15px,1.3vw,19px);letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:6px;
+  }
+  .bs-item .mono{color:var(--ink-soft)}
+  @media (max-width:900px){.brand-strip{grid-template-columns:1fr 1fr}}
+  @media (max-width:520px){.brand-strip{grid-template-columns:1fr;gap:14px}}
 </style>
 </head>
 <body id="top">
@@ -1251,79 +1268,19 @@
     </div>
   </section>
 
-  <!-- ============ BLOCK 5 · ЭКОСИСТЕМА (мозаика) ============ -->
-  <section id="ecosystem" aria-label="Экосистема брендов">
-    <div class="sec-head">
-      <h2 class="display">Что входит<br>в поставку</h2>
-      <div class="sec-side">
-        <p class="mono">Товарные бренды, собственная техника выдачи и&nbsp;сертификация&nbsp;— всё, что нужно площадке,&nbsp;— по одному договору.</p>
-      </div>
-    </div>
-
-    <div class="mosaic">
-      <article class="card m-orange">
-        <p class="card-kicker mono">Наша техника выдачи</p>
-        <p class="card-tag">KazProService</p>
-        <p class="mono">Автоматы 540/640 · выдача СИЗ 24/7 по бейджу</p>
-        <figure class="media-card m-orange-media">
-          <img src="assets/vending/kazpro-badge.webp" alt="Сотрудник получает СИЗ по бейджу в автомате KazProService" loading="lazy">
-        </figure>
-        <a class="cbtn cbtn--sm cbtn--ghostw card-arr" href="#vending" aria-label="Подробнее о вендинге">
-          <svg aria-hidden="true"><use href="#i-arr"/></svg>
-        </a>
-      </article>
-
-      <article class="card m-brands">
-        <p class="card-kicker mono">Товарные бренды в поставке</p>
-        <a class="cbtn cbtn--sm card-arr" href="#products" aria-label="Смотреть каталог">
-          <svg aria-hidden="true"><use href="#i-arr"/></svg>
-        </a>
-        <div class="brand-rows">
-          <div class="brand-row"><b>Safety Nomads</b><span class="mono">Защитная обувь&nbsp;· 24&nbsp;модели</span></div>
-          <div class="brand-row"><b>Base Safety</b><span class="mono">Защитные перчатки&nbsp;· 13&nbsp;моделей</span></div>
-          <div class="brand-row"><b>MK</b><span class="mono">Полумаски и&nbsp;фильтры&nbsp;· 10&nbsp;моделей</span></div>
-          <div class="brand-row"><b>LINEPRO</b><span class="mono">Диэлектрические перчатки&nbsp;· для&nbsp;энергетики</span></div>
-        </div>
-      </article>
-
-      <article class="card m-avatars">
-        <a class="cbtn cbtn--sm card-arr" href="#products" aria-label="Смотреть категории в каталоге">
-          <svg aria-hidden="true"><use href="#i-arr"/></svg>
-        </a>
-        <div class="avatars" aria-hidden="true">
-          <span><img src="assets/catalog/cutout/head.png" alt=""></span>
-          <span><img src="assets/catalog/cutout/gloves.png" alt=""></span>
-          <span><img src="assets/catalog/cutout/resp.png" alt=""></span>
-          <span><img src="assets/catalog/cutout/boots.png" alt=""></span>
-          <span><img src="assets/catalog/cutout/eye.png" alt=""></span>
-        </div>
-        <p class="card-kicker mono">Категории защиты</p>
-        <p class="mono">Все категории защиты&nbsp;— с&nbsp;одного склада</p>
-      </article>
-
-      <article class="card m-number">
-        <p>Сегодня через нас проходит <em>2,1 млн</em> единиц СИЗ в год</p>
-      </article>
-
-      <article class="card m-cta">
-        <p class="m-cta-title">Соберём комплект под вашу площадку</p>
-        <a class="pill" href="#contact">Запросить расчёт</a>
-      </article>
-
-      <article class="card m-certs">
-        <b>Сертификаты</b>
-        <span class="mono">ТР ТС 019/2011 · EN 388/407/511</span>
-      </article>
-    </div>
-  </section>
-
   <!-- ============ BLOCK 8 · ПРОДУКЦИЯ ============ -->
   <section id="products" aria-label="Продукция">
-    <div class="series-grid">
-      <div class="series-left">
+    <div class="sec-head">
+      <div>
         <p class="svc-kicker">Услуга 01 · Поставка</p>
         <h2 class="display">Каталог СИЗ</h2>
-        <span class="mono">Официальный дистрибьютор респираторов МК в&nbsp;Казахстане</span>
+      </div>
+      <div class="sec-side">
+        <p class="mono">Восемь категорий с&nbsp;одного склада. Официальный дистрибьютор респираторов МК в&nbsp;Казахстане.</p>
+      </div>
+    </div>
+    <div class="series-grid">
+      <div class="series-left">
         <div class="pills" role="group" aria-label="Категории продукции">
           <button class="spill" type="button" aria-pressed="true"
                   data-img="assets/catalog/cine/resp.webp" data-brand="Респираторы МК и FAROS"
@@ -1361,7 +1318,6 @@
         <a class="pill pill--brand price-cta" href="#contact" id="price-cta">Запросить прайс по категории</a>
       </div>
       <div class="series-right">
-        <h3 class="display">Восемь категорий —<br>один склад</h3>
         <figure class="portrait">
           <img id="cat-img" src="assets/catalog/cine/resp.webp"
                alt="Полумаска МК для защиты дыхания" loading="lazy"
@@ -1373,15 +1329,24 @@
         </figure>
       </div>
     </div>
+
+    <div class="brand-strip" aria-label="Товарные бренды в поставке">
+      <div class="bs-item"><b>Safety Nomads</b><span class="mono">Защитная обувь&nbsp;· 24&nbsp;модели</span></div>
+      <div class="bs-item"><b>Base Safety</b><span class="mono">Защитные перчатки&nbsp;· 13&nbsp;моделей</span></div>
+      <div class="bs-item"><b>MK</b><span class="mono">Полумаски и&nbsp;фильтры&nbsp;· 10&nbsp;моделей</span></div>
+      <div class="bs-item"><b>LINEPRO</b><span class="mono">Диэлектрические перчатки&nbsp;· для&nbsp;энергетики</span></div>
+    </div>
   </section>
 
   <!-- ============ BLOCK 4 · ГАЛЕРЕЯ ============ -->
   <section id="services" aria-label="Наша галерея">
-    <div class="g-head">
+    <div class="sec-head">
       <div>
         <p class="svc-kicker">Услуга 02 · Пошив спецодежды</p>
         <h2 class="display">Своё производство</h2>
-        <p>Мы производитель, а не перекупщик: собственный пошив Textiline&nbsp;— 50&nbsp;668 комплектов спецодежды в&nbsp;год и&nbsp;1,26&nbsp;млн&nbsp;кг промышленной стирки.</p>
+      </div>
+      <div class="sec-side">
+        <p class="mono">Мы производитель, а не перекупщик: собственный пошив Textiline&nbsp;— 50&nbsp;668 комплектов в&nbsp;год и&nbsp;1,26&nbsp;млн&nbsp;кг промышленной стирки.</p>
       </div>
     </div>
 
