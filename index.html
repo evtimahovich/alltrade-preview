@@ -328,7 +328,7 @@
   .hero2-stats{
     position:relative;z-index:3;
     display:flex;flex-wrap:wrap;gap:clamp(14px,2.2vw,34px);
-    margin-top:clamp(26px,3.6vw,52px);
+    margin-bottom:clamp(16px,2vw,26px);
     color:rgba(255,255,255,.55);letter-spacing:.12em;
   }
   .hero2-stats span{display:inline-flex;align-items:center;gap:9px}
@@ -361,14 +361,18 @@
     .hero2-title .l3{margin-left:.3em}
     /* персонаж — фоновым слоем справа, как на десктопе */
     .hero2-char{
-      position:absolute;right:-9vw;bottom:0;top:auto;
-      height:min(76%,640px);width:auto;aspect-ratio:3/4;margin:0;
+      position:absolute;right:-14vw;bottom:0;top:auto;
+      height:min(64%,520px);width:auto;aspect-ratio:3/4;margin:0;
       -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 30%,#000 100%),linear-gradient(180deg,transparent 0,#000 10%,#000 86%,transparent 100%);
       mask-image:linear-gradient(90deg,transparent 0,#000 30%,#000 100%),linear-gradient(180deg,transparent 0,#000 10%,#000 86%,transparent 100%);
       -webkit-mask-composite:source-in;
       mask-composite:intersect;
     }
-    .hero2-copy{position:relative;z-index:3}
+    .hero2::after{
+      content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
+      background:linear-gradient(90deg,rgba(8,10,9,.68) 0%,rgba(8,10,9,.34) 52%,rgba(8,10,9,0) 82%);
+    }
+    .hero2-copy{position:relative;z-index:4}
     .hero2-desc{max-width:30ch}
     .hero2-cta{display:inline-flex;padding:13px 22px;font-size:11px;letter-spacing:.1em}
     .hero2-card{position:relative;right:auto;bottom:auto;z-index:3;width:min(320px,100%);margin:18px 0 0}
@@ -1104,18 +1108,6 @@
   @media (min-width:901px){
     .vend-feats{grid-template-columns:repeat(4,1fr)}
   }
-  .brand-strip{
-    margin-top:14px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-m);
-    padding:var(--card-pad);
-    display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,32px);
-  }
-  .bs-item b{
-    font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
-    font-size:clamp(15px,1.3vw,19px);letter-spacing:.05em;text-transform:uppercase;display:block;margin-bottom:6px;
-  }
-  .bs-item .mono{color:var(--ink-soft)}
-  @media (max-width:900px){.brand-strip{grid-template-columns:1fr 1fr}}
-  @media (max-width:520px){.brand-strip{grid-template-columns:1fr;gap:14px}}
 </style>
 </head>
 <body id="top">
@@ -1187,7 +1179,11 @@
     <img class="hero2-char" src="assets/stills/hero-worker.webp"
          alt="Рабочий в каске ФОРВАРД, полумаске МК и спецодежде Textiline" fetchpriority="high">
     <div class="hero2-copy">
-      <p class="hero2-kicker mono"><span style="white-space:nowrap">Весь Казахстан</span> · <span style="white-space:nowrap">с 1997 года</span></p>
+      <p class="hero2-stats mono">
+        <span>29&nbsp;лет на&nbsp;рынке</span>
+        <span>2,1&nbsp;млн СИЗ в&nbsp;год</span>
+        <span>6&nbsp;площадок производства</span>
+      </p>
       <h1 class="hero2-title display">
         <span>СИЗ</span>
         <span class="l2">Под</span>
@@ -1195,11 +1191,6 @@
       </h1>
       <p class="hero2-desc">Закрываем поставку, пошив, вендинг-выдачу 24/7 и&nbsp;обслуживание средств индивидуальной защиты (СИЗ)&nbsp;— одним договором с&nbsp;одним подрядчиком.</p>
       <a class="pill pill--brand hero2-cta" href="#contact">Запросить расчёт под предприятие</a>
-      <p class="hero2-stats mono">
-        <span>29&nbsp;лет на&nbsp;рынке</span>
-        <span>2,1&nbsp;млн СИЗ в&nbsp;год</span>
-        <span>6&nbsp;площадок производства</span>
-      </p>
     </div>
     <aside class="hero2-card">
       <b>Нам доверяет Казцинк</b>
@@ -1377,9 +1368,6 @@
         </figure>
       </div>
     </div>
-
-    <div class="brand-strip" aria-label="Товарные бренды в поставке">
-      <div class="bs-item"><b>Safety Nomads</b><span class="mono">Защитная обувь&nbsp;· 24&nbsp;модели</span></div>
       <div class="bs-item"><b>Base Safety</b><span class="mono">Защитные перчатки&nbsp;· 13&nbsp;моделей</span></div>
       <div class="bs-item"><b>MK</b><span class="mono">Полумаски и&nbsp;фильтры&nbsp;· 10&nbsp;моделей</span></div>
       <div class="bs-item"><b>LINEPRO</b><span class="mono">Диэлектрические перчатки&nbsp;· для&nbsp;энергетики</span></div>
