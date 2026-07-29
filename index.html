@@ -266,18 +266,6 @@
     -webkit-mask-composite:source-in;
     mask-composite:intersect;
   }
-  .hero2-kz{
-    position:absolute;z-index:3;
-    top:clamp(20px,4.2vw,56px);right:clamp(20px,4vw,64px);
-    font-family:'Proxima Nova','Archivo',sans-serif;font-stretch:125%;font-weight:800;
-    font-size:clamp(1.2rem,2.4vw,2.2rem);letter-spacing:.3em;text-transform:uppercase;
-    color:rgba(255,255,255,.92);text-align:right;
-  }
-  .hero2-kz small{
-    display:block;margin-top:8px;
-    font-family:'IBM Plex Mono',monospace;font-weight:400;
-    font-size:10.5px;letter-spacing:.14em;color:rgba(255,255,255,.5);
-  }
   .hero2-copy{position:relative;max-width:900px}
   .hero2-kicker{
     display:flex;gap:10px;align-items:center;
@@ -329,13 +317,10 @@
   }
   @media (max-width:980px){
     .hero2{min-height:0;display:flex;flex-direction:column;justify-content:flex-start;padding-bottom:20px}
-    .hero2-kz{order:1}
     .hero2-copy{order:2}
     .hero2-char{order:3}
     .hero2-card{order:4}
     .hero2-tag{order:5}
-    .hero2-kz{position:static;margin:2px 0 14px;text-align:left;font-size:1rem}
-    .hero2-kz small{text-align:left}
     .hero2-title{font-size:clamp(3.4rem,15.5vw,6.4rem)}
     .hero2-title .l2{margin-left:.85em}
     .hero2-title .l3{margin-left:.3em}
@@ -966,7 +951,6 @@
     </div>
     <img class="hero2-char" src="assets/stills/hero-worker.webp"
          alt="Рабочий в каске ФОРВАРД, полумаске МК и спецодежде Textiline" fetchpriority="high">
-    <p class="hero2-kz">Қорғаныс<small>по-казахски — «защита»</small></p>
     <div class="hero2-copy">
       <p class="hero2-kicker mono">Усть-Каменогорск · БИН 160 340 027 310</p>
       <h1 class="hero2-title display">
