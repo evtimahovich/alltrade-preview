@@ -1040,6 +1040,8 @@
   .ind svg{width:24px;height:24px;color:var(--brand-lift)}
   .ind b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
     font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+  .ind-b{display:flex;flex-direction:column;gap:7px}
+  .ind-cl{font-size:12px;letter-spacing:.03em;color:var(--brand-lift)}
   @media (max-width:900px){
     .ind-grid{grid-template-columns:repeat(2,1fr)}
     .ind{flex-direction:row;align-items:center;justify-content:flex-start;gap:14px;min-height:0;padding:16px 18px}
@@ -1662,11 +1664,11 @@
     </div>
 
     <div class="ind-grid">
-      <article class="ind"><span class="ico"><svg aria-hidden="true"><use href="#i-mine"/></svg></span><b>Горная добыча</b></article>
-      <article class="ind"><span class="ico"><svg aria-hidden="true"><use href="#i-metal"/></svg></span><b>Металлургия</b></article>
-      <article class="ind"><span class="ico"><svg aria-hidden="true"><use href="#i-oil"/></svg></span><b>Нефтегаз</b></article>
-      <article class="ind"><span class="ico"><svg aria-hidden="true"><use href="#i-air"/></svg></span><b>Аэропорты</b></article>
-      <article class="ind"><span class="ico"><svg aria-hidden="true"><use href="#i-bolt"/></svg></span><b>Энергетика</b></article>
+      <article class="ind"><span class="ico"><svg aria-hidden="true"><use href="#i-mine"/></svg></span><div class="ind-b"><b>Горная добыча</b><span class="ind-cl mono">Казахмыс</span></div></article>
+      <article class="ind"><span class="ico"><svg aria-hidden="true"><use href="#i-metal"/></svg></span><div class="ind-b"><b>Металлургия</b><span class="ind-cl mono">Казахмыс</span></div></article>
+      <article class="ind"><span class="ico"><svg aria-hidden="true"><use href="#i-oil"/></svg></span><div class="ind-b"><b>Нефтегаз</b></div></article>
+      <article class="ind"><span class="ico"><svg aria-hidden="true"><use href="#i-air"/></svg></span><div class="ind-b"><b>Аэропорты</b><span class="ind-cl mono">Аэропорт Сарыарка</span></div></article>
+      <article class="ind"><span class="ico"><svg aria-hidden="true"><use href="#i-bolt"/></svg></span><div class="ind-b"><b>Энергетика</b><span class="ind-cl mono">Павлодарэнерго</span></div></article>
     </div>
   </section>
 
