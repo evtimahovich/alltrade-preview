@@ -881,6 +881,7 @@
 
   /* ---------- solution loop (block 4) ---------- */
   .loop{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;position:relative}
+  .loop--5{grid-template-columns:repeat(5,1fr)}
   .svc{background:var(--panel);border-radius:var(--r-m);padding:var(--card-pad);
     display:flex;flex-direction:column;gap:12px;position:relative}
   .svc .num{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--mute)}
@@ -904,6 +905,7 @@
   .loop-core b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
     font-size:clamp(1.1rem,2.4vw,1.9rem);text-transform:uppercase;letter-spacing:.02em}
   .loop-core span{color:var(--ink-soft);font-size:14px}
+  @media (min-width:901px) and (max-width:1200px){.loop--5{grid-template-columns:repeat(3,1fr)}}
   @media (max-width:900px){.loop{grid-template-columns:repeat(2,1fr)}}
   @media (max-width:520px){.loop{grid-template-columns:1fr}}
 
@@ -1282,7 +1284,7 @@
         <span class="gpill">Весь Казахстан</span>
         <span class="gpill">Головной офис&nbsp;— Усть-Каменогорск</span>
         <span class="gpill">Филиалы: Алматы&nbsp;· Усть-Каменогорск&nbsp;· Павлодар&nbsp;· Атырау</span>
-        <span class="gpill">Производство&nbsp;— партнёр BDA&nbsp;(Беларусь)</span>
+        <span class="gpill">Собственное производство</span>
               </div>
     </div>
   </section>
@@ -1310,34 +1312,40 @@
     <div class="sec-head">
       <div>
         <p class="svc-kicker">Решение</p>
-        <h2 class="display">Четыре сервиса&nbsp;—<br>один договор</h2>
+        <h2 class="display">Пять направлений&nbsp;—<br>один договор</h2>
       </div>
       <div class="sec-side">
         <p class="mono">Единый контур: поставляем, оборудуем, шьём, выдаём и&nbsp;обслуживаем&nbsp;— по одному договору.</p>
       </div>
     </div>
 
-    <div class="loop">
+    <div class="loop loop--5">
       <article class="svc">
         <span class="num">01</span>
         <span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-box"/></svg></span>
-        <b>Поставка</b>
+        <b>Поставка СИЗ</b>
         <p>Сертифицированные СИЗ со склада: дыхание, голова, руки, ноги, глаза, слух.</p>
       </article>
-      <article class="svc">
+      <article class="svc svc--accent">
         <span class="num">02</span>
+        <span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-air"/></svg></span>
+        <b>Оборудование</b>
+        <p>Приоритет: газоанализаторы, шахтные фонари, регистраторы и&nbsp;зарядно-учётные станции.</p>
+      </article>
+      <article class="svc">
+        <span class="num">03</span>
         <span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-sew"/></svg></span>
         <b>Пошив</b>
         <p>Индивидуальный пошив спецодежды под климат, отрасль и&nbsp;логотип заказчика.</p>
       </article>
-      <article class="svc svc--accent">
-        <span class="num">03</span>
+      <article class="svc">
+        <span class="num">04</span>
         <span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-vend"/></svg></span>
         <b>Вендинг-выдача</b>
         <p>Автоматы KazProService: выдача 24/7 по&nbsp;бейджу с поимённым учётом.</p>
       </article>
       <article class="svc">
-        <span class="num">04</span>
+        <span class="num">05</span>
         <span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-wrench"/></svg></span>
         <b>Обслуживание</b>
         <p>Стирка, ремонт, мойка и дезинфекция масок&nbsp;— форма всегда в строю.</p>
@@ -1346,7 +1354,7 @@
 
     <div class="loop-core">
       <img src="assets/brand/logo-v.png" alt="" width="420" height="400" aria-hidden="true">
-      <b>Одна услуга&nbsp;— один договор</b>
+      <b>Один поставщик&nbsp;— один договор</b>
       <span>Один поставщик · один договор · одна ответственность за всю площадку</span>
     </div>
   </section>
@@ -1466,13 +1474,13 @@
         <h2 class="display">Спецодежда<br>под предприятие</h2>
       </div>
       <div class="sec-side">
-        <p class="mono">Индивидуальный пошив под ваше предприятие: размеры под персонал, ткани под сезон и&nbsp;отрасль, логотип заказчика. Производство&nbsp;— с&nbsp;глубоким партнёром BDA&nbsp;(Беларусь), под нашим контролем качества и&nbsp;сроков.</p>
+        <p class="mono">Индивидуальный пошив под ваше предприятие: размеры под персонал, ткани под сезон и&nbsp;отрасль, логотип заказчика. Производство&nbsp;— на&nbsp;собственной производственной базе, под нашим контролем качества и&nbsp;сроков.</p>
       </div>
     </div>
 
     <figure class="media-card media-card--grade">
-      <img src="assets/stills/plant-crew.webp" alt="Смена в фирменной спецодежде на промышленной площадке" loading="lazy">
-      <figcaption class="media-cap mono">Спецодежда · под климат и отрасль</figcaption>
+      <img src="assets/stills/wear-cine.webp" alt="Смена в фирменных оранжевых костюмах для шахтёров со светоотражающими крестами" loading="lazy">
+      <figcaption class="media-cap mono">Спецодежда · фирменные костюмы для шахтёров</figcaption>
     </figure>
 
     <div class="pain-say">
@@ -1480,7 +1488,7 @@
       <p class="pain-line pl2">Ткани под сезон и&nbsp;отрасль.</p>
       <p class="pain-line pl3">Логотип заказчика.</p>
       <p class="pain-answer">Шьём под ваше предприятие&nbsp;— <em>под контролем качества</em>.</p>
-      <p class="mono" style="margin-top:14px;color:var(--ink-soft)">Производственный партнёр&nbsp;— BDA&nbsp;(Беларусь) · фирменные оранжевые костюмы для шахтёров со светоотражающими крестами</p>
+      <p class="mono" style="margin-top:14px;color:var(--ink-soft)">Собственная производственная база · фирменные оранжевые костюмы для шахтёров со светоотражающими крестами</p>
     </div>
   </section>
 
