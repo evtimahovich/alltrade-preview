@@ -28,17 +28,18 @@
 <meta name="twitter:description" content="СИЗ, оборудование для спасателей, индивидуальный пошив и вендинг-выдача 24/7 для промышленности Казахстана.">
 <meta name="twitter:image" content="https://alltrade-ltd.kz/assets/og-cover.jpg">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":["Organization","LocalBusiness"],"name":"ALLTRADE-LTD","legalName":"ТОО ALLTRADE-LTD","identifier":"БИН 160340027310","url":"https://alltrade-ltd.kz/","telephone":"+77710519449","email":"info@alltrade-ltd.kz","address":{"@type":"PostalAddress","streetAddress":"ул.&nbsp;Бажова&nbsp;79А","addressLocality":"Усть-Каменогорск","addressCountry":"KZ"},"areaServed":"KZ","description":"Единая услуга обеспечения СИЗ и промышленного оборудования под ключ: поставка, оборудование для спасателей, индивидуальный пошив, вендинг-выдача и обслуживание."}
+{"@context":"https://schema.org","@type":["Organization","LocalBusiness"],"name":"ALLTRADE-LTD","legalName":"ТОО ALLTRADE-LTD","identifier":"БИН 160340027310","url":"https://alltrade-ltd.kz/","telephone":"+77710519449","email":"info@alltrade-ltd.kz","address":{"@type":"PostalAddress","streetAddress":"ул. Бажова 79А","addressLocality":"Усть-Каменогорск","addressCountry":"KZ"},"areaServed":"KZ","description":"Единая услуга обеспечения СИЗ и промышленного оборудования под ключ: поставка, оборудование для спасателей, индивидуальный пошив, вендинг-выдача и обслуживание."}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Service","serviceType":"Обеспечение СИЗ под ключ","provider":{"@type":"Organization","name":"ALLTRADE-LTD"},"areaServed":"KZ","hasOfferCatalog":{"@type":"OfferCatalog","name":"Единая услуга СИЗ","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Поставка СИЗ"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Оборудование для спасателей и мониторинга"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Индивидуальный пошив спецодежды"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Вендинг-выдача СИЗ 24/7"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Обслуживание и мойка СИЗ"}}]}}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,500;125,500;125,700;125,800;125,900&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/stills/hero-worker.webp" fetchpriority="high">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,500;125,700;125,800;125,900&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#F3F4F5;
+    --paper:#EBEEF0;
     --panel:#FFFFFF;
     --line:#DDE1E5;
     --ink:#111315;
@@ -149,12 +150,12 @@
   .nav-links a:hover{color:#fff}
   .nav-cta{
     display:inline-flex;align-items:center;gap:10px;color:#fff;
-    border:1px solid rgba(255,255,255,.42);border-radius:999px;
-    padding:11px 18px;
+    background:var(--brand);border:1px solid var(--brand);border-radius:999px;
+    padding:11px 20px;
     font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-    transition:background .2s ease,color .2s ease,transform .2s ease;
+    transition:background .2s ease,transform .2s ease,box-shadow .2s ease;
   }
-  .nav-cta:hover{background:#fff;color:var(--ink);border-color:#fff;transform:translateY(-1px)}
+  .nav-cta:hover{background:var(--brand-lift);border-color:var(--brand-lift);transform:translateY(-1px);box-shadow:0 8px 22px rgba(50,100,80,.4)}
   .nav-menu{
     display:none;align-items:center;justify-content:center;
     width:42px;height:42px;color:#fff;border:1px solid rgba(255,255,255,.35);
@@ -464,13 +465,13 @@
   }
   .card,.stat,.pain,.step,.cert,.p-card,.vfeat,.wrow{
     border:1px solid var(--line);
-    box-shadow:0 1px 2px rgba(17,19,21,.04),0 16px 40px rgba(17,19,21,.05);
+    box-shadow:0 1px 2px rgba(16,20,24,.06),0 12px 32px rgba(16,20,24,.10);
     transition:transform .25s ease,box-shadow .25s ease;
   }
   @media (hover:hover){
     .card:hover,.stat:hover,.pain:hover,.step:hover,.cert:hover,.p-card:hover{
       transform:translateY(-4px);
-      box-shadow:0 2px 4px rgba(17,19,21,.05),0 24px 56px rgba(17,19,21,.09);
+      box-shadow:0 2px 6px rgba(16,20,24,.08),0 26px 60px rgba(16,20,24,.17);
     }
   }
   .m-orange,.m-cta,#vending .vfeat{border:0;box-shadow:none}
@@ -1237,22 +1238,22 @@
   <!-- ============ BLOCK 1 · HERO ============ -->
   <section class="hero2" aria-label="СИЗ под ключ для промышленности Казахстана">
     <div class="hero2-bgtex" aria-hidden="true">
-      <img src="assets/stills/hero-logo-dark.webp" alt="">
+      <img src="assets/stills/hero-logo-dark.webp" alt="" loading="lazy" fetchpriority="low">
     </div>
     <img class="hero2-char" src="assets/stills/hero-worker.webp"
          alt="Рабочий в каске ФОРВАРД, полумаске МК и рабочей спецодежде" fetchpriority="high">
     <div class="hero2-copy">
       <p class="hero2-stats mono">
         <span>Более&nbsp;10&nbsp;лет на&nbsp;рынке</span>
-        <span>4&nbsp;филиала по&nbsp;Казахстану</span>
-        <span>Оборудование для&nbsp;спасателей</span>
+        <span>4&nbsp;филиала · собственное производство</span>
+        <span>Официальный дистрибьютор МК</span>
       </p>
       <h1 class="hero2-title display">
         <span>СИЗ</span>
         <span class="l2">Под</span>
         <span class="l3">Ключ</span>
       </h1>
-      <p class="hero2-desc">Закрываем поставку СИЗ, оборудование для&nbsp;спасателей, индивидуальный пошив и&nbsp;вендинг-выдачу 24/7&nbsp;— одним договором с&nbsp;одним подрядчиком.</p>
+      <p class="hero2-desc">Один договор вместо десяти поставщиков: СИЗ, оборудование для&nbsp;спасателей, пошив спецодежды, вендинг-выдача 24/7 и&nbsp;сервис&nbsp;— одна ответственность за&nbsp;всю площадку.</p>
       <a class="pill pill--brand hero2-cta" href="#contact">Запросить расчёт под предприятие</a>
     </div>
     <aside class="hero2-card">
@@ -1282,8 +1283,8 @@
         <p class="l">Филиала по&nbsp;Казахстану</p>
       </article>
       <article class="stat st4">
-        <p class="n">8</p>
-        <p class="l">Категорий СИЗ с&nbsp;одного склада</p>
+        <p class="n">9</p>
+        <p class="l">Категорий защиты с&nbsp;одного склада</p>
       </article>
       <article class="stat st5">
         <p class="n">24/7</p>
@@ -1320,7 +1321,7 @@
       <p class="pain-line">Десять поставщиков и&nbsp;счетов.</p>
       <p class="pain-line pl2">Перерасход без&nbsp;учёта.</p>
       <p class="pain-line pl3">Смена не&nbsp;вышла&nbsp;— нет размеров.</p>
-      <p class="pain-line pl4">Тендер, который не&nbsp;пройти.</p>
+      <p class="pain-line pl4">Поставщик не&nbsp;проходит по&nbsp;тендеру.</p>
       <p class="pain-answer">Закрываем всё это <em>одним договором</em>.</p>
     </div>
   </section>
@@ -1428,7 +1429,7 @@
         <h2 class="display">Каталог СИЗ</h2>
       </div>
       <div class="sec-side">
-        <p class="mono">Восемь категорий с&nbsp;одного склада. Официальный дистрибьютор респираторов МК и&nbsp;эксклюзивная дистрибуция собственных марок в&nbsp;Казахстане.</p>
+        <p class="mono">Девять категорий с&nbsp;одного склада. Официальный дистрибьютор респираторов МК и&nbsp;эксклюзивная дистрибуция собственных марок в&nbsp;Казахстане.</p>
       </div>
     </div>
     <div class="series-grid">
@@ -1519,7 +1520,7 @@
     <div class="sec-head">
       <div>
         <p class="svc-kicker">Услуга 03 · Вендинг-выдача</p>
-        <h2 class="display">Умная выдача<br>24/7</h2>
+        <h2 class="display">Автоматическая<br>выдача 24/7</h2>
       </div>
       <div class="sec-side">
         <p class="mono">Собственные автоматы KazProService: модель&nbsp;540&nbsp;— выдача, модель&nbsp;640&nbsp;— приёмка спецодежды по RFID.</p>
@@ -1563,17 +1564,17 @@
 
         <div class="calc">
           <div>
-            <h3>Оценка экономии</h3>
+            <h3>Расчёт под площадку</h3>
             <label for="calc-people">Численность персонала</label>
             <p class="val"><span id="calc-people-val">500</span> чел.</p>
             <input type="range" id="calc-people" min="50" max="5000" step="50" value="500"
                    aria-describedby="calc-note">
           </div>
           <div class="calc-out" aria-live="polite">
-            <p class="mono" style="color:rgba(255,255,255,.6);margin-bottom:8px">Экономия в год, ориентировочно</p>
-            <p class="sum" id="calc-sum">6 000 000 ₸</p>
-            <p class="cap">За счёт поимённого учёта и&nbsp;сокращения перерасхода СИЗ примерно на&nbsp;20%.</p>
-            <p class="note" id="calc-note">Предварительная оценка: 12&nbsp;000&nbsp;₸ на&nbsp;сотрудника в&nbsp;год. Точный расчёт&nbsp;— после аудита площадки.</p>
+            <p class="mono" style="color:rgba(255,255,255,.6);margin-bottom:8px">Что даёт автоматическая выдача</p>
+            <p class="sum">Расход под&nbsp;контролем</p>
+            <p class="cap">Поимённый учёт убирает перерасход и&nbsp;списания «в&nbsp;никуда», выдача 24/7&nbsp;— без кладовщика и&nbsp;очередей, с&nbsp;готовой отчётностью для службы охраны труда.</p>
+            <p class="note" id="calc-note">Точную экономию под вашу численность посчитаем после аудита площадки: карта рисков, номенклатура, текущий расход.</p>
             <a class="pill calc-cta" href="#contact" id="calc-cta">Получить точный расчёт</a>
           </div>
         </div>
@@ -1939,13 +1940,9 @@
   /* ---- Калькулятор экономии ---- */
   var range = document.getElementById('calc-people');
   var people = document.getElementById('calc-people-val');
-  var sum = document.getElementById('calc-sum');
-  if (range && people && sum) {
-    var SAVING_PER_PERSON = 12000; // ₸ в год, ориентировочно
+  if (range && people) {
     var render = function () {
-      var n = parseInt(range.value, 10) || 0;
-      people.textContent = nf.format(n);
-      sum.textContent = nf.format(n * SAVING_PER_PERSON) + '\u00A0₸';
+      people.textContent = nf.format(parseInt(range.value, 10) || 0);
     };
     range.addEventListener('input', render);
     render();
