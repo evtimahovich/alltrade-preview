@@ -881,7 +881,6 @@
 
   /* ---------- solution loop (block 4) ---------- */
   .loop{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;position:relative}
-  .loop--5{grid-template-columns:repeat(5,1fr)}
   .svc{background:var(--panel);border-radius:var(--r-m);padding:var(--card-pad);
     display:flex;flex-direction:column;gap:12px;position:relative}
   .svc .num{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--mute)}
@@ -905,7 +904,17 @@
   .loop-core b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
     font-size:clamp(1.1rem,2.4vw,1.9rem);text-transform:uppercase;letter-spacing:.02em}
   .loop-core span{color:var(--ink-soft);font-size:14px}
-  @media (min-width:901px) and (max-width:1200px){.loop--5{grid-template-columns:repeat(3,1fr)}}
+  .svc-lead{display:flex;align-items:center;gap:clamp(16px,2.2vw,28px);margin-top:14px;background:var(--brand);color:#fff;border-radius:var(--r-m);padding:clamp(20px,2.6vw,32px) clamp(20px,2.6vw,36px);text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}
+  .svc-lead:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(50,100,80,.28)}
+  .svc-lead-ico{flex:none;width:56px;height:56px;border-radius:16px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center}
+  .svc-lead-ico svg.ic{width:26px;height:26px;color:#fff}
+  .svc-lead-txt{display:block}
+  .svc-lead-txt b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;font-size:clamp(1.05rem,1.9vw,1.5rem);text-transform:uppercase;letter-spacing:.03em;display:block;margin-bottom:6px}
+  .svc-lead-txt p{color:rgba(255,255,255,.9);font-size:14px;max-width:64ch}
+  .svc-lead-arr{flex:none;margin-left:auto;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;transition:transform .2s ease}
+  .svc-lead:hover .svc-lead-arr{transform:translateX(4px)}
+  .svc-lead-arr svg.ic{width:22px;height:22px;color:#fff}
+  @media (max-width:640px){.svc-lead{flex-wrap:wrap;gap:16px}.svc-lead-arr{display:none}}
   @media (max-width:900px){.loop{grid-template-columns:repeat(2,1fr)}}
   @media (max-width:520px){.loop{grid-template-columns:1fr}}
 
@@ -1319,43 +1328,46 @@
       </div>
     </div>
 
-    <div class="loop loop--5">
+    <div class="loop">
       <article class="svc">
         <span class="num">01</span>
         <span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-box"/></svg></span>
         <b>Поставка СИЗ</b>
         <p>Сертифицированные СИЗ со склада: дыхание, голова, руки, ноги, глаза, слух.</p>
       </article>
-      <article class="svc svc--accent">
-        <span class="num">02</span>
-        <span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-air"/></svg></span>
-        <b>Оборудование</b>
-        <p>Газоанализаторы, шахтные фонари, регистраторы и&nbsp;зарядно-учётные станции для&nbsp;спасателей.</p>
-      </article>
       <article class="svc">
-        <span class="num">03</span>
+        <span class="num">02</span>
         <span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-sew"/></svg></span>
         <b>Пошив</b>
         <p>Индивидуальный пошив спецодежды под климат, отрасль и&nbsp;логотип заказчика.</p>
       </article>
       <article class="svc">
-        <span class="num">04</span>
+        <span class="num">03</span>
         <span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-vend"/></svg></span>
         <b>Вендинг-выдача</b>
         <p>Автоматы KazProService: выдача 24/7 по&nbsp;бейджу с поимённым учётом.</p>
       </article>
       <article class="svc">
-        <span class="num">05</span>
+        <span class="num">04</span>
         <span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-wrench"/></svg></span>
         <b>Обслуживание</b>
         <p>Стирка, ремонт, мойка и дезинфекция масок&nbsp;— форма всегда в строю.</p>
       </article>
     </div>
 
+    <a class="svc-lead" href="#equipment">
+      <span class="svc-lead-ico"><svg class="ic" aria-hidden="true"><use href="#i-air"/></svg></span>
+      <div class="svc-lead-txt">
+        <b>Оборудование для спасателей</b>
+        <p>Газоанализаторы, шахтные фонари, регистраторы и&nbsp;зарядно-учётные станции для промышленной безопасности.</p>
+      </div>
+      <span class="svc-lead-arr"><svg class="ic" aria-hidden="true"><use href="#i-arr"/></svg></span>
+    </a>
+
     <div class="loop-core">
       <img src="assets/brand/logo-v.png" alt="" width="420" height="400" aria-hidden="true">
       <b>Один поставщик&nbsp;— один договор</b>
-      <span>Один поставщик · один договор · одна ответственность за всю площадку</span>
+      <span>Одна ответственность за всю площадку&nbsp;— от поставки до сервиса.</span>
     </div>
   </section>
 
