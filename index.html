@@ -341,20 +341,32 @@
     background:var(--brand-lift);opacity:.8;
   }
   .hero2-card{
-    position:absolute;z-index:4;
+    position:absolute;z-index:4;display:block;
     right:clamp(16px,3.2vw,48px);bottom:clamp(16px,3.2vw,48px);
     width:min(300px,74vw);
     background:rgba(18,22,20,.55);
     border:1px solid rgba(255,255,255,.14);
-    border-radius:18px;
+    border-radius:var(--r-l);
     -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
     padding:24px 26px;
+    transition:transform .2s ease,border-color .2s ease,background .2s ease;
   }
+  .hero2-card:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.3);background:rgba(18,22,20,.72)}
   .hero2-card b{
     font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
-    font-size:14px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px;
+    font-size:14px;letter-spacing:.08em;text-transform:uppercase;display:block;
+    margin-bottom:8px;padding-right:42px;
   }
   .hero2-card p{font-size:13px;line-height:1.6;color:rgba(255,255,255,.72)}
+  .hero2-card-arr{
+    position:absolute;right:16px;top:16px;
+    width:34px;height:34px;border-radius:50%;
+    border:1px solid rgba(255,255,255,.28);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    transition:background .2s ease,border-color .2s ease;
+  }
+  .hero2-card-arr svg{width:14px;height:14px}
+  .hero2-card:hover .hero2-card-arr{background:var(--brand-lift);border-color:var(--brand-lift)}
   @media (max-width:1180px){
     .hero2-char{right:2vw;height:min(82%,700px)}
   }
@@ -463,18 +475,18 @@
     position:relative;
     overflow:hidden;
   }
-  .card,.stat,.pain,.step,.cert,.p-card,.vfeat,.wrow{
+  .card,.stat,.pain,.step,.cert,.p-card,.vfeat,.wrow,.svc{
     border:1px solid var(--line);
     box-shadow:0 1px 2px rgba(16,20,24,.06),0 12px 32px rgba(16,20,24,.10);
     transition:transform .25s ease,box-shadow .25s ease;
   }
   @media (hover:hover){
-    .card:hover,.stat:hover,.pain:hover,.step:hover,.cert:hover,.p-card:hover{
+    .card:hover,.stat:hover,.pain:hover,.step:hover,.cert:hover,.p-card:hover,.svc:hover{
       transform:translateY(-4px);
       box-shadow:0 2px 6px rgba(16,20,24,.08),0 26px 60px rgba(16,20,24,.17);
     }
   }
-  .m-orange,.m-cta,#vending .vfeat{border:0;box-shadow:none}
+  .m-orange,.m-cta,#vending .vfeat,#equipment .svc{border:0;box-shadow:none}
   .m-orange{grid-column:span 4;grid-row:span 2;background:var(--ink);color:#fff;display:flex;flex-direction:column}
   .m-orange img{
     flex:1;min-height:0;width:100%;object-fit:cover;border-radius:calc(var(--r-m) - 8px);
@@ -584,23 +596,33 @@
   }
   .spill .mono{color:inherit;letter-spacing:.06em}
   .spill:hover{color:var(--ink);border-color:var(--ink)}
-  .spill[aria-pressed="true"]{background:var(--panel);border-color:var(--panel);color:var(--ink)}
+  .spill[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
   .price-cta{margin-top:18px}
   .series-right h3{font-size:clamp(1.3rem,2.2vw,2rem);color:var(--ink-soft);margin-bottom:clamp(16px,2vw,26px)}
   .portrait{
     border-radius:var(--r-m);overflow:hidden;position:relative;
     background:#0B0E0D;
+    box-shadow:0 1px 2px rgba(16,20,24,.06),0 12px 32px rgba(16,20,24,.10);
   }
   .portrait img{
     width:100%;height:clamp(320px,32vw,460px);object-fit:cover;
-    filter:saturate(.82) contrast(1.03);
+    transition:opacity .22s ease;
   }
-  .portrait figcaption{
-    position:absolute;left:14px;bottom:14px;
-    background:rgba(17,19,21,.78);color:#fff;
-    border-radius:999px;padding:8px 16px;
+  .cat-cap{
+    position:absolute;left:0;right:0;bottom:0;z-index:2;
+    display:flex;align-items:flex-end;justify-content:space-between;gap:16px;
+    padding:clamp(46px,5vw,72px) clamp(16px,2vw,26px) clamp(14px,1.8vw,22px);
+    background:linear-gradient(180deg,rgba(8,10,9,0),rgba(8,10,9,.82));
+    color:#fff;pointer-events:none;
   }
-  .portrait .card-arr{top:auto;bottom:14px;right:14px}
+  .cat-cap-txt{display:block;min-width:0}
+  .cat-cap b{
+    font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
+    font-size:clamp(14px,1.4vw,19px);letter-spacing:.07em;text-transform:uppercase;
+    display:block;margin-bottom:4px;
+  }
+  .cat-cap .mono{color:rgba(255,255,255,.72);display:block}
+  .cat-idx{flex:none;color:rgba(255,255,255,.58);font-variant-numeric:tabular-nums}
   @media (max-width:860px){
     .series-grid{display:flex;flex-direction:column;align-items:stretch;gap:16px}
     .series-right{width:100%}
@@ -670,7 +692,6 @@
     position:absolute;left:16px;top:16px;z-index:2;
     background:var(--brand);color:#fff;
     border-radius:999px;padding:8px 16px;
-    font-size:12px;letter-spacing:.09em;text-transform:uppercase;
     box-shadow:0 6px 18px rgba(0,0,0,.28);
   }
   .g-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -784,30 +805,40 @@
   @media (max-width:760px){.wa-fab{display:flex}
     .foot-bottom{padding-bottom:76px}}
 
-  /* ---------- вендинг: тёмный остров ---------- */
-  #vending{
+  /* ---------- тёмные острова: оборудование + вендинг ---------- */
+  #vending,#equipment{
     background:#0B0E0D;color:#fff;
     border-radius:var(--r-l);
     margin-inline:calc((var(--pad) - var(--inset)) * -1);
     padding-inline:calc(var(--pad) - var(--inset));
     position:relative;overflow:hidden;
   }
-  #vending::before{
+  #vending::before,#equipment::before{
     content:"";position:absolute;inset:0;
     background:radial-gradient(ellipse 90% 70% at 12% 8%,rgba(78,158,120,.13),transparent 58%);
     pointer-events:none;
   }
-  #vending .display{color:#fff}
-  #vending .sec-side .mono{color:rgba(255,255,255,.6)}
-  #vending .svc-kicker{color:var(--brand-lift)}
-  #vending .svc-kicker::before{background:var(--brand-lift)}
+  #equipment::before{background:radial-gradient(ellipse 90% 70% at 88% 6%,rgba(78,158,120,.13),transparent 58%)}
+  #vending .display,#equipment .display{color:#fff}
+  #vending .sec-side .mono,#equipment .sec-side .mono{color:rgba(255,255,255,.6)}
+  #vending .svc-kicker,#equipment .svc-kicker{color:var(--brand-lift)}
   #vending .vfeat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09)}
   #vending .vfeat p{color:rgba(255,255,255,.66)}
   #vending .calc{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09)}
+  #equipment .svc{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09)}
+  #equipment .svc p{color:rgba(255,255,255,.68)}
+  #equipment .svc .num{color:rgba(255,255,255,.5)}
+  #equipment .svc .ico{background:rgba(78,158,120,.16);border-color:rgba(78,158,120,.34)}
+  #equipment .svc svg.ic{color:var(--brand-lift)}
+  #equipment .svc--accent{background:var(--brand);border-color:var(--brand)}
+  #equipment .svc--accent p{color:rgba(255,255,255,.9)}
+  #equipment .svc--accent .num{color:rgba(255,255,255,.8)}
+  #equipment .svc--accent .ico{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.32)}
+  #equipment .svc--accent svg.ic{color:#fff}
 
   /* ---------- общее свечение тёмных плашек ---------- */
   .pain-resolve,.cl-anchor,.calc,.m-orange{position:relative;overflow:hidden}
-  .pain-resolve::after,.cl-anchor::after{
+  .pain-resolve::after,.cl-anchor::after,.geo::after,.ct-info::after{
     content:"";position:absolute;right:-25%;top:-60%;width:70%;height:180%;
     background:radial-gradient(circle,rgba(78,158,120,.16),transparent 62%);
     pointer-events:none;
@@ -843,13 +874,19 @@
   .st5{grid-column:span 4}
   .stat--orange{background:var(--brand);color:#fff}
   .stat--orange .l{color:rgba(255,255,255,.86)}
-  .geo{grid-column:span 12;background:var(--panel);border-radius:var(--r-m);
-    padding:clamp(18px,2vw,26px);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-  .geo .mono{color:var(--ink-soft);margin-right:8px}
+  .geo{grid-column:span 12;background:var(--ink);color:#fff;border-radius:var(--r-m);
+    padding:clamp(18px,2vw,26px);display:flex;gap:10px;flex-wrap:wrap;align-items:center;
+    position:relative;overflow:hidden}
+  .geo .mono{color:rgba(255,255,255,.6);margin-right:8px}
   .gpill{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 16px;
     font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+  .geo .gpill{border-color:rgba(255,255,255,.26);background:transparent;color:#fff}
+  .fact-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:clamp(18px,2.4vw,28px)}
   @media (max-width:960px){.stat--wide,.stat--sm,.st4,.st5{grid-column:span 6}}
-  @media (max-width:600px){.stat--wide,.stat--sm,.st4,.st5{grid-column:span 12}}
+  @media (max-width:600px){
+    .stat--wide,.stat--sm,.st4,.st5{grid-column:span 12}
+    .stat{min-height:0;gap:12px;padding:20px 22px}
+  }
 
   /* ---------- pain (block 3) ---------- */
   .pain-say{padding-block:clamp(10px,2vw,30px)}
@@ -917,6 +954,7 @@
   .svc-lead-ico{flex:none;width:56px;height:56px;border-radius:16px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center}
   .svc-lead-ico svg.ic{width:26px;height:26px;color:#fff}
   .svc-lead-txt{display:block}
+  .svc-lead-txt .num{display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-bottom:8px}
   .svc-lead-txt b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;font-size:clamp(1.05rem,1.9vw,1.5rem);text-transform:uppercase;letter-spacing:.03em;display:block;margin-bottom:6px}
   .svc-lead-txt p{color:rgba(255,255,255,.9);font-size:14px;max-width:64ch}
   .svc-lead-arr{flex:none;margin-left:auto;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;transition:transform .2s ease}
@@ -966,6 +1004,7 @@
   .calc-cta:hover{background:var(--brand-lift);color:#fff}
   .calc-out .cap{color:rgba(255,255,255,.62);font-size:13px;margin-top:10px}
   .calc-out .note{color:rgba(255,255,255,.58);font-size:12.5px;margin-top:14px;line-height:1.6}
+  .calc-k{color:rgba(255,255,255,.6);margin-bottom:8px}
   .vend-img > img{transition:opacity .22s ease}
   .vend-img > .vend-blur{
     filter:blur(26px) saturate(1.05);transform:scale(1.15);opacity:.55;
@@ -1032,6 +1071,7 @@
     border:1px solid rgba(78,158,120,.16);
     padding:var(--card-pad);
     display:flex;flex-direction:column;gap:14px;justify-content:space-between;min-height:170px;
+    box-shadow:0 1px 2px rgba(8,10,9,.16),0 14px 34px rgba(8,10,9,.16);
   }
   .ind .ico{
     width:48px;height:48px;border-radius:14px;flex:none;
@@ -1062,20 +1102,41 @@
   .step b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
     font-size:13px;letter-spacing:.07em;text-transform:uppercase;line-height:1.3}
   .step p{color:var(--ink-soft);font-size:13.5px}
+  .step--accent{background:var(--ink);border-color:var(--ink);color:#fff}
+  .step--accent .no{color:var(--brand-lift)}
+  .step--accent p{color:rgba(255,255,255,.72)}
   @media (max-width:1000px){.steps{grid-template-columns:repeat(3,1fr)}}
   @media (max-width:640px){.steps{grid-template-columns:1fr}}
 
   /* ---------- contact form (block 12) ---------- */
-  #contact{padding-block:clamp(32px,4.6vw,72px)}
-  #contact .sec-head{margin-bottom:clamp(18px,2.4vw,32px)}
-  #contact .sec-head h2{font-size:clamp(1.8rem,3.8vw,3.4rem)}
-  .ct-grid{display:grid;grid-template-columns:1fr;gap:14px;align-items:start}
-  .ct-form{background:var(--panel);border-radius:var(--r-m);padding:clamp(24px,2.6vw,36px)}
+  .ct-grid{display:grid;grid-template-columns:1fr;gap:14px;align-items:stretch}
+  @media (min-width:861px){.ct-grid{grid-template-columns:1.18fr .82fr}}
+  .ct-form{background:var(--panel);border-radius:var(--r-m);padding:clamp(24px,2.6vw,36px);
+    border:1px solid var(--line);
+    box-shadow:0 1px 2px rgba(16,20,24,.06),0 12px 32px rgba(16,20,24,.10)}
+  .ct-form .field--gap{margin-bottom:12px}
+  .ct-info{
+    background:var(--ink);color:#fff;border-radius:var(--r-m);
+    padding:clamp(24px,2.6vw,36px);
+    display:flex;flex-direction:column;align-items:flex-start;gap:6px;
+    position:relative;overflow:hidden;
+  }
+  .ct-k{color:rgba(255,255,255,.6);margin-bottom:16px}
+  .ct-phone{
+    position:relative;
+    font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
+    font-size:clamp(1.5rem,2.1vw,1.9rem);letter-spacing:.02em;line-height:1.15;color:#fff;
+  }
+  .ct-phone:hover{color:var(--brand-lift)}
+  .ct-mail{position:relative;color:rgba(255,255,255,.78);font-size:15px}
+  .ct-mail:hover{color:#fff;text-decoration:underline}
+  .ct-info .pill{margin-top:18px}
+  .ct-cities{margin-top:auto;padding-top:24px;color:rgba(255,255,255,.55)}
   .f-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
   .field{display:flex;flex-direction:column;gap:7px}
   .field label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;
     text-transform:uppercase;color:var(--ink-soft)}
-  .hero2 :focus-visible,#vending :focus-visible,.foot :focus-visible,.calc :focus-visible{outline-color:var(--brand-lift)}
+  .hero2 :focus-visible,#vending :focus-visible,#equipment :focus-visible,.foot :focus-visible,.calc :focus-visible,.ct-info :focus-visible{outline-color:var(--brand-lift)}
   .field input,.field textarea{
     font-family:'Manrope',sans-serif;font-size:16px;color:var(--ink);
     background:#fff;border:1px solid var(--line);border-radius:var(--r-s);
@@ -1101,7 +1162,7 @@
     *,*::before,*::after{transition:none !important;animation:none !important}
   }
   /* большие мониторы: острова во всю ширину, контент на центральной сетке */
-  .nav,.hero2,#vending{
+  .nav,.hero2,#vending,#equipment{
     margin-inline:calc(50% - 50vw + var(--inset));
     padding-inline:calc(max(var(--pad), 50vw - 720px + var(--pad)) - var(--inset));
   }
@@ -1118,7 +1179,7 @@
     .hero2-desc{
       margin-top:auto;max-width:none;
       background:rgba(14,17,16,.55);border:1px solid rgba(255,255,255,.14);
-      border-radius:16px;padding:16px 18px;
+      border-radius:var(--r-l);padding:16px 18px;
       -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
     }
     .hero2-cta{margin-top:16px}
@@ -1137,7 +1198,7 @@
     .hero2-copy{position:relative;z-index:4}
   }
   @media (max-width:760px){
-    .hero2,#vending{margin-inline:calc(var(--pad) * -1);padding-inline:var(--pad);border-radius:0}
+    .hero2,#vending,#equipment{margin-inline:calc(var(--pad) * -1);padding-inline:var(--pad);border-radius:0}
     .foot{margin-inline:0;padding-inline:var(--pad);border-radius:0}
     .nav{margin-inline:0}
     .hero2{margin-top:-86px;padding-top:112px}
@@ -1162,8 +1223,8 @@
     .vend-feats{grid-template-columns:repeat(4,1fr)}
   }
   @media (max-width:860px){
-    .portrait .media-cap br{display:none}
-    #cat-spec::before{content:" · "}
+    .cat-cap{padding:40px 14px 12px}
+    .cat-cap b{font-size:13px;margin-bottom:2px}
   }
   @media (max-width:760px){
     .foot-bottom{flex-direction:column;align-items:flex-start;gap:12px}
@@ -1256,16 +1317,18 @@
       <p class="hero2-desc">Один договор вместо десяти поставщиков: СИЗ, оборудование для&nbsp;спасателей, пошив спецодежды, вендинг-выдача 24/7 и&nbsp;сервис&nbsp;— одна ответственность за&nbsp;всю площадку.</p>
       <a class="pill pill--brand hero2-cta" href="#contact">Запросить расчёт под предприятие</a>
     </div>
-    <aside class="hero2-card">
-      <b>Приоритет&nbsp;— оборудование</b>
+    <a class="hero2-card" href="#equipment">
+      <b>Оборудование для&nbsp;спасателей</b>
       <p>Газоанализаторы, шахтные фонари, регистраторы и&nbsp;зарядно-учётные станции для промышленной безопасности.</p>
-    </aside>
+      <span class="hero2-card-arr" aria-hidden="true"><svg><use href="#i-arr"/></svg></span>
+    </a>
   </section>
 
   <!-- ============ BLOCK 2 · О КОМПАНИИ ЦИФРАМИ ============ -->
   <section id="about" aria-label="О компании в цифрах">
     <div class="sec-head">
       <div>
+        <p class="svc-kicker">ТОО ALLTRADE-LTD</p>
         <h2 class="display">О компании<br>в цифрах</h2>
       </div>
       <div class="sec-side">
@@ -1311,7 +1374,10 @@
   <!-- ============ BLOCK 3 · ЧТО БОЛИТ НА ПЛОЩАДКЕ ============ -->
   <section id="pain" aria-label="Что болит на площадке">
     <div class="sec-head">
-      <h2 class="display">Что болит<br>на площадке</h2>
+      <div>
+        <p class="svc-kicker">Проблема</p>
+        <h2 class="display">Что болит<br>на площадке</h2>
+      </div>
       <div class="sec-side">
         <p class="mono">Типичная картина снабжения СИЗ на крупном предприятии&nbsp;— до перехода на единый контур.</p>
       </div>
@@ -1368,6 +1434,7 @@
     <a class="svc-lead" href="#equipment">
       <span class="svc-lead-ico"><svg class="ic" aria-hidden="true"><use href="#i-air"/></svg></span>
       <div class="svc-lead-txt">
+        <span class="num">05</span>
         <b>Оборудование для спасателей</b>
         <p>Газоанализаторы, шахтные фонари, регистраторы и&nbsp;зарядно-учётные станции для промышленной безопасности.</p>
       </div>
@@ -1385,7 +1452,7 @@
   <section id="equipment" aria-label="Оборудование для спасателей и мониторинга">
     <div class="sec-head">
       <div>
-        <p class="svc-kicker">Приоритетное направление</p>
+        <p class="svc-kicker">Промышленная безопасность</p>
         <h2 class="display">Оборудование<br>для спасателей</h2>
       </div>
       <div class="sec-side">
@@ -1477,11 +1544,13 @@
       <div class="series-right">
         <figure class="portrait">
           <img id="cat-img" src="assets/catalog/cine/head.webp"
-               alt="Защитная каска Эвен Пласт" loading="lazy"
-               style="filter:none;object-fit:contain;transition:opacity .22s ease">
-          <figcaption class="media-cap mono" aria-live="polite">
-            <b id="cat-brand" style="letter-spacing:.08em">Эвен Пласт</b><br>
-            <span id="cat-spec">каски и защита головы</span>
+               alt="Защитная каска Эвен Пласт" loading="lazy">
+          <figcaption class="cat-cap" aria-live="polite">
+            <span class="cat-cap-txt">
+              <b id="cat-brand">Эвен Пласт</b>
+              <span id="cat-spec" class="mono">каски и защита головы</span>
+            </span>
+            <span class="cat-idx mono" id="cat-idx" aria-hidden="true">01&nbsp;/&nbsp;09</span>
           </figcaption>
         </figure>
       </div>
@@ -1511,7 +1580,10 @@
       <p class="pain-line pl2">Ткани под сезон и&nbsp;отрасль.</p>
       <p class="pain-line pl3">Логотип заказчика.</p>
       <p class="pain-answer">Шьём под ваше предприятие&nbsp;— <em>под контролем качества</em>.</p>
-      <p class="mono" style="margin-top:14px;color:var(--ink-soft)">Собственная производственная база · фирменные оранжевые костюмы для шахтёров со светоотражающими крестами</p>
+      <div class="fact-chips">
+        <span class="gpill">Собственная производственная база</span>
+        <span class="gpill">Фирменные оранжевые костюмы для шахтёров со&nbsp;светоотражающими крестами</span>
+      </div>
     </div>
   </section>
 
@@ -1571,7 +1643,7 @@
                    aria-describedby="calc-note">
           </div>
           <div class="calc-out" aria-live="polite">
-            <p class="mono" style="color:rgba(255,255,255,.6);margin-bottom:8px">Что даёт автоматическая выдача</p>
+            <p class="mono calc-k">Что даёт автоматическая выдача</p>
             <p class="sum">Расход под&nbsp;контролем</p>
             <p class="cap">Поимённый учёт убирает перерасход и&nbsp;списания «в&nbsp;никуда», выдача 24/7&nbsp;— без кладовщика и&nbsp;очередей, с&nbsp;готовой отчётностью для службы охраны труда.</p>
             <p class="note" id="calc-note">Точную экономию под вашу численность посчитаем после аудита площадки: карта рисков, номенклатура, текущий расход.</p>
@@ -1630,7 +1702,10 @@
   <!-- ============ BLOCK 10 · СЕРТИФИКАТЫ И КАЗСОДЕРЖАНИЕ ============ -->
   <section id="certs" aria-label="Сертификаты и казахстанское содержание">
     <div class="sec-head">
-      <h2 class="display">Проходим тендеры<br>недро&shy;пользователей</h2>
+      <div>
+        <p class="svc-kicker">Допуски и тендеры</p>
+        <h2 class="display">Проходим тендеры<br>недро&shy;пользователей</h2>
+      </div>
       <div class="sec-side">
         <p class="mono">Сертификация, казахстанское содержание и готовность к&nbsp;аудиту&nbsp;— три условия допуска на&nbsp;площадку.</p>
       </div>
@@ -1658,7 +1733,10 @@
   <!-- ============ BLOCK 11 · КЛИЕНТЫ И ОТРАСЛИ ============ -->
   <section id="clients" aria-label="Клиенты и отрасли">
     <div class="sec-head">
-      <h2 class="display">Кому<br>поставляем</h2>
+      <div>
+        <p class="svc-kicker">Отрасли</p>
+        <h2 class="display">Кому<br>поставляем</h2>
+      </div>
       <div class="sec-side">
         <p class="mono">Работаем с крупной промышленностью Казахстана&nbsp;— там, где цена ошибки в&nbsp;защите максимальна.</p>
       </div>
@@ -1676,7 +1754,10 @@
   <!-- ============ BLOCK 12 · КАК РАБОТАЕМ ============ -->
   <section id="process" aria-label="Как мы работаем">
     <div class="sec-head">
-      <h2 class="display">Как<br>работаем</h2>
+      <div>
+        <p class="svc-kicker">Процесс</p>
+        <h2 class="display">Как<br>работаем</h2>
+      </div>
       <div class="sec-side">
         <p class="mono">От первой заявки до обслуживания на&nbsp;площадке&nbsp;— пять шагов и&nbsp;один договор.</p>
       </div>
@@ -1693,7 +1774,7 @@
         <b>Расчёт и подбор</b>
         <p>Считаем потребность и&nbsp;подбираем номенклатуру под отрасль и климат.</p>
       </article>
-      <article class="step">
+      <article class="step step--accent">
         <span class="no">03</span>
         <b>Один договор</b>
         <p>Заключаем единый договор на весь цикл&nbsp;— вместо десяти отдельных.</p>
@@ -1714,7 +1795,10 @@
   <!-- ============ BLOCK 13 · ЗАЯВКА ============ -->
   <section id="contact" aria-label="Заявка на расчёт">
     <div class="sec-head">
-      <h2 class="display">Обсудим<br>вашу площадку</h2>
+      <div>
+        <p class="svc-kicker">Заявка</p>
+        <h2 class="display">Обсудим<br>вашу площадку</h2>
+      </div>
       <div class="sec-side">
         <p class="mono">Опишите задачу&nbsp;— вернёмся с расчётом под ваше предприятие. Без обязательств.</p>
       </div>
@@ -1734,7 +1818,7 @@
             <span class="f-err">Укажите телефон</span>
           </div>
         </div>
-        <div class="field" style="margin-bottom:12px">
+        <div class="field field--gap">
           <label for="f-company">Компания</label>
           <input type="text" id="f-company" name="company" autocomplete="organization" required>
           <span class="f-err">Укажите компанию</span>
@@ -1752,6 +1836,13 @@
           <span>Открылся WhatsApp с текстом заявки&nbsp;— нажмите в нём «Отправить». Если WhatsApp недоступен, напишите на info@alltrade-ltd.kz.</span>
         </div>
       </form>
+      <aside class="ct-info">
+        <p class="mono ct-k">Напрямую</p>
+        <a class="ct-phone" href="tel:+77710519449">+7&nbsp;771&nbsp;051&nbsp;94&nbsp;49</a>
+        <a class="ct-mail" href="mailto:info@alltrade-ltd.kz">info@alltrade-ltd.kz</a>
+        <a class="pill pill--brand" href="https://wa.me/77710519449" rel="noopener">Написать в WhatsApp</a>
+        <p class="mono ct-cities">Филиалы: Алматы&nbsp;· Усть-Каменогорск&nbsp;· Павлодар&nbsp;· Атырау</p>
+      </aside>
     </div>
   </section>
 </div>
@@ -1876,8 +1967,8 @@
   /* ---- Появление блоков при скролле ---- */
   if ('IntersectionObserver' in window && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
     var revealTargets = document.querySelectorAll(
-      '.sec-head, .card, .stat, .pain, .pain-resolve, .loop-item, .vfeat, .vend-img, .calc, ' +
-      '.media-card, .wash-img, .wrow, .series-left, .series-stage, .cert, .cl-anchor, .ind, ' +
+      '.sec-head, .card, .stat, .geo, .pain, .pain-say, .pain-resolve, .svc, .svc-lead, .loop-core, .vfeat, .vend-img, .calc, ' +
+      '.media-card, .wash-img, .wrow, .series-left, .portrait, .cert, .cl-anchor, .ind, ' +
       '.step, .p-card, .g-head, .ct-info, .ct-form'
     );
     var groupIndex = new Map();
@@ -1953,6 +2044,7 @@
   var catImg = document.getElementById('cat-img');
   var catBrand = document.getElementById('cat-brand');
   var catSpec = document.getElementById('cat-spec');
+  var catIdx = document.getElementById('cat-idx');
   if (pills.length && catImg && catBrand && catSpec) {
     /* предзагрузка всех категорий — переключение мгновенное */
     pills.forEach(function (b) {
@@ -1971,6 +2063,10 @@
         }, 120);
         catBrand.textContent = btn.dataset.brand;
         catSpec.textContent = btn.dataset.spec;
+        if (catIdx) {
+          var i = Array.prototype.indexOf.call(pills, btn) + 1;
+          catIdx.textContent = (i < 10 ? '0' + i : String(i)) + ' / ' + (pills.length < 10 ? '0' + pills.length : pills.length);
+        }
         var nextPill = btn.nextElementSibling || btn;
         nextPill.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
       });
