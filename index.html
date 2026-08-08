@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#FFFFFF">
-<title>ALLTRADE-LTD — СИЗ под ключ для промышленности Казахстана</title>
-<meta name="description" content="ТОО ALLTRADE-LTD — единый контур СИЗ и промышленного оборудования для Казахстана: поставка СИЗ, оборудование для спасателей, индивидуальный пошив, вендинг-выдача 24/7 и сервис. Более 10 лет на рынке.">
+<title>ALLTRADE-LTD - СИЗ под ключ для промышленности Казахстана</title>
+<meta name="description" content="ТОО ALLTRADE-LTD - единый контур СИЗ и промышленного оборудования для Казахстана: поставка СИЗ, оборудование для спасателей, индивидуальный пошив, вендинг-выдача 24/7 и сервис. Более 10 лет на рынке.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="https://alltrade-ltd.kz/">
 <link rel="alternate" hreflang="ru" href="https://alltrade-ltd.kz/">
@@ -17,14 +17,14 @@
 <meta property="og:site_name" content="ALLTRADE-LTD">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:url" content="https://alltrade-ltd.kz/">
-<meta property="og:title" content="ALLTRADE-LTD — СИЗ под ключ">
+<meta property="og:title" content="ALLTRADE-LTD - СИЗ под ключ">
 <meta property="og:description" content="Поставка СИЗ, оборудование для спасателей, индивидуальный пошив и автоматическая выдача для промышленности Казахстана. Один поставщик, один договор.">
 <meta property="og:image" content="https://alltrade-ltd.kz/assets/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="ALLTRADE-LTD — СИЗ под ключ для промышленности Казахстана">
+<meta property="og:image:alt" content="ALLTRADE-LTD - СИЗ под ключ для промышленности Казахстана">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="ALLTRADE-LTD — СИЗ под ключ">
+<meta name="twitter:title" content="ALLTRADE-LTD - СИЗ под ключ">
 <meta name="twitter:description" content="СИЗ, оборудование для спасателей, индивидуальный пошив и вендинг-выдача 24/7 для промышленности Казахстана.">
 <meta name="twitter:image" content="https://alltrade-ltd.kz/assets/og-cover.jpg">
 <script type="application/ld+json">
@@ -45,8 +45,8 @@
     --ink:#111315;
     --ink-soft:#5B6067;
     --mute:#6A7076;
-    --brand:#326450;      /* PANTONE 554 C — фирменный */
-    --brand-lift:#4E9E78; /* осветлённый — только на тёмном фоне */
+    --brand:#326450;      /* PANTONE 554 C - фирменный */
+    --brand-lift:#4E9E78; /* осветлённый - только на тёмном фоне */
     --r-s:6px;
     --r-m:8px;
     --r-l:12px;
@@ -278,7 +278,7 @@
     .hero2-title{font-size:clamp(3.4rem,15.5vw,6.4rem)}
     .hero2-title .l2{margin-left:.85em}
     .hero2-title .l3{margin-left:.3em}
-    /* персонаж — фоновым слоем справа, как на десктопе */
+    /* персонаж - фоновым слоем справа, как на десктопе */
     .hero2-char{
       position:absolute;right:0;bottom:0;top:auto;
       height:min(62%,500px);width:auto;aspect-ratio:3/4;margin:0;
@@ -421,7 +421,7 @@
     box-shadow:0 1px 2px rgba(16,20,24,.06),0 12px 32px rgba(16,20,24,.10);
   }
   .portrait img{
-    width:100%;height:clamp(320px,32vw,460px);object-fit:cover;
+    width:100%;height:clamp(320px,32vw,460px);object-fit:contain;
     transition:opacity .22s ease;
   }
   .cat-cap{
@@ -446,7 +446,7 @@
     .series-left > .pills{order:1}
     .series-right{order:2}
     .price-cta{order:3;margin-top:2px;align-self:flex-start}
-    /* категории — горизонтальная лента, картинка сразу под ней */
+    /* категории - горизонтальная лента, картинка сразу под ней */
     .pills{
       flex-direction:row;overflow-x:auto;gap:8px;
       padding-bottom:8px;margin-inline:calc(var(--pad) * -1);
@@ -626,6 +626,10 @@
   #equipment .svc--accent .ico{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.32)}
   #equipment .svc--accent svg.ic{color:#fff}
   #equipment .eq-photo{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;background:#0e1211;filter:saturate(.9) contrast(1.03)}
+  #equipment .svc{justify-content:flex-start}
+  #equipment .svc b{min-height:2.3em;display:flex;align-items:flex-start}
+  #equipment .svc p{min-height:3.1em}
+  @media (max-width:900px){#equipment .svc b,#equipment .svc p{min-height:0}}
 
   /* ---------- общее свечение тёмных плашек ---------- */
   .pain-resolve,.cl-anchor,.calc,.m-orange{position:relative;overflow:hidden}
@@ -723,7 +727,7 @@
   .svc--accent p{color:rgba(255,255,255,.9)}
   .loop-core{margin-top:14px;background:var(--panel);border-radius:var(--r-m);
     padding:clamp(20px,2.4vw,34px);display:flex;align-items:center;gap:20px;justify-content:center;flex-wrap:wrap;text-align:center}
-  .loop-core img{height:56px;width:auto;flex:none} /* фирменный зелёный — допустимый вариант знака */
+  .loop-core img{height:56px;width:auto;flex:none} /* фирменный зелёный - допустимый вариант знака */
   .loop-core b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
     font-size:clamp(1.1rem,2.4vw,1.9rem);text-transform:uppercase;letter-spacing:.02em}
   .loop-core span{color:var(--ink-soft);font-size:14px}
@@ -739,6 +743,13 @@
   .svc-lead:hover .svc-lead-arr{transform:translateX(4px)}
   .svc-lead-arr svg.ic{width:22px;height:22px;color:#fff}
   @media (max-width:640px){.svc-lead{flex-wrap:wrap;gap:16px}.svc-lead-arr{display:none}}
+  /* ---- Пять направлений: редакторский нумерованный список ---- */
+  .dirs{border-top:1px solid var(--line)}
+  .dir{display:grid;grid-template-columns:clamp(38px,4.5vw,64px) 1fr;gap:clamp(16px,3vw,44px);align-items:baseline;padding:clamp(22px,2.6vw,34px) 0;border-bottom:1px solid var(--line)}
+  .dir .num{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.14em;color:var(--mute)}
+  .dir-t b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;font-size:clamp(1.4rem,3vw,2.4rem);line-height:1.03;text-transform:uppercase;letter-spacing:.004em;display:block;margin-bottom:8px}
+  .dir-t p{color:var(--ink-soft);font-size:15px;max-width:62ch}
+  @media (max-width:600px){.dir{grid-template-columns:1fr;gap:6px}}
   @media (max-width:900px){.loop{grid-template-columns:repeat(2,1fr)}}
   @media (max-width:520px){.loop{grid-template-columns:1fr}}
 
@@ -775,7 +786,7 @@
     font-size:clamp(2rem,3.6vw,3rem);line-height:1;font-variant-numeric:tabular-nums;margin-bottom:12px}
   .calc input[type=range]{width:100%;accent-color:var(--brand);height:44px}
   .calc-out{background:rgba(255,255,255,.07);border-radius:var(--r-s);padding:clamp(18px,2vw,26px)}
-  /* на тёмном — осветлённый зелёный */
+  /* на тёмном - осветлённый зелёный */
   .calc-out .sum{white-space:nowrap;font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
     font-size:clamp(1.7rem,3.4vw,2.8rem);line-height:1;color:var(--brand-lift);font-variant-numeric:tabular-nums}
   .calc-cta{margin-top:16px;background:#fff;color:var(--ink)}
@@ -861,6 +872,9 @@
     font-size:13px;letter-spacing:.08em;text-transform:uppercase}
   .ind-b{display:flex;flex-direction:column;gap:7px}
   .ind-cl{font-size:12px;letter-spacing:.03em;color:var(--brand-lift)}
+  .clients-line{margin-top:14px;display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 22px;padding:clamp(18px,2vw,26px) clamp(20px,2.4vw,32px);background:var(--panel);border:1px solid var(--line);border-radius:var(--r-m)}
+  .clients-line-k{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+  .clients-line-v{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;font-size:clamp(1rem,1.8vw,1.35rem);letter-spacing:.02em}
   @media (max-width:900px){
     .ind-grid{grid-template-columns:repeat(2,1fr)}
     .ind{flex-direction:row;align-items:center;justify-content:flex-start;gap:14px;min-height:0;padding:16px 18px}
@@ -946,12 +960,12 @@
     padding-inline:calc(max(var(--pad), 50vw - 720px + var(--pad)) - var(--inset));
   }
   @media (max-width:560px){
-    /* Мобильный хиро: рабочий справа за текстом, поднят выше */
+    /* Мобильный хиро: рабочий в нижнем-правом углу, текст сверху с воздухом */
     .hero2-card{display:none}
-    .hero2{min-height:clamp(560px,155vw,760px);padding-top:26px;padding-bottom:52px}
+    .hero2{min-height:clamp(580px,158vw,780px);padding-top:clamp(60px,16vw,96px);padding-bottom:44px}
     .hero2-copy{display:flex;flex-direction:column;flex:1}
-    .hero2-stats{gap:8px 16px;margin-bottom:0}
-    .hero2-title{margin-top:auto}
+    .hero2-stats{gap:8px 16px;margin-bottom:14px}
+    .hero2-title{margin-top:0}
     .hero2-desc{
       margin-top:auto;max-width:none;
       background:rgba(14,17,16,.55);border:1px solid rgba(255,255,255,.14);
@@ -960,8 +974,8 @@
     }
     .hero2-cta{margin-top:16px}
     .hero2-char{
-      top:clamp(64px,10svh,100px);bottom:auto;
-      height:min(60%,470px);right:-6vw;
+      top:auto;bottom:0;
+      height:min(50%,400px);right:-9vw;
       -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 30%,#000 100%),linear-gradient(180deg,transparent 0,#000 10%,#000 88%,transparent 100%);
       mask-image:linear-gradient(90deg,transparent 0,#000 30%,#000 100%),linear-gradient(180deg,transparent 0,#000 10%,#000 88%,transparent 100%);
       -webkit-mask-composite:source-in;
@@ -1039,7 +1053,7 @@
 <div class="wrap">
   <!-- ============ NAV ============ -->
   <header class="nav">
-    <a class="nav-logo" href="#top" aria-label="ALLTRADE-LTD&nbsp;— на главную">
+    <a class="nav-logo" href="#top" aria-label="ALLTRADE-LTD&nbsp;- на главную">
       <img src="assets/brand/logo-h.png" alt="ALLTRADE-LTD" width="562" height="120">
     </a>
     <nav aria-label="Основная навигация">
@@ -1090,7 +1104,7 @@
         <span class="l2">Под</span>
         <span class="l3">Ключ</span>
       </h1>
-      <p class="hero2-desc">Один договор вместо десяти поставщиков&nbsp;— от&nbsp;каски до&nbsp;газоанализатора: СИЗ, оборудование, пошив, вендинг-выдача 24/7 и&nbsp;сервис. Одна ответственность за&nbsp;всю площадку.</p>
+      <p class="hero2-desc">Один договор вместо десяти поставщиков&nbsp;- от&nbsp;каски до&nbsp;газоанализатора: СИЗ, оборудование, пошив, вендинг-выдача 24/7 и&nbsp;сервис. Одна ответственность за&nbsp;всю площадку.</p>
       <a class="pill pill--brand hero2-cta" href="#contact">Запросить расчёт под предприятие</a>
     </div>
     <a class="hero2-card" href="#equipment">
@@ -1108,7 +1122,7 @@
         <h2 class="display">О компании<br>в цифрах</h2>
       </div>
       <div class="sec-side">
-        <p class="mono">Поставка, оборудование, пошив и&nbsp;сервис&nbsp;— на&nbsp;филиалах по&nbsp;всему Казахстану.</p>
+        <p class="mono">Поставка, оборудование, пошив и&nbsp;сервис&nbsp;- на&nbsp;филиалах по&nbsp;всему Казахстану.</p>
       </div>
     </div>
 
@@ -1135,12 +1149,12 @@
       </article>
       <article class="stat stat--wide">
         <p class="n">1</p>
-        <p class="l">Договор на весь цикл&nbsp;— вместо десяти поставщиков</p>
+        <p class="l">Договор на весь цикл&nbsp;- вместо десяти поставщиков</p>
       </article>
       <div class="geo">
         <span class="mono">География:</span>
         <span class="gpill">Весь Казахстан</span>
-        <span class="gpill">Головной офис&nbsp;— Усть-Каменогорск</span>
+        <span class="gpill">Головной офис&nbsp;- Усть-Каменогорск</span>
         <span class="gpill">Филиалы: Алматы&nbsp;· Усть-Каменогорск&nbsp;· Павлодар&nbsp;· Атырау</span>
         <span class="gpill">Собственное производство</span>
               </div>
@@ -1155,14 +1169,14 @@
         <h2 class="display">Что болит<br>на площадке</h2>
       </div>
       <div class="sec-side">
-        <p class="mono">Типичная картина снабжения СИЗ на крупном предприятии&nbsp;— до перехода на единый контур.</p>
+        <p class="mono">Типичная картина снабжения СИЗ на крупном предприятии&nbsp;- до перехода на единый контур.</p>
       </div>
     </div>
 
     <div class="pain-say">
       <p class="pain-line">Десять поставщиков и&nbsp;счетов.</p>
       <p class="pain-line pl2">Перерасход без&nbsp;учёта.</p>
-      <p class="pain-line pl3">Смена не&nbsp;вышла&nbsp;— нет размеров.</p>
+      <p class="pain-line pl3">Смена не&nbsp;вышла&nbsp;- нет размеров.</p>
       <p class="pain-line pl4">Поставщик не&nbsp;проходит по&nbsp;тендеру.</p>
       <p class="pain-answer">Закрываем всё это <em>одним договором</em>.</p>
     </div>
@@ -1173,54 +1187,34 @@
     <div class="sec-head">
       <div>
         <p class="svc-kicker">Решение</p>
-        <h2 class="display">Пять направлений&nbsp;—<br>один договор</h2>
+        <h2 class="display">Пять направлений&nbsp;-<br>один договор</h2>
       </div>
       <div class="sec-side">
-        <p class="mono">Единый контур: поставляем, оборудуем, шьём, выдаём и&nbsp;обслуживаем&nbsp;— по одному договору.</p>
+        <p class="mono">Единый контур: поставляем, оборудуем, шьём, выдаём и&nbsp;обслуживаем&nbsp;- по одному договору.</p>
       </div>
     </div>
 
-    <div class="loop">
-      <article class="svc">
+    <div class="dirs">
+      <div class="dir">
         <span class="num">01</span>
-        <span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-box"/></svg></span>
-        <b>Поставка СИЗ</b>
-        <p>Сертифицированные СИЗ со склада: дыхание, голова, руки, ноги, глаза, слух.</p>
-      </article>
-      <article class="svc">
-        <span class="num">02</span>
-        <span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-sew"/></svg></span>
-        <b>Пошив</b>
-        <p>Индивидуальный пошив спецодежды под климат, отрасль и&nbsp;логотип заказчика.</p>
-      </article>
-      <article class="svc">
-        <span class="num">03</span>
-        <span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-vend"/></svg></span>
-        <b>Вендинг-выдача</b>
-        <p>Автоматы KazProService: выдача 24/7 по&nbsp;бейджу с поимённым учётом.</p>
-      </article>
-      <article class="svc">
-        <span class="num">04</span>
-        <span class="ico"><svg class="ic" aria-hidden="true"><use href="#i-wrench"/></svg></span>
-        <b>Обслуживание</b>
-        <p>Стирка, ремонт, мойка и дезинфекция масок&nbsp;— форма всегда в строю.</p>
-      </article>
-    </div>
-
-    <a class="svc-lead" href="#equipment">
-      <span class="svc-lead-ico"><svg class="ic" aria-hidden="true"><use href="#i-air"/></svg></span>
-      <div class="svc-lead-txt">
-        <span class="num">05</span>
-        <b>Оборудование для спасателей</b>
-        <p>Газоанализаторы, шахтные фонари, регистраторы и&nbsp;зарядно-учётные станции для промышленной безопасности.</p>
+        <div class="dir-t"><b>Поставка СИЗ</b><p>Сертифицированные СИЗ со склада: дыхание, голова, руки, ноги, глаза, слух.</p></div>
       </div>
-      <span class="svc-lead-arr"><svg class="ic" aria-hidden="true"><use href="#i-arr"/></svg></span>
-    </a>
-
-    <div class="loop-core">
-      <img src="assets/brand/logo-v.png" alt="" width="420" height="400" aria-hidden="true">
-      <b>Один поставщик&nbsp;— один договор</b>
-      <span>Одна ответственность за всю площадку&nbsp;— от поставки до сервиса.</span>
+      <div class="dir">
+        <span class="num">02</span>
+        <div class="dir-t"><b>Пошив спецодежды</b><p>Индивидуальный пошив под климат, отрасль и&nbsp;логотип заказчика.</p></div>
+      </div>
+      <div class="dir">
+        <span class="num">03</span>
+        <div class="dir-t"><b>Вендинг-выдача</b><p>Автоматы KazProService: выдача 24/7 по&nbsp;бейджу с поимённым учётом.</p></div>
+      </div>
+      <div class="dir">
+        <span class="num">04</span>
+        <div class="dir-t"><b>Обслуживание</b><p>Стирка, ремонт, мойка и дезинфекция масок&nbsp;- форма всегда в строю.</p></div>
+      </div>
+      <div class="dir">
+        <span class="num">05</span>
+        <div class="dir-t"><b>Оборудование для спасателей</b><p>Газоанализаторы, шахтные фонари, регистраторы и&nbsp;зарядно-учётные станции.</p></div>
+      </div>
     </div>
   </section>
 
@@ -1232,7 +1226,7 @@
         <h2 class="display">Оборудование<br>для спасателей</h2>
       </div>
       <div class="sec-side">
-        <p class="mono">Оснащаем предприятия и&nbsp;аварийно-спасательные службы приборами промышленной безопасности&nbsp;— под ключ: поставка, учёт, зарядка и&nbsp;обслуживание.</p>
+        <p class="mono">Оснащаем предприятия и&nbsp;аварийно-спасательные службы приборами промышленной безопасности&nbsp;- под ключ: поставка, учёт, зарядка и&nbsp;обслуживание.</p>
       </div>
     </div>
 
@@ -1241,7 +1235,7 @@
         <img class="eq-photo" src="assets/equipment/gas.webp" alt="Портативный газоанализатор" loading="lazy">
         <span class="num">01</span>
         <b>Газоанализаторы</b>
-        <p>Контроль загазованности и&nbsp;опасных сред&nbsp;— переносные и&nbsp;стационарные.</p>
+        <p>Контроль загазованности и&nbsp;опасных сред&nbsp;- переносные и&nbsp;стационарные.</p>
       </article>
       <article class="svc">
         <img class="eq-photo" src="assets/equipment/lamp.webp" alt="Шахтный головной светильник" loading="lazy">
@@ -1252,8 +1246,8 @@
       <article class="svc">
         <img class="eq-photo" src="assets/equipment/recorder.webp" alt="Носимый регистратор параметров смены" loading="lazy">
         <span class="num">03</span>
-        <b>Регистраторы и&nbsp;носимые устройства</b>
-        <p>Фиксация параметров смены и&nbsp;событий&nbsp;— данные для службы охраны труда.</p>
+        <b>Регистраторы и&nbsp;носимые</b>
+        <p>Фиксация параметров смены и&nbsp;событий&nbsp;- данные для службы охраны труда.</p>
       </article>
       <article class="svc">
         <img class="eq-photo" src="assets/equipment/charge.webp" alt="Зарядно-учётная станция для приборов" loading="lazy">
@@ -1268,7 +1262,7 @@
   <section id="products" aria-label="Продукция">
     <div class="sec-head">
       <div>
-        <p class="svc-kicker">Услуга 01 · Поставка</p>
+        <p class="svc-kicker">Поставка СИЗ</p>
         <h2 class="display">Каталог СИЗ</h2>
       </div>
       <div class="sec-side">
@@ -1292,7 +1286,7 @@
                   data-alt="Средства защиты слуха Эвен Пласт"><span>Защита слуха</span><span class="mono">03</span></button>
           <button class="spill" type="button" aria-pressed="false"
                   data-img="assets/catalog/cine/resp.webp" data-brand="Респираторы МК и FAROS"
-                  data-spec="FFP1–FFP3 · сменные фильтры A/B/E/K/P"
+                  data-spec="FFP1-FFP3 · сменные фильтры A/B/E/K/P"
                   data-alt="Полумаска МК для защиты дыхания"><span>Защита дыхания</span><span class="mono">04</span></button>
           <button class="spill" type="button" aria-pressed="false"
                   data-img="assets/catalog/cine/weld.webp" data-brand="FITSIZ"
@@ -1337,11 +1331,11 @@
   <section id="services" aria-label="Наша галерея">
     <div class="sec-head">
       <div>
-        <p class="svc-kicker">Услуга 02 · Пошив спецодежды</p>
+        <p class="svc-kicker">Пошив спецодежды</p>
         <h2 class="display">Спецодежда<br>под предприятие</h2>
       </div>
       <div class="sec-side">
-        <p class="mono">Индивидуальный пошив под ваше предприятие: размеры под персонал, ткани под сезон и&nbsp;отрасль, логотип заказчика. Производство&nbsp;— на&nbsp;собственной производственной базе, под нашим контролем качества и&nbsp;сроков.</p>
+        <p class="mono">Индивидуальный пошив под ваше предприятие: размеры под персонал, ткани под сезон и&nbsp;отрасль, логотип заказчика. Производство&nbsp;- на&nbsp;собственной производственной базе, под нашим контролем качества и&nbsp;сроков.</p>
       </div>
     </div>
 
@@ -1355,10 +1349,9 @@
       <p class="pain-line">Размеры под ваш персонал.</p>
       <p class="pain-line pl2">Ткани под сезон и&nbsp;отрасль.</p>
       <p class="pain-line pl3">Логотип заказчика.</p>
-      <p class="pain-answer">Шьём под ваше предприятие&nbsp;— <em>под контролем качества</em>.</p>
+      <p class="pain-answer">Шьём под ваше предприятие&nbsp;- <em>под контролем качества</em>.</p>
       <div class="fact-chips">
         <span class="gpill">Собственная производственная база</span>
-        <span class="gpill">Фирменные оранжевые костюмы для шахтёров со&nbsp;светоотражающими крестами</span>
       </div>
     </div>
   </section>
@@ -1367,11 +1360,11 @@
   <section id="vending" aria-label="Вендинг-выдача СИЗ">
     <div class="sec-head">
       <div>
-        <p class="svc-kicker">Услуга 03 · Вендинг-выдача</p>
+        <p class="svc-kicker">Вендинг-выдача</p>
         <h2 class="display">Автоматическая<br>выдача 24/7</h2>
       </div>
       <div class="sec-side">
-        <p class="mono">Собственные автоматы KazProService: модель&nbsp;540&nbsp;— выдача, модель&nbsp;640&nbsp;— приёмка спецодежды по RFID.</p>
+        <p class="mono">Собственные автоматы KazProService: модель&nbsp;540&nbsp;- выдача, модель&nbsp;640&nbsp;- приёмка спецодежды по RFID.</p>
       </div>
     </div>
 
@@ -1394,19 +1387,19 @@
         <div class="vend-feats">
           <article class="vfeat">
             <b>Выдача по бейджу</b>
-            <p>Сотрудник получает свою позицию круглосуточно&nbsp;— без кладовщика и очереди.</p>
+            <p>Сотрудник получает свою позицию круглосуточно&nbsp;- без кладовщика и очереди.</p>
           </article>
           <article class="vfeat">
             <b>Поимённый учёт</b>
-            <p>Видно, кто и сколько получил, — готовая отчётность для службы охраны труда.</p>
+            <p>Видно, кто и сколько получил, - готовая отчётность для службы охраны труда.</p>
           </article>
           <article class="vfeat">
             <b>Связь с вашей учётной системой</b>
-            <p>Данные о выдаче уходят в SAP, 1С или вашу WMS автоматически&nbsp;— ничего не&nbsp;переносится вручную.</p>
+            <p>Данные о выдаче уходят в SAP, 1С или вашу WMS автоматически&nbsp;- ничего не&nbsp;переносится вручную.</p>
           </article>
           <article class="vfeat">
             <b>Приёмка по RFID</b>
-            <p>Модель 640 принимает спецодежду в&nbsp;стирку и&nbsp;ремонт по RFID-метке&nbsp;— чипу, вшитому в одежду.</p>
+            <p>Модель 640 принимает спецодежду в&nbsp;стирку и&nbsp;ремонт по RFID-метке&nbsp;- чипу, вшитому в одежду.</p>
           </article>
         </div>
 
@@ -1421,7 +1414,7 @@
           <div class="calc-out" aria-live="polite">
             <p class="mono calc-k">Что даёт автоматическая выдача</p>
             <p class="sum">до&nbsp;40%</p>
-            <p class="cap">Снижение перерасхода СИЗ&nbsp;— поимённый учёт и&nbsp;выдача по&nbsp;бейджу убирают списания «в&nbsp;никуда», очереди и&nbsp;кладовщика.</p>
+            <p class="cap">Снижение перерасхода СИЗ&nbsp;- поимённый учёт и&nbsp;выдача по&nbsp;бейджу убирают списания «в&nbsp;никуда», очереди и&nbsp;кладовщика.</p>
             <p class="note" id="calc-note">Ориентир по&nbsp;внедрениям. Точную экономию под вашу численность посчитаем после аудита площадки: карта рисков, номенклатура, текущий расход.</p>
             <a class="pill calc-cta" href="#contact" id="calc-cta">Получить точный расчёт</a>
           </div>
@@ -1442,7 +1435,7 @@
   <section id="wash" aria-label="Мойка и обслуживание масок">
     <div class="sec-head">
       <div>
-        <p class="svc-kicker">Услуга 04 · Обслуживание СИЗ</p>
+        <p class="svc-kicker">Обслуживание СИЗ</p>
         <h2 class="display">Многоразовое<br>вместо одноразового</h2>
       </div>
       <div class="sec-side">
@@ -1457,7 +1450,7 @@
       <div class="wash-list">
         <article class="wrow">
           <span class="k">01</span>
-          <div><b>Мойка и дезинфекция</b><p>Промышленная обработка масок и&nbsp;полумасок&nbsp;— вместо закупки новых.</p></div>
+          <div><b>Мойка и дезинфекция</b><p>Промышленная обработка масок и&nbsp;полумасок&nbsp;- вместо закупки новых.</p></div>
         </article>
         <article class="wrow">
           <span class="k">02</span>
@@ -1483,7 +1476,7 @@
         <h2 class="display">Проходим тендеры<br>недро&shy;пользователей</h2>
       </div>
       <div class="sec-side">
-        <p class="mono">Сертификация, казахстанское содержание и готовность к&nbsp;аудиту&nbsp;— три условия допуска на&nbsp;площадку.</p>
+        <p class="mono">Сертификация, казахстанское содержание и готовность к&nbsp;аудиту&nbsp;- три условия допуска на&nbsp;площадку.</p>
       </div>
     </div>
 
@@ -1501,7 +1494,7 @@
       <article class="cert">
         <span class="stamp"><svg aria-hidden="true"><use href="#i-mine"/></svg></span>
         <span class="code">Казсодержание</span>
-        <p>Казахстанская компания с&nbsp;филиалами в&nbsp;4&nbsp;городах&nbsp;— локальное содержание в&nbsp;поставках и&nbsp;сервисе.</p>
+        <p>Казахстанская компания с&nbsp;филиалами в&nbsp;4&nbsp;городах&nbsp;- локальное содержание в&nbsp;поставках и&nbsp;сервисе.</p>
       </article>
     </div>
   </section>
@@ -1514,7 +1507,7 @@
         <h2 class="display">Кому<br>поставляем</h2>
       </div>
       <div class="sec-side">
-        <p class="mono">Работаем с крупной промышленностью Казахстана&nbsp;— там, где цена ошибки в&nbsp;защите максимальна.</p>
+        <p class="mono">Работаем с крупной промышленностью Казахстана&nbsp;- там, где цена ошибки в&nbsp;защите максимальна.</p>
       </div>
     </div>
 
@@ -1522,8 +1515,13 @@
       <article class="ind"><span class="ico"><svg aria-hidden="true"><use href="#i-mine"/></svg></span><div class="ind-b"><b>Горная добыча</b></div></article>
       <article class="ind"><span class="ico"><svg aria-hidden="true"><use href="#i-metal"/></svg></span><div class="ind-b"><b>Металлургия</b></div></article>
       <article class="ind"><span class="ico"><svg aria-hidden="true"><use href="#i-oil"/></svg></span><div class="ind-b"><b>Нефтегаз</b></div></article>
-      <article class="ind"><span class="ico"><svg aria-hidden="true"><use href="#i-air"/></svg></span><div class="ind-b"><b>Аэропорты</b><span class="ind-cl mono">Аэропорт Сарыарка</span></div></article>
-      <article class="ind"><span class="ico"><svg aria-hidden="true"><use href="#i-bolt"/></svg></span><div class="ind-b"><b>Энергетика</b><span class="ind-cl mono">Павлодарэнерго</span></div></article>
+      <article class="ind"><span class="ico"><svg aria-hidden="true"><use href="#i-air"/></svg></span><div class="ind-b"><b>Аэропорты</b></div></article>
+      <article class="ind"><span class="ico"><svg aria-hidden="true"><use href="#i-bolt"/></svg></span><div class="ind-b"><b>Энергетика</b></div></article>
+    </div>
+
+    <div class="clients-line">
+      <span class="clients-line-k mono">Наши клиенты</span>
+      <span class="clients-line-v">Аэропорт Сарыарка&nbsp;· Павлодарэнерго</span>
     </div>
   </section>
 
@@ -1535,7 +1533,7 @@
         <h2 class="display">Как<br>работаем</h2>
       </div>
       <div class="sec-side">
-        <p class="mono">От первой заявки до обслуживания на&nbsp;площадке&nbsp;— пять шагов и&nbsp;один договор.</p>
+        <p class="mono">От первой заявки до обслуживания на&nbsp;площадке&nbsp;- пять шагов и&nbsp;один договор.</p>
       </div>
     </div>
 
@@ -1553,7 +1551,7 @@
       <article class="step step--accent">
         <span class="no">03</span>
         <b>Один договор</b>
-        <p>Заключаем единый договор на весь цикл&nbsp;— вместо десяти отдельных.</p>
+        <p>Заключаем единый договор на весь цикл&nbsp;- вместо десяти отдельных.</p>
       </article>
       <article class="step">
         <span class="no">04</span>
@@ -1563,7 +1561,7 @@
       <article class="step">
         <span class="no">05</span>
         <b>Выдача и сервис</b>
-        <p>Ведём учёт, пополняем, стираем и&nbsp;ремонтируем&nbsp;— сервис на площадке.</p>
+        <p>Ведём учёт, пополняем, стираем и&nbsp;ремонтируем&nbsp;- сервис на площадке.</p>
       </article>
     </div>
   </section>
@@ -1576,7 +1574,7 @@
         <h2 class="display">Обсудим<br>вашу площадку</h2>
       </div>
       <div class="sec-side">
-        <p class="mono">Опишите задачу&nbsp;— вернёмся с расчётом под ваше предприятие. Без обязательств.</p>
+        <p class="mono">Опишите задачу&nbsp;- вернёмся с расчётом под ваше предприятие. Без обязательств.</p>
       </div>
     </div>
 
@@ -1609,7 +1607,7 @@
         </div>
         <div class="f-ok" id="form-ok" role="status">
           <svg aria-hidden="true"><use href="#i-check"/></svg>
-          <span>Открылся WhatsApp с текстом заявки&nbsp;— нажмите в нём «Отправить». Если WhatsApp недоступен, напишите на info@alltrade-ltd.kz.</span>
+          <span>Открылся WhatsApp с текстом заявки&nbsp;- нажмите в нём «Отправить». Если WhatsApp недоступен, напишите на info@alltrade-ltd.kz.</span>
         </div>
       </form>
       <aside class="ct-info">
@@ -1628,7 +1626,7 @@
   <div class="foot-top">
     <p class="foot-title display">
       <span>Закроем вопрос</span>
-      <span>СИЗ&nbsp;— под&nbsp;ключ</span>
+      <span>СИЗ&nbsp;- под&nbsp;ключ</span>
     </p>
     <div class="foot-contact">
       <a class="foot-phone" href="tel:+77710519449">+7&nbsp;771&nbsp;051&nbsp;94&nbsp;49</a>
@@ -1822,7 +1820,7 @@
   var catSpec = document.getElementById('cat-spec');
   var catIdx = document.getElementById('cat-idx');
   if (pills.length && catImg && catBrand && catSpec) {
-    /* предзагрузка всех категорий — переключение мгновенное */
+    /* предзагрузка всех категорий - переключение мгновенное */
     pills.forEach(function (b) {
       var im = new Image();
       im.src = b.dataset.img;
