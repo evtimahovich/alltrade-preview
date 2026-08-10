@@ -1585,7 +1585,7 @@
           </div>
           <div class="field">
             <label for="f-phone">Телефон</label>
-            <input type="tel" id="f-phone" name="phone" autocomplete="tel" inputmode="tel" maxlength="18" required>
+            <input type="tel" id="f-phone" name="phone" autocomplete="tel" inputmode="tel" maxlength="18" placeholder="+7 777 000 00 00" required>
             <span class="f-err">Укажите телефон</span>
           </div>
         </div>
@@ -1910,7 +1910,25 @@
         var cleaned = this.value.replace(/[^\d+()\-\s]/g, '');
         var n = 0;                                       // не больше 11 цифр (формат КЗ: +7 и 10 цифр)
         cleaned = cleaned.replace(/\d/g, function (d) { return (++n > 11) ? '' : d; });
+        var atEnd = this.selectionStart === this.value.length;
+        if (atEnd) {                                     // группировка +7 777 000 00 00 (только при наборе в конец)
+          var digits = cleaned.replace(/\D/g, '');
+          if (/^[78]/.test(digits)) {
+            var rest = digits.slice(1);
+            cleaned = '+7' + (rest ? ' ' + rest.slice(0, 3) : '') +
+              (rest.length > 3 ? ' ' + rest.slice(3, 6) : '') +
+              (rest.length > 6 ? ' ' + rest.slice(6, 8) : '') +
+              (rest.length > 8 ? ' ' + rest.slice(8, 10) : '');
+          }
+        }
         if (cleaned !== this.value) { this.value = cleaned; }
+      });
+      /* шапка номера: пустое поле при фокусе получает +7 */
+      phoneInput.addEventListener('focus', function () {
+        if (!this.value.trim()) { this.value = '+7 '; }
+      });
+      phoneInput.addEventListener('blur', function () {
+        if (this.value.replace(/\D/g, '') === '7') { this.value = ''; }
       });
     }
     /* автоподстановка из калькулятора и каталога */
