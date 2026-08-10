@@ -105,14 +105,14 @@
 
   /* ============ ОБЛОЖКА ============ */
   .cover{padding:0}
-  .cover-tex{position:absolute;inset:0;overflow:hidden}
-  .cover-tex img{width:100%;height:100%;object-fit:cover;opacity:.5}
+  /* фон обложки — тот же чёрный, что у страницы контактов; текстура лишь подсвечивает его */
+  .cover-tex{position:absolute;inset:0;overflow:hidden;background:var(--dark)}
+  .cover-tex img{width:100%;height:100%;object-fit:cover;opacity:.22}
+  .cover-tex::after{content:'';position:absolute;inset:0;
+    background:linear-gradient(90deg,var(--dark) 8%,rgba(11,14,13,.55) 52%,rgba(11,14,13,.25) 100%)}
   .cover-in{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:12mm 15mm}
   .cover-top{display:flex;justify-content:space-between;align-items:center}
   .cover-top img{height:11mm;filter:brightness(0) invert(1)}
-  .cover-top .tag{font-family:'IBM Plex Mono',monospace;font-size:8.5pt;letter-spacing:.14em;
-    text-transform:uppercase;color:rgba(255,255,255,.65);
-    border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:2.4mm 5mm}
   .cover-hero{position:absolute;right:2mm;bottom:0;height:158mm;z-index:1;
     -webkit-mask-image:linear-gradient(105deg,transparent 2%,#000 24%);
     mask-image:linear-gradient(105deg,transparent 2%,#000 24%)}
@@ -149,11 +149,24 @@
   /* ============ ПРОБЛЕМА (манифест) ============ */
   .pain{flex:1;display:flex;flex-direction:column;justify-content:center}
 
+  /* ---- карточка с «полосой номера» сверху: та же анатомия, что фото-карточки ---- */
+  .numcard{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);
+    overflow:hidden;display:flex;flex-direction:column}
+  .numcard .band{height:56mm;background:rgba(50,100,80,.07);display:flex;align-items:flex-end;
+    padding:0 var(--card-x) 5mm;border-bottom:1px solid var(--line)}
+  .numcard .band .no{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
+    font-size:50pt;line-height:.85;color:var(--brand);margin-left:-.03em}
+  .numcard .t{padding:6mm var(--card-x) 7mm;display:flex;flex-direction:column;flex:1}
+  .numcard b{font-size:var(--fs-card);font-weight:700;line-height:1.25;margin-bottom:2.5mm;min-height:10.5mm}
+  .numcard p{font-size:var(--fs-body);line-height:1.45;color:var(--ink-soft)}
+  .numcard--brand{background:var(--brand);border-color:var(--brand);color:#fff}
+  .numcard--brand .band{background:rgba(255,255,255,.1);border-bottom-color:rgba(255,255,255,.18)}
+  .numcard--brand .band .no{color:#fff}
+  .numcard--brand p{color:rgba(255,255,255,.88)}
+
   /* ============ НАПРАВЛЕНИЯ ============ */
   .dirs{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--gap);flex:1;min-height:0;
     grid-auto-rows:min-content;align-content:center}
-  .dirs .card{padding:7mm var(--card-x);min-height:56mm}
-  .dirs .card b{min-height:10.5mm}
 
   /* ============ ОБОРУДОВАНИЕ ============ */
   .eq{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap);flex:1;min-height:0;
@@ -167,15 +180,17 @@
   .eq p{font-size:var(--fs-body);line-height:1.4;color:var(--ink-soft)}
 
   /* ============ КАТАЛОГ ============ */
-  .cat{display:grid;grid-template-columns:repeat(9,1fr);gap:4mm;flex:1;min-height:0;
+  /* сетка 10 колонок: 5 карточек сверху (по 2 колонки), 4 снизу — со сдвигом на полкарточки */
+  .cat{display:grid;grid-template-columns:repeat(10,1fr);gap:4mm;flex:1;min-height:0;
     grid-auto-rows:min-content;align-content:center}
   .cat .c{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
-    display:flex;flex-direction:column}
-  .cat img{width:100%;height:84mm;object-fit:cover;display:block}
-  .cat .c-t{padding:3.5mm;flex:1;display:flex;flex-direction:column}
-  .cat .num{font-family:'IBM Plex Mono',monospace;font-size:7pt;color:var(--brand);margin-bottom:2mm}
-  .cat b{font-size:8.8pt;line-height:1.2;margin-bottom:1.5mm;min-height:7.5mm}
-  .cat p{font-size:6.8pt;line-height:1.35;color:var(--ink-soft)}
+    display:flex;flex-direction:column;grid-column:span 2}
+  .cat .c:nth-child(6){grid-column:2/span 2}
+  .cat img{width:100%;height:30mm;object-fit:cover;display:block}
+  .cat .c-t{padding:3.5mm var(--card-x) 4mm;flex:1;display:flex;flex-direction:column}
+  .cat .num{font-family:'IBM Plex Mono',monospace;font-size:8pt;color:var(--brand);margin-bottom:2.5mm}
+  .cat b{font-size:10.5pt;line-height:1.2;margin-bottom:1.5mm;min-height:8.5mm}
+  .cat p{font-size:8pt;line-height:1.35;color:var(--ink-soft)}
 
   /* ============ ПОШИВ ============ */
   .sew{display:grid;grid-template-columns:1.3fr 1fr;gap:var(--split);flex:1;min-height:0}
@@ -213,12 +228,13 @@
   .vsave p.cap{font-size:9pt;line-height:1.5;color:rgba(255,255,255,.88);max-width:112mm}
 
   /* ============ ОБСЛУЖИВАНИЕ ============ */
-  .wash{display:grid;grid-template-columns:1fr 1.25fr;gap:var(--split);flex:1;min-height:0}
+  .wash{display:grid;grid-template-columns:1fr 1.25fr;gap:var(--split);flex:1;min-height:0;
+    padding-bottom:7mm}
   .wash-img{border-radius:var(--r);overflow:hidden;background:var(--dark)}
   .wash-img img{width:100%;height:100%;object-fit:cover;display:block}
   /* строки по контенту, растянут только воздух между ними — карточки не тянутся */
   .wash-list{display:flex;flex-direction:column;justify-content:space-between;gap:var(--gap)}
-  .wrow{flex-direction:row;gap:5mm;align-items:flex-start;padding:5.5mm var(--card-x)}
+  .wrow{flex-direction:row;gap:5mm;align-items:flex-start;padding:8mm var(--card-x)}
   .wrow .k{font-family:'IBM Plex Mono',monospace;font-size:var(--fs-mono);color:var(--brand);margin-bottom:0;line-height:1.6}
   .wrow b{font-size:var(--fs-card);margin-bottom:1mm}
   .wrow p{font-size:var(--fs-body)}
@@ -242,8 +258,8 @@
 
   /* ============ ПРОЦЕСС ============ */
   .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--gap);flex:1;min-height:0;
+    /* та же сетка, что «Пять направлений» — процесс читается как продолжение */
     grid-auto-rows:min-content;align-content:center}
-  .steps .card{padding:7mm var(--card-x);min-height:56mm}
   .step .no{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;font-size:20pt;
     line-height:1;color:var(--brand);margin-bottom:4mm}
   .step.card--brand .no{color:rgba(255,255,255,.85)}
@@ -254,8 +270,12 @@
   .fin-title{font-size:var(--fs-fin);color:#fff;margin-left:-.02em}
   .fin-title span{display:block}
   .fin-title em{font-style:normal;color:var(--brand-lift)}
-  .fin-contacts{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap);margin-top:14mm}
-  .fc{border:1px solid rgba(255,255,255,.2);border-radius:var(--r);padding:6mm 7mm}
+  .fin-contacts{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap);margin-top:14mm}
+  .fc{border:1px solid rgba(255,255,255,.2);border-radius:var(--r);padding:6mm;
+    text-decoration:none;display:block}
+  .fc--soc{display:flex;align-items:center;gap:4mm}
+  .fc--soc .ic{width:8mm;height:8mm;flex:none;color:var(--brand-lift)}
+  .fc--soc .ic svg{width:100%;height:100%;display:block}
   .fc--brand{background:var(--brand);border-color:var(--brand)}
   .fc .k{font-family:'IBM Plex Mono',monospace;font-size:var(--fs-foot);letter-spacing:.12em;
     text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:2.5mm}
@@ -271,7 +291,6 @@
   <div class="cover-in">
     <div class="cover-top">
       <img src="../assets/brand/logo-h.png" alt="ALLTRADE-LTD">
-      <span class="tag">Презентация компании</span>
     </div>
     <div class="cover-body">
       <p class="cover-stats">
@@ -287,9 +306,9 @@
       <p class="cover-desc">Один договор вместо десяти поставщиков — от каски до газоанализатора: <b>СИЗ, оборудование, пошив, вендинг-выдача 24/7 и сервис</b>.</p>
     </div>
     <div class="cover-foot">
-      <span>alltrade-ltd.kz</span>
       <span>+7 771 051 94 49</span>
       <span>info@alltrade-ltd.kz</span>
+      <span>@alltrade_ltd_kz</span>
     </div>
   </div>
 </section>
@@ -315,7 +334,7 @@
       <span class="gpill">Текели · Риддер · Зыряновск · Лисаковск · Кокшетау</span>
     </div>
   </div>
-  <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>alltrade-ltd.kz</span></div>
+  <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>+7 771 051 94 49 · info@alltrade-ltd.kz</span></div>
 </section>
 
 <!-- ============ 3 · ПРОБЛЕМА ============ -->
@@ -334,7 +353,7 @@
     </div>
     <p class="man-answer">Закрываем всё это <em>одним договором</em>.</p>
   </div>
-  <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>alltrade-ltd.kz</span></div>
+  <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>+7 771 051 94 49 · info@alltrade-ltd.kz</span></div>
 </section>
 
 <!-- ============ 4 · РЕШЕНИЕ ============ -->
@@ -345,33 +364,28 @@
     <p class="side">Один поставщик на всё: поставляем, оборудуем, шьём, выдаём и обслуживаем.</p>
   </div>
   <div class="dirs">
-    <article class="card card--brand">
-      <span class="num">01</span>
-      <b>Оборудование для спасателей</b>
-      <p>Газоанализаторы, шахтные фонари, регистраторы и зарядно-учётные станции.</p>
+    <article class="numcard numcard--brand">
+      <div class="band"><span class="no">01</span></div>
+      <div class="t"><b>Оборудование для спасателей</b><p>Газоанализаторы, шахтные фонари, регистраторы и зарядно-учётные станции.</p></div>
     </article>
-    <article class="card">
-      <span class="num">02</span>
-      <b>Поставка СИЗ</b>
-      <p>Респираторы, каски, перчатки, спецобувь, очки, защита слуха и тела — сертифицировано, со склада.</p>
+    <article class="numcard">
+      <div class="band"><span class="no">02</span></div>
+      <div class="t"><b>Поставка СИЗ</b><p>Респираторы, каски, перчатки, спецобувь, очки, защита слуха и тела — сертифицировано, со склада.</p></div>
     </article>
-    <article class="card">
-      <span class="num">03</span>
-      <b>Пошив спецодежды</b>
-      <p>Индивидуальный пошив под климат, отрасль и логотип заказчика.</p>
+    <article class="numcard">
+      <div class="band"><span class="no">03</span></div>
+      <div class="t"><b>Пошив спецодежды</b><p>Индивидуальный пошив под климат, отрасль и логотип заказчика.</p></div>
     </article>
-    <article class="card">
-      <span class="num">04</span>
-      <b>Вендинг-выдача</b>
-      <p>Автоматы KazProService: выдача 24/7 по бейджу с поимённым учётом.</p>
+    <article class="numcard">
+      <div class="band"><span class="no">04</span></div>
+      <div class="t"><b>Вендинг-выдача</b><p>Автоматы KazProService: выдача 24/7 по бейджу с поимённым учётом.</p></div>
     </article>
-    <article class="card">
-      <span class="num">05</span>
-      <b>Обслуживание</b>
-      <p>Стирка, ремонт, мойка и дезинфекция масок — форма всегда в строю.</p>
+    <article class="numcard">
+      <div class="band"><span class="no">05</span></div>
+      <div class="t"><b>Обслуживание</b><p>Стирка, ремонт, мойка и дезинфекция масок — форма всегда в строю.</p></div>
     </article>
   </div>
-  <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>alltrade-ltd.kz</span></div>
+  <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>+7 771 051 94 49 · info@alltrade-ltd.kz</span></div>
 </section>
 
 <!-- ============ 5 · ОБОРУДОВАНИЕ ============ -->
@@ -399,7 +413,7 @@
       <div class="svc-t"><span class="num">04</span><b>Зарядно-учётное оборудование</b><p>Станции зарядки и автоматический учёт выдачи оборудования по сотрудникам.</p></div>
     </article>
   </div>
-  <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>alltrade-ltd.kz</span></div>
+  <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>+7 771 051 94 49 · info@alltrade-ltd.kz</span></div>
 </section>
 
 <!-- ============ 6 · КАТАЛОГ ============ -->
@@ -420,7 +434,7 @@
     <article class="c"><img src="img/gloves.jpg" alt=""><div class="c-t"><span class="num">08</span><b>Защита рук</b><p>BASE SAFETY · спилок, антипрорез</p></div></article>
     <article class="c"><img src="img/boots.jpg" alt=""><div class="c-t"><span class="num">09</span><b>Защита ног</b><p>Safety Nomads · металл/композит</p></div></article>
   </div>
-  <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>alltrade-ltd.kz</span></div>
+  <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>+7 771 051 94 49 · info@alltrade-ltd.kz</span></div>
 </section>
 
 <!-- ============ 7 · ПОШИВ ============ -->
@@ -445,7 +459,7 @@
       <p class="man-answer man-answer--sm">Шьём точно <em>под ваше предприятие</em>.</p>
     </div>
   </div>
-  <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>alltrade-ltd.kz</span></div>
+  <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>+7 771 051 94 49 · info@alltrade-ltd.kz</span></div>
 </section>
 
 <!-- ============ 8 · ВЕНДИНГ ============ -->
@@ -476,7 +490,7 @@
       </div>
     </div>
   </div>
-  <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>alltrade-ltd.kz</span></div>
+  <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>+7 771 051 94 49 · info@alltrade-ltd.kz</span></div>
 </section>
 
 <!-- ============ 9 · ОБСЛУЖИВАНИЕ ============ -->
@@ -495,7 +509,7 @@
       <article class="card wrow"><span class="k">04</span><div><b>Меньше закупок</b><p>Снижается объём одноразовых СИЗ и нагрузка на бюджет снабжения.</p></div></article>
     </div>
   </div>
-  <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>alltrade-ltd.kz</span></div>
+  <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>+7 771 051 94 49 · info@alltrade-ltd.kz</span></div>
 </section>
 
 <!-- ============ 10 · ДОПУСКИ И КЛИЕНТЫ ============ -->
@@ -519,7 +533,7 @@
       <p class="cl-cap">Горная добыча · Металлургия · Нефтегаз · Аэропорты · Энергетика</p>
     </div>
   </div>
-  <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>alltrade-ltd.kz</span></div>
+  <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>+7 771 051 94 49 · info@alltrade-ltd.kz</span></div>
 </section>
 
 <!-- ============ 11 · КАК РАБОТАЕМ ============ -->
@@ -530,13 +544,18 @@
     <p class="side">От первого аудита до сервиса на площадке — весь процесс в пять шагов.</p>
   </div>
   <div class="steps">
-    <article class="card step"><span class="no">01</span><b>Заявка и аудит</b><p>Выезжаем к вам: карта рисков и реальный расход — в цифрах, а не на глаз.</p></article>
-    <article class="card step"><span class="no">02</span><b>Расчёт и подбор</b><p>Подбираем номенклатуру под вашу отрасль и климат — без перерасхода и лишних позиций.</p></article>
-    <article class="card card--brand step"><span class="no">03</span><b>Один договор</b><p>Весь цикл ведёт один подрядчик вместо десяти: единая цена, единый ответственный и отчётность.</p></article>
-    <article class="card step"><span class="no">04</span><b>Поставка и монтаж</b><p>Отгружаем со склада, ставим и настраиваем автоматы выдачи — под ключ.</p></article>
-    <article class="card step"><span class="no">05</span><b>Выдача и сервис</b><p>Выдаём, ведём учёт, стираем и ремонтируем — площадка не остаётся без защиты.</p></article>
+    <article class="numcard"><div class="band"><span class="no">01</span></div>
+      <div class="t"><b>Заявка и аудит</b><p>Выезжаем к вам: карта рисков и реальный расход — в цифрах, а не на глаз.</p></div></article>
+    <article class="numcard"><div class="band"><span class="no">02</span></div>
+      <div class="t"><b>Расчёт и подбор</b><p>Подбираем номенклатуру под вашу отрасль и климат — без перерасхода и лишних позиций.</p></div></article>
+    <article class="numcard numcard--brand"><div class="band"><span class="no">03</span></div>
+      <div class="t"><b>Один договор</b><p>Весь цикл ведёт один подрядчик вместо десяти: единая цена, единый ответственный и отчётность.</p></div></article>
+    <article class="numcard"><div class="band"><span class="no">04</span></div>
+      <div class="t"><b>Поставка и монтаж</b><p>Отгружаем со склада, ставим и настраиваем автоматы выдачи — под ключ.</p></div></article>
+    <article class="numcard"><div class="band"><span class="no">05</span></div>
+      <div class="t"><b>Выдача и сервис</b><p>Выдаём, ведём учёт, стираем и ремонтируем — площадка не остаётся без защиты.</p></div></article>
   </div>
-  <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>alltrade-ltd.kz</span></div>
+  <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>+7 771 051 94 49 · info@alltrade-ltd.kz</span></div>
 </section>
 
 <!-- ============ 12 · КОНТАКТЫ ============ -->
@@ -545,15 +564,22 @@
   <div class="fin">
     <p class="fin-title display"><span>Закроем вопрос</span><span>СИЗ — <em>под ключ</em></span></p>
     <div class="fin-contacts">
-      <div class="fc fc--brand"><p class="k">WhatsApp / Телефон</p><p class="v">+7 771 051 94 49</p></div>
-      <div class="fc"><p class="k">Почта</p><p class="v">info@alltrade-ltd.kz</p></div>
-      <div class="fc"><p class="k">Сайт</p><p class="v">alltrade-ltd.kz</p></div>
+      <a class="fc fc--brand" href="https://wa.me/77710519449"><p class="k">WhatsApp / Телефон</p><p class="v">+7 771 051 94 49</p></a>
+      <a class="fc" href="mailto:info@alltrade-ltd.kz"><p class="k">Почта</p><p class="v">info@alltrade-ltd.kz</p></a>
+      <a class="fc fc--soc" href="https://instagram.com/alltrade_ltd_kz">
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.3-.5.2-.9.4-1.2.8-.4.3-.6.7-.8 1.2-.1.4-.3 1-.3 2.1-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1.1.2 1.7.3 2.1.2.5.4.9.8 1.2.3.4.7.6 1.2.8.4.1 1 .3 2.1.3 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.3.5-.2.9-.4 1.2-.8.4-.3.6-.7.8-1.2.1-.4.3-1 .3-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.3-2.1-.2-.5-.4-.9-.8-1.2-.3-.4-.7-.6-1.2-.8-.4-.1-1-.3-2.1-.3-1.2-.1-1.6-.1-4.7-.1zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 8.1a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4zm6.2-8.3a1.1 1.1 0 1 1-2.3 0 1.1 1.1 0 0 1 2.3 0z"/></svg></span>
+        <span><p class="k">Instagram</p><p class="v">@alltrade_ltd_kz</p></span>
+      </a>
+      <a class="fc fc--soc" href="https://youtube.com/@tooalltrade-ltdkazakhstan">
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.8-.5-5.6a2.9 2.9 0 0 0-2-2C18.7 4 12 4 12 4s-6.7 0-8.5.4a2.9 2.9 0 0 0-2 2C1 8.2 1 12 1 12s0 3.8.5 5.6c.3 1 1 1.8 2 2C5.3 20 12 20 12 20s6.7 0 8.5-.4a2.9 2.9 0 0 0 2-2C23 15.8 23 12 23 12zM9.8 15.5v-7l6.2 3.5-6.2 3.5z"/></svg></span>
+        <span><p class="k">YouTube</p><p class="v">ALLTRADE-LTD</p></span>
+      </a>
     </div>
   </div>
   <div class="pfoot">
     <span>ТОО «ALLTRADE-LTD» · БИН 160 340 027 310</span>
     <span>Усть-Каменогорск, ул. Бажова 79А</span>
-    <span>Instagram: @alltrade_ltd_kz</span>
+    <span>+7 771 051 94 49</span>
   </div>
 </section>
 
