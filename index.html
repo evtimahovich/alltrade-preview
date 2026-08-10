@@ -895,24 +895,11 @@
     font-size:13px;letter-spacing:.08em;text-transform:uppercase}
   .ind-b{display:flex;flex-direction:column;gap:7px}
   .ind-cl{font-size:12px;letter-spacing:.03em;color:var(--brand-lift)}
-  /* ---------- clients → манифест (каскад как в «Что болит») ---------- */
-  .trust{margin-top:clamp(24px,3vw,44px)}
-  .trust-lead{
-    position:relative;
-    font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
-    font-size:clamp(1.4rem,3.4vw,2.9rem);line-height:1.1;letter-spacing:.01em;
-    text-transform:uppercase;color:#8F969C;max-width:20ch;
-    padding-top:28px;margin-bottom:clamp(18px,2.4vw,32px);
-  }
-  .trust-lead::before{content:"";position:absolute;left:0;top:0;width:52px;height:4px;background:var(--brand)}
-  .trust-lead em{font-style:normal;color:var(--brand)}
-  .trust-name{
-    font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
-    font-size:clamp(2rem,6.4vw,4.8rem);line-height:1.02;letter-spacing:.01em;
-    text-transform:uppercase;color:var(--ink);overflow-wrap:anywhere;
-  }
-  .trust-name + .trust-name{margin-top:clamp(2px,.5vw,8px)}
-  .trust-name em{font-style:normal;color:var(--brand)}
+  /* ---------- clients → тот же манифест, что «Что болит» (.pain-say) ---------- */
+  .clients-manifest{margin-top:clamp(24px,3vw,44px)}
+  .clients-manifest .pain-line em{font-style:normal;color:var(--brand)}
+  .clients-manifest .pain-answer{max-width:none;margin-top:clamp(4px,.6vw,10px)}
+  .clients-manifest .pain-line + .pain-answer{margin-top:clamp(20px,2.8vw,38px)}
   @media (max-width:900px){
     .ind-grid{grid-template-columns:repeat(2,1fr)}
     .ind{flex-direction:row;align-items:center;justify-content:flex-start;gap:14px;min-height:0;padding:16px 18px}
@@ -935,8 +922,8 @@
   .step--accent{background:var(--ink);border-color:var(--ink);color:#fff}
   .step--accent .no{color:var(--brand-lift)}
   .step--accent p{color:rgba(255,255,255,.72)}
-  @media (max-width:1000px){.steps{grid-template-columns:repeat(3,1fr)}}
-  @media (max-width:640px){.steps{grid-template-columns:1fr}}
+  @media (max-width:1000px){.steps{grid-template-columns:repeat(2,1fr)}.step:last-child{grid-column:1 / -1}}
+  @media (max-width:640px){.steps{grid-template-columns:1fr}.step:last-child{grid-column:auto}}
 
   /* ---------- contact form (block 12) ---------- */
   .ct-grid{display:grid;grid-template-columns:1fr;gap:14px}
@@ -1536,11 +1523,12 @@
       <article class="ind"><span class="ico"><svg aria-hidden="true"><use href="#i-bolt"/></svg></span><div class="ind-b"><b>Энергетика</b></div></article>
     </div>
 
-    <div class="trust">
-      <p class="trust-lead">Нам доверяют там, где цена ошибки <em>максимальна</em></p>
-      <p class="trust-name">Казахмыс</p>
-      <p class="trust-name">Аэропорт&nbsp;Сарыарка</p>
-      <p class="trust-name">Павлодарэнерго</p>
+    <div class="pain-say clients-manifest">
+      <p class="pain-line">Нам доверяют там,</p>
+      <p class="pain-line pl2">где цена ошибки <em>максимальна</em></p>
+      <p class="pain-answer">Казахмыс</p>
+      <p class="pain-answer">Аэропорт&nbsp;Сарыарка</p>
+      <p class="pain-answer">Павлодарэнерго</p>
     </div>
   </section>
 
@@ -1607,7 +1595,7 @@
           </div>
           <div class="field">
             <label for="f-phone">Телефон</label>
-            <input type="tel" id="f-phone" name="phone" autocomplete="tel" required>
+            <input type="tel" id="f-phone" name="phone" autocomplete="tel" inputmode="tel" maxlength="18" required>
             <span class="f-err">Укажите телефон</span>
           </div>
         </div>
