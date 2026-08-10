@@ -792,8 +792,9 @@
   .calc input[type=range]{width:100%;accent-color:var(--brand);height:44px}
   .calc-out{background:rgba(255,255,255,.07);border-radius:var(--r-s);padding:clamp(18px,2vw,26px)}
   /* на тёмном - осветлённый зелёный */
-  .calc-out .sum{white-space:nowrap;font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
-    font-size:clamp(1.7rem,3.4vw,2.8rem);line-height:1;color:var(--brand-lift);font-variant-numeric:tabular-nums}
+  .calc-out .sum{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
+    font-size:clamp(1.5rem,2.7vw,2.3rem);line-height:1.05;color:var(--brand-lift);font-variant-numeric:tabular-nums}
+  .calc-out .sum-suf{font-size:.4em;color:rgba(255,255,255,.45);font-weight:700;letter-spacing:.03em;white-space:nowrap}
   .calc-cta{margin-top:16px;background:#fff;color:var(--ink)}
   .calc-cta:hover{background:var(--brand-lift);color:#fff}
   .calc-out .cap{color:rgba(255,255,255,.62);font-size:13px;margin-top:10px}
@@ -975,6 +976,7 @@
     .hero2{min-height:clamp(560px,155vw,760px);padding-top:26px;padding-bottom:52px}
     .hero2-copy{display:flex;flex-direction:column;flex:1}
     .hero2-stats{gap:8px 16px;margin-bottom:0}
+    .hero2-stats span:nth-child(2){display:none}
     .hero2-title{margin-top:auto}
     .hero2-desc{
       margin-top:auto;max-width:none;
@@ -1114,7 +1116,7 @@
         <span class="l2">Под</span>
         <span class="l3">Ключ</span>
       </h1>
-      <p class="hero2-desc">Один договор вместо десяти поставщиков&nbsp;- от&nbsp;каски до&nbsp;газоанализатора: СИЗ, оборудование, пошив, вендинг-выдача 24/7 и&nbsp;сервис. Одна ответственность за&nbsp;всю площадку.</p>
+      <p class="hero2-desc">Один договор вместо десяти поставщиков&nbsp;- от&nbsp;каски до&nbsp;газоанализатора: СИЗ, оборудование, пошив, вендинг-выдача 24/7 и&nbsp;сервис.</p>
       <a class="pill pill--brand hero2-cta" href="#contact">Запросить расчёт под предприятие</a>
     </div>
     <a class="hero2-card" href="#equipment">
@@ -1132,7 +1134,7 @@
         <h2 class="display">О компании<br>в цифрах</h2>
       </div>
       <div class="sec-side">
-        <p class="mono">Поставка, оборудование, пошив и&nbsp;сервис&nbsp;- на&nbsp;филиалах по&nbsp;всему Казахстану.</p>
+        <p class="mono">Обеспечиваем промышленность Казахстана средствами защиты под&nbsp;ключ&nbsp;- поставка, оборудование, пошив и&nbsp;сервис из&nbsp;одних рук.</p>
       </div>
     </div>
 
@@ -1412,17 +1414,17 @@
 
         <div class="calc">
           <div>
-            <h3>Расчёт под площадку</h3>
-            <label for="calc-people">Численность персонала</label>
-            <p class="val"><span id="calc-people-val">500</span> чел.</p>
-            <input type="range" id="calc-people" min="50" max="5000" step="50" value="500"
+            <h3>Сколько вы вернёте</h3>
+            <label for="calc-budget">Ваш годовой бюджет на&nbsp;СИЗ, ₸</label>
+            <p class="val"><span id="calc-budget-val">20 000 000</span>&nbsp;₸</p>
+            <input type="range" id="calc-budget" min="2000000" max="150000000" step="1000000" value="20000000"
                    aria-describedby="calc-note">
           </div>
           <div class="calc-out" aria-live="polite">
-            <p class="mono calc-k">Что даёт автоматическая выдача</p>
-            <p class="sum">до&nbsp;40%</p>
-            <p class="cap">Снижение перерасхода СИЗ&nbsp;- поимённый учёт и&nbsp;выдача по&nbsp;бейджу убирают списания «в&nbsp;никуда», очереди и&nbsp;кладовщика.</p>
-            <p class="note" id="calc-note">Ориентир по&nbsp;внедрениям. Для <b id="calc-scale" style="color:var(--brand-lift)">500</b> сотрудников точную экономию посчитаем после аудита площадки.</p>
+            <p class="mono calc-k">Потенциальная экономия · до&nbsp;40% бюджета</p>
+            <p class="sum">до&nbsp;<span id="calc-save">8 000 000</span>&nbsp;₸<span class="sum-suf">/год</span></p>
+            <p class="cap">Возврат до&nbsp;40% бюджета за&nbsp;счёт единой поставки и&nbsp;автоматической выдачи&nbsp;- поимённый учёт убирает списания «в&nbsp;никуда», очереди и&nbsp;кладовщика.</p>
+            <p class="note" id="calc-note">Ориентир по&nbsp;внедрениям (снижение перерасхода до&nbsp;40%). Точную цифру под&nbsp;ваш расход посчитаем после аудита площадки.</p>
             <a class="pill calc-cta" href="#contact" id="calc-cta">Получить точный расчёт</a>
           </div>
         </div>
@@ -1812,18 +1814,18 @@
     });
   });
 
-  /* ---- Калькулятор экономии ---- */
-  var range = document.getElementById('calc-people');
-  var people = document.getElementById('calc-people-val');
-  var scale = document.getElementById('calc-scale');
-  if (range && people) {
-    var render = function () {
-      var v = nf.format(parseInt(range.value, 10) || 0);
-      people.textContent = v;
-      if (scale) scale.textContent = v;
+  /* ---- Калькулятор экономии: бюджет клиента × до 40% (реальный ориентир из презентации) ---- */
+  var budget = document.getElementById('calc-budget');
+  var budgetVal = document.getElementById('calc-budget-val');
+  var saveVal = document.getElementById('calc-save');
+  if (budget && budgetVal && saveVal) {
+    var renderCalc = function () {
+      var b = parseInt(budget.value, 10) || 0;
+      budgetVal.textContent = nf.format(b);
+      saveVal.textContent = nf.format(Math.round(b * 0.4 / 100000) * 100000);
     };
-    range.addEventListener('input', render);
-    render();
+    budget.addEventListener('input', renderCalc);
+    renderCalc();
   }
 
   /* ---- Переключение категорий продукции ---- */
