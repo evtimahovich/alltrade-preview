@@ -960,32 +960,24 @@
     padding-inline:calc(max(var(--pad), 50vw - 720px + var(--pad)) - var(--inset));
   }
   @media (max-width:560px){
-    /* Мобильный хиро: рабочий в нижнем-правом углу, текст сверху с воздухом */
+    /* Мобильный хиро: рабочий на весь экран (лицо сверху), текст внизу на затемнении */
     .hero2-card{display:none}
-    .hero2{min-height:clamp(580px,158vw,780px);padding-top:clamp(60px,16vw,96px);padding-bottom:44px}
-    .hero2-copy{display:flex;flex-direction:column;flex:1}
-    .hero2-stats{gap:8px 16px;margin-bottom:14px}
-    .hero2-title{margin-top:0}
-    .hero2-desc{
-      margin-top:auto;max-width:none;
-      background:rgba(14,17,16,.55);border:1px solid rgba(255,255,255,.14);
-      border-radius:var(--r-l);padding:16px 18px;
-      -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
-    }
-    .hero2-cta{margin-top:16px}
+    .hero2-bgtex{display:none}
+    .hero2{min-height:92svh;padding-top:0;padding-bottom:clamp(28px,7vw,44px);justify-content:flex-end}
     .hero2-char{
-      top:auto;bottom:0;
-      height:min(50%,400px);right:-9vw;
-      -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 30%,#000 100%),linear-gradient(180deg,transparent 0,#000 10%,#000 88%,transparent 100%);
-      mask-image:linear-gradient(90deg,transparent 0,#000 30%,#000 100%),linear-gradient(180deg,transparent 0,#000 10%,#000 88%,transparent 100%);
-      -webkit-mask-composite:source-in;
-      mask-composite:intersect;
+      position:absolute;inset:0;top:0;bottom:0;right:0;margin:0;
+      width:100%;height:100%;object-fit:cover;object-position:58% 6%;aspect-ratio:auto;
+      -webkit-mask-image:none;mask-image:none;
     }
     .hero2::after{
       content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
-      background:linear-gradient(90deg,rgba(8,10,9,.62) 0%,rgba(8,10,9,.28) 50%,rgba(8,10,9,0) 76%);
+      background:linear-gradient(180deg,rgba(8,10,9,.5) 0%,rgba(8,10,9,0) 22%,rgba(8,10,9,.5) 52%,#0A0C0B 90%);
     }
-    .hero2-copy{position:relative;z-index:4}
+    .hero2-copy{position:relative;z-index:4;display:flex;flex-direction:column}
+    .hero2-stats{gap:8px 16px;margin-bottom:12px}
+    .hero2-title{margin:0 0 12px}
+    .hero2-desc{max-width:none}
+    .hero2-cta{margin-top:16px}
   }
   @media (max-width:760px){
     .hero2,#vending,#equipment{margin-inline:calc(var(--pad) * -1);padding-inline:var(--pad);border-radius:0}
@@ -1197,23 +1189,23 @@
     <div class="dirs">
       <div class="dir">
         <span class="num">01</span>
-        <div class="dir-t"><b>Поставка СИЗ</b><p>Сертифицированные СИЗ со склада: дыхание, голова, руки, ноги, глаза, слух.</p></div>
+        <div class="dir-t"><b>Оборудование для спасателей</b><p>Газоанализаторы, шахтные фонари, регистраторы и&nbsp;зарядно-учётные станции.</p></div>
       </div>
       <div class="dir">
         <span class="num">02</span>
-        <div class="dir-t"><b>Пошив спецодежды</b><p>Индивидуальный пошив под климат, отрасль и&nbsp;логотип заказчика.</p></div>
+        <div class="dir-t"><b>Поставка СИЗ</b><p>Сертифицированные СИЗ со склада: дыхание, голова, руки, ноги, глаза, слух.</p></div>
       </div>
       <div class="dir">
         <span class="num">03</span>
-        <div class="dir-t"><b>Вендинг-выдача</b><p>Автоматы KazProService: выдача 24/7 по&nbsp;бейджу с поимённым учётом.</p></div>
+        <div class="dir-t"><b>Пошив спецодежды</b><p>Индивидуальный пошив под климат, отрасль и&nbsp;логотип заказчика.</p></div>
       </div>
       <div class="dir">
         <span class="num">04</span>
-        <div class="dir-t"><b>Обслуживание</b><p>Стирка, ремонт, мойка и дезинфекция масок&nbsp;- форма всегда в строю.</p></div>
+        <div class="dir-t"><b>Вендинг-выдача</b><p>Автоматы KazProService: выдача 24/7 по&nbsp;бейджу с поимённым учётом.</p></div>
       </div>
       <div class="dir">
         <span class="num">05</span>
-        <div class="dir-t"><b>Оборудование для спасателей</b><p>Газоанализаторы, шахтные фонари, регистраторы и&nbsp;зарядно-учётные станции.</p></div>
+        <div class="dir-t"><b>Обслуживание</b><p>Стирка, ремонт, мойка и дезинфекция масок&nbsp;- форма всегда в строю.</p></div>
       </div>
     </div>
   </section>
@@ -1222,7 +1214,7 @@
   <section id="equipment" aria-label="Оборудование для спасателей и мониторинга">
     <div class="sec-head">
       <div>
-        <p class="svc-kicker">Промышленная безопасность</p>
+        <p class="svc-kicker">01 · Оборудование для спасателей</p>
         <h2 class="display">Оборудование<br>для спасателей</h2>
       </div>
       <div class="sec-side">
@@ -1262,7 +1254,7 @@
   <section id="products" aria-label="Продукция">
     <div class="sec-head">
       <div>
-        <p class="svc-kicker">Поставка СИЗ</p>
+        <p class="svc-kicker">02 · Поставка СИЗ</p>
         <h2 class="display">Каталог СИЗ</h2>
       </div>
       <div class="sec-side">
@@ -1331,7 +1323,7 @@
   <section id="services" aria-label="Наша галерея">
     <div class="sec-head">
       <div>
-        <p class="svc-kicker">Пошив спецодежды</p>
+        <p class="svc-kicker">03 · Пошив спецодежды</p>
         <h2 class="display">Спецодежда<br>под предприятие</h2>
       </div>
       <div class="sec-side">
@@ -1360,7 +1352,7 @@
   <section id="vending" aria-label="Вендинг-выдача СИЗ">
     <div class="sec-head">
       <div>
-        <p class="svc-kicker">Вендинг-выдача</p>
+        <p class="svc-kicker">04 · Вендинг-выдача</p>
         <h2 class="display">Автоматическая<br>выдача 24/7</h2>
       </div>
       <div class="sec-side">
@@ -1435,7 +1427,7 @@
   <section id="wash" aria-label="Мойка и обслуживание масок">
     <div class="sec-head">
       <div>
-        <p class="svc-kicker">Обслуживание СИЗ</p>
+        <p class="svc-kicker">05 · Обслуживание СИЗ</p>
         <h2 class="display">Многоразовое<br>вместо одноразового</h2>
       </div>
       <div class="sec-side">
@@ -1520,8 +1512,8 @@
     </div>
 
     <div class="clients-line">
-      <span class="clients-line-k mono">Наши клиенты</span>
-      <span class="clients-line-v">Аэропорт Сарыарка&nbsp;· Павлодарэнерго</span>
+      <span class="clients-line-k mono">Нам доверяют</span>
+      <span class="clients-line-v">Казахмыс&nbsp;· Аэропорт Сарыарка&nbsp;· Павлодарэнерго</span>
     </div>
   </section>
 
