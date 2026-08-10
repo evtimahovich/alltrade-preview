@@ -939,35 +939,35 @@
     font-size:13px;letter-spacing:.08em;text-transform:uppercase}
   .ind-b{display:flex;flex-direction:column;gap:7px}
   .ind-cl{font-size:12px;letter-spacing:.03em;color:var(--brand-lift)}
-  /* ---------- clients → манифест доверия ---------- */
-  .trust{margin-top:clamp(28px,3.4vw,48px)}
+  /* ---------- clients → манифест (фирменная типографика болей) ---------- */
+  .trust{margin-top:clamp(24px,3vw,44px)}
   .trust-lead{
     position:relative;
     font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
-    font-size:clamp(1.25rem,2.4vw,1.95rem);line-height:1.18;letter-spacing:-.005em;
-    color:var(--ink);max-width:26ch;
-    padding-top:22px;margin-bottom:clamp(24px,3vw,40px);
+    font-size:clamp(1.4rem,3.4vw,2.9rem);line-height:1.1;letter-spacing:.01em;
+    text-transform:uppercase;color:#8F969C;max-width:18ch;
+    padding-top:28px;margin-bottom:clamp(22px,3vw,40px);
   }
-  .trust-lead::before{content:"";position:absolute;left:0;top:0;width:44px;height:3px;background:var(--brand)}
-  .trust-lead b{color:var(--brand);font-weight:800}
-  .trust-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+  .trust-lead::before{content:"";position:absolute;left:0;top:0;width:52px;height:4px;background:var(--brand)}
+  .trust-lead em{font-style:normal;color:var(--brand)}
+  .trust-list{list-style:none;margin:0;padding:0}
   .trust-row{
-    display:grid;grid-template-columns:1fr auto;align-items:end;gap:14px 24px;
-    padding:clamp(18px,2.4vw,30px) 0;border-bottom:1px solid var(--line);
+    display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:6px 24px;
+    padding:clamp(12px,1.6vw,22px) 0;border-bottom:1px solid var(--line);
   }
+  .trust-row:first-child{border-top:1px solid var(--line)}
   .trust-name{
     font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
-    font-size:clamp(1.55rem,5.4vw,3.4rem);line-height:.95;letter-spacing:-.01em;
-    text-transform:uppercase;color:var(--ink);
-    overflow-wrap:anywhere;
+    font-size:clamp(1.9rem,5.4vw,4.2rem);line-height:1;letter-spacing:.01em;
+    text-transform:uppercase;color:var(--ink);overflow-wrap:anywhere;
   }
   .trust-tag{
-    font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);
-    white-space:nowrap;padding-bottom:.28em;
+    font-size:clamp(11px,1vw,13px);letter-spacing:.12em;text-transform:uppercase;
+    color:var(--brand);font-weight:600;white-space:nowrap;
   }
   @media (max-width:640px){
-    .trust-row{grid-template-columns:1fr;align-items:start;gap:8px}
-    .trust-tag{white-space:normal;padding-bottom:0}
+    .trust-row{grid-template-columns:1fr;gap:4px;padding:14px 0}
+    .trust-tag{white-space:normal}
   }
   @media (max-width:900px){
     .ind-grid{grid-template-columns:repeat(2,1fr)}
@@ -1601,7 +1601,7 @@
     </div>
 
     <div class="trust">
-      <p class="trust-lead">Нам доверяют предприятия, где цена ошибки <b>максимальна</b></p>
+      <p class="trust-lead">Нам доверяют там, где цена ошибки <em>максимальна</em></p>
       <ul class="trust-list">
         <li class="trust-row">
           <b class="trust-name">Казахмыс</b>
