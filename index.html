@@ -1513,8 +1513,9 @@
     </div>
 
     <div class="pain-say clients-manifest">
-      <p class="pain-line">Нам доверяют там,</p>
-      <p class="pain-line pl2">где цена ошибки <em>максимальна</em></p>
+      <p class="pain-line">Нам доверяют</p>
+      <p class="pain-line pl2">там, где цена ошибки</p>
+      <p class="pain-line pl3"><em>максимальна</em>.</p>
       <p class="pain-answer">Казахмыс</p>
       <p class="pain-answer">Аэропорт&nbsp;Сарыарка</p>
       <p class="pain-answer">Павлодарэнерго</p>
@@ -1853,7 +1854,7 @@
     var phoneOk = function (v) {
       if (/[a-zа-яё]/i.test(v)) return false;          // буквы недопустимы
       var d = v.replace(/\D/g, '');                     // только цифры
-      return d.length >= 10 && d.length <= 15;          // реалистичная длина номера
+      return d.length === 10 || d.length === 11;        // Казахстан: 10 (без кода) или 11 (+7...)
     };
     var validateLead = function () {
       var valid = true;
@@ -1907,6 +1908,8 @@
     if (phoneInput) {
       phoneInput.addEventListener('input', function () {
         var cleaned = this.value.replace(/[^\d+()\-\s]/g, '');
+        var n = 0;                                       // не больше 11 цифр (формат КЗ: +7 и 10 цифр)
+        cleaned = cleaned.replace(/\d/g, function (d) { return (++n > 11) ? '' : d; });
         if (cleaned !== this.value) { this.value = cleaned; }
       });
     }
