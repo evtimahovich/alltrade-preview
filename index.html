@@ -803,10 +803,8 @@
   .calc-k{color:rgba(255,255,255,.6);margin-bottom:8px}
   .calc-k2{margin-top:20px}
   .calc-rate-l{margin-top:22px}
-  .calc-rate{display:flex;flex-direction:column;gap:8px}
-  .calc-rate input[type=number]{width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:var(--r-s);color:#fff;font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;font-size:clamp(1.1rem,1.8vw,1.5rem);padding:12px 14px;font-variant-numeric:tabular-nums}
-  .calc-rate input[type=number]:focus{outline:none;border-color:var(--brand-lift)}
-  .calc-rate-note{font-size:11px;letter-spacing:.05em;color:rgba(255,255,255,.5);line-height:1.5}
+  .val-rate{font-size:clamp(1.6rem,2.8vw,2.3rem)}
+  .calc-rate-note{display:block;margin-top:8px;font-size:11px;letter-spacing:.05em;color:rgba(255,255,255,.5);line-height:1.5}
   .calc-est{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;font-size:clamp(1.15rem,1.9vw,1.5rem);color:rgba(255,255,255,.92);line-height:1;font-variant-numeric:tabular-nums;margin-bottom:2px}
   .vend-img > img{transition:opacity .22s ease}
   .vend-img > .vend-blur{
@@ -966,7 +964,7 @@
     .hero2-card{display:none}
     .hero2{min-height:clamp(560px,155vw,760px);padding-top:26px;padding-bottom:52px}
     .hero2-copy{display:flex;flex-direction:column;flex:1}
-    .hero2-stats{gap:8px 16px;margin-bottom:0}
+    .hero2-stats{flex-direction:column;align-items:flex-start;gap:10px;margin-bottom:0}
     .hero2-stats span:nth-child(2){display:none}
     .hero2-title{margin-top:auto}
     .hero2-desc{
@@ -1345,7 +1343,7 @@
     <figure class="media-card media-card--grade">
       <img src="assets/stills/wear-cine.webp" alt="Смена в фирменных оранжевых костюмах для шахтёров со светоотражающими крестами" loading="lazy">
       <span class="media-badge mono">Фирменная разработка ALLTRADE</span>
-      <figcaption class="media-cap mono">Комплект для шахтёров</figcaption>
+      <figcaption class="media-cap mono">Комплект для шахтёров · светоотражающие кресты</figcaption>
     </figure>
 
     <div class="pain-say">
@@ -1409,11 +1407,10 @@
             <label for="calc-people">Численность персонала</label>
             <p class="val"><span id="calc-people-val">500</span>&nbsp;чел.</p>
             <input type="range" id="calc-people" min="50" max="5000" step="50" value="500">
-            <label for="calc-rate" class="calc-rate-l">Средний расход на&nbsp;СИЗ, ₸ на&nbsp;человека в&nbsp;год</label>
-            <div class="calc-rate">
-              <input type="number" id="calc-rate" value="130000" min="20000" max="400000" step="10000" inputmode="numeric" aria-describedby="calc-rate-note">
-              <span class="calc-rate-note mono" id="calc-rate-note">По данным рынка ~40–250 тыс, зависит от&nbsp;отрасли и&nbsp;климата. Измените под себя.</span>
-            </div>
+            <label for="calc-rate" class="calc-rate-l">Средний расход на&nbsp;СИЗ, ₸/чел в&nbsp;год</label>
+            <p class="val val-rate"><span id="calc-rate-val">130 000</span>&nbsp;₸</p>
+            <input type="range" id="calc-rate" min="20000" max="400000" step="10000" value="130000" aria-describedby="calc-rate-note">
+            <span class="calc-rate-note mono" id="calc-rate-note">По данным рынка ~40–250 тыс, зависит от&nbsp;отрасли и&nbsp;климата.</span>
           </div>
           <div class="calc-out" aria-live="polite">
             <p class="mono calc-k">Ваш бюджет на&nbsp;СИЗ ≈</p>
@@ -1809,30 +1806,22 @@
   var calcPeople = document.getElementById('calc-people');
   var calcRate = document.getElementById('calc-rate');
   var calcPeopleVal = document.getElementById('calc-people-val');
+  var calcRateVal = document.getElementById('calc-rate-val');
   var calcBudgetEst = document.getElementById('calc-budget-est');
   var calcSave = document.getElementById('calc-save');
-  if (calcPeople && calcRate && calcPeopleVal && calcBudgetEst && calcSave) {
-    var RATE_MIN = 20000, RATE_MAX = 400000;
+  if (calcPeople && calcRate && calcPeopleVal && calcRateVal && calcBudgetEst && calcSave) {
     var roundTo = function (n, step) { return Math.round(n / step) * step; };
     var renderCalc = function () {
       var p = parseInt(calcPeople.value, 10) || 0;
-      var r = parseInt(calcRate.value, 10);
-      if (isNaN(r) || r < 0) r = 0;
-      if (r > RATE_MAX) r = RATE_MAX;
+      var r = parseInt(calcRate.value, 10) || 0;
       calcPeopleVal.textContent = nf.format(p);
+      calcRateVal.textContent = nf.format(r);
       var budget = p * r;
       calcBudgetEst.textContent = nf.format(roundTo(budget, 100000));
       calcSave.textContent = nf.format(roundTo(budget * 0.4, 100000));
     };
-    var clampRate = function () {
-      var r = parseInt(calcRate.value, 10);
-      if (isNaN(r)) { calcRate.value = RATE_MIN; }
-      else if (r < RATE_MIN) { calcRate.value = RATE_MIN; }
-      else if (r > RATE_MAX) { calcRate.value = RATE_MAX; }
-    };
     calcPeople.addEventListener('input', renderCalc);
     calcRate.addEventListener('input', renderCalc);
-    calcRate.addEventListener('change', function () { clampRate(); renderCalc(); });
     renderCalc();
   }
 
