@@ -970,24 +970,32 @@
     padding-inline:calc(max(var(--pad), 50vw - 720px + var(--pad)) - var(--inset));
   }
   @media (max-width:560px){
-    /* Мобильный хиро: рабочий на весь экран (лицо сверху), текст внизу на затемнении */
+    /* Мобильный хиро: рабочий справа за текстом, поднят выше */
     .hero2-card{display:none}
-    .hero2-bgtex{display:none}
-    .hero2{min-height:92svh;padding-top:0;padding-bottom:clamp(28px,7vw,44px);justify-content:flex-end}
+    .hero2{min-height:clamp(560px,155vw,760px);padding-top:26px;padding-bottom:52px}
+    .hero2-copy{display:flex;flex-direction:column;flex:1}
+    .hero2-stats{gap:8px 16px;margin-bottom:0}
+    .hero2-title{margin-top:auto}
+    .hero2-desc{
+      margin-top:auto;max-width:none;
+      background:rgba(14,17,16,.55);border:1px solid rgba(255,255,255,.14);
+      border-radius:var(--r-l);padding:16px 18px;
+      -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+    }
+    .hero2-cta{margin-top:16px}
     .hero2-char{
-      position:absolute;inset:0;top:0;bottom:0;right:0;margin:0;
-      width:100%;height:100%;object-fit:cover;object-position:58% 6%;aspect-ratio:auto;
-      -webkit-mask-image:none;mask-image:none;
+      top:clamp(64px,10svh,100px);bottom:auto;
+      height:min(60%,470px);right:-6vw;
+      -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 30%,#000 100%),linear-gradient(180deg,transparent 0,#000 10%,#000 88%,transparent 100%);
+      mask-image:linear-gradient(90deg,transparent 0,#000 30%,#000 100%),linear-gradient(180deg,transparent 0,#000 10%,#000 88%,transparent 100%);
+      -webkit-mask-composite:source-in;
+      mask-composite:intersect;
     }
     .hero2::after{
       content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
-      background:linear-gradient(180deg,rgba(8,10,9,.5) 0%,rgba(8,10,9,0) 22%,rgba(8,10,9,.5) 52%,#0A0C0B 90%);
+      background:linear-gradient(90deg,rgba(8,10,9,.62) 0%,rgba(8,10,9,.28) 50%,rgba(8,10,9,0) 76%);
     }
-    .hero2-copy{position:relative;z-index:4;display:flex;flex-direction:column}
-    .hero2-stats{gap:8px 16px;margin-bottom:12px}
-    .hero2-title{margin:0 0 12px}
-    .hero2-desc{max-width:none}
-    .hero2-cta{margin-top:16px}
+    .hero2-copy{position:relative;z-index:4}
   }
   @media (max-width:760px){
     .hero2,#vending,#equipment{margin-inline:calc(var(--pad) * -1);padding-inline:var(--pad);border-radius:0}
@@ -1275,17 +1283,17 @@
       <div class="series-left">
         <div class="pills" role="group" aria-label="Категории продукции">
           <button class="spill" type="button" aria-pressed="true"
-                  data-img="assets/catalog/cine/head.webp" data-brand="Эвен Пласт"
+                  data-img="assets/catalog/cine/head.webp" data-brand="Еланпласт"
                   data-spec="каски и защита головы"
-                  data-alt="Защитная каска Эвен Пласт"><span>Защита головы</span><span class="mono">01</span></button>
+                  data-alt="Защитная каска Еланпласт"><span>Защита головы</span><span class="mono">01</span></button>
           <button class="spill" type="button" aria-pressed="false"
-                  data-img="assets/catalog/cine/eye.webp" data-brand="Эвен Пласт"
+                  data-img="assets/catalog/cine/eye.webp" data-brand="Еланпласт"
                   data-spec="защитные очки и лицевые щитки"
-                  data-alt="Защитные очки Эвен Пласт"><span>Защита глаз</span><span class="mono">02</span></button>
+                  data-alt="Защитные очки Еланпласт"><span>Защита глаз</span><span class="mono">02</span></button>
           <button class="spill" type="button" aria-pressed="false"
-                  data-img="assets/catalog/cine/ear.webp" data-brand="Эвен Пласт"
+                  data-img="assets/catalog/cine/ear.webp" data-brand="Еланпласт"
                   data-spec="вкладыши и противошумные наушники"
-                  data-alt="Средства защиты слуха Эвен Пласт"><span>Защита слуха</span><span class="mono">03</span></button>
+                  data-alt="Средства защиты слуха Еланпласт"><span>Защита слуха</span><span class="mono">03</span></button>
           <button class="spill" type="button" aria-pressed="false"
                   data-img="assets/catalog/cine/resp.webp" data-brand="Респираторы МК и FAROS"
                   data-spec="FFP1-FFP3 · сменные фильтры A/B/E/K/P"
@@ -1316,10 +1324,10 @@
       <div class="series-right">
         <figure class="portrait">
           <img id="cat-img" src="assets/catalog/cine/head.webp"
-               alt="Защитная каска Эвен Пласт" loading="lazy">
+               alt="Защитная каска Еланпласт" loading="lazy">
           <figcaption class="cat-cap" aria-live="polite">
             <span class="cat-cap-txt">
-              <b id="cat-brand">Эвен Пласт</b>
+              <b id="cat-brand">Еланпласт</b>
               <span id="cat-spec" class="mono">каски и защита головы</span>
             </span>
             <span class="cat-idx mono" id="cat-idx" aria-hidden="true">01&nbsp;/&nbsp;09</span>
@@ -1536,7 +1544,7 @@
         <h2 class="display">Как<br>работаем</h2>
       </div>
       <div class="sec-side">
-        <p class="mono">От первой заявки до обслуживания на&nbsp;площадке&nbsp;- пять шагов и&nbsp;один договор.</p>
+        <p class="mono">От аудита до сервиса&nbsp;- пять шагов, один договор и&nbsp;один ответственный за всю площадку.</p>
       </div>
     </div>
 
@@ -1544,27 +1552,27 @@
       <article class="step">
         <span class="no">01</span>
         <b>Заявка и аудит</b>
-        <p>Выезжаем на площадку: карта рисков, номенклатура, текущий расход.</p>
+        <p>Выезжаем к вам: карта рисков и реальный расход&nbsp;- в цифрах, а не на глаз.</p>
       </article>
       <article class="step">
         <span class="no">02</span>
         <b>Расчёт и подбор</b>
-        <p>Считаем потребность и&nbsp;подбираем номенклатуру под отрасль и климат.</p>
+        <p>Подбираем номенклатуру под вашу отрасль и климат&nbsp;- без перерасхода и лишних позиций.</p>
       </article>
       <article class="step step--accent">
         <span class="no">03</span>
         <b>Один договор</b>
-        <p>Заключаем единый договор на весь цикл&nbsp;- вместо десяти отдельных.</p>
+        <p>Один договор на весь цикл вместо десяти&nbsp;- и один ответственный за всю площадку.</p>
       </article>
       <article class="step">
         <span class="no">04</span>
         <b>Поставка и монтаж</b>
-        <p>Отгружаем со склада, устанавливаем и&nbsp;настраиваем автоматы выдачи.</p>
+        <p>Отгружаем со склада, ставим и&nbsp;настраиваем автоматы выдачи&nbsp;- под ключ.</p>
       </article>
       <article class="step">
         <span class="no">05</span>
         <b>Выдача и сервис</b>
-        <p>Ведём учёт, пополняем, стираем и&nbsp;ремонтируем&nbsp;- сервис на площадке.</p>
+        <p>Выдаём, ведём учёт, стираем и&nbsp;ремонтируем&nbsp;- площадка не остаётся без защиты.</p>
       </article>
     </div>
   </section>
