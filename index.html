@@ -243,33 +243,6 @@
     content:"";width:7px;height:7px;border-radius:50%;flex:none;
     background:var(--brand-lift);opacity:.8;
   }
-  .hero2-card{
-    position:absolute;z-index:4;display:block;
-    right:clamp(16px,3.2vw,48px);bottom:clamp(16px,3.2vw,48px);
-    width:min(300px,74vw);
-    background:rgba(18,22,20,.55);
-    border:1px solid rgba(255,255,255,.14);
-    border-radius:var(--r-l);
-    -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
-    padding:24px 26px;
-    transition:transform .2s ease,border-color .2s ease,background .2s ease;
-  }
-  .hero2-card:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.3);background:rgba(18,22,20,.72)}
-  .hero2-card b{
-    font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
-    font-size:14px;letter-spacing:.08em;text-transform:uppercase;display:block;
-    margin-bottom:8px;padding-right:42px;
-  }
-  .hero2-card p{font-size:13px;line-height:1.6;color:rgba(255,255,255,.72)}
-  .hero2-card-arr{
-    position:absolute;right:16px;top:16px;
-    width:34px;height:34px;border-radius:50%;
-    border:1px solid rgba(255,255,255,.28);color:#fff;
-    display:flex;align-items:center;justify-content:center;
-    transition:background .2s ease,border-color .2s ease;
-  }
-  .hero2-card-arr svg{width:14px;height:14px}
-  .hero2-card:hover .hero2-card-arr{background:var(--brand-lift);border-color:var(--brand-lift)}
   @media (max-width:1180px){
     .hero2-char{right:2vw;height:min(82%,700px)}
   }
@@ -290,7 +263,6 @@
     .hero2-copy{position:relative;z-index:4}
     .hero2-desc{max-width:30ch}
     .hero2-cta{display:inline-flex;padding:13px 22px;font-size:11px;letter-spacing:.1em}
-    .hero2-card{position:relative;right:auto;bottom:auto;z-index:3;width:min(320px,100%);margin:18px 0 0}
   }
 
   /* ---------- тёмный кино-герой (по брендбуку: зелёный + белый) ---------- */
@@ -760,11 +732,6 @@
     touch-action:manipulation;
     transition:background .2s cubic-bezier(.2,.6,.2,1);
   }
-  .dir::before{
-    content:"";position:absolute;left:0;top:-1px;bottom:-1px;width:3px;
-    background:var(--brand);transform:scaleY(0);transform-origin:top;
-    transition:transform .2s cubic-bezier(.2,.6,.2,1);
-  }
   .dir .num{
     font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.14em;
     color:var(--mute);align-self:start;padding-top:.35em;
@@ -781,12 +748,10 @@
   .dir-arr svg.ic{width:18px;height:18px}
   @media (hover:hover){
     .dir:hover{background:var(--panel)}
-    .dir:hover::before{transform:scaleY(1)}
     .dir:hover .num{color:var(--brand)}
     .dir:hover .dir-arr{background:var(--brand);border-color:var(--brand);color:#fff;transform:translateX(4px)}
   }
   .dir:focus-visible{background:var(--panel);outline:2px solid var(--brand);outline-offset:-2px;border-radius:0}
-  .dir:focus-visible::before{transform:scaleY(1)}
   .dir:focus-visible .num{color:var(--brand)}
   .dir:focus-visible .dir-arr{background:var(--brand);border-color:var(--brand);color:#fff}
   .dir:active{
@@ -794,20 +759,11 @@
     background:color-mix(in srgb,var(--brand) 10%,var(--panel));
     transition-duration:.05s;
   }
-  .dir:active::before{transform:scaleY(1);transition-duration:.05s}
   .dir:active .num{color:var(--brand)}
   .dir:active .dir-arr{background:var(--brand);border-color:var(--brand);color:#fff;transform:scale(.9);transition-duration:.05s}
-  @media (hover:none){
-    .dir-arr{
-      color:var(--brand);
-      border-color:#BFD3CA;
-      border-color:color-mix(in srgb,var(--brand) 40%,var(--line));
-    }
-  }
   @media (max-width:600px){
-    .dir{grid-template-columns:auto 1fr auto;gap:6px 14px;padding:20px 0}
-    .dir-arr{width:38px;height:38px}
-    .dir-arr svg.ic{width:16px;height:16px}
+    .dir{grid-template-columns:auto 1fr;gap:8px 16px;padding:20px 0}
+    .dir-arr{display:none}
   }
   @media (prefers-reduced-motion:reduce){
     .dir:hover .dir-arr,.dir:active .dir-arr,.dir:focus-visible .dir-arr{transform:none}
@@ -860,7 +816,6 @@
   .calc-k2{margin-top:20px}
   .calc-rate-l{margin-top:22px}
   .val-rate{font-size:clamp(1.6rem,2.8vw,2.3rem)}
-  .calc-rate-note{display:block;margin-top:8px;font-size:11px;letter-spacing:.05em;color:rgba(255,255,255,.5);line-height:1.5}
   .calc-est{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;font-size:clamp(1.15rem,1.9vw,1.5rem);color:rgba(255,255,255,.92);line-height:1;font-variant-numeric:tabular-nums;margin-bottom:2px}
   .vend-img > img{transition:opacity .22s ease}
   .vend-img > .vend-blur{
@@ -940,36 +895,24 @@
     font-size:13px;letter-spacing:.08em;text-transform:uppercase}
   .ind-b{display:flex;flex-direction:column;gap:7px}
   .ind-cl{font-size:12px;letter-spacing:.03em;color:var(--brand-lift)}
-  /* ---------- clients → манифест (фирменная типографика болей) ---------- */
+  /* ---------- clients → манифест (каскад как в «Что болит») ---------- */
   .trust{margin-top:clamp(24px,3vw,44px)}
   .trust-lead{
     position:relative;
     font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
     font-size:clamp(1.4rem,3.4vw,2.9rem);line-height:1.1;letter-spacing:.01em;
-    text-transform:uppercase;color:#8F969C;max-width:18ch;
-    padding-top:28px;margin-bottom:clamp(22px,3vw,40px);
+    text-transform:uppercase;color:#8F969C;max-width:20ch;
+    padding-top:28px;margin-bottom:clamp(18px,2.4vw,32px);
   }
   .trust-lead::before{content:"";position:absolute;left:0;top:0;width:52px;height:4px;background:var(--brand)}
   .trust-lead em{font-style:normal;color:var(--brand)}
-  .trust-list{list-style:none;margin:0;padding:0}
-  .trust-row{
-    display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:6px 24px;
-    padding:clamp(12px,1.6vw,22px) 0;border-bottom:1px solid var(--line);
-  }
-  .trust-row:first-child{border-top:1px solid var(--line)}
   .trust-name{
     font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
-    font-size:clamp(1.9rem,5.4vw,4.2rem);line-height:1;letter-spacing:.01em;
+    font-size:clamp(2rem,6.4vw,4.8rem);line-height:1.02;letter-spacing:.01em;
     text-transform:uppercase;color:var(--ink);overflow-wrap:anywhere;
   }
-  .trust-tag{
-    font-size:clamp(11px,1vw,13px);letter-spacing:.12em;text-transform:uppercase;
-    color:var(--brand);font-weight:600;white-space:nowrap;
-  }
-  @media (max-width:640px){
-    .trust-row{grid-template-columns:1fr;gap:4px;padding:14px 0}
-    .trust-tag{white-space:normal}
-  }
+  .trust-name + .trust-name{margin-top:clamp(2px,.5vw,8px)}
+  .trust-name em{font-style:normal;color:var(--brand)}
   @media (max-width:900px){
     .ind-grid{grid-template-columns:repeat(2,1fr)}
     .ind{flex-direction:row;align-items:center;justify-content:flex-start;gap:14px;min-height:0;padding:16px 18px}
@@ -1039,7 +982,6 @@
   }
   @media (max-width:560px){
     /* Мобильный хиро: рабочий справа за текстом, поднят выше */
-    .hero2-card{display:none}
     .hero2{min-height:clamp(560px,155vw,760px);padding-top:26px;padding-bottom:52px}
     .hero2-copy{display:flex;flex-direction:column;flex:1}
     .hero2-stats{flex-direction:column;align-items:flex-start;gap:10px;margin-bottom:0}
@@ -1186,11 +1128,6 @@
       <p class="hero2-desc">Один договор вместо десяти поставщиков&nbsp;- от&nbsp;каски до&nbsp;газоанализатора: СИЗ, оборудование, пошив, вендинг-выдача 24/7 и&nbsp;сервис.</p>
       <a class="pill pill--brand hero2-cta" href="#contact">Запросить расчёт под предприятие</a>
     </div>
-    <a class="hero2-card" href="#equipment">
-      <b>Оборудование для&nbsp;спасателей</b>
-      <p>Газоанализаторы, шахтные фонари, регистраторы и&nbsp;зарядно-учётные станции для промышленной безопасности.</p>
-      <span class="hero2-card-arr" aria-hidden="true"><svg><use href="#i-arr"/></svg></span>
-    </a>
   </section>
 
   <!-- ============ BLOCK 2 · О КОМПАНИИ ЦИФРАМИ ============ -->
@@ -1326,7 +1263,7 @@
       <article class="svc">
         <img class="eq-photo" src="assets/equipment/recorder.webp" alt="Носимый регистратор параметров смены" loading="lazy">
         <span class="num">03</span>
-        <b>Регистраторы и&nbsp;носимые</b>
+        <b>Носимые регистраторы</b>
         <p>Фиксация параметров смены и&nbsp;событий&nbsp;- данные для службы охраны труда.</p>
       </article>
       <article class="svc">
@@ -1488,16 +1425,14 @@
             <input type="range" id="calc-people" min="50" max="5000" step="50" value="500">
             <label for="calc-rate" class="calc-rate-l">Средний расход на&nbsp;СИЗ, ₸/чел в&nbsp;год</label>
             <p class="val val-rate"><span id="calc-rate-val">130 000</span>&nbsp;₸</p>
-            <input type="range" id="calc-rate" min="20000" max="400000" step="10000" value="130000" aria-describedby="calc-rate-note">
-            <span class="calc-rate-note mono" id="calc-rate-note">По данным рынка ~40–250 тыс, зависит от&nbsp;отрасли и&nbsp;климата.</span>
+            <input type="range" id="calc-rate" min="20000" max="400000" step="10000" value="130000">
           </div>
           <div class="calc-out" aria-live="polite">
             <p class="mono calc-k">Ваш бюджет на&nbsp;СИЗ ≈</p>
             <p class="calc-est"><span id="calc-budget-est">65 000 000</span>&nbsp;₸/год</p>
             <p class="mono calc-k calc-k2">Потенциальная экономия · до&nbsp;40%</p>
             <p class="sum">до&nbsp;<span id="calc-save">26 000 000</span>&nbsp;₸<span class="sum-suf">/год</span></p>
-            <p class="cap">За&nbsp;счёт единой поставки и&nbsp;автоматической выдачи: поимённый учёт убирает списания «в&nbsp;никуда», очереди и&nbsp;кладовщика.</p>
-            <p class="note" id="calc-note">Расход на&nbsp;СИЗ&nbsp;- по данным рынка (охрана труда ≈22&nbsp;тыс&nbsp;₽/чел в&nbsp;год, из&nbsp;них ~44% на&nbsp;СИЗ; в&nbsp;тяжёлой промышленности и&nbsp;на&nbsp;холоде выше). Точную цифру посчитаем после аудита площадки.</p>
+            <p class="cap">За&nbsp;счёт единой поставки и&nbsp;автоматической выдачи: поимённый учёт убирает списания «в&nbsp;никуда», очереди и&nbsp;кладовщика. Точную цифру посчитаем после аудита площадки.</p>
             <a class="pill calc-cta" href="#contact" id="calc-cta">Получить точный расчёт</a>
           </div>
         </div>
@@ -1603,20 +1538,9 @@
 
     <div class="trust">
       <p class="trust-lead">Нам доверяют там, где цена ошибки <em>максимальна</em></p>
-      <ul class="trust-list">
-        <li class="trust-row">
-          <b class="trust-name">Казахмыс</b>
-          <span class="trust-tag mono">Металлургия · добыча</span>
-        </li>
-        <li class="trust-row">
-          <b class="trust-name">Аэропорт&nbsp;Сарыарка</b>
-          <span class="trust-tag mono">Аэропорты</span>
-        </li>
-        <li class="trust-row">
-          <b class="trust-name">Павлодарэнерго</b>
-          <span class="trust-tag mono">Энергетика</span>
-        </li>
-      </ul>
+      <p class="trust-name">Казахмыс</p>
+      <p class="trust-name">Аэропорт&nbsp;Сарыарка</p>
+      <p class="trust-name">Павлодарэнерго</p>
     </div>
   </section>
 
@@ -1949,6 +1873,11 @@
   var form = document.getElementById('lead-form');
   var ok = document.getElementById('form-ok');
   if (form && ok) {
+    var phoneOk = function (v) {
+      if (/[a-zа-яё]/i.test(v)) return false;          // буквы недопустимы
+      var d = v.replace(/\D/g, '');                     // только цифры
+      return d.length >= 10 && d.length <= 15;          // реалистичная длина номера
+    };
     var validateLead = function () {
       var valid = true;
       ['f-name', 'f-company', 'f-phone'].forEach(function (id) {
@@ -1956,7 +1885,12 @@
         var field = input.closest('.field');
         var err = field.querySelector('.f-err');
         if (err && !err.id) { err.id = id + '-err'; }
-        if (!input.value.trim()) {
+        var v = input.value.trim();
+        var bad = !v || (id === 'f-phone' && !phoneOk(v));
+        if (id === 'f-phone' && err) {
+          err.textContent = !v ? 'Укажите телефон' : 'Введите корректный номер телефона';
+        }
+        if (bad) {
           field.classList.add('is-bad'); valid = false;
           input.setAttribute('aria-invalid', 'true');
           if (err) { input.setAttribute('aria-describedby', err.id); }
@@ -1991,6 +1925,14 @@
       window.open('https://wa.me/77710519449?text=' + encodeURIComponent(leadText()), '_blank', 'noopener');
       ok.classList.add('is-on');
     });
+    /* телефон: не даём вводить буквы и мусор */
+    var phoneInput = document.getElementById('f-phone');
+    if (phoneInput) {
+      phoneInput.addEventListener('input', function () {
+        var cleaned = this.value.replace(/[^\d+()\-\s]/g, '');
+        if (cleaned !== this.value) { this.value = cleaned; }
+      });
+    }
     /* автоподстановка из калькулятора и каталога */
     var taskField = document.getElementById('f-task');
     var addTask = function (line) {
