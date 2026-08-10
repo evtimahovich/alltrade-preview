@@ -12,11 +12,29 @@
     --panel:#FFFFFF;
     --ink:#111315;
     --ink-soft:#5B6067;
+    --ghost:#9AA1A8;
     --brand:#326450;
     --brand-lift:#4E9E78;
     --dark:#0B0E0D;
     --line:rgba(17,19,21,.1);
     --r:4mm;
+    /* ---- типографская шкала (pt): 7.5 · 8.5 · 9 · 9.5 · 11.5 · 13.5 · 16 · 20 · 24 · 30 · 44 · 54 · 80 ---- */
+    --fs-foot:7.5pt;   /* подвал */
+    --fs-mono:8.5pt;   /* кикеры, номера, side-note */
+    --fs-body:9pt;     /* текст карточек */
+    --fs-label:9.5pt;  /* подписи к цифрам */
+    --fs-card:11.5pt;  /* заголовки карточек */
+    --fs-value:13.5pt; /* значения контактов */
+    --fs-sub:16pt;     /* постер-строки малые */
+    --fs-line:24pt;    /* постер-строки большие */
+    --fs-h2:30pt;      /* заголовок страницы = постер-ответ = имена клиентов */
+    --fs-num:44pt;     /* цифры фактов */
+    --fs-fin:54pt;     /* финальный титул */
+    /* ---- ритм ---- */
+    --gap:5mm;         /* базовый зазор сетки карточек */
+    --split:8mm;       /* зазор между колонками фото/текст */
+    --card-x:6mm;      /* горизонтальный отступ в карточке */
+    --card-y:6.5mm;    /* вертикальный отступ в карточке */
   }
   *{margin:0;padding:0;box-sizing:border-box}
   @page{size:297mm 210mm;margin:0}
@@ -38,34 +56,52 @@
 
   /* ---- единая рамка страницы: шапка / заголовок / подвал ---- */
   .ph{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7mm}
-  .ph .k{font-family:'IBM Plex Mono',monospace;font-size:8.5pt;letter-spacing:.14em;
+  .ph .k{font-family:'IBM Plex Mono',monospace;font-size:var(--fs-mono);letter-spacing:.14em;
     text-transform:uppercase;color:var(--brand)}
   .page--dark .ph .k{color:var(--brand-lift)}
   .ph .pno{font-family:'IBM Plex Mono',monospace;font-size:8pt;color:var(--ink-soft)}
   .page--dark .ph .pno{color:rgba(255,255,255,.45)}
 
   .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:14mm;margin-bottom:8mm;min-height:24mm}
-  .sec-head h2{font-size:31pt}
+  .sec-head h2{font-size:var(--fs-h2);margin-left:-.02em}
   .sec-head h2 em{font-style:normal;color:var(--brand)}
   .page--dark .sec-head h2 em{color:var(--brand-lift)}
-  .side{font-family:'IBM Plex Mono',monospace;font-size:8.5pt;line-height:1.55;
-    color:var(--ink-soft);max-width:80mm;text-transform:uppercase;letter-spacing:.02em}
+  .side{font-family:'IBM Plex Mono',monospace;font-size:var(--fs-mono);line-height:1.55;
+    color:var(--ink-soft);max-width:80mm;text-transform:uppercase;letter-spacing:.02em;
+    padding-bottom:.8mm}
   .page--dark .side{color:rgba(255,255,255,.6)}
 
   .pfoot{margin-top:auto;padding-top:5mm;display:flex;justify-content:space-between;
-    font-family:'IBM Plex Mono',monospace;font-size:7.5pt;letter-spacing:.08em;
+    font-family:'IBM Plex Mono',monospace;font-size:var(--fs-foot);letter-spacing:.08em;
     text-transform:uppercase;color:var(--ink-soft);border-top:1px solid var(--line)}
   .page--dark .pfoot{color:rgba(255,255,255,.4);border-top-color:rgba(255,255,255,.12)}
 
-  /* ---- единая карточка: контент от верха, равные высоты ---- */
+  /* ---- единая карточка: номер → заголовок → текст, контент от верхнего края ---- */
   .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);
-    padding:6mm;display:flex;flex-direction:column;align-items:flex-start}
+    padding:var(--card-y) var(--card-x);display:flex;flex-direction:column;align-items:flex-start}
   .card--brand{background:var(--brand);border-color:var(--brand);color:#fff}
-  .card .num{font-family:'IBM Plex Mono',monospace;font-size:8.5pt;color:var(--brand);margin-bottom:4mm}
+  .card .num{font-family:'IBM Plex Mono',monospace;font-size:var(--fs-mono);color:var(--brand);margin-bottom:3.5mm}
   .card--brand .num{color:rgba(255,255,255,.7)}
-  .card b{font-size:12pt;font-weight:700;line-height:1.25;margin-bottom:2mm}
-  .card p{font-size:9pt;line-height:1.45;color:var(--ink-soft)}
+  .card b{font-size:var(--fs-card);font-weight:700;line-height:1.25;margin-bottom:2mm}
+  .card p{font-size:var(--fs-body);line-height:1.45;color:var(--ink-soft)}
   .card--brand p{color:rgba(255,255,255,.88)}
+
+  /* ---- манифест-система для постер-страниц: номер · строка · линейка ---- */
+  .man{width:100%}
+  .man-row{display:grid;grid-template-columns:12mm 1fr;column-gap:6mm;align-items:baseline;
+    padding:5.5mm 0;border-top:1px solid var(--line)}
+  .man-row:last-child{border-bottom:1px solid var(--line)}
+  .man-no{font-family:'IBM Plex Mono',monospace;font-size:var(--fs-mono);color:var(--brand)}
+  .man-line{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
+    text-transform:uppercase;font-size:var(--fs-line);line-height:1.1;color:var(--ghost);margin-left:-.02em}
+  .man-answer{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
+    text-transform:uppercase;font-size:var(--fs-h2);line-height:1.12;color:var(--ink);
+    margin-top:10mm;padding-left:18mm}
+  .man-answer em{font-style:normal;color:var(--brand)}
+  /* малый масштаб манифеста — узкая колонка */
+  .man--sm .man-row{grid-template-columns:8mm 1fr;column-gap:4mm;padding:4.5mm 0}
+  .man--sm .man-line{font-size:var(--fs-sub)}
+  .man-answer--sm{font-size:20pt;padding-left:12mm;margin-top:8mm}
 
   /* ============ ОБЛОЖКА ============ */
   .cover{padding:0}
@@ -96,40 +132,43 @@
 
   /* ============ ЦИФРЫ ============ */
   .stats{flex:1;min-height:0;display:grid;grid-template-columns:repeat(5,1fr);
-    grid-template-rows:1fr auto;gap:5mm}
-  .stat .n{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;font-size:40pt;line-height:1;color:var(--ink)}
+    grid-auto-rows:min-content;align-content:center;gap:var(--gap)}
+  .stat{padding:9mm var(--card-x) 8mm}
+  .stat .n{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
+    font-size:var(--fs-num);line-height:1;color:var(--ink);margin-left:-.02em}
   .stat.card--brand .n{color:#fff}
-  .stat .n i{font-style:normal;font-size:13pt;font-weight:800;margin-left:1.5mm}
-  .stat .l{font-size:9.5pt;line-height:1.4;color:var(--ink-soft);margin-top:4mm}
+  .stat .n i{font-style:normal;font-size:13.5pt;font-weight:800;margin-left:1.5mm}
+  .stat .l{font-size:var(--fs-label);line-height:1.4;color:var(--ink-soft);margin-top:4mm}
   .stat.card--brand .l{color:rgba(255,255,255,.88)}
-  .geo{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:3mm;padding-top:2mm;
-    font-family:'IBM Plex Mono',monospace;font-size:8.5pt;text-transform:uppercase;letter-spacing:.05em}
+  .geo{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:3mm;
+    border-top:1px solid var(--line);padding-top:5mm;margin-top:2mm;
+    font-family:'IBM Plex Mono',monospace;font-size:var(--fs-mono);text-transform:uppercase;letter-spacing:.05em}
   .geo .t{color:var(--ink-soft)}
   .gpill{border:1px solid rgba(17,19,21,.22);border-radius:999px;padding:2mm 4.5mm;white-space:nowrap}
 
-  /* ============ МАНИФЕСТ (боли/пошив/клиенты) ============ */
+  /* ============ ПРОБЛЕМА (манифест) ============ */
   .pain{flex:1;display:flex;flex-direction:column;justify-content:center}
-  .pain-line{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
-    text-transform:uppercase;font-size:24pt;line-height:1.22;color:#9AA1A8}
-  .pain-answer{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
-    text-transform:uppercase;font-size:30pt;line-height:1.15;color:var(--ink);margin-top:9mm}
-  .pain-answer em{font-style:normal;color:var(--brand)}
 
   /* ============ НАПРАВЛЕНИЯ ============ */
-  .dirs{display:grid;grid-template-columns:repeat(5,1fr);gap:5mm;flex:1;min-height:0}
+  .dirs{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--gap);flex:1;min-height:0;
+    grid-auto-rows:min-content;align-content:center}
+  .dirs .card{padding:7mm var(--card-x);min-height:56mm}
+  .dirs .card b{min-height:10.5mm}
 
   /* ============ ОБОРУДОВАНИЕ ============ */
-  .eq{display:grid;grid-template-columns:repeat(4,1fr);gap:5mm;flex:1;min-height:0}
+  .eq{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap);flex:1;min-height:0;
+    grid-auto-rows:min-content;align-content:center}
   .eq .svc{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
     display:flex;flex-direction:column}
   .eq img{width:100%;height:76mm;object-fit:cover;display:block}
-  .eq .svc-t{padding:5mm 5.5mm;display:flex;flex-direction:column;flex:1}
-  .eq .num{font-family:'IBM Plex Mono',monospace;font-size:8.5pt;color:var(--brand);margin-bottom:3mm}
-  .eq b{font-size:11pt;line-height:1.25;margin-bottom:1.5mm;min-height:10mm}
-  .eq p{font-size:8.8pt;line-height:1.4;color:var(--ink-soft)}
+  .eq .svc-t{padding:5mm var(--card-x) 5.5mm;display:flex;flex-direction:column;flex:1}
+  .eq .num{font-family:'IBM Plex Mono',monospace;font-size:var(--fs-mono);color:var(--brand);margin-bottom:3.5mm}
+  .eq b{font-size:var(--fs-card);line-height:1.25;margin-bottom:2mm;min-height:10.5mm}
+  .eq p{font-size:var(--fs-body);line-height:1.4;color:var(--ink-soft)}
 
   /* ============ КАТАЛОГ ============ */
-  .cat{display:grid;grid-template-columns:repeat(9,1fr);gap:4mm;flex:1;min-height:0}
+  .cat{display:grid;grid-template-columns:repeat(9,1fr);gap:4mm;flex:1;min-height:0;
+    grid-auto-rows:min-content;align-content:center}
   .cat .c{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
     display:flex;flex-direction:column}
   .cat img{width:100%;height:84mm;object-fit:cover;display:block}
@@ -139,86 +178,88 @@
   .cat p{font-size:6.8pt;line-height:1.35;color:var(--ink-soft)}
 
   /* ============ ПОШИВ ============ */
-  .sew{display:grid;grid-template-columns:1.45fr 1fr;gap:10mm;flex:1;min-height:0}
+  .sew{display:grid;grid-template-columns:1.3fr 1fr;gap:var(--split);flex:1;min-height:0}
   .sew-img{border-radius:var(--r);overflow:hidden;position:relative;background:var(--dark)}
   .sew-img img{width:100%;height:100%;object-fit:cover;display:block}
   .sew-img .badge{position:absolute;left:5mm;top:5mm;background:rgba(11,14,13,.82);color:#fff;
-    font-family:'IBM Plex Mono',monospace;font-size:7.5pt;letter-spacing:.1em;text-transform:uppercase;
+    font-family:'IBM Plex Mono',monospace;font-size:var(--fs-foot);letter-spacing:.1em;text-transform:uppercase;
     padding:2.2mm 4mm;border-radius:999px}
   .sew-img figcaption{position:absolute;left:5mm;bottom:4.5mm;color:rgba(255,255,255,.85);
-    font-family:'IBM Plex Mono',monospace;font-size:7.5pt;letter-spacing:.08em;text-transform:uppercase}
+    font-family:'IBM Plex Mono',monospace;font-size:var(--fs-foot);letter-spacing:.08em;text-transform:uppercase}
   .sew-txt{display:flex;flex-direction:column;justify-content:center}
-  .sew-txt .pain-line{font-size:15.5pt}
-  .sew-txt .pain-answer{font-size:19pt}
 
   /* ============ ВЕНДИНГ ============ */
-  .vend{display:grid;grid-template-columns:1fr 1.35fr;gap:8mm;flex:1;min-height:0}
+  .vend{display:grid;grid-template-columns:1fr 1.35fr;gap:var(--split);flex:1;min-height:0}
   .vend-img{border-radius:var(--r);overflow:hidden;position:relative;background:var(--dark)}
   .vend-img img{width:100%;height:100%;object-fit:cover;display:block}
   .vend-img figcaption{position:absolute;left:0;right:0;bottom:0;padding:10mm 5mm 4mm;
     background:linear-gradient(transparent,rgba(11,14,13,.85));color:#fff}
   .vend-img figcaption b{font-size:10.5pt}
-  .vend-img figcaption span{display:block;font-family:'IBM Plex Mono',monospace;font-size:7.5pt;
+  .vend-img figcaption span{display:block;font-family:'IBM Plex Mono',monospace;font-size:var(--fs-foot);
     color:rgba(255,255,255,.75);margin-top:1mm;text-transform:uppercase;letter-spacing:.06em}
-  .vend-right{display:grid;grid-template-rows:1fr 1fr 1fr;gap:4mm;min-height:0}
-  .vfeats{display:grid;grid-template-columns:1fr 1fr;gap:4mm;grid-row:span 2}
-  .vfeat{padding:5mm}
-  .vfeat b{font-size:10.5pt}
-  .vfeat p{font-size:8.6pt}
-  .vsave{background:var(--brand);border-radius:var(--r);color:#fff;padding:5mm 6mm;
+  /* правая колонка: карточки по контенту, верх/низ прижаты к кромкам фото */
+  .vend-right{display:flex;flex-direction:column;justify-content:space-between;gap:var(--gap);min-height:0}
+  .vfeats{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)}
+  .vfeat{padding:var(--card-y) var(--card-x);min-height:36mm}
+  .vfeat b{font-size:var(--fs-card)}
+  .vfeat p{font-size:var(--fs-body)}
+  .vsave{background:var(--brand);border-radius:var(--r);color:#fff;padding:9mm var(--card-x);
     display:flex;align-items:center;justify-content:space-between;gap:8mm}
-  .vsave .big{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;font-size:27pt;
+  .vsave .big{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;font-size:36pt;
     line-height:.95;text-transform:uppercase;white-space:nowrap}
-  .vsave .big i{font-style:normal;font-size:12pt;font-weight:800}
-  .vsave .k{font-family:'IBM Plex Mono',monospace;font-size:7.5pt;letter-spacing:.1em;
+  .vsave .big i{font-style:normal;font-size:16pt;font-weight:800}
+  .vsave .k{font-family:'IBM Plex Mono',monospace;font-size:var(--fs-foot);letter-spacing:.1em;
     text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:2mm;white-space:nowrap}
-  .vsave p.cap{font-size:8.4pt;line-height:1.45;color:rgba(255,255,255,.88)}
+  .vsave p.cap{font-size:9pt;line-height:1.5;color:rgba(255,255,255,.88);max-width:112mm}
 
   /* ============ ОБСЛУЖИВАНИЕ ============ */
-  .wash{display:grid;grid-template-columns:1fr 1.25fr;gap:8mm;flex:1;min-height:0}
+  .wash{display:grid;grid-template-columns:1fr 1.25fr;gap:var(--split);flex:1;min-height:0}
   .wash-img{border-radius:var(--r);overflow:hidden;background:var(--dark)}
   .wash-img img{width:100%;height:100%;object-fit:cover;display:block}
-  .wash-list{display:grid;grid-template-rows:repeat(4,1fr);gap:4mm}
-  .wrow{flex-direction:row;gap:5mm;align-items:flex-start;padding:5mm 5.5mm}
-  .wrow .k{font-family:'IBM Plex Mono',monospace;font-size:9pt;color:var(--brand);margin-bottom:0;line-height:1.5}
-  .wrow b{font-size:11.5pt;margin-bottom:1mm}
-  .wrow p{font-size:9pt}
+  /* строки по контенту, растянут только воздух между ними — карточки не тянутся */
+  .wash-list{display:flex;flex-direction:column;justify-content:space-between;gap:var(--gap)}
+  .wrow{flex-direction:row;gap:5mm;align-items:flex-start;padding:5.5mm var(--card-x)}
+  .wrow .k{font-family:'IBM Plex Mono',monospace;font-size:var(--fs-mono);color:var(--brand);margin-bottom:0;line-height:1.6}
+  .wrow b{font-size:var(--fs-card);margin-bottom:1mm}
+  .wrow p{font-size:var(--fs-body)}
 
   /* ============ ДОПУСКИ + КЛИЕНТЫ ============ */
-  .trust{display:grid;grid-template-columns:1fr 1fr;gap:10mm;flex:1;min-height:0}
-  .certs{display:grid;grid-template-rows:repeat(3,1fr);gap:4mm}
-  .cert{justify-content:center}
-  .cert .code{font-family:'IBM Plex Mono',monospace;font-size:11pt;font-weight:500;color:var(--brand)}
-  .cert p{font-size:8.8pt;line-height:1.45;color:var(--ink-soft);margin-top:1.5mm}
+  .trust{display:grid;grid-template-columns:1fr 1fr;gap:12mm;flex:1;min-height:0;align-content:center}
+  .certs{display:flex;flex-direction:column;justify-content:center;gap:var(--gap)}
+  .cert{padding:6.5mm var(--card-x)}
+  .cert .code{font-family:'IBM Plex Mono',monospace;font-size:var(--fs-card);font-weight:500;color:var(--brand)}
+  .cert p{font-size:var(--fs-body);line-height:1.45;color:var(--ink-soft);margin-top:2mm}
   .cl{display:flex;flex-direction:column;justify-content:center}
-  .cl .pain-line{font-size:15.5pt}
-  .cl .cl-name{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
-    text-transform:uppercase;font-size:24pt;line-height:1.18;color:var(--ink)}
-  .cl .cl-name:first-of-type{margin-top:6mm}
+  .cl-intro{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
+    text-transform:uppercase;font-size:var(--fs-sub);line-height:1.2;color:var(--ghost);
+    margin-bottom:6mm;margin-left:-.02em}
+  .cl-name{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
+    text-transform:uppercase;font-size:var(--fs-h2);line-height:1.05;color:var(--ink);
+    padding:4.5mm 0;border-top:1px solid var(--line);margin-left:-.02em}
   .cl-cap{font-family:'IBM Plex Mono',monospace;font-size:8pt;letter-spacing:.08em;
-    text-transform:uppercase;color:var(--ink-soft);margin-top:4mm;line-height:1.6}
+    text-transform:uppercase;color:var(--ink-soft);border-top:1px solid var(--line);
+    padding-top:4.5mm;line-height:1.6}
 
   /* ============ ПРОЦЕСС ============ */
-  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:4.5mm;flex:1;min-height:0}
-  .step .no{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;font-size:21pt;
-    color:var(--brand);margin-bottom:4mm}
+  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--gap);flex:1;min-height:0;
+    grid-auto-rows:min-content;align-content:center}
+  .steps .card{padding:7mm var(--card-x);min-height:56mm}
+  .step .no{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;font-size:20pt;
+    line-height:1;color:var(--brand);margin-bottom:4mm}
   .step.card--brand .no{color:rgba(255,255,255,.85)}
-  .step b{font-size:11.5pt;min-height:10.5mm}
-  .step p{font-size:8.8pt}
+  .step b{min-height:10.5mm}
 
   /* ============ КОНТАКТЫ ============ */
   .fin{flex:1;display:flex;flex-direction:column;justify-content:center}
-  .fin-title{font-size:48pt;color:#fff}
+  .fin-title{font-size:var(--fs-fin);color:#fff;margin-left:-.02em}
   .fin-title span{display:block}
   .fin-title em{font-style:normal;color:var(--brand-lift)}
-  .fin-contacts{display:grid;grid-template-columns:repeat(3,1fr);gap:5mm;margin-top:12mm;max-width:236mm}
-  .fc{border:1px solid rgba(255,255,255,.2);border-radius:var(--r);padding:5.5mm 7mm}
+  .fin-contacts{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap);margin-top:14mm}
+  .fc{border:1px solid rgba(255,255,255,.2);border-radius:var(--r);padding:6mm 7mm}
   .fc--brand{background:var(--brand);border-color:var(--brand)}
-  .fc .k{font-family:'IBM Plex Mono',monospace;font-size:7.5pt;letter-spacing:.12em;
-    text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:2mm}
-  .fc .v{font-size:13.5pt;font-weight:700;color:#fff;white-space:nowrap}
-  .fin-legal{display:flex;gap:9mm;margin-top:11mm;font-family:'IBM Plex Mono',monospace;
-    font-size:8pt;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);flex-wrap:wrap}
+  .fc .k{font-family:'IBM Plex Mono',monospace;font-size:var(--fs-foot);letter-spacing:.12em;
+    text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:2.5mm}
+  .fc .v{font-size:var(--fs-value);font-weight:700;color:#fff;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -285,11 +326,13 @@
     <p class="side">Типичная картина снабжения СИЗ на крупном предприятии — пока всё раскидано по десяти поставщикам.</p>
   </div>
   <div class="pain">
-    <p class="pain-line">Десять поставщиков и счетов.</p>
-    <p class="pain-line">Перерасход без учёта.</p>
-    <p class="pain-line">Смена не вышла — нет размеров.</p>
-    <p class="pain-line">Поставщик не проходит по тендеру.</p>
-    <p class="pain-answer">Закрываем всё это <em>одним договором</em>.</p>
+    <div class="man">
+      <div class="man-row"><span class="man-no">01</span><p class="man-line">Десять поставщиков и счетов.</p></div>
+      <div class="man-row"><span class="man-no">02</span><p class="man-line">Перерасход без учёта.</p></div>
+      <div class="man-row"><span class="man-no">03</span><p class="man-line">Смена не вышла — нет размеров.</p></div>
+      <div class="man-row"><span class="man-no">04</span><p class="man-line">Поставщик не проходит по тендеру.</p></div>
+    </div>
+    <p class="man-answer">Закрываем всё это <em>одним договором</em>.</p>
   </div>
   <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>alltrade-ltd.kz</span></div>
 </section>
@@ -394,10 +437,12 @@
       <figcaption>Комплект для шахтёров · светоотражающие кресты</figcaption>
     </figure>
     <div class="sew-txt">
-      <p class="pain-line">Размеры под ваш персонал.</p>
-      <p class="pain-line">Ткани под сезон и отрасль.</p>
-      <p class="pain-line">Логотип заказчика.</p>
-      <p class="pain-answer">Шьём точно <em>под ваше предприятие</em>.</p>
+      <div class="man man--sm">
+        <div class="man-row"><span class="man-no">01</span><p class="man-line">Размеры под ваш персонал.</p></div>
+        <div class="man-row"><span class="man-no">02</span><p class="man-line">Ткани под сезон и отрасль.</p></div>
+        <div class="man-row"><span class="man-no">03</span><p class="man-line">Логотип заказчика.</p></div>
+      </div>
+      <p class="man-answer man-answer--sm">Шьём точно <em>под ваше предприятие</em>.</p>
     </div>
   </div>
   <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>alltrade-ltd.kz</span></div>
@@ -467,7 +512,7 @@
       <article class="card cert"><span class="code">Казсодержание</span><p>Казахстанская компания с филиалами в 4 городах — локальное содержание в поставках и сервисе.</p></article>
     </div>
     <div class="cl">
-      <p class="pain-line">Нам доверяют там, где цена ошибки максимальна.</p>
+      <p class="cl-intro">Нам доверяют там, где цена ошибки максимальна.</p>
       <p class="cl-name">Казахмыс</p>
       <p class="cl-name">Аэропорт Сарыарка</p>
       <p class="cl-name">Павлодарэнерго</p>
@@ -504,11 +549,11 @@
       <div class="fc"><p class="k">Почта</p><p class="v">info@alltrade-ltd.kz</p></div>
       <div class="fc"><p class="k">Сайт</p><p class="v">alltrade-ltd.kz</p></div>
     </div>
-    <div class="fin-legal">
-      <span>ТОО «ALLTRADE-LTD» · БИН 160 340 027 310</span>
-      <span>Усть-Каменогорск, ул. Бажова 79А</span>
-      <span>Instagram: @alltrade_ltd_kz</span>
-    </div>
+  </div>
+  <div class="pfoot">
+    <span>ТОО «ALLTRADE-LTD» · БИН 160 340 027 310</span>
+    <span>Усть-Каменогорск, ул. Бажова 79А</span>
+    <span>Instagram: @alltrade_ltd_kz</span>
   </div>
 </section>
 
