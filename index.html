@@ -745,17 +745,72 @@
   .svc-lead-arr svg.ic{width:22px;height:22px;color:#fff}
   @media (max-width:640px){.svc-lead{flex-wrap:wrap;gap:16px}.svc-lead-arr{display:none}}
   /* ---- Пять направлений: редакторский нумерованный список ---- */
+  /* ===== .dir — направления (светлая секция #solution) ===== */
   .dirs{border-top:1px solid var(--line)}
-  .dir{display:grid;grid-template-columns:clamp(38px,4.5vw,64px) 1fr auto;gap:clamp(16px,3vw,44px);align-items:center;padding:clamp(22px,2.6vw,34px) clamp(14px,1.6vw,24px);border-bottom:1px solid var(--line);text-decoration:none;color:inherit;position:relative;transition:background .2s ease}
-  .dir::before{content:"";position:absolute;left:0;top:-1px;bottom:-1px;width:3px;background:var(--brand);transform:scaleY(0);transition:transform .2s ease}
-  @media (hover:hover){.dir:hover{background:var(--panel)}.dir:hover::before{transform:scaleY(1)}}
-  .dir .num{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.14em;color:var(--mute);align-self:start;padding-top:.35em}
+  .dir{
+    display:grid;
+    grid-template-columns:clamp(38px,4.5vw,64px) 1fr auto;
+    gap:clamp(16px,3vw,44px);
+    align-items:center;
+    padding:clamp(22px,2.6vw,34px) clamp(14px,1.6vw,24px);
+    border-bottom:1px solid var(--line);
+    text-decoration:none;color:inherit;cursor:pointer;position:relative;
+    -webkit-tap-highlight-color:transparent;
+    touch-action:manipulation;
+    transition:background .2s cubic-bezier(.2,.6,.2,1);
+  }
+  .dir::before{
+    content:"";position:absolute;left:0;top:-1px;bottom:-1px;width:3px;
+    background:var(--brand);transform:scaleY(0);transform-origin:top;
+    transition:transform .2s cubic-bezier(.2,.6,.2,1);
+  }
+  .dir .num{
+    font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.14em;
+    color:var(--mute);align-self:start;padding-top:.35em;
+    transition:color .2s cubic-bezier(.2,.6,.2,1);
+  }
   .dir-t b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;font-size:clamp(1.4rem,3vw,2.4rem);line-height:1.03;text-transform:uppercase;letter-spacing:.004em;display:block;margin-bottom:8px}
   .dir-t p{color:var(--ink-soft);font-size:15px;max-width:62ch}
-  .dir-arr{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--mute);transition:background .18s ease,color .18s ease,transform .18s ease}
+  .dir-arr{
+    flex:none;width:44px;height:44px;border-radius:50%;
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;color:var(--mute);
+    transition:background .18s cubic-bezier(.2,.6,.2,1),border-color .18s cubic-bezier(.2,.6,.2,1),color .18s cubic-bezier(.2,.6,.2,1),transform .12s cubic-bezier(.2,.6,.2,1);
+  }
   .dir-arr svg.ic{width:18px;height:18px}
-  @media (hover:hover){.dir:hover .dir-arr{background:var(--brand);border-color:var(--brand);color:#fff;transform:translateX(3px)}}
-  @media (max-width:600px){.dir{grid-template-columns:auto 1fr;gap:8px 16px;padding:20px 0}.dir-arr{display:none}}
+  @media (hover:hover){
+    .dir:hover{background:var(--panel)}
+    .dir:hover::before{transform:scaleY(1)}
+    .dir:hover .num{color:var(--brand)}
+    .dir:hover .dir-arr{background:var(--brand);border-color:var(--brand);color:#fff;transform:translateX(4px)}
+  }
+  .dir:focus-visible{background:var(--panel);outline:2px solid var(--brand);outline-offset:-2px;border-radius:0}
+  .dir:focus-visible::before{transform:scaleY(1)}
+  .dir:focus-visible .num{color:var(--brand)}
+  .dir:focus-visible .dir-arr{background:var(--brand);border-color:var(--brand);color:#fff}
+  .dir:active{
+    background:#E9F0EC;
+    background:color-mix(in srgb,var(--brand) 10%,var(--panel));
+    transition-duration:.05s;
+  }
+  .dir:active::before{transform:scaleY(1);transition-duration:.05s}
+  .dir:active .num{color:var(--brand)}
+  .dir:active .dir-arr{background:var(--brand);border-color:var(--brand);color:#fff;transform:scale(.9);transition-duration:.05s}
+  @media (hover:none){
+    .dir-arr{
+      color:var(--brand);
+      border-color:#BFD3CA;
+      border-color:color-mix(in srgb,var(--brand) 40%,var(--line));
+    }
+  }
+  @media (max-width:600px){
+    .dir{grid-template-columns:auto 1fr auto;gap:6px 14px;padding:20px 0}
+    .dir-arr{width:38px;height:38px}
+    .dir-arr svg.ic{width:16px;height:16px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .dir:hover .dir-arr,.dir:active .dir-arr,.dir:focus-visible .dir-arr{transform:none}
+  }
   @media (max-width:900px){.loop{grid-template-columns:repeat(2,1fr)}}
   @media (max-width:520px){.loop{grid-template-columns:1fr}}
 
@@ -1153,7 +1208,7 @@
         <span class="gpill">Весь Казахстан</span>
         <span class="gpill">Головной офис&nbsp;- Усть-Каменогорск</span>
         <span class="gpill">Филиалы: Алматы&nbsp;· Усть-Каменогорск&nbsp;· Павлодар&nbsp;· Атырау</span>
-        <span class="gpill">Города обслуживания: Текели&nbsp;· Риддер&nbsp;· Алтай&nbsp;· Лисаковск&nbsp;· Кокшетау</span>
+        <span class="gpill">Города обслуживания: Текели&nbsp;· Риддер&nbsp;· Зыряновск&nbsp;· Лисаковск&nbsp;· Кокшетау</span>
               </div>
     </div>
   </section>
