@@ -939,14 +939,36 @@
     font-size:13px;letter-spacing:.08em;text-transform:uppercase}
   .ind-b{display:flex;flex-direction:column;gap:7px}
   .ind-cl{font-size:12px;letter-spacing:.03em;color:var(--brand-lift)}
-  .clients{margin-top:clamp(20px,2.4vw,32px)}
-  .clients-head{color:var(--ink-soft);letter-spacing:.06em;font-size:clamp(13px,1.4vw,15px);margin-bottom:16px;max-width:52ch}
-  .clients-row{display:flex;flex-wrap:wrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .cl-cell{flex:1;min-width:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;text-align:center;padding:clamp(30px,4vw,52px) clamp(16px,2vw,28px);border-left:1px solid var(--line)}
-  .cl-cell:first-child{border-left:none}
-  .cl-cell b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;font-size:clamp(1.25rem,2vw,1.85rem);text-transform:uppercase;letter-spacing:.01em;line-height:1;color:var(--ink)}
-  .cl-cell .mono{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
-  @media (max-width:640px){.cl-cell{flex:1 1 100%;border-left:none;border-top:1px solid var(--line)}.cl-cell:first-child{border-top:none}}
+  /* ---------- clients → манифест доверия ---------- */
+  .trust{margin-top:clamp(28px,3.4vw,48px)}
+  .trust-lead{
+    position:relative;
+    font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
+    font-size:clamp(1.25rem,2.4vw,1.95rem);line-height:1.18;letter-spacing:-.005em;
+    color:var(--ink);max-width:26ch;
+    padding-top:22px;margin-bottom:clamp(24px,3vw,40px);
+  }
+  .trust-lead::before{content:"";position:absolute;left:0;top:0;width:44px;height:3px;background:var(--brand)}
+  .trust-lead b{color:var(--brand);font-weight:800}
+  .trust-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+  .trust-row{
+    display:grid;grid-template-columns:1fr auto;align-items:end;gap:14px 24px;
+    padding:clamp(18px,2.4vw,30px) 0;border-bottom:1px solid var(--line);
+  }
+  .trust-name{
+    font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
+    font-size:clamp(1.55rem,5.4vw,3.4rem);line-height:.95;letter-spacing:-.01em;
+    text-transform:uppercase;color:var(--ink);
+    overflow-wrap:anywhere;
+  }
+  .trust-tag{
+    font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);
+    white-space:nowrap;padding-bottom:.28em;
+  }
+  @media (max-width:640px){
+    .trust-row{grid-template-columns:1fr;align-items:start;gap:8px}
+    .trust-tag{white-space:normal;padding-bottom:0}
+  }
   @media (max-width:900px){
     .ind-grid{grid-template-columns:repeat(2,1fr)}
     .ind{flex-direction:row;align-items:center;justify-content:flex-start;gap:14px;min-height:0;padding:16px 18px}
@@ -1578,13 +1600,22 @@
       <article class="ind"><span class="ico"><svg aria-hidden="true"><use href="#i-bolt"/></svg></span><div class="ind-b"><b>Энергетика</b></div></article>
     </div>
 
-    <div class="clients">
-      <p class="clients-head mono">Нам доверяют предприятия, где цена ошибки максимальна</p>
-      <div class="clients-row">
-        <div class="cl-cell"><b>Казахмыс</b><span class="mono">Металлургия · добыча</span></div>
-        <div class="cl-cell"><b>Аэропорт Сарыарка</b><span class="mono">Аэропорты</span></div>
-        <div class="cl-cell"><b>Павлодарэнерго</b><span class="mono">Энергетика</span></div>
-      </div>
+    <div class="trust">
+      <p class="trust-lead">Нам доверяют предприятия, где цена ошибки <b>максимальна</b></p>
+      <ul class="trust-list">
+        <li class="trust-row">
+          <b class="trust-name">Казахмыс</b>
+          <span class="trust-tag mono">Металлургия · добыча</span>
+        </li>
+        <li class="trust-row">
+          <b class="trust-name">Аэропорт&nbsp;Сарыарка</b>
+          <span class="trust-tag mono">Аэропорты</span>
+        </li>
+        <li class="trust-row">
+          <b class="trust-name">Павлодарэнерго</b>
+          <span class="trust-tag mono">Энергетика</span>
+        </li>
+      </ul>
     </div>
   </section>
 
