@@ -633,7 +633,7 @@
 
   /* ---------- общее свечение тёмных плашек ---------- */
   .pain-resolve,.cl-anchor,.calc,.m-orange{position:relative;overflow:hidden}
-  .pain-resolve::after,.cl-anchor::after,.geo::after,.ct-info::after{
+  .pain-resolve::after,.cl-anchor::after,.geo::after{
     content:"";position:absolute;right:-25%;top:-60%;width:70%;height:180%;
     background:radial-gradient(circle,rgba(78,158,120,.16),transparent 62%);
     pointer-events:none;
@@ -746,8 +746,9 @@
   @media (max-width:640px){.svc-lead{flex-wrap:wrap;gap:16px}.svc-lead-arr{display:none}}
   /* ---- Пять направлений: редакторский нумерованный список ---- */
   .dirs{border-top:1px solid var(--line)}
-  .dir{display:grid;grid-template-columns:clamp(38px,4.5vw,64px) 1fr auto;gap:clamp(16px,3vw,44px);align-items:center;padding:clamp(22px,2.6vw,34px) clamp(6px,1vw,16px);border-bottom:1px solid var(--line);text-decoration:none;color:inherit;transition:background .18s ease,padding .18s ease}
-  @media (hover:hover){.dir:hover{background:var(--panel);padding-left:clamp(14px,1.6vw,24px)}}
+  .dir{display:grid;grid-template-columns:clamp(38px,4.5vw,64px) 1fr auto;gap:clamp(16px,3vw,44px);align-items:center;padding:clamp(22px,2.6vw,34px) clamp(14px,1.6vw,24px);border-bottom:1px solid var(--line);text-decoration:none;color:inherit;position:relative;transition:background .2s ease}
+  .dir::before{content:"";position:absolute;left:0;top:-1px;bottom:-1px;width:3px;background:var(--brand);transform:scaleY(0);transition:transform .2s ease}
+  @media (hover:hover){.dir:hover{background:var(--panel)}.dir:hover::before{transform:scaleY(1)}}
   .dir .num{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.14em;color:var(--mute);align-self:start;padding-top:.35em}
   .dir-t b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;font-size:clamp(1.4rem,3vw,2.4rem);line-height:1.03;text-transform:uppercase;letter-spacing:.004em;display:block;margin-bottom:8px}
   .dir-t p{color:var(--ink-soft);font-size:15px;max-width:62ch}
@@ -880,12 +881,12 @@
   .ind-cl{font-size:12px;letter-spacing:.03em;color:var(--brand-lift)}
   .clients{margin-top:clamp(20px,2.4vw,32px)}
   .clients-head{color:var(--ink-soft);letter-spacing:.06em;font-size:clamp(13px,1.4vw,15px);margin-bottom:16px;max-width:52ch}
-  .clients-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-  .client{position:relative;overflow:hidden;background:#101413;color:#fff;border-radius:var(--r-m);border-top:2px solid var(--brand-lift);padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;gap:10px;min-height:150px;justify-content:flex-end}
-  .client .client-i{position:absolute;top:16px;right:18px;color:rgba(255,255,255,.28);font-size:12px;letter-spacing:.1em}
-  .client b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;font-size:clamp(1.3rem,2.1vw,1.9rem);letter-spacing:.01em;line-height:1.05}
-  .client .client-x{color:var(--brand-lift);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
-  @media (max-width:760px){.clients-grid{grid-template-columns:1fr}}
+  .clients-row{display:flex;flex-wrap:wrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .cl-cell{flex:1;min-width:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;text-align:center;padding:clamp(30px,4vw,52px) clamp(16px,2vw,28px);border-left:1px solid var(--line)}
+  .cl-cell:first-child{border-left:none}
+  .cl-cell b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;font-size:clamp(1.25rem,2vw,1.85rem);text-transform:uppercase;letter-spacing:.01em;line-height:1;color:var(--ink)}
+  .cl-cell .mono{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+  @media (max-width:640px){.cl-cell{flex:1 1 100%;border-left:none;border-top:1px solid var(--line)}.cl-cell:first-child{border-top:none}}
   @media (max-width:900px){
     .ind-grid{grid-template-columns:repeat(2,1fr)}
     .ind{flex-direction:row;align-items:center;justify-content:flex-start;gap:14px;min-height:0;padding:16px 18px}
@@ -912,34 +913,17 @@
   @media (max-width:640px){.steps{grid-template-columns:1fr}}
 
   /* ---------- contact form (block 12) ---------- */
-  .ct-grid{display:grid;grid-template-columns:1fr;gap:14px;align-items:stretch}
-  @media (min-width:861px){.ct-grid{grid-template-columns:1.18fr .82fr}}
+  .ct-grid{display:grid;grid-template-columns:1fr;gap:14px}
   .ct-form{background:var(--panel);border-radius:var(--r-m);padding:clamp(24px,2.6vw,36px);
     border:1px solid var(--line);
     box-shadow:0 1px 2px rgba(16,20,24,.06),0 12px 32px rgba(16,20,24,.10)}
   .ct-form .field--gap{margin-bottom:12px}
-  .ct-info{
-    background:var(--ink);color:#fff;border-radius:var(--r-m);
-    padding:clamp(24px,2.6vw,36px);
-    display:flex;flex-direction:column;align-items:flex-start;gap:6px;
-    position:relative;overflow:hidden;
-  }
-  .ct-k{color:rgba(255,255,255,.6);margin-bottom:16px}
-  .ct-phone{
-    position:relative;
-    font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
-    font-size:clamp(1.5rem,2.1vw,1.9rem);letter-spacing:.02em;line-height:1.15;color:#fff;
-  }
-  .ct-phone:hover{color:var(--brand-lift)}
-  .ct-mail{position:relative;color:rgba(255,255,255,.78);font-size:15px}
-  .ct-mail:hover{color:#fff;text-decoration:underline}
-  .ct-info .pill{margin-top:18px}
-  .ct-cities{margin-top:auto;padding-top:24px;color:rgba(255,255,255,.55)}
+  /* .ct-info удалён - прямые контакты в футере и плавающей кнопке WhatsApp */
   .f-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
   .field{display:flex;flex-direction:column;gap:7px}
   .field label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;
     text-transform:uppercase;color:var(--ink-soft)}
-  .hero2 :focus-visible,#vending :focus-visible,#equipment :focus-visible,.foot :focus-visible,.calc :focus-visible,.ct-info :focus-visible{outline-color:var(--brand-lift)}
+  .hero2 :focus-visible,#vending :focus-visible,#equipment :focus-visible,.foot :focus-visible,.calc :focus-visible{outline-color:var(--brand-lift)}
   .field input,.field textarea{
     font-family:'Manrope',sans-serif;font-size:16px;color:var(--ink);
     background:#fff;border:1px solid var(--line);border-radius:var(--r-s);
@@ -1134,7 +1118,7 @@
         <h2 class="display">О компании<br>в цифрах</h2>
       </div>
       <div class="sec-side">
-        <p class="mono">Обеспечиваем промышленность Казахстана средствами защиты под&nbsp;ключ&nbsp;- поставка, оборудование, пошив и&nbsp;сервис из&nbsp;одних рук.</p>
+        <p class="mono">Не разовый поставщик, а&nbsp;подрядчик, который годами отвечает за&nbsp;защиту всего предприятия.</p>
       </div>
     </div>
 
@@ -1197,7 +1181,7 @@
         <h2 class="display">Пять направлений&nbsp;-<br>один договор</h2>
       </div>
       <div class="sec-side">
-        <p class="mono">Один поставщик: поставляем, оборудуем, шьём, выдаём и&nbsp;обслуживаем&nbsp;- по одному договору.</p>
+        <p class="mono">Обычно каждое направление ведёт свой поставщик. Мы закрываем все пять сами&nbsp;- от&nbsp;поставки до&nbsp;обслуживания.</p>
       </div>
     </div>
 
@@ -1423,8 +1407,8 @@
           <div class="calc-out" aria-live="polite">
             <p class="mono calc-k">Потенциальная экономия · до&nbsp;40% бюджета</p>
             <p class="sum">до&nbsp;<span id="calc-save">8 000 000</span>&nbsp;₸<span class="sum-suf">/год</span></p>
-            <p class="cap">Возврат до&nbsp;40% бюджета за&nbsp;счёт единой поставки и&nbsp;автоматической выдачи&nbsp;- поимённый учёт убирает списания «в&nbsp;никуда», очереди и&nbsp;кладовщика.</p>
-            <p class="note" id="calc-note">Ориентир по&nbsp;внедрениям (снижение перерасхода до&nbsp;40%). Точную цифру под&nbsp;ваш расход посчитаем после аудита площадки.</p>
+            <p class="cap">За&nbsp;счёт единой поставки и&nbsp;автоматической выдачи: поимённый учёт убирает списания «в&nbsp;никуда», очереди и&nbsp;кладовщика.</p>
+            <p class="note" id="calc-note">Ориентир по&nbsp;внедрениям. Точную цифру под&nbsp;ваш расход посчитаем после аудита вашей площадки.</p>
             <a class="pill calc-cta" href="#contact" id="calc-cta">Получить точный расчёт</a>
           </div>
         </div>
@@ -1530,10 +1514,10 @@
 
     <div class="clients">
       <p class="clients-head mono">Нам доверяют предприятия, где цена ошибки максимальна</p>
-      <div class="clients-grid">
-        <article class="client"><span class="client-i mono">01</span><b>Казахмыс</b><span class="client-x mono">Металлургия · горная добыча</span></article>
-        <article class="client"><span class="client-i mono">02</span><b>Аэропорт Сарыарка</b><span class="client-x mono">Аэропорты</span></article>
-        <article class="client"><span class="client-i mono">03</span><b>Павлодарэнерго</b><span class="client-x mono">Энергетика</span></article>
+      <div class="clients-row">
+        <div class="cl-cell"><b>Казахмыс</b><span class="mono">Металлургия · добыча</span></div>
+        <div class="cl-cell"><b>Аэропорт Сарыарка</b><span class="mono">Аэропорты</span></div>
+        <div class="cl-cell"><b>Павлодарэнерго</b><span class="mono">Энергетика</span></div>
       </div>
     </div>
   </section>
@@ -1546,7 +1530,7 @@
         <h2 class="display">Как<br>работаем</h2>
       </div>
       <div class="sec-side">
-        <p class="mono">От аудита до сервиса&nbsp;- пять шагов, один договор и&nbsp;один ответственный за всю площадку.</p>
+        <p class="mono">От&nbsp;первого аудита до&nbsp;сервиса на&nbsp;площадке&nbsp;- весь процесс в&nbsp;пять шагов.</p>
       </div>
     </div>
 
@@ -1564,7 +1548,7 @@
       <article class="step step--accent">
         <span class="no">03</span>
         <b>Один договор</b>
-        <p>Один договор на весь цикл вместо десяти&nbsp;- и один ответственный за всю площадку.</p>
+        <p>Весь цикл ведёт один подрядчик вместо десяти: единая цена, единый ответственный и&nbsp;отчётность.</p>
       </article>
       <article class="step">
         <span class="no">04</span>
@@ -1623,12 +1607,6 @@
           <span>Открылся WhatsApp с текстом заявки&nbsp;- нажмите в нём «Отправить». Если WhatsApp недоступен, напишите на info@alltrade-ltd.kz.</span>
         </div>
       </form>
-      <aside class="ct-info">
-        <p class="mono ct-k">Напрямую</p>
-        <a class="ct-phone" href="tel:+77710519449">+7&nbsp;771&nbsp;051&nbsp;94&nbsp;49</a>
-        <a class="ct-mail" href="mailto:info@alltrade-ltd.kz">info@alltrade-ltd.kz</a>
-        <a class="pill pill--brand" href="https://wa.me/77710519449" rel="noopener">Написать в WhatsApp</a>
-      </aside>
     </div>
   </section>
 </div>
