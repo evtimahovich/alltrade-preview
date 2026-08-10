@@ -16,6 +16,7 @@
     --brand-lift:#4E9E78;
     --dark:#0B0E0D;
     --line:rgba(17,19,21,.1);
+    --r:4mm;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   @page{size:297mm 210mm;margin:0}
@@ -32,10 +33,10 @@
   .page--dark{background:var(--dark);color:#fff}
 
   .display{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
-    text-transform:uppercase;line-height:.92;letter-spacing:-.01em}
+    text-transform:uppercase;line-height:.94;letter-spacing:-.01em}
   .mono{font-family:'IBM Plex Mono',monospace}
 
-  /* ---- шапка страницы ---- */
+  /* ---- единая рамка страницы: шапка / заголовок / подвал ---- */
   .ph{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7mm}
   .ph .k{font-family:'IBM Plex Mono',monospace;font-size:8.5pt;letter-spacing:.14em;
     text-transform:uppercase;color:var(--brand)}
@@ -43,18 +44,28 @@
   .ph .pno{font-family:'IBM Plex Mono',monospace;font-size:8pt;color:var(--ink-soft)}
   .page--dark .ph .pno{color:rgba(255,255,255,.45)}
 
-  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:14mm;margin-bottom:8mm}
-  .sec-head h2{font-size:34pt}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:14mm;margin-bottom:8mm;min-height:24mm}
+  .sec-head h2{font-size:31pt}
   .sec-head h2 em{font-style:normal;color:var(--brand)}
   .page--dark .sec-head h2 em{color:var(--brand-lift)}
-  .side{font-family:'IBM Plex Mono',monospace;font-size:9pt;line-height:1.55;
-    color:var(--ink-soft);max-width:78mm;text-transform:uppercase;letter-spacing:.02em}
+  .side{font-family:'IBM Plex Mono',monospace;font-size:8.5pt;line-height:1.55;
+    color:var(--ink-soft);max-width:80mm;text-transform:uppercase;letter-spacing:.02em}
   .page--dark .side{color:rgba(255,255,255,.6)}
 
   .pfoot{margin-top:auto;padding-top:5mm;display:flex;justify-content:space-between;
     font-family:'IBM Plex Mono',monospace;font-size:7.5pt;letter-spacing:.08em;
     text-transform:uppercase;color:var(--ink-soft);border-top:1px solid var(--line)}
   .page--dark .pfoot{color:rgba(255,255,255,.4);border-top-color:rgba(255,255,255,.12)}
+
+  /* ---- единая карточка: контент от верха, равные высоты ---- */
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);
+    padding:6mm;display:flex;flex-direction:column;align-items:flex-start}
+  .card--brand{background:var(--brand);border-color:var(--brand);color:#fff}
+  .card .num{font-family:'IBM Plex Mono',monospace;font-size:8.5pt;color:var(--brand);margin-bottom:4mm}
+  .card--brand .num{color:rgba(255,255,255,.7)}
+  .card b{font-size:12pt;font-weight:700;line-height:1.25;margin-bottom:2mm}
+  .card p{font-size:9pt;line-height:1.45;color:var(--ink-soft)}
+  .card--brand p{color:rgba(255,255,255,.88)}
 
   /* ============ ОБЛОЖКА ============ */
   .cover{padding:0}
@@ -74,9 +85,9 @@
     letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:8mm}
   .cover-stats span::before{content:'';display:inline-block;width:2mm;height:2mm;border-radius:50%;
     background:var(--brand-lift);margin-right:2.5mm;vertical-align:middle}
-  .cover-title{font-size:86pt;color:#fff}
-  .cover-title .l2{display:block;padding-left:14mm}
-  .cover-title .l3{display:block;padding-left:28mm;color:var(--brand-lift)}
+  .cover-title{font-size:80pt;color:#fff;line-height:.92}
+  .cover-title span{display:block}
+  .cover-title .l3{color:var(--brand-lift)}
   .cover-desc{margin-top:8mm;font-size:12.5pt;line-height:1.5;color:rgba(255,255,255,.88);max-width:125mm}
   .cover-desc b{color:#fff}
   .cover-foot{position:relative;z-index:2;display:flex;gap:10mm;margin-top:9mm;
@@ -84,64 +95,52 @@
     text-transform:uppercase;color:rgba(255,255,255,.5)}
 
   /* ============ ЦИФРЫ ============ */
-  .stats{display:grid;grid-template-columns:repeat(6,1fr);gap:5mm;flex:1;min-height:0}
-  .stat{background:var(--panel);border:1px solid var(--line);border-radius:5mm;
-    padding:7mm;display:flex;flex-direction:column;justify-content:space-between}
-  .stat--w2{grid-column:span 2}
-  .stat--brand{background:var(--brand);border-color:var(--brand);color:#fff}
-  .stat .n{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;font-size:46pt;line-height:1}
-  .stat .n i{font-style:normal;font-size:13pt;font-weight:800;margin-left:2mm}
-  .stat .l{font-size:9.5pt;line-height:1.4;color:var(--ink-soft);margin-top:5mm}
-  .stat--brand .l{color:rgba(255,255,255,.85)}
-  .geo{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;align-content:center;gap:3mm;
+  .stats{flex:1;min-height:0;display:grid;grid-template-columns:repeat(5,1fr);
+    grid-template-rows:1fr auto;gap:5mm}
+  .stat .n{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;font-size:40pt;line-height:1;color:var(--ink)}
+  .stat.card--brand .n{color:#fff}
+  .stat .n i{font-style:normal;font-size:13pt;font-weight:800;margin-left:1.5mm}
+  .stat .l{font-size:9.5pt;line-height:1.4;color:var(--ink-soft);margin-top:4mm}
+  .stat.card--brand .l{color:rgba(255,255,255,.88)}
+  .geo{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:3mm;padding-top:2mm;
     font-family:'IBM Plex Mono',monospace;font-size:8.5pt;text-transform:uppercase;letter-spacing:.05em}
   .geo .t{color:var(--ink-soft)}
   .gpill{border:1px solid rgba(17,19,21,.22);border-radius:999px;padding:2mm 4.5mm;white-space:nowrap}
 
-  /* ============ БОЛИ ============ */
+  /* ============ МАНИФЕСТ (боли/пошив/клиенты) ============ */
   .pain{flex:1;display:flex;flex-direction:column;justify-content:center}
   .pain-line{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;
-    text-transform:uppercase;font-size:27pt;line-height:1.12;color:#9AA1A8}
-  .pain-line.i2{padding-left:12mm}.pain-line.i3{padding-left:24mm}.pain-line.i4{padding-left:36mm}
+    text-transform:uppercase;font-size:24pt;line-height:1.22;color:#9AA1A8}
   .pain-answer{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
-    text-transform:uppercase;font-size:33pt;line-height:1.1;color:var(--ink);margin-top:9mm}
-  .pain-answer em{font-style:normal;color:var(--brand);border-bottom:2.2mm solid var(--brand)}
+    text-transform:uppercase;font-size:30pt;line-height:1.15;color:var(--ink);margin-top:9mm}
+  .pain-answer em{font-style:normal;color:var(--brand)}
 
-  /* ============ НАПРАВЛЕНИЯ (бенто) ============ */
-  .dirs{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:1fr;gap:5mm;flex:1;min-height:0}
-  .dir{background:var(--panel);border:1px solid var(--line);border-radius:5mm;padding:6.5mm;
-    display:flex;flex-direction:column;justify-content:space-between;grid-column:span 2}
-  .dir--hero{grid-column:span 2;grid-row:span 2;background:var(--brand);border-color:var(--brand);color:#fff}
-  .dir .num{font-family:'IBM Plex Mono',monospace;font-size:9pt;color:var(--brand)}
-  .dir--hero .num{color:rgba(255,255,255,.7)}
-  .dir b{display:block;font-size:13.5pt;font-weight:700;line-height:1.2;margin-bottom:2.5mm}
-  .dir--hero b{font-size:17pt}
-  .dir p{font-size:9.5pt;line-height:1.45;color:var(--ink-soft)}
-  .dir--hero p{color:rgba(255,255,255,.85);font-size:10.5pt}
+  /* ============ НАПРАВЛЕНИЯ ============ */
+  .dirs{display:grid;grid-template-columns:repeat(5,1fr);gap:5mm;flex:1;min-height:0}
 
   /* ============ ОБОРУДОВАНИЕ ============ */
   .eq{display:grid;grid-template-columns:repeat(4,1fr);gap:5mm;flex:1;min-height:0}
-  .eq .svc{background:var(--panel);border:1px solid var(--line);border-radius:5mm;overflow:hidden;
+  .eq .svc{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
     display:flex;flex-direction:column}
-  .eq img{width:100%;height:74mm;object-fit:cover;display:block}
-  .eq .svc-t{padding:5mm 5.5mm 6mm;display:flex;flex-direction:column;gap:2mm;flex:1}
-  .eq .num{font-family:'IBM Plex Mono',monospace;font-size:8.5pt;color:var(--brand)}
-  .eq b{font-size:11.5pt;line-height:1.25}
+  .eq img{width:100%;height:76mm;object-fit:cover;display:block}
+  .eq .svc-t{padding:5mm 5.5mm;display:flex;flex-direction:column;flex:1}
+  .eq .num{font-family:'IBM Plex Mono',monospace;font-size:8.5pt;color:var(--brand);margin-bottom:3mm}
+  .eq b{font-size:11pt;line-height:1.25;margin-bottom:1.5mm;min-height:10mm}
   .eq p{font-size:8.8pt;line-height:1.4;color:var(--ink-soft)}
 
   /* ============ КАТАЛОГ ============ */
   .cat{display:grid;grid-template-columns:repeat(9,1fr);gap:4mm;flex:1;min-height:0}
-  .cat .c{background:var(--panel);border:1px solid var(--line);border-radius:4mm;overflow:hidden;
+  .cat .c{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
     display:flex;flex-direction:column}
-  .cat img{width:100%;height:86mm;object-fit:cover;display:block}
-  .cat .c-t{padding:3.5mm 3.5mm 4mm;flex:1;display:flex;flex-direction:column;gap:1.5mm}
-  .cat .num{font-family:'IBM Plex Mono',monospace;font-size:7pt;color:var(--brand)}
-  .cat b{font-size:9pt;line-height:1.2}
-  .cat p{font-size:7pt;line-height:1.35;color:var(--ink-soft)}
+  .cat img{width:100%;height:84mm;object-fit:cover;display:block}
+  .cat .c-t{padding:3.5mm;flex:1;display:flex;flex-direction:column}
+  .cat .num{font-family:'IBM Plex Mono',monospace;font-size:7pt;color:var(--brand);margin-bottom:2mm}
+  .cat b{font-size:8.8pt;line-height:1.2;margin-bottom:1.5mm;min-height:7.5mm}
+  .cat p{font-size:6.8pt;line-height:1.35;color:var(--ink-soft)}
 
   /* ============ ПОШИВ ============ */
   .sew{display:grid;grid-template-columns:1.45fr 1fr;gap:10mm;flex:1;min-height:0}
-  .sew-img{border-radius:5mm;overflow:hidden;position:relative;background:var(--dark)}
+  .sew-img{border-radius:var(--r);overflow:hidden;position:relative;background:var(--dark)}
   .sew-img img{width:100%;height:100%;object-fit:cover;display:block}
   .sew-img .badge{position:absolute;left:5mm;top:5mm;background:rgba(11,14,13,.82);color:#fff;
     font-family:'IBM Plex Mono',monospace;font-size:7.5pt;letter-spacing:.1em;text-transform:uppercase;
@@ -150,85 +149,74 @@
     font-family:'IBM Plex Mono',monospace;font-size:7.5pt;letter-spacing:.08em;text-transform:uppercase}
   .sew-txt{display:flex;flex-direction:column;justify-content:center}
   .sew-txt .pain-line{font-size:15.5pt}
-  .sew-txt .pain-line.i2{padding-left:7mm}
-  .sew-txt .pain-line.i3{padding-left:14mm}
-  .sew-txt .pain-answer{font-size:19pt;margin-top:7mm}
-  .sew-txt .pain-answer em{border-bottom-width:1.6mm}
+  .sew-txt .pain-answer{font-size:19pt}
 
   /* ============ ВЕНДИНГ ============ */
   .vend{display:grid;grid-template-columns:1fr 1.35fr;gap:8mm;flex:1;min-height:0}
-  .vend-img{border-radius:5mm;overflow:hidden;position:relative;background:var(--dark)}
+  .vend-img{border-radius:var(--r);overflow:hidden;position:relative;background:var(--dark)}
   .vend-img img{width:100%;height:100%;object-fit:cover;display:block}
   .vend-img figcaption{position:absolute;left:0;right:0;bottom:0;padding:10mm 5mm 4mm;
     background:linear-gradient(transparent,rgba(11,14,13,.85));color:#fff}
   .vend-img figcaption b{font-size:10.5pt}
   .vend-img figcaption span{display:block;font-family:'IBM Plex Mono',monospace;font-size:7.5pt;
     color:rgba(255,255,255,.75);margin-top:1mm;text-transform:uppercase;letter-spacing:.06em}
-  .vend-right{display:flex;flex-direction:column;gap:5mm;min-height:0}
-  .vfeats{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
-  .vfeat{background:var(--panel);border:1px solid var(--line);border-radius:4mm;padding:4.5mm 5mm}
-  .vfeat b{display:block;font-size:10.5pt;margin-bottom:1.5mm}
-  .vfeat p{font-size:8.6pt;line-height:1.4;color:var(--ink-soft)}
-  .vsave{background:var(--brand);border-radius:4mm;color:#fff;padding:5.5mm 6mm;flex:1;
+  .vend-right{display:grid;grid-template-rows:1fr 1fr 1fr;gap:4mm;min-height:0}
+  .vfeats{display:grid;grid-template-columns:1fr 1fr;gap:4mm;grid-row:span 2}
+  .vfeat{padding:5mm}
+  .vfeat b{font-size:10.5pt}
+  .vfeat p{font-size:8.6pt}
+  .vsave{background:var(--brand);border-radius:var(--r);color:#fff;padding:5mm 6mm;
     display:flex;align-items:center;justify-content:space-between;gap:8mm}
-  .vsave .big{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;font-size:29pt;
+  .vsave .big{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;font-size:27pt;
     line-height:.95;text-transform:uppercase;white-space:nowrap}
   .vsave .big i{font-style:normal;font-size:12pt;font-weight:800}
-  .vsave .k{font-family:'IBM Plex Mono',monospace;font-size:8pt;letter-spacing:.1em;
-    text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:2mm}
-  .vsave p.cap{font-size:8.6pt;line-height:1.45;color:rgba(255,255,255,.88)}
+  .vsave .k{font-family:'IBM Plex Mono',monospace;font-size:7.5pt;letter-spacing:.1em;
+    text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:2mm;white-space:nowrap}
+  .vsave p.cap{font-size:8.4pt;line-height:1.45;color:rgba(255,255,255,.88)}
 
   /* ============ ОБСЛУЖИВАНИЕ ============ */
   .wash{display:grid;grid-template-columns:1fr 1.25fr;gap:8mm;flex:1;min-height:0}
-  .wash-img{border-radius:5mm;overflow:hidden;background:var(--dark)}
+  .wash-img{border-radius:var(--r);overflow:hidden;background:var(--dark)}
   .wash-img img{width:100%;height:100%;object-fit:cover;display:block}
-  .wash-list{display:flex;flex-direction:column;gap:4mm;justify-content:center}
-  .wrow{background:var(--panel);border:1px solid var(--line);border-radius:4mm;
-    padding:4.5mm 5.5mm;display:flex;gap:5mm;align-items:baseline}
-  .wrow .k{font-family:'IBM Plex Mono',monospace;font-size:9pt;color:var(--brand)}
-  .wrow b{display:block;font-size:11.5pt;margin-bottom:1mm}
-  .wrow p{font-size:9pt;line-height:1.4;color:var(--ink-soft)}
+  .wash-list{display:grid;grid-template-rows:repeat(4,1fr);gap:4mm}
+  .wrow{flex-direction:row;gap:5mm;align-items:flex-start;padding:5mm 5.5mm}
+  .wrow .k{font-family:'IBM Plex Mono',monospace;font-size:9pt;color:var(--brand);margin-bottom:0;line-height:1.5}
+  .wrow b{font-size:11.5pt;margin-bottom:1mm}
+  .wrow p{font-size:9pt}
 
   /* ============ ДОПУСКИ + КЛИЕНТЫ ============ */
   .trust{display:grid;grid-template-columns:1fr 1fr;gap:10mm;flex:1;min-height:0}
-  .certs{display:flex;flex-direction:column;gap:4mm;justify-content:center}
-  .cert{background:var(--panel);border:1px solid var(--line);border-radius:4mm;padding:5mm 6mm}
+  .certs{display:grid;grid-template-rows:repeat(3,1fr);gap:4mm}
+  .cert{justify-content:center}
   .cert .code{font-family:'IBM Plex Mono',monospace;font-size:11pt;font-weight:500;color:var(--brand)}
   .cert p{font-size:8.8pt;line-height:1.45;color:var(--ink-soft);margin-top:1.5mm}
-  .inds{display:flex;flex-wrap:wrap;gap:2.5mm;margin-top:5mm}
-  .ind{border:1px solid rgba(17,19,21,.22);border-radius:999px;padding:2.2mm 4.5mm;
-    font-family:'IBM Plex Mono',monospace;font-size:8pt;text-transform:uppercase;letter-spacing:.05em}
   .cl{display:flex;flex-direction:column;justify-content:center}
-  .cl .pain-line{font-size:16.5pt}
+  .cl .pain-line{font-size:15.5pt}
   .cl .cl-name{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
-    text-transform:uppercase;font-size:26pt;line-height:1.14;color:var(--ink)}
+    text-transform:uppercase;font-size:24pt;line-height:1.18;color:var(--ink)}
   .cl .cl-name:first-of-type{margin-top:6mm}
-  .cl-cap{font-family:'IBM Plex Mono',monospace;font-size:8pt;letter-spacing:.1em;
-    text-transform:uppercase;color:var(--ink-soft);margin-top:4mm}
+  .cl-cap{font-family:'IBM Plex Mono',monospace;font-size:8pt;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--ink-soft);margin-top:4mm;line-height:1.6}
 
   /* ============ ПРОЦЕСС ============ */
   .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:4.5mm;flex:1;min-height:0}
-  .step{background:var(--panel);border:1px solid var(--line);border-radius:5mm;padding:6mm 5.5mm;
-    display:flex;flex-direction:column}
-  .step--accent{background:var(--brand);border-color:var(--brand);color:#fff}
   .step .no{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;font-size:21pt;
-    color:var(--brand);margin-bottom:auto}
-  .step--accent .no{color:rgba(255,255,255,.85)}
-  .step b{font-size:11.5pt;line-height:1.25;margin:6mm 0 2mm}
-  .step p{font-size:8.8pt;line-height:1.42;color:var(--ink-soft)}
-  .step--accent p{color:rgba(255,255,255,.85)}
+    color:var(--brand);margin-bottom:4mm}
+  .step.card--brand .no{color:rgba(255,255,255,.85)}
+  .step b{font-size:11.5pt;min-height:10.5mm}
+  .step p{font-size:8.8pt}
 
   /* ============ КОНТАКТЫ ============ */
   .fin{flex:1;display:flex;flex-direction:column;justify-content:center}
-  .fin-title{font-size:52pt;color:#fff}
-  .fin-title .l2{display:block;padding-left:12mm}
+  .fin-title{font-size:48pt;color:#fff}
+  .fin-title span{display:block}
   .fin-title em{font-style:normal;color:var(--brand-lift)}
-  .fin-contacts{display:flex;gap:5mm;margin-top:12mm;flex-wrap:wrap}
-  .fc{border:1px solid rgba(255,255,255,.2);border-radius:5mm;padding:5.5mm 7mm;min-width:62mm}
+  .fin-contacts{display:grid;grid-template-columns:repeat(3,1fr);gap:5mm;margin-top:12mm;max-width:236mm}
+  .fc{border:1px solid rgba(255,255,255,.2);border-radius:var(--r);padding:5.5mm 7mm}
   .fc--brand{background:var(--brand);border-color:var(--brand)}
   .fc .k{font-family:'IBM Plex Mono',monospace;font-size:7.5pt;letter-spacing:.12em;
     text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:2mm}
-  .fc .v{font-size:14.5pt;font-weight:700;color:#fff;white-space:nowrap}
+  .fc .v{font-size:13.5pt;font-weight:700;color:#fff;white-space:nowrap}
   .fin-legal{display:flex;gap:9mm;margin-top:11mm;font-family:'IBM Plex Mono',monospace;
     font-size:8pt;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);flex-wrap:wrap}
 </style>
@@ -252,7 +240,7 @@
       </p>
       <h1 class="cover-title display">
         <span>СИЗ</span>
-        <span class="l2">Под</span>
+        <span>Под</span>
         <span class="l3">Ключ</span>
       </h1>
       <p class="cover-desc">Один договор вместо десяти поставщиков — от каски до газоанализатора: <b>СИЗ, оборудование, пошив, вендинг-выдача 24/7 и сервис</b>.</p>
@@ -273,11 +261,11 @@
     <p class="side">Не разовый поставщик, а подрядчик, который годами отвечает за защиту всего предприятия.</p>
   </div>
   <div class="stats">
-    <article class="stat stat--w2"><p class="n">10+<i>лет</i></p><p class="l">На рынке средств защиты и промышленного оборудования</p></article>
-    <article class="stat"><p class="n">4</p><p class="l">Филиала по Казахстану</p></article>
-    <article class="stat"><p class="n">9</p><p class="l">Категорий защиты с одного склада</p></article>
-    <article class="stat"><p class="n">24/7</p><p class="l">Автоматическая выдача СИЗ без кладовщика</p></article>
-    <article class="stat stat--brand"><p class="n">1</p><p class="l">Договор на весь цикл — вместо десяти поставщиков</p></article>
+    <article class="card stat"><p class="n">10+<i>лет</i></p><p class="l">На рынке средств защиты и промышленного оборудования</p></article>
+    <article class="card stat"><p class="n">4</p><p class="l">Филиала по Казахстану</p></article>
+    <article class="card stat"><p class="n">9</p><p class="l">Категорий защиты с одного склада</p></article>
+    <article class="card stat"><p class="n">24/7</p><p class="l">Автоматическая выдача СИЗ без кладовщика</p></article>
+    <article class="card card--brand stat"><p class="n">1</p><p class="l">Договор на весь цикл — вместо десяти поставщиков</p></article>
     <div class="geo">
       <span class="t">География:</span>
       <span class="gpill">Весь Казахстан</span>
@@ -298,9 +286,9 @@
   </div>
   <div class="pain">
     <p class="pain-line">Десять поставщиков и счетов.</p>
-    <p class="pain-line i2">Перерасход без учёта.</p>
-    <p class="pain-line i3">Смена не вышла — нет размеров.</p>
-    <p class="pain-line i4">Поставщик не проходит по тендеру.</p>
+    <p class="pain-line">Перерасход без учёта.</p>
+    <p class="pain-line">Смена не вышла — нет размеров.</p>
+    <p class="pain-line">Поставщик не проходит по тендеру.</p>
     <p class="pain-answer">Закрываем всё это <em>одним договором</em>.</p>
   </div>
   <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>alltrade-ltd.kz</span></div>
@@ -314,25 +302,30 @@
     <p class="side">Один поставщик на всё: поставляем, оборудуем, шьём, выдаём и обслуживаем.</p>
   </div>
   <div class="dirs">
-    <article class="dir dir--hero">
+    <article class="card card--brand">
       <span class="num">01</span>
-      <div><b>Оборудование для спасателей</b><p>Газоанализаторы, шахтные фонари, регистраторы и зарядно-учётные станции.</p></div>
+      <b>Оборудование для спасателей</b>
+      <p>Газоанализаторы, шахтные фонари, регистраторы и зарядно-учётные станции.</p>
     </article>
-    <article class="dir">
+    <article class="card">
       <span class="num">02</span>
-      <div><b>Поставка СИЗ</b><p>Респираторы, каски, перчатки, спецобувь, очки, защита слуха и тела — сертифицировано, со склада.</p></div>
+      <b>Поставка СИЗ</b>
+      <p>Респираторы, каски, перчатки, спецобувь, очки, защита слуха и тела — сертифицировано, со склада.</p>
     </article>
-    <article class="dir">
+    <article class="card">
       <span class="num">03</span>
-      <div><b>Пошив спецодежды</b><p>Индивидуальный пошив под климат, отрасль и логотип заказчика.</p></div>
+      <b>Пошив спецодежды</b>
+      <p>Индивидуальный пошив под климат, отрасль и логотип заказчика.</p>
     </article>
-    <article class="dir">
+    <article class="card">
       <span class="num">04</span>
-      <div><b>Вендинг-выдача</b><p>Автоматы KazProService: выдача 24/7 по бейджу с поимённым учётом.</p></div>
+      <b>Вендинг-выдача</b>
+      <p>Автоматы KazProService: выдача 24/7 по бейджу с поимённым учётом.</p>
     </article>
-    <article class="dir">
+    <article class="card">
       <span class="num">05</span>
-      <div><b>Обслуживание</b><p>Стирка, ремонт, мойка и дезинфекция масок — форма всегда в строю.</p></div>
+      <b>Обслуживание</b>
+      <p>Стирка, ремонт, мойка и дезинфекция масок — форма всегда в строю.</p>
     </article>
   </div>
   <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>alltrade-ltd.kz</span></div>
@@ -377,11 +370,11 @@
     <article class="c"><img src="img/head.jpg" alt=""><div class="c-t"><span class="num">01</span><b>Защита головы</b><p>Еланпласт · каски и щитки</p></div></article>
     <article class="c"><img src="img/eye.jpg" alt=""><div class="c-t"><span class="num">02</span><b>Защита глаз</b><p>Еланпласт · очки и лицевые щитки</p></div></article>
     <article class="c"><img src="img/ear.jpg" alt=""><div class="c-t"><span class="num">03</span><b>Защита слуха</b><p>Еланпласт · вкладыши и наушники</p></div></article>
-    <article class="c"><img src="img/resp.jpg" alt=""><div class="c-t"><span class="num">04</span><b>Защита дыхания</b><p>МК и FAROS · FFP1–FFP3, фильтры A/B/E/K/P</p></div></article>
-    <article class="c"><img src="img/weld.jpg" alt=""><div class="c-t"><span class="num">05</span><b>Сварочные маски</b><p>FITSIZ · автозатемнение и фикс. DIN</p></div></article>
+    <article class="c"><img src="img/resp.jpg" alt=""><div class="c-t"><span class="num">04</span><b>Защита дыхания</b><p>МК и FAROS · FFP1–FFP3, фильтры</p></div></article>
+    <article class="c"><img src="img/weld.jpg" alt=""><div class="c-t"><span class="num">05</span><b>Сварочные маски</b><p>FITSIZ · автозатемнение</p></div></article>
     <article class="c"><img src="img/wear.jpg" alt=""><div class="c-t"><span class="num">06</span><b>Защита тела</b><p>Спецодежда под производство</p></div></article>
     <article class="c"><img src="img/volat.jpg" alt=""><div class="c-t"><span class="num">07</span><b>Огнестойкая защита</b><p>VOLAT · искры, брызги расплава</p></div></article>
-    <article class="c"><img src="img/gloves.jpg" alt=""><div class="c-t"><span class="num">08</span><b>Защита рук</b><p>BASE SAFETY · спилок, антипрорезные</p></div></article>
+    <article class="c"><img src="img/gloves.jpg" alt=""><div class="c-t"><span class="num">08</span><b>Защита рук</b><p>BASE SAFETY · спилок, антипрорез</p></div></article>
     <article class="c"><img src="img/boots.jpg" alt=""><div class="c-t"><span class="num">09</span><b>Защита ног</b><p>Safety Nomads · металл/композит</p></div></article>
   </div>
   <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>alltrade-ltd.kz</span></div>
@@ -402,8 +395,8 @@
     </figure>
     <div class="sew-txt">
       <p class="pain-line">Размеры под ваш персонал.</p>
-      <p class="pain-line i2">Ткани под сезон и отрасль.</p>
-      <p class="pain-line i3">Логотип заказчика.</p>
+      <p class="pain-line">Ткани под сезон и отрасль.</p>
+      <p class="pain-line">Логотип заказчика.</p>
       <p class="pain-answer">Шьём точно <em>под ваше предприятие</em>.</p>
     </div>
   </div>
@@ -424,10 +417,10 @@
     </figure>
     <div class="vend-right">
       <div class="vfeats">
-        <article class="vfeat"><b>Выдача по бейджу</b><p>Сотрудник получает свою позицию круглосуточно — без кладовщика и очереди.</p></article>
-        <article class="vfeat"><b>Поимённый учёт</b><p>Видно, кто и сколько получил, — готовая отчётность для службы охраны труда.</p></article>
-        <article class="vfeat"><b>Связь с учётной системой</b><p>Данные о выдаче уходят в SAP, 1С или вашу WMS автоматически.</p></article>
-        <article class="vfeat"><b>Приёмка по RFID</b><p>Модель 640 принимает спецодежду в стирку и ремонт по RFID-метке.</p></article>
+        <article class="card vfeat"><b>Выдача по бейджу</b><p>Сотрудник получает свою позицию круглосуточно — без кладовщика и очереди.</p></article>
+        <article class="card vfeat"><b>Поимённый учёт</b><p>Видно, кто и сколько получил, — готовая отчётность для службы охраны труда.</p></article>
+        <article class="card vfeat"><b>Связь с учётной системой</b><p>Данные о выдаче уходят в SAP, 1С или вашу WMS автоматически.</p></article>
+        <article class="card vfeat"><b>Приёмка по RFID</b><p>Модель 640 принимает спецодежду в стирку и ремонт по RFID-метке.</p></article>
       </div>
       <div class="vsave">
         <div>
@@ -441,7 +434,7 @@
   <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>alltrade-ltd.kz</span></div>
 </section>
 
-<!-- ============ 9 · ОБСЛУЖИВАНИЕ + ДОВЕРИЕ ============ -->
+<!-- ============ 9 · ОБСЛУЖИВАНИЕ ============ -->
 <section class="page">
   <div class="ph"><span class="k">05 · Обслуживание СИЗ</span><span class="pno">09 / 12</span></div>
   <div class="sec-head">
@@ -451,16 +444,16 @@
   <div class="wash">
     <figure class="wash-img"><img src="img/mk-mask-cine.jpg" alt=""></figure>
     <div class="wash-list">
-      <article class="wrow"><span class="k">01</span><div><b>Мойка и дезинфекция</b><p>Промышленная обработка масок и полумасок — вместо закупки новых.</p></div></article>
-      <article class="wrow"><span class="k">02</span><div><b>Продление срока службы</b><p>Обслуживаемая маска работает весь ресурс, заложенный производителем.</p></div></article>
-      <article class="wrow"><span class="k">03</span><div><b>Гигиенические нормы</b><p>Регулярная обработка снимает вопросы гигиены на производстве.</p></div></article>
-      <article class="wrow"><span class="k">04</span><div><b>Меньше закупок</b><p>Снижается объём одноразовых СИЗ и нагрузка на бюджет снабжения.</p></div></article>
+      <article class="card wrow"><span class="k">01</span><div><b>Мойка и дезинфекция</b><p>Промышленная обработка масок и полумасок — вместо закупки новых.</p></div></article>
+      <article class="card wrow"><span class="k">02</span><div><b>Продление срока службы</b><p>Обслуживаемая маска работает весь ресурс, заложенный производителем.</p></div></article>
+      <article class="card wrow"><span class="k">03</span><div><b>Гигиенические нормы</b><p>Регулярная обработка снимает вопросы гигиены на производстве.</p></div></article>
+      <article class="card wrow"><span class="k">04</span><div><b>Меньше закупок</b><p>Снижается объём одноразовых СИЗ и нагрузка на бюджет снабжения.</p></div></article>
     </div>
   </div>
   <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>alltrade-ltd.kz</span></div>
 </section>
 
-<!-- ============ 10 · ДОПУСКИ, КЛИЕНТЫ, ПРОЦЕСС ============ -->
+<!-- ============ 10 · ДОПУСКИ И КЛИЕНТЫ ============ -->
 <section class="page">
   <div class="ph"><span class="k">Допуски и доверие</span><span class="pno">10 / 12</span></div>
   <div class="sec-head">
@@ -469,20 +462,16 @@
   </div>
   <div class="trust">
     <div class="certs">
-      <article class="cert"><span class="code">ТР ТС 019/2011</span><p>Технический регламент Таможенного союза о безопасности средств индивидуальной защиты.</p></article>
-      <article class="cert"><span class="code">EN 388 · 407 · 511</span><p>Европейские стандарты защиты рук: механические и термические риски, холод.</p></article>
-      <article class="cert"><span class="code">Казсодержание</span><p>Казахстанская компания с филиалами в 4 городах — локальное содержание в поставках и сервисе.</p></article>
-      <div class="inds">
-        <span class="ind">Горная добыча</span><span class="ind">Металлургия</span><span class="ind">Нефтегаз</span><span class="ind">Аэропорты</span><span class="ind">Энергетика</span>
-      </div>
+      <article class="card cert"><span class="code">ТР ТС 019/2011</span><p>Технический регламент Таможенного союза о безопасности средств индивидуальной защиты.</p></article>
+      <article class="card cert"><span class="code">EN 388 · 407 · 511</span><p>Европейские стандарты защиты рук: механические и термические риски, холод.</p></article>
+      <article class="card cert"><span class="code">Казсодержание</span><p>Казахстанская компания с филиалами в 4 городах — локальное содержание в поставках и сервисе.</p></article>
     </div>
     <div class="cl">
-      <p class="pain-line">Нам доверяют там,</p>
-      <p class="pain-line i2">где цена ошибки максимальна.</p>
+      <p class="pain-line">Нам доверяют там, где цена ошибки максимальна.</p>
       <p class="cl-name">Казахмыс</p>
       <p class="cl-name">Аэропорт Сарыарка</p>
       <p class="cl-name">Павлодарэнерго</p>
-      <p class="cl-cap">Горная добыча · авиация · энергетика Казахстана</p>
+      <p class="cl-cap">Горная добыча · Металлургия · Нефтегаз · Аэропорты · Энергетика</p>
     </div>
   </div>
   <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>alltrade-ltd.kz</span></div>
@@ -496,20 +485,20 @@
     <p class="side">От первого аудита до сервиса на площадке — весь процесс в пять шагов.</p>
   </div>
   <div class="steps">
-    <article class="step"><span class="no">01</span><b>Заявка и аудит</b><p>Выезжаем к вам: карта рисков и реальный расход — в цифрах, а не на глаз.</p></article>
-    <article class="step"><span class="no">02</span><b>Расчёт и подбор</b><p>Подбираем номенклатуру под вашу отрасль и климат — без перерасхода и лишних позиций.</p></article>
-    <article class="step step--accent"><span class="no">03</span><b>Один договор</b><p>Весь цикл ведёт один подрядчик вместо десяти: единая цена, единый ответственный и отчётность.</p></article>
-    <article class="step"><span class="no">04</span><b>Поставка и монтаж</b><p>Отгружаем со склада, ставим и настраиваем автоматы выдачи — под ключ.</p></article>
-    <article class="step"><span class="no">05</span><b>Выдача и сервис</b><p>Выдаём, ведём учёт, стираем и ремонтируем — площадка не остаётся без защиты.</p></article>
+    <article class="card step"><span class="no">01</span><b>Заявка и аудит</b><p>Выезжаем к вам: карта рисков и реальный расход — в цифрах, а не на глаз.</p></article>
+    <article class="card step"><span class="no">02</span><b>Расчёт и подбор</b><p>Подбираем номенклатуру под вашу отрасль и климат — без перерасхода и лишних позиций.</p></article>
+    <article class="card card--brand step"><span class="no">03</span><b>Один договор</b><p>Весь цикл ведёт один подрядчик вместо десяти: единая цена, единый ответственный и отчётность.</p></article>
+    <article class="card step"><span class="no">04</span><b>Поставка и монтаж</b><p>Отгружаем со склада, ставим и настраиваем автоматы выдачи — под ключ.</p></article>
+    <article class="card step"><span class="no">05</span><b>Выдача и сервис</b><p>Выдаём, ведём учёт, стираем и ремонтируем — площадка не остаётся без защиты.</p></article>
   </div>
   <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>alltrade-ltd.kz</span></div>
 </section>
 
 <!-- ============ 12 · КОНТАКТЫ ============ -->
 <section class="page page--dark">
-  <div class="ph"><span class="k">Контакты</span><span class="pno">ALLTRADE-LTD</span></div>
+  <div class="ph"><span class="k">Контакты</span><span class="pno">12 / 12</span></div>
   <div class="fin">
-    <p class="fin-title display"><span>Закроем вопрос</span><span class="l2">СИЗ — <em>под ключ</em></span></p>
+    <p class="fin-title display"><span>Закроем вопрос</span><span>СИЗ — <em>под ключ</em></span></p>
     <div class="fin-contacts">
       <div class="fc fc--brand"><p class="k">WhatsApp / Телефон</p><p class="v">+7 771 051 94 49</p></div>
       <div class="fc"><p class="k">Почта</p><p class="v">info@alltrade-ltd.kz</p></div>
