@@ -7,7 +7,7 @@
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#FFFFFF">
 <title>ALLTRADE-LTD - СИЗ под ключ для промышленности Казахстана</title>
-<meta name="description" content="ТОО ALLTRADE-LTD - единый контур СИЗ и промышленного оборудования для Казахстана: поставка СИЗ, оборудование для спасателей, индивидуальный пошив, вендинг-выдача 24/7 и сервис. Более 10 лет на рынке.">
+<meta name="description" content="ТОО ALLTRADE-LTD - один поставщик СИЗ и промышленного оборудования для Казахстана: поставка СИЗ, оборудование для спасателей, индивидуальный пошив, вендинг-выдача 24/7 и сервис. Более 10 лет на рынке.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="https://alltrade-ltd.kz/">
 <link rel="alternate" hreflang="ru" href="https://alltrade-ltd.kz/">
@@ -658,6 +658,7 @@
   .stat--wide{grid-column:span 5}
   .st4{grid-column:span 3}
   .st5{grid-column:span 4}
+  .st6{grid-column:span 6}
   .stat--orange{background:var(--brand);color:#fff}
   .stat--orange .l{color:rgba(255,255,255,.86)}
   .geo{grid-column:span 12;background:var(--ink);color:#fff;border-radius:var(--r-m);
@@ -670,7 +671,7 @@
   .fact-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:clamp(18px,2.4vw,28px)}
   @media (max-width:960px){.stat--wide,.stat--sm,.st4,.st5{grid-column:span 6}}
   @media (max-width:600px){
-    .stat--wide,.stat--sm,.st4,.st5{grid-column:span 12}
+    .stat--wide,.stat--sm,.st4,.st5,.st6{grid-column:span 12}
     .stat{min-height:0;gap:12px;padding:20px 22px}
   }
 
@@ -745,11 +746,15 @@
   @media (max-width:640px){.svc-lead{flex-wrap:wrap;gap:16px}.svc-lead-arr{display:none}}
   /* ---- Пять направлений: редакторский нумерованный список ---- */
   .dirs{border-top:1px solid var(--line)}
-  .dir{display:grid;grid-template-columns:clamp(38px,4.5vw,64px) 1fr;gap:clamp(16px,3vw,44px);align-items:baseline;padding:clamp(22px,2.6vw,34px) 0;border-bottom:1px solid var(--line)}
-  .dir .num{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.14em;color:var(--mute)}
+  .dir{display:grid;grid-template-columns:clamp(38px,4.5vw,64px) 1fr auto;gap:clamp(16px,3vw,44px);align-items:center;padding:clamp(22px,2.6vw,34px) clamp(6px,1vw,16px);border-bottom:1px solid var(--line);text-decoration:none;color:inherit;transition:background .18s ease,padding .18s ease}
+  @media (hover:hover){.dir:hover{background:var(--panel);padding-left:clamp(14px,1.6vw,24px)}}
+  .dir .num{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.14em;color:var(--mute);align-self:start;padding-top:.35em}
   .dir-t b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;font-size:clamp(1.4rem,3vw,2.4rem);line-height:1.03;text-transform:uppercase;letter-spacing:.004em;display:block;margin-bottom:8px}
   .dir-t p{color:var(--ink-soft);font-size:15px;max-width:62ch}
-  @media (max-width:600px){.dir{grid-template-columns:1fr;gap:6px}}
+  .dir-arr{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--mute);transition:background .18s ease,color .18s ease,transform .18s ease}
+  .dir-arr svg.ic{width:18px;height:18px}
+  @media (hover:hover){.dir:hover .dir-arr{background:var(--brand);border-color:var(--brand);color:#fff;transform:translateX(3px)}}
+  @media (max-width:600px){.dir{grid-template-columns:auto 1fr;gap:8px 16px;padding:20px 0}.dir-arr{display:none}}
   @media (max-width:900px){.loop{grid-template-columns:repeat(2,1fr)}}
   @media (max-width:520px){.loop{grid-template-columns:1fr}}
 
@@ -872,9 +877,14 @@
     font-size:13px;letter-spacing:.08em;text-transform:uppercase}
   .ind-b{display:flex;flex-direction:column;gap:7px}
   .ind-cl{font-size:12px;letter-spacing:.03em;color:var(--brand-lift)}
-  .clients-line{margin-top:14px;display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 22px;padding:clamp(18px,2vw,26px) clamp(20px,2.4vw,32px);background:var(--panel);border:1px solid var(--line);border-radius:var(--r-m)}
-  .clients-line-k{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
-  .clients-line-v{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;font-size:clamp(1rem,1.8vw,1.35rem);letter-spacing:.02em}
+  .clients{margin-top:clamp(20px,2.4vw,32px)}
+  .clients-head{color:var(--ink-soft);letter-spacing:.06em;font-size:clamp(13px,1.4vw,15px);margin-bottom:16px;max-width:52ch}
+  .clients-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .client{position:relative;overflow:hidden;background:#101413;color:#fff;border-radius:var(--r-m);border-top:2px solid var(--brand-lift);padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;gap:10px;min-height:150px;justify-content:flex-end}
+  .client .client-i{position:absolute;top:16px;right:18px;color:rgba(255,255,255,.28);font-size:12px;letter-spacing:.1em}
+  .client b{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;font-size:clamp(1.3rem,2.1vw,1.9rem);letter-spacing:.01em;line-height:1.05}
+  .client .client-x{color:var(--brand-lift);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+  @media (max-width:760px){.clients-grid{grid-template-columns:1fr}}
   @media (max-width:900px){
     .ind-grid{grid-template-columns:repeat(2,1fr)}
     .ind{flex-direction:row;align-items:center;justify-content:flex-start;gap:14px;min-height:0;padding:16px 18px}
@@ -1131,15 +1141,11 @@
         <p class="n">9</p>
         <p class="l">Категорий защиты с&nbsp;одного склада</p>
       </article>
-      <article class="stat st5">
+      <article class="stat st6">
         <p class="n">24/7</p>
         <p class="l">Автоматическая выдача СИЗ без&nbsp;кладовщика</p>
       </article>
-      <article class="stat st4">
-        <p class="n">5</p>
-        <p class="l">Отраслей промышленности обслуживаем</p>
-      </article>
-      <article class="stat stat--wide">
+      <article class="stat st6">
         <p class="n">1</p>
         <p class="l">Договор на весь цикл&nbsp;- вместо десяти поставщиков</p>
       </article>
@@ -1148,7 +1154,6 @@
         <span class="gpill">Весь Казахстан</span>
         <span class="gpill">Головной офис&nbsp;- Усть-Каменогорск</span>
         <span class="gpill">Филиалы: Алматы&nbsp;· Усть-Каменогорск&nbsp;· Павлодар&nbsp;· Атырау</span>
-        <span class="gpill">Собственное производство</span>
               </div>
     </div>
   </section>
@@ -1161,7 +1166,7 @@
         <h2 class="display">Что болит<br>на площадке</h2>
       </div>
       <div class="sec-side">
-        <p class="mono">Типичная картина снабжения СИЗ на крупном предприятии&nbsp;- до перехода на единый контур.</p>
+        <p class="mono">Типичная картина снабжения СИЗ на крупном предприятии&nbsp;- пока всё раскидано по десяти поставщикам.</p>
       </div>
     </div>
 
@@ -1182,31 +1187,36 @@
         <h2 class="display">Пять направлений&nbsp;-<br>один договор</h2>
       </div>
       <div class="sec-side">
-        <p class="mono">Единый контур: поставляем, оборудуем, шьём, выдаём и&nbsp;обслуживаем&nbsp;- по одному договору.</p>
+        <p class="mono">Один поставщик: поставляем, оборудуем, шьём, выдаём и&nbsp;обслуживаем&nbsp;- по одному договору.</p>
       </div>
     </div>
 
     <div class="dirs">
-      <div class="dir">
+      <a class="dir" href="#equipment">
         <span class="num">01</span>
         <div class="dir-t"><b>Оборудование для спасателей</b><p>Газоанализаторы, шахтные фонари, регистраторы и&nbsp;зарядно-учётные станции.</p></div>
-      </div>
-      <div class="dir">
+        <span class="dir-arr" aria-hidden="true"><svg class="ic"><use href="#i-arr"/></svg></span>
+      </a>
+      <a class="dir" href="#products">
         <span class="num">02</span>
-        <div class="dir-t"><b>Поставка СИЗ</b><p>Сертифицированные СИЗ со склада: дыхание, голова, руки, ноги, глаза, слух.</p></div>
-      </div>
-      <div class="dir">
+        <div class="dir-t"><b>Поставка СИЗ</b><p>Респираторы, каски, перчатки, спецобувь, очки, защита слуха и&nbsp;тела - сертифицировано, со склада.</p></div>
+        <span class="dir-arr" aria-hidden="true"><svg class="ic"><use href="#i-arr"/></svg></span>
+      </a>
+      <a class="dir" href="#services">
         <span class="num">03</span>
         <div class="dir-t"><b>Пошив спецодежды</b><p>Индивидуальный пошив под климат, отрасль и&nbsp;логотип заказчика.</p></div>
-      </div>
-      <div class="dir">
+        <span class="dir-arr" aria-hidden="true"><svg class="ic"><use href="#i-arr"/></svg></span>
+      </a>
+      <a class="dir" href="#vending">
         <span class="num">04</span>
         <div class="dir-t"><b>Вендинг-выдача</b><p>Автоматы KazProService: выдача 24/7 по&nbsp;бейджу с поимённым учётом.</p></div>
-      </div>
-      <div class="dir">
+        <span class="dir-arr" aria-hidden="true"><svg class="ic"><use href="#i-arr"/></svg></span>
+      </a>
+      <a class="dir" href="#wash">
         <span class="num">05</span>
         <div class="dir-t"><b>Обслуживание</b><p>Стирка, ремонт, мойка и дезинфекция масок&nbsp;- форма всегда в строю.</p></div>
-      </div>
+        <span class="dir-arr" aria-hidden="true"><svg class="ic"><use href="#i-arr"/></svg></span>
+      </a>
     </div>
   </section>
 
@@ -1258,7 +1268,7 @@
         <h2 class="display">Каталог СИЗ</h2>
       </div>
       <div class="sec-side">
-        <p class="mono">Девять категорий с&nbsp;одного склада. Официальный дистрибьютор респираторов МК и&nbsp;эксклюзивная дистрибуция собственных марок в&nbsp;Казахстане.</p>
+        <p class="mono">Официальный дистрибьютор респираторов МК и&nbsp;эксклюзивная дистрибуция собственных марок в&nbsp;Казахстане.</p>
       </div>
     </div>
     <div class="series-grid">
@@ -1327,24 +1337,21 @@
         <h2 class="display">Спецодежда<br>под предприятие</h2>
       </div>
       <div class="sec-side">
-        <p class="mono">Индивидуальный пошив под ваше предприятие: размеры под персонал, ткани под сезон и&nbsp;отрасль, логотип заказчика. Производство&nbsp;- на&nbsp;собственной производственной базе, под нашим контролем качества и&nbsp;сроков.</p>
+        <p class="mono">Своё производство - отвечаем за качество и&nbsp;сроки на&nbsp;каждом этапе.</p>
       </div>
     </div>
 
     <figure class="media-card media-card--grade">
       <img src="assets/stills/wear-cine.webp" alt="Смена в фирменных оранжевых костюмах для шахтёров со светоотражающими крестами" loading="lazy">
       <span class="media-badge mono">Фирменная разработка ALLTRADE</span>
-      <figcaption class="media-cap mono">Оранжевые костюмы для шахтёров · светоотражающие кресты</figcaption>
+      <figcaption class="media-cap mono">Комплект «Шахтёр-2»</figcaption>
     </figure>
 
     <div class="pain-say">
       <p class="pain-line">Размеры под ваш персонал.</p>
       <p class="pain-line pl2">Ткани под сезон и&nbsp;отрасль.</p>
       <p class="pain-line pl3">Логотип заказчика.</p>
-      <p class="pain-answer">Шьём под ваше предприятие&nbsp;- <em>под контролем качества</em>.</p>
-      <div class="fact-chips">
-        <span class="gpill">Собственная производственная база</span>
-      </div>
+      <p class="pain-answer">Шьём точно <em>под ваше предприятие</em>.</p>
     </div>
   </section>
 
@@ -1407,7 +1414,7 @@
             <p class="mono calc-k">Что даёт автоматическая выдача</p>
             <p class="sum">до&nbsp;40%</p>
             <p class="cap">Снижение перерасхода СИЗ&nbsp;- поимённый учёт и&nbsp;выдача по&nbsp;бейджу убирают списания «в&nbsp;никуда», очереди и&nbsp;кладовщика.</p>
-            <p class="note" id="calc-note">Ориентир по&nbsp;внедрениям. Точную экономию под вашу численность посчитаем после аудита площадки: карта рисков, номенклатура, текущий расход.</p>
+            <p class="note" id="calc-note">Ориентир по&nbsp;внедрениям. Для <b id="calc-scale" style="color:var(--brand-lift)">500</b> сотрудников точную экономию посчитаем после аудита площадки.</p>
             <a class="pill calc-cta" href="#contact" id="calc-cta">Получить точный расчёт</a>
           </div>
         </div>
@@ -1511,9 +1518,13 @@
       <article class="ind"><span class="ico"><svg aria-hidden="true"><use href="#i-bolt"/></svg></span><div class="ind-b"><b>Энергетика</b></div></article>
     </div>
 
-    <div class="clients-line">
-      <span class="clients-line-k mono">Нам доверяют</span>
-      <span class="clients-line-v">Казахмыс&nbsp;· Аэропорт Сарыарка&nbsp;· Павлодарэнерго</span>
+    <div class="clients">
+      <p class="clients-head mono">Нам доверяют предприятия, где цена ошибки максимальна</p>
+      <div class="clients-grid">
+        <article class="client"><span class="client-i mono">01</span><b>Казахмыс</b><span class="client-x mono">Металлургия · горная добыча</span></article>
+        <article class="client"><span class="client-i mono">02</span><b>Аэропорт Сарыарка</b><span class="client-x mono">Аэропорты</span></article>
+        <article class="client"><span class="client-i mono">03</span><b>Павлодарэнерго</b><span class="client-x mono">Энергетика</span></article>
+      </div>
     </div>
   </section>
 
@@ -1566,7 +1577,7 @@
         <h2 class="display">Обсудим<br>вашу площадку</h2>
       </div>
       <div class="sec-side">
-        <p class="mono">Опишите задачу&nbsp;- вернёмся с расчётом под ваше предприятие. Без обязательств.</p>
+        <p class="mono">Опишите задачу&nbsp;- вернёмся с расчётом под ваше предприятие.</p>
       </div>
     </div>
 
@@ -1607,7 +1618,6 @@
         <a class="ct-phone" href="tel:+77710519449">+7&nbsp;771&nbsp;051&nbsp;94&nbsp;49</a>
         <a class="ct-mail" href="mailto:info@alltrade-ltd.kz">info@alltrade-ltd.kz</a>
         <a class="pill pill--brand" href="https://wa.me/77710519449" rel="noopener">Написать в WhatsApp</a>
-        <p class="mono ct-cities">Филиалы: Алматы&nbsp;· Усть-Каменогорск&nbsp;· Павлодар&nbsp;· Атырау</p>
       </aside>
     </div>
   </section>
@@ -1797,9 +1807,12 @@
   /* ---- Калькулятор экономии ---- */
   var range = document.getElementById('calc-people');
   var people = document.getElementById('calc-people-val');
+  var scale = document.getElementById('calc-scale');
   if (range && people) {
     var render = function () {
-      people.textContent = nf.format(parseInt(range.value, 10) || 0);
+      var v = nf.format(parseInt(range.value, 10) || 0);
+      people.textContent = v;
+      if (scale) scale.textContent = v;
     };
     range.addEventListener('input', render);
     render();
@@ -1819,22 +1832,20 @@
     });
     pills.forEach(function (btn) {
       btn.addEventListener('click', function () {
+        if (btn.getAttribute('aria-pressed') === 'true') return;
         pills.forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
         btn.setAttribute('aria-pressed', 'true');
         catImg.style.opacity = '0';
-        setTimeout(function () {
-          catImg.src = btn.dataset.img;
-          catImg.alt = btn.dataset.alt;
-          catImg.style.opacity = '1';
-        }, 120);
+        var _src = btn.dataset.img, _alt = btn.dataset.alt || '';
+        var _show = function () { catImg.src = _src; catImg.alt = _alt; catImg.style.opacity = '1'; };
+        var _pre = new Image(); _pre.onload = _show; _pre.onerror = _show; _pre.src = _src;
+        if (_pre.complete) _show();
         catBrand.textContent = btn.dataset.brand;
         catSpec.textContent = btn.dataset.spec;
         if (catIdx) {
           var i = Array.prototype.indexOf.call(pills, btn) + 1;
           catIdx.textContent = (i < 10 ? '0' + i : String(i)) + ' / ' + (pills.length < 10 ? '0' + pills.length : pills.length);
         }
-        var nextPill = btn.nextElementSibling || btn;
-        nextPill.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
       });
     });
   }
