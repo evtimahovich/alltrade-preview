@@ -801,6 +801,13 @@
   .calc-out .cap{color:rgba(255,255,255,.62);font-size:13px;margin-top:10px}
   .calc-out .note{color:rgba(255,255,255,.58);font-size:12.5px;margin-top:14px;line-height:1.6}
   .calc-k{color:rgba(255,255,255,.6);margin-bottom:8px}
+  .calc-k2{margin-top:20px}
+  .calc-rate-l{margin-top:22px}
+  .calc-rate{display:flex;flex-direction:column;gap:8px}
+  .calc-rate input[type=number]{width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:var(--r-s);color:#fff;font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;font-size:clamp(1.1rem,1.8vw,1.5rem);padding:12px 14px;font-variant-numeric:tabular-nums}
+  .calc-rate input[type=number]:focus{outline:none;border-color:var(--brand-lift)}
+  .calc-rate-note{font-size:11px;letter-spacing:.05em;color:rgba(255,255,255,.5);line-height:1.5}
+  .calc-est{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:800;font-size:clamp(1.15rem,1.9vw,1.5rem);color:rgba(255,255,255,.92);line-height:1;font-variant-numeric:tabular-nums;margin-bottom:2px}
   .vend-img > img{transition:opacity .22s ease}
   .vend-img > .vend-blur{
     filter:blur(26px) saturate(1.05);transform:scale(1.15);opacity:.55;
@@ -1399,16 +1406,22 @@
         <div class="calc">
           <div>
             <h3>Сколько вы вернёте</h3>
-            <label for="calc-budget">Ваш годовой бюджет на&nbsp;СИЗ, ₸</label>
-            <p class="val"><span id="calc-budget-val">20 000 000</span>&nbsp;₸</p>
-            <input type="range" id="calc-budget" min="2000000" max="150000000" step="1000000" value="20000000"
-                   aria-describedby="calc-note">
+            <label for="calc-people">Численность персонала</label>
+            <p class="val"><span id="calc-people-val">500</span>&nbsp;чел.</p>
+            <input type="range" id="calc-people" min="50" max="5000" step="50" value="500">
+            <label for="calc-rate" class="calc-rate-l">Средний расход на&nbsp;СИЗ, ₸ на&nbsp;человека в&nbsp;год</label>
+            <div class="calc-rate">
+              <input type="number" id="calc-rate" value="130000" min="20000" max="400000" step="10000" inputmode="numeric" aria-describedby="calc-rate-note">
+              <span class="calc-rate-note mono" id="calc-rate-note">По данным рынка ~40–250 тыс, зависит от&nbsp;отрасли и&nbsp;климата. Измените под себя.</span>
+            </div>
           </div>
           <div class="calc-out" aria-live="polite">
-            <p class="mono calc-k">Потенциальная экономия · до&nbsp;40% бюджета</p>
-            <p class="sum">до&nbsp;<span id="calc-save">8 000 000</span>&nbsp;₸<span class="sum-suf">/год</span></p>
+            <p class="mono calc-k">Ваш бюджет на&nbsp;СИЗ ≈</p>
+            <p class="calc-est"><span id="calc-budget-est">65 000 000</span>&nbsp;₸/год</p>
+            <p class="mono calc-k calc-k2">Потенциальная экономия · до&nbsp;40%</p>
+            <p class="sum">до&nbsp;<span id="calc-save">26 000 000</span>&nbsp;₸<span class="sum-suf">/год</span></p>
             <p class="cap">За&nbsp;счёт единой поставки и&nbsp;автоматической выдачи: поимённый учёт убирает списания «в&nbsp;никуда», очереди и&nbsp;кладовщика.</p>
-            <p class="note" id="calc-note">Ориентир по&nbsp;внедрениям. Точную цифру под&nbsp;ваш расход посчитаем после аудита вашей площадки.</p>
+            <p class="note" id="calc-note">Расход на&nbsp;СИЗ&nbsp;- по данным рынка (охрана труда ≈22&nbsp;тыс&nbsp;₽/чел в&nbsp;год, из&nbsp;них ~44% на&nbsp;СИЗ; в&nbsp;тяжёлой промышленности и&nbsp;на&nbsp;холоде выше). Точную цифру посчитаем после аудита площадки.</p>
             <a class="pill calc-cta" href="#contact" id="calc-cta">Получить точный расчёт</a>
           </div>
         </div>
@@ -1792,17 +1805,34 @@
     });
   });
 
-  /* ---- Калькулятор экономии: бюджет клиента × до 40% (реальный ориентир из презентации) ---- */
-  var budget = document.getElementById('calc-budget');
-  var budgetVal = document.getElementById('calc-budget-val');
-  var saveVal = document.getElementById('calc-save');
-  if (budget && budgetVal && saveVal) {
+  /* ---- Калькулятор: численность × средний расход на СИЗ (данные рынка) × до 40% ---- */
+  var calcPeople = document.getElementById('calc-people');
+  var calcRate = document.getElementById('calc-rate');
+  var calcPeopleVal = document.getElementById('calc-people-val');
+  var calcBudgetEst = document.getElementById('calc-budget-est');
+  var calcSave = document.getElementById('calc-save');
+  if (calcPeople && calcRate && calcPeopleVal && calcBudgetEst && calcSave) {
+    var RATE_MIN = 20000, RATE_MAX = 400000;
+    var roundTo = function (n, step) { return Math.round(n / step) * step; };
     var renderCalc = function () {
-      var b = parseInt(budget.value, 10) || 0;
-      budgetVal.textContent = nf.format(b);
-      saveVal.textContent = nf.format(Math.round(b * 0.4 / 100000) * 100000);
+      var p = parseInt(calcPeople.value, 10) || 0;
+      var r = parseInt(calcRate.value, 10);
+      if (isNaN(r) || r < 0) r = 0;
+      if (r > RATE_MAX) r = RATE_MAX;
+      calcPeopleVal.textContent = nf.format(p);
+      var budget = p * r;
+      calcBudgetEst.textContent = nf.format(roundTo(budget, 100000));
+      calcSave.textContent = nf.format(roundTo(budget * 0.4, 100000));
     };
-    budget.addEventListener('input', renderCalc);
+    var clampRate = function () {
+      var r = parseInt(calcRate.value, 10);
+      if (isNaN(r)) { calcRate.value = RATE_MIN; }
+      else if (r < RATE_MIN) { calcRate.value = RATE_MIN; }
+      else if (r > RATE_MAX) { calcRate.value = RATE_MAX; }
+    };
+    calcPeople.addEventListener('input', renderCalc);
+    calcRate.addEventListener('input', renderCalc);
+    calcRate.addEventListener('change', function () { clampRate(); renderCalc(); });
     renderCalc();
   }
 
