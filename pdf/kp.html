@@ -133,14 +133,20 @@
     text-transform:uppercase;color:rgba(255,255,255,.5)}
 
   /* ============ ЦИФРЫ ============ */
-  .stats{flex:1;min-height:0;display:grid;grid-template-columns:repeat(5,1fr);
-    grid-auto-rows:min-content;align-content:center;gap:var(--gap)}
-  .stat{padding:9mm var(--card-x) 8mm}
+  /* слайд фактов: один доминирующий показатель слева, остальные - сеткой справа */
+  .stats{flex:1;min-height:0;display:grid;
+    grid-template-columns:1.15fr 2fr;grid-template-rows:1fr auto;gap:var(--gap)}
+  .stat{padding:8mm var(--card-x);justify-content:center}
+  .stat--hero{grid-row:1;justify-content:center}
+  .stat--hero .n{font-size:104pt;line-height:.86}
+  .stat--hero .n i{font-size:26pt;margin-left:2mm}
+  .stat--hero .l{font-size:12pt;line-height:1.35;max-width:62mm}
+  .stats-rest{grid-row:1;display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)}
   .stat .n{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;
     font-size:var(--fs-num);line-height:1;color:var(--ink);margin-left:-.02em}
   .stat.card--brand .n{color:#fff}
   .stat .n i{font-style:normal;font-size:13.5pt;font-weight:800;margin-left:1.5mm}
-  .stat .l{font-size:var(--fs-label);line-height:1.4;color:var(--ink-soft);margin-top:4mm}
+  .stat .l{font-size:var(--fs-label);line-height:1.4;color:var(--ink-soft);margin-top:5mm}
   .stat.card--brand .l{color:rgba(255,255,255,.88)}
   .geo{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:3mm;
     border-top:1px solid var(--line);padding-top:5mm;margin-top:2mm;
@@ -204,7 +210,9 @@
     padding:2.2mm 4mm;border-radius:999px}
   .sew-img figcaption{position:absolute;left:5mm;bottom:4.5mm;color:rgba(255,255,255,.85);
     font-family:'IBM Plex Mono',monospace;font-size:var(--fs-foot);letter-spacing:.08em;text-transform:uppercase}
-  .sew-txt{display:flex;flex-direction:column;justify-content:center}
+  .sew-txt{display:flex;flex-direction:column;justify-content:space-between;padding:1mm 0}
+  .sew-txt .man-row{padding:7.5mm 0}
+  .sew-txt .man-answer{margin-top:0}
 
   /* ============ ВЕНДИНГ ============ */
   .vend{display:grid;grid-template-columns:1fr 1.35fr;gap:var(--split);flex:1;min-height:0}
@@ -218,7 +226,7 @@
   /* правая колонка: карточки по контенту, верх/низ прижаты к кромкам фото */
   .vend-right{display:flex;flex-direction:column;justify-content:space-between;gap:var(--gap);min-height:0}
   .vfeats{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)}
-  .vfeat{padding:var(--card-y) var(--card-x);min-height:36mm}
+  .vfeat{padding:var(--card-y) var(--card-x);min-height:36mm;justify-content:center}
   .vfeat b{font-size:var(--fs-card)}
   .vfeat p{font-size:var(--fs-body)}
   .vsave{background:var(--brand);border-radius:var(--r);color:#fff;padding:9mm var(--card-x);
@@ -255,6 +263,9 @@
   .fin-title span{display:block}
   .fin-title em{font-style:normal;color:var(--brand-lift)}
   .fin-contacts{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap);margin-top:14mm}
+  .fin-scope{font-family:'IBM Plex Mono',monospace;font-size:9pt;letter-spacing:.06em;
+    text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:14mm;
+    border-top:1px solid rgba(255,255,255,.14);padding-top:6mm}
   .fc{border:1px solid rgba(255,255,255,.2);border-radius:var(--r);padding:6mm;
     text-decoration:none;display:block}
   .fc--soc{display:flex;align-items:center;gap:4mm}
@@ -305,11 +316,13 @@
     <p class="side">Подрядчик, который годами отвечает за защиту всего предприятия и работает на постоянной основе.</p>
   </div>
   <div class="stats">
-    <article class="card stat"><p class="n">10+<i>лет</i></p><p class="l">На рынке средств защиты и промышленного оборудования</p></article>
-    <article class="card stat"><p class="n">4</p><p class="l">Филиала по Казахстану: склад и сервис рядом с предприятием</p></article>
-    <article class="card stat"><p class="n">9</p><p class="l">Категорий защиты с одного склада: от каски до спецобуви</p></article>
-    <article class="card stat"><p class="n">24/7</p><p class="l">Автоматическая выдача СИЗ без кладовщика и очередей</p></article>
-    <article class="card card--brand stat"><p class="n">1</p><p class="l">Договор на весь цикл обеспечения предприятия</p></article>
+    <article class="card stat stat--hero"><p class="n">10+<i>лет</i></p><p class="l">На рынке средств индивидуальной защиты и промышленного оборудования Казахстана</p></article>
+    <div class="stats-rest">
+      <article class="card stat"><p class="n">4</p><p class="l">Филиала: склад и сервис рядом с предприятием</p></article>
+      <article class="card stat"><p class="n">9</p><p class="l">Категорий защиты с одного склада</p></article>
+      <article class="card stat"><p class="n">24/7</p><p class="l">Выдача без кладовщика и очередей</p></article>
+      <article class="card card--brand stat"><p class="n">1</p><p class="l">Договор на весь цикл обеспечения</p></article>
+    </div>
     <div class="geo">
       <span class="t">География:</span>
       <span class="gpill">Весь Казахстан</span>
@@ -454,7 +467,7 @@
   </div>
   <div class="vend">
     <figure class="vend-img">
-      <img src="img/at-vend-wall.jpg" alt="">
+      <img src="img/at-vend-portrait.jpg" alt="">
       <figcaption><b>ALLTRADE-LTD</b><span>Вендинговые аппараты выдачи СИЗ · интерфейс каз · рус · англ</span></figcaption>
     </figure>
     <div class="vend-right">
@@ -537,6 +550,7 @@
         <span><p class="k">YouTube</p><p class="v">ALLTRADE-LTD</p></span>
       </a>
     </div>
+    <p class="fin-scope">СИЗ · Приборы промышленной безопасности · Пошив спецодежды · Вендинг-выдача · Обслуживание</p>
   </div>
   <div class="pfoot">
     <span>ТОО «ALLTRADE-LTD» · БИН 160 340 027 310</span>
