@@ -106,13 +106,18 @@
   /* ============ ОБЛОЖКА ============ */
   .cover{padding:0}
   /* фон обложки - чистый чёрный, без текстур: работает только фото рабочего */
-  .cover-tex{position:absolute;inset:0;background:var(--dark)}
+  .cover-tex{position:absolute;inset:0;background:#030C0C}
+  .cover-tex::after{content:'';position:absolute;inset:0;
+    background:
+      radial-gradient(85% 70% at 72% 30%, rgba(18,44,44,.95), transparent 66%),
+      linear-gradient(180deg, rgba(10,26,26,.5) 0%, rgba(3,12,12,0) 46%, rgba(1,7,8,.85) 100%)}
   .cover-in{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;padding:12mm 15mm}
   .cover-top{display:flex;justify-content:space-between;align-items:center}
   .cover-top img{height:11mm;filter:brightness(0) invert(1)}
   .cover-hero{position:absolute;right:2mm;bottom:0;height:158mm;z-index:1;
-    -webkit-mask-image:linear-gradient(105deg,transparent 2%,#000 24%);
-    mask-image:linear-gradient(105deg,transparent 2%,#000 24%)}
+    -webkit-mask-image:linear-gradient(100deg,transparent 4%,#000 30%),linear-gradient(180deg,transparent 0,#000 14%,#000 94%,transparent 100%);
+    mask-image:linear-gradient(100deg,transparent 4%,#000 30%),linear-gradient(180deg,transparent 0,#000 14%,#000 94%,transparent 100%);
+    -webkit-mask-composite:source-in;mask-composite:intersect}
   .cover-body{position:relative;z-index:2;margin-top:auto;max-width:170mm}
   .cover-stats{display:flex;gap:8mm;font-family:'IBM Plex Mono',monospace;font-size:8.5pt;
     letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:8mm}
@@ -282,7 +287,7 @@
         <span>Под</span>
         <span class="l3">Ключ</span>
       </h1>
-      <p class="cover-desc">Один договор вместо десяти поставщиков - от каски до газоанализатора: <b>СИЗ, оборудование, пошив, вендинг-выдача 24/7 и сервис</b>.</p>
+      <p class="cover-desc">Единый договор на всё обеспечение - от каски до газоанализатора: <b>СИЗ, приборы безопасности, пошив, вендинг-выдача 24/7 и сервис</b>.</p>
     </div>
     <div class="cover-foot">
       <span>+7 771 051 94 49</span>
@@ -297,14 +302,14 @@
   <div class="ph"><span class="k">ТОО ALLTRADE-LTD</span><span class="pno">02 / 11</span></div>
   <div class="sec-head">
     <h2 class="display">О компании<br>в цифрах</h2>
-    <p class="side">Не разовый поставщик, а подрядчик, который годами отвечает за защиту всего предприятия.</p>
+    <p class="side">Подрядчик, который годами отвечает за защиту всего предприятия и работает на постоянной основе.</p>
   </div>
   <div class="stats">
     <article class="card stat"><p class="n">10+<i>лет</i></p><p class="l">На рынке средств защиты и промышленного оборудования</p></article>
-    <article class="card stat"><p class="n">4</p><p class="l">Филиала по Казахстану: склад и сервис рядом с площадкой</p></article>
+    <article class="card stat"><p class="n">4</p><p class="l">Филиала по Казахстану: склад и сервис рядом с предприятием</p></article>
     <article class="card stat"><p class="n">9</p><p class="l">Категорий защиты с одного склада: от каски до спецобуви</p></article>
     <article class="card stat"><p class="n">24/7</p><p class="l">Автоматическая выдача СИЗ без кладовщика и очередей</p></article>
-    <article class="card card--brand stat"><p class="n">1</p><p class="l">Договор на весь цикл вместо десяти поставщиков и счетов</p></article>
+    <article class="card card--brand stat"><p class="n">1</p><p class="l">Договор на весь цикл обеспечения предприятия</p></article>
     <div class="geo">
       <span class="t">География:</span>
       <span class="gpill">Весь Казахстан</span>
@@ -317,19 +322,19 @@
 
 <!-- ============ 3 · ПРОБЛЕМА ============ -->
 <section class="page">
-  <div class="ph"><span class="k"></span><span class="pno">03 / 11</span></div>
+  <div class="ph"><span class="k">Задача</span><span class="pno">03 / 11</span></div>
   <div class="sec-head">
-    <h2 class="display">Что болит<br>на площадке</h2>
-    <p class="side">Типичная картина снабжения СИЗ на крупном предприятии - пока всё раскидано по десяти поставщикам.</p>
+    <h2 class="display">С какими вызовами<br>сталкивается предприятие</h2>
+    <p class="side">Обеспечение средствами индивидуальной защиты - постоянная операционная нагрузка на предприятие. ALLTRADE LTD принимает её на себя целиком.</p>
   </div>
   <div class="pain">
     <div class="man">
-      <div class="man-row"><span class="man-no">01</span><p class="man-line">Десять поставщиков и счетов.</p></div>
-      <div class="man-row"><span class="man-no">02</span><p class="man-line">Перерасход без учёта.</p></div>
-      <div class="man-row"><span class="man-no">03</span><p class="man-line">Смена не вышла - нет размеров.</p></div>
-      <div class="man-row"><span class="man-no">04</span><p class="man-line">Поставщик не проходит по тендеру.</p></div>
+      <div class="man-row"><span class="man-no">01</span><p class="man-line">Размеры и номенклатура на смену.</p></div>
+      <div class="man-row"><span class="man-no">02</span><p class="man-line">Поимённый учёт выдачи и расхода.</p></div>
+      <div class="man-row"><span class="man-no">03</span><p class="man-line">Соответствие тендерным требованиям.</p></div>
+      <div class="man-row"><span class="man-no">04</span><p class="man-line">Стирка, ремонт и замена.</p></div>
     </div>
-    <p class="man-answer">Закрываем всё это <em>одним договором</em>.</p>
+    <p class="man-answer">Всё это <em>берёт на себя ALLTRADE</em>.</p>
   </div>
   <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>+7 771 051 94 49 · info@alltrade-ltd.kz</span></div>
 </section>
@@ -339,7 +344,7 @@
   <div class="ph"><span class="k">Решение</span><span class="pno">04 / 11</span></div>
   <div class="sec-head">
     <h2 class="display">Пять направлений -<br><em>один договор</em></h2>
-    <p class="side">Один поставщик на всё: поставляем, оборудуем, шьём, выдаём и обслуживаем.</p>
+    <p class="side">Единый подрядчик на всё: поставляем, оснащаем, шьём, выдаём и обслуживаем.</p>
   </div>
   <div class="dirs">
     <article class="numcard numcard--brand">
@@ -356,7 +361,7 @@
     </article>
     <article class="numcard">
       <div class="band"><span class="no">04</span></div>
-      <div class="t"><b>Вендинг-выдача</b><p>Автоматы KazProService: выдача 24/7 по личной карте с поимённым учётом.</p></div>
+      <div class="t"><b>Вендинг-выдача</b><p>Вендинговые аппараты выдачи СИЗ: 24/7 по личной карте с поимённым учётом.</p></div>
     </article>
     <article class="numcard">
       <div class="band"><span class="no">05</span></div>
@@ -399,7 +404,7 @@
   <div class="ph"><span class="k">02 · Поставка СИЗ</span><span class="pno">06 / 11</span></div>
   <div class="sec-head">
     <h2 class="display">Каталог СИЗ</h2>
-    <p class="side">Официальный дистрибьютор респираторов МК. Вся защита под задачу площадки - со склада.</p>
+    <p class="side">Официальный дистрибьютор респираторов МК. Вся защита под задачи предприятия - со склада.</p>
   </div>
   <div class="cat">
     <article class="c"><img src="img/head.jpg" alt=""><div class="c-t"><span class="num">01</span><b>Защита головы</b><p>Еланпласт · каски и щитки</p></div></article>
@@ -445,26 +450,26 @@
   <div class="ph"><span class="k">04 · Вендинг-выдача</span><span class="pno">08 / 11</span></div>
   <div class="sec-head">
     <h2 class="display">Автоматическая<br>выдача 24/7</h2>
-    <p class="side">Собственные автоматы KazProService: модель 540 - выдача, модель 640 - приёмка спецодежды по RFID.</p>
+    <p class="side">Вендинговые аппараты для выдачи СИЗ: одни выдают средства защиты по личной карте, другие принимают спецодежду в стирку и ремонт по RFID. Состав номенклатуры подбираем на аудите предприятия.</p>
   </div>
   <div class="vend">
     <figure class="vend-img">
-      <img src="img/kazpro-540-wall.jpg" alt="">
-      <figcaption><b>KazProService</b><span>Модели 540/640 · интерфейс каз · рус · англ</span></figcaption>
+      <img src="img/at-vend-wall.jpg" alt="">
+      <figcaption><b>ALLTRADE-LTD</b><span>Вендинговые аппараты выдачи СИЗ · интерфейс каз · рус · англ</span></figcaption>
     </figure>
     <div class="vend-right">
       <div class="vfeats">
         <article class="card vfeat"><b>Выдача по личной карте</b><p>Сотрудник прикладывает личную карту и получает свою позицию круглосуточно - без кладовщика и очереди.</p></article>
         <article class="card vfeat"><b>Поимённый учёт</b><p>Видно, кто и сколько получил, - готовая отчётность для службы охраны труда.</p></article>
         <article class="card vfeat"><b>Связь с учётной системой</b><p>Данные о выдаче уходят в SAP, 1С или вашу WMS автоматически.</p></article>
-        <article class="card vfeat"><b>Приёмка по RFID</b><p>Модель 640 принимает спецодежду в стирку и ремонт по RFID-метке.</p></article>
+        <article class="card vfeat"><b>Приёмка по RFID</b><p>Отдельный аппарат принимает спецодежду в стирку и ремонт по RFID-метке.</p></article>
       </div>
       <div class="vsave">
         <div>
           <p class="k">Потенциальная экономия</p>
           <p class="big">до 40<i>%</i></p>
         </div>
-        <p class="cap">бюджета на СИЗ в год - за счёт единой поставки и автоматической выдачи: поимённый учёт убирает списания «в никуда», очереди и кладовщика. Точную цифру посчитаем после аудита площадки.</p>
+        <p class="cap">бюджета на СИЗ в год. Верхняя оценка по всему обеспечению разом: единый договор, поимённый учёт и сервис. Точный расчёт подготовим после аудита предприятия.</p>
       </div>
     </div>
   </div>
@@ -476,11 +481,11 @@
   <div class="ph"><span class="k">Допуски и тендеры</span><span class="pno">09 / 11</span></div>
   <div class="sec-head">
     <h2 class="display">Проходим тендеры<br>недропользователей</h2>
-    <p class="side">Сертификация, казахстанское содержание и готовность к аудиту - три условия допуска на площадку.</p>
+    <p class="side">Сертификация, казахстанское содержание и готовность к аудиту - соответствуем требованиям тендерных закупок недропользователей.</p>
   </div>
   <div class="trust">
     <article class="numcard cert"><div class="band"><span class="no">01</span></div>
-      <div class="t"><b>ТР ТС 019/2011</b><p>Технический регламент Таможенного союза о безопасности средств индивидуальной защиты - базовый допуск на площадку.</p></div></article>
+      <div class="t"><b>ТР ТС 019/2011</b><p>Технический регламент Таможенного союза о безопасности средств индивидуальной защиты - базовый допуск на предприятие.</p></div></article>
     <article class="numcard cert"><div class="band"><span class="no">02</span></div>
       <div class="t"><b>EN 388 · 407 · 511</b><p>Европейские стандарты защиты рук: механические риски, термические риски и холод.</p></div></article>
     <article class="numcard cert"><div class="band"><span class="no">03</span></div>
@@ -498,7 +503,7 @@
   <div class="ph"><span class="k">Процесс</span><span class="pno">10 / 11</span></div>
   <div class="sec-head">
     <h2 class="display">Как<br>работаем</h2>
-    <p class="side">От первого аудита до сервиса на площадке - весь процесс в пять шагов.</p>
+    <p class="side">От первого аудита до постоянного сервиса на предприятии - весь процесс в пять шагов.</p>
   </div>
   <div class="steps">
     <article class="numcard"><div class="band"><span class="no">01</span></div>
@@ -506,11 +511,11 @@
     <article class="numcard"><div class="band"><span class="no">02</span></div>
       <div class="t"><b>Расчёт и подбор</b><p>Подбираем номенклатуру под вашу отрасль и климат - без перерасхода и лишних позиций.</p></div></article>
     <article class="numcard numcard--brand"><div class="band"><span class="no">03</span></div>
-      <div class="t"><b>Один договор</b><p>Весь цикл ведёт один подрядчик вместо десяти: единая цена, единый ответственный и отчётность.</p></div></article>
+      <div class="t"><b>Один договор</b><p>Весь цикл ведёт один подрядчик: единая цена, единый ответственный и прозрачная отчётность.</p></div></article>
     <article class="numcard"><div class="band"><span class="no">04</span></div>
       <div class="t"><b>Поставка и монтаж</b><p>Отгружаем со склада, ставим и настраиваем автоматы выдачи - под ключ.</p></div></article>
     <article class="numcard"><div class="band"><span class="no">05</span></div>
-      <div class="t"><b>Выдача и сервис</b><p>Выдаём, ведём учёт, стираем и ремонтируем - площадка не остаётся без защиты.</p></div></article>
+      <div class="t"><b>Выдача и сервис</b><p>Выдаём, ведём учёт, стираем и ремонтируем - предприятие обеспечено защитой постоянно.</p></div></article>
   </div>
   <div class="pfoot"><span>ALLTRADE-LTD · СИЗ под ключ</span><span>+7 771 051 94 49 · info@alltrade-ltd.kz</span></div>
 </section>
