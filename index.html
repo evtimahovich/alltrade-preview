@@ -200,13 +200,17 @@
     padding:clamp(18px,3vw,48px) calc(var(--pad) - var(--inset));
     display:flex;flex-direction:column;justify-content:center;
   }
-  .hero2-bgtex{position:absolute;inset:0;opacity:.08;pointer-events:none}
-  .hero2-bgtex img{width:100%;height:100%;object-fit:cover}
+  /* фон хиро - чистая темнота: мягкий свет за фигурой + виньетка по краям */
+  .hero2-bgtex{
+    position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(120% 90% at 78% 34%, rgba(78,158,120,.22), transparent 58%),
+      radial-gradient(90% 70% at 30% 12%, rgba(255,255,255,.07), transparent 62%),
+      radial-gradient(140% 120% at 50% 100%, rgba(0,0,0,.55), transparent 60%);
+  }
   .hero2::before{
-    content:"";position:absolute;right:-10vw;bottom:-24%;
-    width:60vw;height:60vw;
-    background:radial-gradient(circle,rgba(78,158,120,.34),transparent 62%);
-    pointer-events:none;
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(130% 100% at 50% 50%, transparent 42%, rgba(0,0,0,.5) 100%);
   }
   .hero2-char{
     position:absolute;z-index:3;bottom:0;right:clamp(5vw,9vw,13vw);
@@ -1081,9 +1085,7 @@
 
   <!-- ============ BLOCK 1 · HERO ============ -->
   <section class="hero2" aria-label="СИЗ под ключ для промышленности Казахстана">
-    <div class="hero2-bgtex" aria-hidden="true">
-      <img src="assets/stills/hero-logo-dark.webp" alt="" loading="lazy" fetchpriority="low">
-    </div>
+    <div class="hero2-bgtex" aria-hidden="true"></div>
     <img class="hero2-char" src="assets/stills/hero-worker.webp"
          alt="Рабочий в каске ФОРВАРД, полумаске МК и рабочей спецодежде" fetchpriority="high">
     <div class="hero2-copy">
