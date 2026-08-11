@@ -57,3 +57,12 @@ git push -u origin feature/my-change
 ```
 
 Не коммитить `.DS_Store`, локальные сборки и служебные файлы (см. `.gitignore`).
+
+## Деплой на прод (alltrade-ltd.kz)
+
+Прод-репозиторий: `shanaum/alltrade-ltd-site`. Любой пуш в `main` автоматически:
+1. собирает WordPress-тему из `index.html` (`scripts/build_wp_theme.py`);
+2. заливает её по FTPS на хостинг PS.KZ (Plesk, тема `alltrade-ltd`);
+3. проверяет, что https://alltrade-ltd.kz отвечает и отдаёт свежую тему.
+
+Статус деплоя — вкладка Actions на GitHub. Секреты FTP лежат в настройках репо.

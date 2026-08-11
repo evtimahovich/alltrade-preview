@@ -11,3 +11,6 @@
 *.log
 node_modules/
 tmp/
+
+# сборка WP-темы
+dist/
