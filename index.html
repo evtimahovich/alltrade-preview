@@ -200,13 +200,17 @@
     padding:clamp(18px,3vw,48px) calc(var(--pad) - var(--inset));
     display:flex;flex-direction:column;justify-content:center;
   }
-  /* фон хиро продолжает студийный фон с фотографии: тёмная зелёная дымка сверху, чернота снизу */
-  .hero2-bgtex{
-    position:absolute;inset:0;pointer-events:none;
-    background:
-      radial-gradient(85% 70% at 72% 26%, rgba(18,44,44,.95), transparent 66%),
-      radial-gradient(70% 55% at 26% 16%, rgba(14,34,32,.75), transparent 68%),
-      linear-gradient(180deg, rgba(10,26,26,.55) 0%, rgba(3,12,12,0) 46%, rgba(1,7,8,.85) 100%);
+  /* фон хиро - размытая копия самого кадра: тон совпадает точно, стыку взяться неоткуда */
+  .hero2-bgtex{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+  .hero2-bgtex::before{
+    content:"";position:absolute;inset:-14%;
+    background:url("assets/stills/hero-worker.webp") no-repeat 74% 42%/cover;
+    filter:blur(72px) saturate(.85) brightness(.72);
+    opacity:.95;
+  }
+  .hero2-bgtex::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(90deg, rgba(3,12,12,.92) 0%, rgba(3,12,12,.55) 34%, rgba(3,12,12,0) 58%);
   }
   .hero2::before{
     content:"";position:absolute;inset:0;pointer-events:none;
