@@ -180,9 +180,9 @@
   .dir b{display:block;font-size:var(--fs-card);font-weight:700;line-height:1.25;margin-bottom:3mm}
   .dir p{font-size:var(--fs-body);line-height:1.45;color:var(--ink-soft)}
   /* брендовая плита держит оба края: номер сверху, текст снизу */
-  .dir--brand{background:var(--brand);color:#fff;border-left:0;justify-content:space-between;
+  .dir--brand{background:linear-gradient(180deg,#356A55 0%,#2E5A48 100%);color:#fff;border-left:0;justify-content:space-between;
     margin:0 0 0 -15mm;padding:8mm 5mm 10mm 15mm}
-  .dir--brand .no{color:rgba(255,255,255,.92)}
+  .dir--brand .no{color:rgba(255,255,255,.55)}
   .dir--brand p{color:rgba(255,255,255,.88)}
   .dir--brand + .dir{border-left:0}
 
@@ -205,9 +205,8 @@
     grid-template-rows:1fr 1fr;gap:var(--gap)}
   .cat-head{position:relative;overflow:hidden;border-radius:var(--r);background:var(--deep);color:#fff;
     padding:6mm 5mm;display:flex;flex-direction:column;justify-content:space-between}
-  .cat-head .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.82}
   .cat-head::after{content:'';position:absolute;inset:0;
-    background:linear-gradient(180deg,rgba(5,13,12,.86) 0%,rgba(5,13,12,.32) 44%,rgba(5,13,12,.92) 100%)}
+    background:radial-gradient(120% 90% at 20% 12%, rgba(50,100,80,.5), transparent 70%)}
   .cat-head h2{position:relative;z-index:2;font-size:25pt;line-height:.96}
   .cat-head .side{position:relative;z-index:2;color:rgba(255,255,255,.78);font-size:8pt;line-height:1.5}
   .cat .c{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--r);
@@ -311,14 +310,14 @@
   .fstep--on p{color:rgba(255,255,255,.9)}
 
   /* ============ 11 · КОНТАКТЫ ============ */
-  .page--aside-r{padding-right:100mm}
-  .aside-img--r{left:auto;right:0;width:88mm}
-  .fin{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:space-between;
-    padding:5mm 0 2mm}
+  .page--fin{position:relative}
+  .page--fin .ph,.page--fin .fin,.page--fin .pfoot{position:relative;z-index:2}
+  .fin{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;
+    padding:2mm 0}
   .fin-title{font-size:var(--fs-fin);color:#fff;margin-left:-.02em;font-weight:900;line-height:.92}
   .fin-title span{display:block}
   .fin-title em{font-style:normal;color:var(--brand-lift)}
-  .fin-contacts{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin:8mm 0}
+  .fin-contacts{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap);margin:14mm 0 12mm}
   .fin-scope{font-family:'IBM Plex Mono',monospace;font-size:8pt;letter-spacing:.06em;
     text-transform:uppercase;color:rgba(255,255,255,.55);
     border-top:1px solid var(--line-dk);padding-top:5mm;line-height:1.6}
@@ -355,7 +354,7 @@
         <span>Под</span>
         <span class="l3">Ключ</span>
       </h1>
-      <p class="cover-desc">Единый договор на всё обеспечение - от каски до газоанализатора: <b>СИЗ, приборы безопасности, пошив, вендинг-выдача 24/7 и сервис</b>.</p>
+      <p class="cover-desc">Единый договор на всё обеспечение - от каски до газоанализатора: СИЗ, приборы безопасности, пошив, вендинг-выдача 24/7 и сервис.</p>
     </div>
     <div class="cover-foot">
       <span>+7 771 051 94 49</span>
@@ -474,7 +473,6 @@
   <div class="ph"><span class="k">02 · Поставка СИЗ</span><span class="pno">06 / 11</span></div>
   <div class="cat">
     <article class="cat-head">
-      <img class="bg" src="img/mk-mask-cine.jpg" alt="">
       <h2 class="display">Каталог СИЗ</h2>
       <p class="side">Официальный дистрибьютор респираторов МК. Вся защита под задачи предприятия - со склада.</p>
     </article>
@@ -504,7 +502,7 @@
         <p class="cap">Комплект для шахтёров · светоотражающие кресты</p>
       </div>
       <div class="sew-r">
-        <p class="side">Своё производство - отвечаем за качество и сроки на каждом этапе.</p>
+        <p class="side">Отвечаем за качество и сроки на каждом этапе.</p>
         <div class="man">
           <div class="man-row"><span class="man-no">01</span><p class="man-line">Размеры под ваш персонал.</p></div>
           <div class="man-row"><span class="man-no">02</span><p class="man-line">Ткани под сезон и отрасль.</p></div>
@@ -586,10 +584,8 @@
 </section>
 
 <!-- ============ 11 · КОНТАКТЫ ============ -->
-<section class="page page--dark page--aside-r">
-  <figure class="aside-img aside-img--r">
-    <img src="img/hero-logo-dark.jpg" alt="">
-  </figure>
+<section class="page page--dark page--fin">
+  <div class="cover-tex"></div>
   <div class="ph"><span class="k">Контакты</span><span class="pno">11 / 11</span></div>
   <div class="fin">
     <p class="fin-title display"><span>Закроем вопрос</span><span>СИЗ - <em>под ключ</em></span></p>
@@ -597,11 +593,11 @@
       <a class="fc fc--brand" href="https://wa.me/77710519449"><p class="k">WhatsApp / Телефон</p><p class="v">+7 771 051 94 49</p></a>
       <a class="fc" href="mailto:info@alltrade-ltd.kz"><p class="k">Почта</p><p class="v">info@alltrade-ltd.kz</p></a>
       <a class="fc fc--soc" href="https://instagram.com/alltrade_ltd_kz">
-        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.3-.5.2-.9.4-1.2.8-.4.3-.6.7-.8 1.2-.1.4-.3 1-.3 2.1-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1.1.2 1.7.3 2.1.2.5.4.9.8 1.2.3.4.7.6 1.2.8.4.1 1 .3 2.1.3 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.3.5-.2.9-.4 1.2-.8.4-.3.6-.7.8-1.2.1-.4.3-1 .3-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.3-2.1-.2-.5-.4-.9-.8-1.2-.3-.4-.7-.6-1.2-.8-.4-.1-1-.3-2.1-.3-1.2-.1-1.6-.1-4.7-.1zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 8.1a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4zm6.2-8.3a1.1 1.1 0 1 1-2.3 0 1.1 1.1 0 0 1 2.3 0z"/></svg></span>
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5.2"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.1" cy="6.9" r="1.15" fill="currentColor" stroke="none"/></svg></span>
         <span><p class="k">Instagram</p><p class="v">@alltrade_ltd_kz</p></span>
       </a>
       <a class="fc fc--soc" href="https://youtube.com/@tooalltrade-ltdkazakhstan">
-        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.8-.5-5.6a2.9 2.9 0 0 0-2-2C18.7 4 12 4 12 4s-6.7 0-8.5.4a2.9 2.9 0 0 0-2 2C1 8.2 1 12 1 12s0 3.8.5 5.6c.3 1 1 1.8 2 2C5.3 20 12 20 12 20s6.7 0 8.5-.4a2.9 2.9 0 0 0 2-2C23 15.8 23 12 23 12zM9.8 15.5v-7l6.2 3.5-6.2 3.5z"/></svg></span>
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="2.6" y="5.2" width="18.8" height="13.6" rx="4.4"/><path d="M10.3 9.3 15.7 12l-5.4 2.7z" fill="currentColor" stroke="none"/></svg></span>
         <span><p class="k">YouTube</p><p class="v">ALLTRADE-LTD</p></span>
       </a>
     </div>

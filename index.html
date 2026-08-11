@@ -288,12 +288,13 @@
     max-width:min(100%,1000px);
   }
   .hero2-stats{
-    display:flex;flex-wrap:wrap;gap:clamp(12px,2vw,32px);
+    display:flex;flex-wrap:wrap;gap:clamp(12px,2vw,28px);
     align-self:start;
     padding-bottom:clamp(12px,1.4vw,18px);
     border-bottom:1px solid rgba(255,255,255,.16);
-    color:rgba(255,255,255,.6);letter-spacing:.11em;
-    max-width:min(100%,860px);
+    color:rgba(255,255,255,.72);letter-spacing:.1em;
+    /* строка фактов и её линейка живут в текстовой колонке и не заходят на фигуру */
+    max-width:min(100%,54ch);
   }
   .hero2-stats span{display:inline-flex;align-items:center;gap:9px}
   .hero2-stats span::before{
@@ -999,7 +1000,8 @@
     .hero2{min-height:clamp(600px,158vw,780px);padding-top:104px;padding-bottom:40px}
     .hero2-copy{gap:clamp(14px,3vw,22px)}
     .hero2-title{font-size:clamp(3.1rem,15.6vw,4.6rem);align-self:end}
-    .hero2-stats{flex-direction:column;align-items:flex-start;gap:8px}
+    .hero2-stats{flex-direction:column;align-items:flex-start;gap:8px;color:rgba(255,255,255,.88);
+      border-bottom:0;padding-bottom:0;max-width:min(100%,42ch)}
     .hero2-desc{
       max-width:none;
       background:rgba(10,14,13,.5);border:1px solid rgba(255,255,255,.14);
@@ -1023,6 +1025,12 @@
         linear-gradient(90deg, rgba(3,12,12,.9) 0%, rgba(3,12,12,.66) 46%, rgba(3,12,12,.3) 82%, rgba(3,12,12,.2) 100%),
         linear-gradient(180deg, rgba(3,12,12,0) 40%, rgba(3,12,12,.72) 78%, rgba(3,12,12,.9) 100%);
     }
+    /* верх кадра притемнён - строка фактов читается без плашки */
+    .hero2::after{
+      content:"";position:absolute;left:0;right:0;top:0;height:34%;z-index:2;pointer-events:none;
+      background:linear-gradient(180deg, rgba(3,12,12,.86) 0%, rgba(3,12,12,.55) 46%, rgba(3,12,12,0) 100%);
+    }
+    .hero2-copy{z-index:3}
   }
   @media (max-width:390px){
     .hero2-stats{font-size:10px;letter-spacing:.08em}
