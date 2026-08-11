@@ -642,7 +642,10 @@
     font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
   .geo .gpill{border-color:rgba(255,255,255,.26);background:transparent;color:#fff}
   .fact-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:clamp(18px,2.4vw,28px)}
-  @media (max-width:960px){.stat--wide,.stat--sm,.st4,.st5{grid-column:span 6}}
+  @media (max-width:960px){
+    .stat--wide,.stat--sm,.st4,.st5{grid-column:span 6}
+    .stats-grid .stat:last-of-type{grid-column:span 12}
+  }
   @media (max-width:600px){
     .stat--wide,.stat--sm,.st4,.st5,.st6{grid-column:span 12}
     .stat{min-height:0;gap:12px;padding:20px 22px}
@@ -1149,16 +1152,16 @@
         <h2 class="display">С какими вызовами<br>сталкивается предприятие</h2>
       </div>
       <div class="sec-side">
-        <p class="mono">ALLTRADE&nbsp;LTD принимает на&nbsp;себя весь объём работ по&nbsp;обеспечению работников средствами защиты.</p>
+        <p class="mono">Обеспечение средствами индивидуальной защиты&nbsp;- постоянная операционная нагрузка на&nbsp;предприятие. ALLTRADE&nbsp;LTD принимает её на&nbsp;себя целиком.</p>
       </div>
     </div>
 
     <div class="pain-say">
-      <p class="pain-line">Соответствуем критериям тендеров.</p>
-      <p class="pain-line pl2">Ведём весь цикл обеспечения.</p>
-      <p class="pain-line pl3">Отвечаем за&nbsp;размеры и&nbsp;сроки.</p>
-      <p class="pain-line pl4">Держим поимённый учёт расхода.</p>
-      <p class="pain-answer">Обеспечение защитой&nbsp;- <em>наша зона ответственности</em>.</p>
+      <p class="pain-line">Размеры и&nbsp;номенклатура на&nbsp;смену.</p>
+      <p class="pain-line pl2">Поимённый учёт выдачи и&nbsp;расхода.</p>
+      <p class="pain-line pl3">Соответствие тендерным требованиям.</p>
+      <p class="pain-line pl4">Стирка, ремонт и&nbsp;замена.</p>
+      <p class="pain-answer">Всё это <em>берёт на себя ALLTRADE</em>.</p>
     </div>
   </section>
 
