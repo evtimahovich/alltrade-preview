@@ -193,30 +193,30 @@
   /* ---------- HERO v2: композиция по референсу, цвета по брендбуку ---------- */
   .hero2{
     position:relative;overflow:hidden;
-    background:#0A0C0B;color:#fff;
+    background:#030C0C;color:#fff;
     border-radius:var(--r-l);
     margin:0 calc((var(--pad) - var(--inset)) * -1);
     min-height:min(92svh,960px);
     padding:clamp(18px,3vw,48px) calc(var(--pad) - var(--inset));
     display:flex;flex-direction:column;justify-content:center;
   }
-  /* фон хиро - чистая темнота: мягкий свет за фигурой + виньетка по краям */
+  /* фон хиро продолжает студийный фон с фотографии: тёмная зелёная дымка сверху, чернота снизу */
   .hero2-bgtex{
     position:absolute;inset:0;pointer-events:none;
     background:
-      radial-gradient(120% 90% at 78% 34%, rgba(78,158,120,.22), transparent 58%),
-      radial-gradient(90% 70% at 30% 12%, rgba(255,255,255,.07), transparent 62%),
-      radial-gradient(140% 120% at 50% 100%, rgba(0,0,0,.55), transparent 60%);
+      radial-gradient(85% 70% at 72% 26%, rgba(18,44,44,.95), transparent 66%),
+      radial-gradient(70% 55% at 26% 16%, rgba(14,34,32,.75), transparent 68%),
+      linear-gradient(180deg, rgba(10,26,26,.55) 0%, rgba(3,12,12,0) 46%, rgba(1,7,8,.85) 100%);
   }
   .hero2::before{
     content:"";position:absolute;inset:0;pointer-events:none;
-    background:radial-gradient(130% 100% at 50% 50%, transparent 42%, rgba(0,0,0,.5) 100%);
+    background:radial-gradient(120% 95% at 55% 45%, transparent 46%, rgba(0,0,0,.45) 100%);
   }
   .hero2-char{
     position:absolute;z-index:3;bottom:0;right:clamp(5vw,9vw,13vw);
     height:min(100%,920px);aspect-ratio:3/4;object-fit:cover;object-position:top;
-    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 8%,#000 82%,transparent 100%),linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
-    mask-image:linear-gradient(180deg,transparent 0,#000 8%,#000 82%,transparent 100%),linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
+    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 14%,#000 76%,transparent 100%),linear-gradient(90deg,transparent 0,#000 20%,#000 84%,transparent 100%);
+    mask-image:linear-gradient(180deg,transparent 0,#000 14%,#000 76%,transparent 100%),linear-gradient(90deg,transparent 0,#000 20%,#000 84%,transparent 100%);
     -webkit-mask-composite:source-in;
     mask-composite:intersect;
   }
