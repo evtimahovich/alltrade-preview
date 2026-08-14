@@ -255,12 +255,20 @@
   .aside-img figcaption span{display:block;font-family:'IBM Plex Mono',monospace;font-size:var(--fs-foot);
     color:rgba(255,255,255,.75);margin-top:1.5mm;text-transform:uppercase;letter-spacing:.06em;line-height:1.5}
   .vend{flex:1;min-height:0;display:flex;flex-direction:column;gap:var(--gap)}
-  .vfeats{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)}
+  .vend-top{flex:1;min-height:0;display:grid;grid-template-columns:1.62fr 1fr;gap:var(--gap)}
+  .vend-shot{position:relative;border-radius:var(--r);overflow:hidden;background:var(--dark)}
+  .vend-shot img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+  .vend-shot figcaption{position:absolute;left:0;right:0;bottom:0;padding:14mm 6mm 5mm;color:#fff;
+    background:linear-gradient(transparent,rgba(4,11,10,.9))}
+  .vend-shot figcaption b{font-size:11pt}
+  .vend-shot figcaption span{display:block;font-family:'IBM Plex Mono',monospace;font-size:var(--fs-foot);
+    color:rgba(255,255,255,.8);margin-top:1.5mm;text-transform:uppercase;letter-spacing:.06em}
+  .vfeats{min-height:0;display:grid;grid-template-rows:repeat(4,minmax(0,1fr));gap:3.5mm;overflow:hidden}
   .vfeat{background:var(--panel);border:1px solid var(--line-soft);border-radius:var(--r);
-    padding:var(--card-y) var(--card-x);display:flex;flex-direction:column;justify-content:center}
-  .vfeat b{font-size:var(--fs-card);font-weight:700;line-height:1.25;margin-bottom:2.5mm}
-  .vfeat p{font-size:var(--fs-body);line-height:1.45;color:var(--ink-soft)}
-  .vsave{flex:none;background:var(--brand);border-radius:var(--r);color:#fff;padding:7mm var(--card-x);
+    padding:4mm var(--card-x);display:flex;flex-direction:column;justify-content:center}
+  .vfeat b{font-size:10.5pt;font-weight:700;line-height:1.22;margin-bottom:1.8mm}
+  .vfeat p{font-size:8pt;line-height:1.36;color:var(--ink-soft)}
+  .vsave{flex:none;background:var(--brand);border-radius:var(--r);color:#fff;padding:6mm var(--card-x);
     display:flex;align-items:center;gap:7mm}
   .vsave .lead{flex:none}
   .vsave .big{font-family:'Archivo',sans-serif;font-stretch:125%;font-weight:900;font-size:30pt;
@@ -516,22 +524,24 @@
 </section>
 
 <!-- ============ 8 · ВЕНДИНГ ============ -->
-<section class="page page--aside">
-  <figure class="aside-img">
-    <img src="img/at-vend-portrait.jpg" alt="">
-    <figcaption><b>ALLTRADE-LTD</b><span>Вендинговые аппараты выдачи СИЗ · интерфейс каз · рус · англ</span></figcaption>
-  </figure>
+<section class="page">
   <div class="ph"><span class="k">04 · Вендинг-выдача</span><span class="pno">08 / 11</span></div>
-  <div class="sec-head sec-head--stack">
+  <div class="sec-head">
     <h2 class="display">Автоматическая<br>выдача 24/7</h2>
     <p class="side">Вендинговые аппараты для выдачи СИЗ: одни выдают средства защиты по личной карте, другие принимают спецодежду в стирку и ремонт по RFID. Состав номенклатуры подбираем на аудите предприятия.</p>
   </div>
   <div class="vend">
+    <div class="vend-top">
+      <figure class="vend-shot">
+        <img src="img/at-vend-all.jpg" alt="">
+        <figcaption><b>ALLTRADE-LTD</b><span>Мелкая выдача · приёмка спецодежды · крупноячеистая выдача</span></figcaption>
+      </figure>
     <div class="vfeats">
       <article class="vfeat"><b>Выдача по личной карте</b><p>Сотрудник прикладывает личную карту и получает свою позицию круглосуточно - без кладовщика и очереди.</p></article>
       <article class="vfeat"><b>Поимённый учёт</b><p>Видно, кто и сколько получил, - готовая отчётность для службы охраны труда.</p></article>
       <article class="vfeat"><b>Связь с учётной системой</b><p>Данные о выдаче уходят в SAP, 1С или вашу WMS автоматически.</p></article>
       <article class="vfeat"><b>Приёмка по RFID</b><p>Отдельный аппарат принимает спецодежду в стирку и ремонт по RFID-метке.</p></article>
+    </div>
     </div>
     <div class="vsave">
       <div class="lead">
